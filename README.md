@@ -3,6 +3,8 @@ All the things you need if you're me. Works by using [Chezmoi](https://github.co
 
 # Currently included programs
 - keynav
+- rofi
+![rofi_filebrowser](./examples/rofi_filebrowser.png)
 
 ## Useful tutorials
 
