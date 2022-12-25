@@ -1,10 +1,7 @@
 ################################################################################
 #                                  .keynavrc                                   #
 #                                                                              #
-# Last edit: 25/12/22                          made with love by kulupu Mimuki #
-################################################################################
-# TODO: Test on Windows, and make a seperate config if needed                  #
-#       Decide on if I like being unnecessarily extra in my config files       #
+# Last edit: 20/12/22                          made with love by kulupu Mimuki #
 ################################################################################
 #                                                                              #
 # Launch command: keynav "loadconfig ~/.config/keynav/.keynavrc"               #
