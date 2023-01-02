@@ -164,7 +164,10 @@ awful.key({ modkey, "Shift"   }, "q", awesome.quit,
 
 clientkeys = gears.table.join(
     awful.key({ modkey,           }, "d", function (c) c:kill() end,
-              { description = "close window", group = "window" })
+              { description = "close window", group = "window" }),
+
+    awful.key({ modkey,           }, "F11", function (c) awful.titlebar.toggle(c)         end,
+              {description = "Show/Hide Titlebars", group="client"})
 )
 
 for i = 1, totalTags do
