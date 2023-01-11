@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                              keybindings.lua                               --
 --                                                                            --
--- Last edit: 01/01/23                        Made with love by kulupu Mimuki --
+-- Last edit: 11/01/23                        Made with love by kulupu Mimuki --
 --------------------------------------------------------------------------------
 -- TODO: Maybe only have todo files in the main rc.lua?                       --
 --------------------------------------------------------------------------------
@@ -95,25 +95,25 @@ awful.key({ modkey, "Shift" }, "o", function ()
           { description = "move window to next tag", group = "window" }),
 
 ------- [ Layout Settings ]
-awful.key({ modkey, "Alt"     }, "o",
-            function () awful.tag.incmwfact( 0.05) end,
-          { description = "increase master width factor",
-            group = "layout"  }),
+--awful.key({ modkey, "Alt"     }, "o",
+--            function () awful.tag.incmwfact( 0.05) end,
+--          { description = "increase master width factor",
+--            group = "layout"  }),
 
-awful.key({ modkey, "Alt"     }, "n",
-            function () awful.tag.incmwfact(-0.05) end,
-          { description = "decrease master width factor",
-            group = "layout"  }),
+--awful.key({ modkey, "Alt"     }, "n",
+--            function () awful.tag.incmwfact(-0.05) end,
+--          { description = "decrease master width factor",
+--            group = "layout"  }),
 
-awful.key({ modkey, "Control" }, "n",
-            function () awful.tag.incncol( 1, nil, true) end,
-          { description = "increase the number of columns",
-            group = "layout"  }),
+-- awful.key({ modkey, "Control" }, "n",
+--             function () awful.tag.incncol( 1, nil, true) end,
+--           { description = "increase the number of columns",
+--             group = "layout"  }),
 
-awful.key({ modkey, "Control" }, "o",
-            function () awful.tag.incncol(-1, nil, true) end,
-          { description = "decrease the number of columns",
-            group = "layout"  }),
+-- awful.key({ modkey, "Control" }, "o",
+--             function () awful.tag.incncol(-1, nil, true) end,
+--           { description = "decrease the number of columns",
+--             group = "layout"  }),
 
 awful.key({ modkey,           }, "space",
             function () awful.layout.inc( 1) end,
@@ -168,6 +168,11 @@ clientkeys = gears.table.join(
 
     awful.key({ modkey,           }, "F11", function (c) awful.titlebar.toggle(c)         end,
               {description = "Show/Hide Titlebars", group="client"})
+-- TODO: find out why these don't work like the internet man said they should
+--    awful.key({ modkey, "Alt"   }, "e",   function (c) c:relative_move(  20,  20, -40, -40) end),
+--    awful.key({ modkey, "Alt"   }, "i",     function (c) c:relative_move(  -20,-20, 40, 40) end),
+--    awful.key({ modkey, "Alt"   }, "n",   function (c) c:relative_move(-20,   0,   0,   0) end),
+--    awful.key({ modkey, "Alt"   }, "o",  function (c) c:relative_move( 20,   0,   0,   0) end)
 )
 
 for i = 1, totalTags do
