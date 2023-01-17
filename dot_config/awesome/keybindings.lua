@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                              keybindings.lua                               --
 --                                                                            --
--- Last edit: 11/01/23                        Made with love by kulupu Mimuki --
+-- Last edit: 18/01/23                        Made with love by kulupu Mimuki --
 --------------------------------------------------------------------------------
 -- TODO: Maybe only have todo files in the main rc.lua?                       --
 --------------------------------------------------------------------------------
@@ -95,25 +95,25 @@ awful.key({ modkey, "Shift" }, "o", function ()
           { description = "move window to next tag", group = "window" }),
 
 ------- [ Layout Settings ]
---awful.key({ modkey, "Alt"     }, "o",
---            function () awful.tag.incmwfact( 0.05) end,
---          { description = "increase master width factor",
---            group = "layout"  }),
+awful.key({ modkey, "Control" }, "n",
+            function () awful.tag.incmwfact (-0.025) end,
+          { description = "Shrink horizontally",
+            group = "layout" }),
 
---awful.key({ modkey, "Alt"     }, "n",
---            function () awful.tag.incmwfact(-0.05) end,
---          { description = "decrease master width factor",
---            group = "layout"  }),
+awful.key({ modkey, "Control" }, "o",
+            function () awful.tag.incmwfact ( 0.025) end,
+          { description = "Grow horizontally",
+            group = "layout" }),
 
--- awful.key({ modkey, "Control" }, "n",
---             function () awful.tag.incncol( 1, nil, true) end,
---           { description = "increase the number of columns",
---             group = "layout"  }),
+awful.key({ modkey, "Control" }, "i",
+            function () awful.client.incwfact (-0.025) end,
+          { description = "Shrink vertically",
+            group = "layout" }),
 
--- awful.key({ modkey, "Control" }, "o",
---             function () awful.tag.incncol(-1, nil, true) end,
---           { description = "decrease the number of columns",
---             group = "layout"  }),
+awful.key({ modkey, "Control" }, "e",
+            function () awful.client.incwfact ( 0.025) end,
+          { description = "Grow vertically",
+            group = "layout" }),
 
 awful.key({ modkey,           }, "space",
             function () awful.layout.inc( 1) end,
@@ -122,6 +122,8 @@ awful.key({ modkey,           }, "space",
 awful.key({ modkey, "Control" }, "space",
             function () awful.layout.inc(-1) end,
           { description = "select previous layout", group = "layout" }),
+
+
 
 --awful.key({ modkey, "Alt"     }, "n",     function () awful.tag.incnmaster( 1, nil, true) end,
 --          {description = "increase the number of master clients", group = "layout"}),
