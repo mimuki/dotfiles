@@ -94,27 +94,6 @@ awful.key({ modkey, "Shift" }, "o", function ()
          end,
           { description = "move window to next tag", group = "window" }),
 
-------- [ Layout Settings ]
-awful.key({ modkey, "Control" }, "n",
-            function () awful.tag.incmwfact (-0.025) end,
-          { description = "Shrink horizontally",
-            group = "layout" }),
-
-awful.key({ modkey, "Control" }, "o",
-            function () awful.tag.incmwfact ( 0.025) end,
-          { description = "Grow horizontally",
-            group = "layout" }),
-
-awful.key({ modkey, "Control" }, "i",
-            function () awful.client.incwfact (-0.025) end,
-          { description = "Shrink vertically",
-            group = "layout" }),
-
-awful.key({ modkey, "Control" }, "e",
-            function () awful.client.incwfact ( 0.025) end,
-          { description = "Grow vertically",
-            group = "layout" }),
-
 awful.key({ modkey,           }, "space",
             function () awful.layout.inc( 1) end,
           { description = "select next layout", group = "layout" }),
@@ -125,9 +104,9 @@ awful.key({ modkey, "Control" }, "space",
 
 
 
---awful.key({ modkey, "Alt"     }, "n",     function () awful.tag.incnmaster( 1, nil, true) end,
+--awful.key({ modkey, "Mod1"  }, "n",     function () awful.tag.incnmaster( 1, nil, true) end,
 --          {description = "increase the number of master clients", group = "layout"}),
---awful.key({ modkey, "Alt"   }, "o",     function () awful.tag.incnmaster(-1, nil, true) end,
+--awful.key({ modkey, "Mod1"  }, "o",     function () awful.tag.incnmaster(-1, nil, true) end,
 --          {description = "decrease the number of master clients", group = "layout"}),
 
 ----- [ Program Launchers ] ----------------------------------------------------
@@ -149,6 +128,8 @@ awful.key({ modkey            }, "w",
             function () awful.util.spawn("rofi -show window") end,
           { description = "Search windows", group = "rofi" }),
 
+awful.key({ modkey }, "y",  awful.client.floating.toggle,
+          { description = "toggle floating", group = "client" }),
 
 ----- [ AwesomeWM Meta Controls ] ----------------------------------------------
 
@@ -169,12 +150,65 @@ clientkeys = gears.table.join(
               { description = "close window", group = "window" }),
 
     awful.key({ modkey,           }, "F11", function (c) awful.titlebar.toggle(c)         end,
-              {description = "Show/Hide Titlebars", group="client"})
--- TODO: find out why these don't work like the internet man said they should
---    awful.key({ modkey, "Alt"   }, "e",   function (c) c:relative_move(  20,  20, -40, -40) end),
---    awful.key({ modkey, "Alt"   }, "i",     function (c) c:relative_move(  -20,-20, 40, 40) end),
---    awful.key({ modkey, "Alt"   }, "n",   function (c) c:relative_move(-20,   0,   0,   0) end),
---    awful.key({ modkey, "Alt"   }, "o",  function (c) c:relative_move( 20,   0,   0,   0) end)
+              {description = "Show/Hide Titlebars", group="client"}),
+
+------- [ Layout Settings ]
+awful.key({ modkey, "Control" }, "n", function (c)
+            if c.floating then
+              c:relative_move(  0,   0, -25,   0)
+            else
+              awful.tag.incmwfact (-0.025) end
+            end,
+          { description = "Shrink horizontally",
+            group = "layout" }),
+
+awful.key({ modkey, "Control" }, "o", function (c)
+            if c.floating then
+              c:relative_move(  0,   0,  25,   0)
+            else
+              awful.tag.incmwfact ( 0.025) end
+            end,
+          { description = "Grow horizontally",
+            group = "layout" }),
+
+
+awful.key({ modkey, "Control" }, "e", function (c)
+            if c.floating then
+              c:relative_move(  0,   0,   0, 25)
+            else
+              awful.client.incwfact (-0.025) end
+            end,
+          { description = "Grow vertically",
+            group = "layout" }),
+
+awful.key({ modkey, "Control" }, "i", function (c)
+            if c.floating then
+              c:relative_move(  0,   0,   0, -25)
+            else
+              awful.client.incwfact ( 0.025) end
+            end,
+          { description = "Grow vertically",
+            group = "layout" }),
+
+awful.key({ modkey, "Mod1"  }, "n", function (c)
+            c:relative_move(-25,  0,  0,  0) end,
+          { description = "Move floating window left",
+            group = "layout" }),
+
+awful.key({ modkey, "Mod1"  }, "o", function (c)
+            c:relative_move( 25,  0,  0,  0) end,
+          { description = "Move floating window right",
+            group = "layout" }),
+
+awful.key({ modkey, "Mod1"  }, "e", function (c)
+            c:relative_move(  0, 25,  0,  0) end,
+          { description = "Move floating window down",
+            group = "layout" }),
+
+awful.key({ modkey, "Mod1"  }, "i", function (c)
+            c:relative_move(  0,-25,  0,  0) end,
+          { description = "Move floating window up",
+            group = "layout" })
 )
 
 for i = 1, totalTags do
