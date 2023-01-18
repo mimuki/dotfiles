@@ -7,45 +7,28 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 local gfs = require("gears.filesystem")
--- local themes_path = gfs.get_themes_dir()
-local themes_path = "~/.config/awesome/themes/"
-
+local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font          = "sans 16"
+theme.font          = "sans 8"
 
-theme.bg_normal     = "#282a36"
-theme.bg_focus      = "#444751"
-theme.bg_urgent     = "#ff5555"
-theme.bg_minimize   = "#000000"
+theme.bg_normal     = "#222222"
+theme.bg_focus      = "#535d6c"
+theme.bg_urgent     = "#ff0000"
+theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#f8f8f2"
-theme.fg_focus      = "#f8f8f2"
-theme.fg_urgent     = "#f8f8f2"
-theme.fg_minimize   = "#f8f8f2"
+theme.fg_normal     = "#aaaaaa"
+theme.fg_focus      = "#ffffff"
+theme.fg_urgent     = "#ffffff"
+theme.fg_minimize   = "#ffffff"
 
-theme.useless_gap   = dpi(4)
-theme.border_width  = dpi(10)
-theme.border_normal = "#44475a"
-theme.border_focus  = "#bd93f9"
-theme.border_marked = "#6272a4"
-
-theme.titlebar_bg_normal = "#44475a"
-theme.titlebar_bg_focus  = "#bd93f9"
-theme.titlebar_bg_urgent = "#ff5555"
-
-theme.titlebar_fg_focus  = "#282a36"
-theme.titlebar_fg_urgent = "#282a36"
-
-theme.hotkeys_border_color = "#ff79c6"
-theme.hotkeys_modifiers_fg = "#f8f8f2"
-theme.hotkeys_font = "Tlwg Mono Bold 16"
-theme.hotkeys_description_font = theme.font
-theme.hotkeys_label_bg = "#6272a4"
-theme.hotkeys_group_margin = dpi(20)
-
+theme.useless_gap   = dpi(0)
+theme.border_width  = dpi(1)
+theme.border_normal = "#000000"
+theme.border_focus  = "#535d6c"
+theme.border_marked = "#91231c"
 
 -- There are other variable sets
 -- overriding the default one when
@@ -114,7 +97,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = themes_path.."dracula/goop_2.png"
+theme.wallpaper = themes_path.."default/background.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
