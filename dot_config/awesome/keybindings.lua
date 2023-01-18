@@ -20,7 +20,7 @@ local gmath = require("gears.math")
 
 modkey = "Mod4" -- GUI/Super/Meta/Windows etc
 homeRow = {"a", "r", "s", "t", "g", "m", "n", "e", "i", "o", "semicolon" }
-totalTags = 5
+totalTags = 5 -- Change to increase or decrease number of tags generated
 
 ----- [ Keybindings ] ----------------------------------------------------------
 globalkeys = gears.table.join(
@@ -29,15 +29,18 @@ globalkeys = gears.table.join(
 
 awful.key({ modkey,           }, "n", awful.tag.viewprev,
           { description = "view previous tag", group = "tag" }),
-awful.key({ modkey,           }, "o", awful.tag.viewnext,
-          { description = "view next tag", group = "tag" }),
+
+awful.key({ modkey,           }, "e",
+            function () awful.client.focus.byidx(-1) end,
+          { description = "focus previous window", group = "window" }),
 
 awful.key({ modkey,           }, "i",
             function () awful.client.focus.byidx( 1) end,
           { description = "focus next window", group = "window" }),
-awful.key({ modkey,           }, "e",
-            function () awful.client.focus.byidx(-1) end,
-          { description = "focus previous window", group = "window" }),
+
+awful.key({ modkey,           }, "o", awful.tag.viewnext,
+          { description = "view next tag", group = "tag" }),
+
 
 awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
           { description = "jump to urgent window", group = "window" }),
@@ -63,15 +66,6 @@ awful.key({ modkey,           }, "Tab",
 ----- [ Layout Manipulation ] --------------------------------------------------
 
 ------- [ Move Window ]
-awful.key({ modkey, "Shift"   }, "i",
-            function () awful.client.swap.byidx(  1) end,
-          { description = "swap with next window",
-            group = "window"  }),
-awful.key({ modkey, "Shift"   }, "e",
-            function () awful.client.swap.byidx( -1) end,
-          { description = "swap with previous window",
-            group = "window"  }),
-
 awful.key({ modkey, "Shift" }, "n", function ()
             local c = client.focus
             if not c then return end
@@ -82,6 +76,16 @@ awful.key({ modkey, "Shift" }, "n", function ()
             c:move_to_tag(newtag)
             end,
           { description = "move window to previous tag", group = "window" }),
+
+awful.key({ modkey, "Shift"   }, "e",
+            function () awful.client.swap.byidx( -1) end,
+          { description = "swap with previous window",
+            group = "window"  }),
+
+awful.key({ modkey, "Shift"   }, "i",
+            function () awful.client.swap.byidx(  1) end,
+          { description = "swap with next window",
+            group = "window"  }),
 
 awful.key({ modkey, "Shift" }, "o", function ()
             local c = client.focus
@@ -143,18 +147,18 @@ awful.key({ modkey, "Shift"   }, "q", awesome.quit,
           { description = "quit awesome", group = "awesome" })
 )
 ----- [ Client Keys ] ----------------------------------------------------------
--- TODO: learn why this is seperate
+-- TODO: learn why this is seperate from globalkeys
 
 clientkeys = gears.table.join(
-    awful.key({ modkey,           }, "d", function (c) c:kill() end,
+    awful.key({ modkey,       }, "d", function (c) c:kill() end,
               { description = "close window", group = "window" }),
 
-    awful.key({ modkey,           }, "F11", function (c) awful.titlebar.toggle(c)         end,
-              {description = "Show/Hide Titlebars", group="client"}),
+    awful.key({ modkey,       }, "F11", function (c) awful.titlebar.toggle(c) end,
+              { description = "show/hide titlebars", group="client" }),
 
 ------- [ Layout Settings ]
 -- Floating window: shrinks the focused window horizontally
--- Tiling window: shrinks the main window horizontally
+--   Tiling window: shrinks the main window horizontally
 awful.key({ modkey, "Control" }, "n", function (c)
             if c.floating then
               c:relative_move(10, 0, -20, 0)
@@ -164,7 +168,9 @@ awful.key({ modkey, "Control" }, "n", function (c)
           { description = "Shrink window horizontally",
             group = "layout" }),
 -- Floating window: grows the focused window vertically
---   Tiling window: grows the focused window unless it's the only non-main one
+--   Tiling window: grows the focused window if it's:
+--                    - Not a main window
+--                    - Has other secondary windows
 awful.key({ modkey, "Control" }, "e", function (c)
             if c.floating then
               c:relative_move(0, -10, 0, 20)
@@ -175,7 +181,9 @@ awful.key({ modkey, "Control" }, "e", function (c)
             group = "layout" }),
 
 -- Floating window: shrinks the focused window vertically
---   Tiling window: shrinks the focused window unless it's the only non-main one
+--   Tiling window: shrinks the focused window if it's:
+--                    - Not a main window
+--                    - Not the only secondary window
 awful.key({ modkey, "Control" }, "i", function (c)
             if c.floating then
               c:relative_move(0, 10, 0, -20)
@@ -196,32 +204,72 @@ awful.key({ modkey, "Control" }, "o", function (c)
           { description = "Grow horizontally to the right",
             group = "layout" }),
 
+-- Shifted, faster variant
 
-awful.key({ modkey, "Mod1"  }, "n", function (c)
+awful.key({ modkey, "Control", "Shift" }, "n", function (c) -- move left
+            if c.floating then
+              c:relative_move(40, 0, -80, 0)
+            else
+              awful.tag.incmwfact (-0.05) end
+            end),
+awful.key({ modkey, "Control", "Shift" }, "e", function (c) -- move down
+            if c.floating then
+              c:relative_move(0, -40, 0, 80)
+            else
+              awful.client.incwfact ( 0.1) end
+            end),
+awful.key({ modkey, "Control", "Shift" }, "i", function (c) -- move up
+            if c.floating then
+              c:relative_move(0, 40, 0, -80)
+            else
+              awful.client.incwfact (-0.1) end
+            end),
+awful.key({ modkey, "Control", "Shift" }, "o", function (c) -- move right
+            if c.floating then
+              c:relative_move(-40, 0, 80, 0)
+            else
+              awful.tag.incmwfact ( 0.05) end
+            end),
+
+-- Move floating window
+
+awful.key({ modkey, "Mod1"   }, "n", function (c)
             c:relative_move(-25, 0, 0, 0) end,
           { description = "Move floating window left",
             group = "layout" }),
 
-awful.key({ modkey, "Mod1"  }, "o", function (c)
-            c:relative_move(25, 0, 0, 0) end,
-          { description = "Move floating window right",
-            group = "layout" }),
-
-awful.key({ modkey, "Mod1"  }, "e", function (c)
+awful.key({ modkey, "Mod1"   }, "e", function (c)
             c:relative_move(  0, 25,  0,  0) end,
           { description = "Move floating window down",
             group = "layout" }),
 
-awful.key({ modkey, "Mod1"  }, "i", function (c)
+awful.key({ modkey, "Mod1"   }, "i", function (c)
             c:relative_move(  0,-25,  0,  0) end,
           { description = "Move floating window up",
-            group = "layout" })
+            group = "layout" }),
+
+awful.key({ modkey, "Mod1"   }, "o", function (c)
+            c:relative_move(25, 0, 0, 0) end,
+          { description = "Move floating window right",
+            group = "layout" }),
+
+-- Shifted, faster variants
+
+awful.key({ modkey, "Mod1", "Shift" }, "n", function (c) -- move left
+            c:relative_move(-100,   0,   0,   0) end),
+awful.key({ modkey, "Mod1", "Shift" }, "e", function (c) -- move down
+            c:relative_move(   0, 100,   0,   0) end),
+awful.key({ modkey, "Mod1", "Shift" }, "i", function (c) -- move up
+            c:relative_move(   0,-100,   0,   0) end),
+awful.key({ modkey, "Mod1", "Shift" }, "o", function (c) -- move right
+            c:relative_move( 100,   0,   0,   0) end)
 )
 
+-- Create tag bindings automatically, and map them to my home row
 for i = 1, totalTags do
     globalkeys = gears.table.join(globalkeys,
         -- View tag only.
-        awful.key({ modkey,           }, homeRow[i],
+        awful.key({ modkey,         }, homeRow[i],
                     function ()
                         local screen = awful.screen.focused()
                         local tag = screen.tags[i]
@@ -243,27 +291,5 @@ for i = 1, totalTags do
                   end,
                   { description = "move focused window to tag "..i,
                     group = "tag" })
-
-        -- Toggle tag display.
---        awful.key({ modkey, "Control" }, homeRow[i],
---                  function ()
---                      local screen = awful.screen.focused()
---                      local tag = screen.tags[i]
---                      if tag then
---                         awful.tag.viewtoggle(tag)
---                      end
---                  end,
---                  { description = "toggle tag " .. i, group = "tag" }),
---        -- Toggle tag on focused client.
---        awful.key({ modkey, "Control", "Shift" }, homeRow[i]
---                  function ()
---                      if client.focus then
---                          local tag = client.focus.screen.tags[i]
---                          if tag then
---                              client.focus:toggle_tag(tag)
---                          end
---                      end
---                  end,
---                  {description = "toggle focused client on tag #" .. i, group = "tag"})
     )
 end
