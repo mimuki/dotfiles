@@ -153,50 +153,57 @@ clientkeys = gears.table.join(
               {description = "Show/Hide Titlebars", group="client"}),
 
 ------- [ Layout Settings ]
+-- Floating window: shrinks the focused window horizontally
+-- Tiling window: shrinks the main window horizontally
 awful.key({ modkey, "Control" }, "n", function (c)
             if c.floating then
-              c:relative_move(  0,   0, -25,   0)
+              c:relative_move(10, 0, -20, 0)
             else
               awful.tag.incmwfact (-0.025) end
             end,
-          { description = "Shrink horizontally",
+          { description = "Shrink window horizontally",
             group = "layout" }),
-
-awful.key({ modkey, "Control" }, "o", function (c)
-            if c.floating then
-              c:relative_move(  0,   0,  25,   0)
-            else
-              awful.tag.incmwfact ( 0.025) end
-            end,
-          { description = "Grow horizontally",
-            group = "layout" }),
-
-
+-- Floating window: grows the focused window vertically
+--   Tiling window: grows the focused window unless it's the only non-main one
 awful.key({ modkey, "Control" }, "e", function (c)
             if c.floating then
-              c:relative_move(  0,   0,   0, 25)
-            else
-              awful.client.incwfact (-0.025) end
-            end,
-          { description = "Grow vertically",
-            group = "layout" }),
-
-awful.key({ modkey, "Control" }, "i", function (c)
-            if c.floating then
-              c:relative_move(  0,   0,   0, -25)
+              c:relative_move(0, -10, 0, 20)
             else
               awful.client.incwfact ( 0.025) end
             end,
-          { description = "Grow vertically",
+          { description = "Grow window vertically",
             group = "layout" }),
 
+-- Floating window: shrinks the focused window vertically
+--   Tiling window: shrinks the focused window unless it's the only non-main one
+awful.key({ modkey, "Control" }, "i", function (c)
+            if c.floating then
+              c:relative_move(0, 10, 0, -20)
+            else
+              awful.client.incwfact (-0.025) end
+            end,
+          { description = "Shrink window vertically",
+            group = "layout" }),
+
+-- Floating window: grows the focused window horizontally
+-- Tiling window: grows the main window
+awful.key({ modkey, "Control" }, "o", function (c)
+            if c.floating then
+              c:relative_move(-10, 0, 20, 0)
+            else
+              awful.tag.incmwfact ( 0.025) end
+            end,
+          { description = "Grow horizontally to the right",
+            group = "layout" }),
+
+
 awful.key({ modkey, "Mod1"  }, "n", function (c)
-            c:relative_move(-25,  0,  0,  0) end,
+            c:relative_move(-25, 0, 0, 0) end,
           { description = "Move floating window left",
             group = "layout" }),
 
 awful.key({ modkey, "Mod1"  }, "o", function (c)
-            c:relative_move( 25,  0,  0,  0) end,
+            c:relative_move(25, 0, 0, 0) end,
           { description = "Move floating window right",
             group = "layout" }),
 
