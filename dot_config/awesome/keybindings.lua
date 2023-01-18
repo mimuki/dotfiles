@@ -153,8 +153,8 @@ clientkeys = gears.table.join(
     awful.key({ modkey,       }, "d", function (c) c:kill() end,
               { description = "close window", group = "window" }),
 
-    awful.key({ modkey,       }, "F11", function (c) awful.titlebar.toggle(c) end,
-              { description = "show/hide titlebars", group="client" }),
+--    awful.key({ modkey,       }, "F11", function (c) awful.titlebar.toggle(c) end,
+--              { description = "show/hide titlebars", group="client" }),
 
 ------- [ Layout Settings ]
 -- Floating window: shrinks the focused window horizontally

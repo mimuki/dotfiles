@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                   rc.lua                                   --
 --                                                                            --
--- Last edit: 01/01/23                        Made with love by kulupu Mimuki --
+-- Last edit: 19/01/23                        Made with love by kulupu Mimuki --
 --------------------------------------------------------------------------------
 -- TODO: Rewrite theme                                                        --
 --       Continue making things pretty                                        --
@@ -26,7 +26,9 @@ beautiful.init("~/.config/awesome/theme.lua")
 ----- [ External Config ] ------------------------------------------------------
 require("keybindings")    -- My default keybindings
 require("rules")          -- Window Rules
-require("titlebars")      -- Titlebar configuration
+-- Disable when using smart_borders for a perfomance boost:
+-- require("titlebars")   -- Titlebar config
+require("smart_borders")  -- Border config (technically made of titlebars)
 
 ----- [ Variables ] ------------------------------------------------------------
 -- This is used later as the default terminal and editor to run.
