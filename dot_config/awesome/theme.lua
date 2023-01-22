@@ -1,6 +1,12 @@
----------------------------
--- Default awesome theme --
----------------------------
+--------------------------------------------------------------------------------
+--                                 theme.lua                                  --
+--                                                                            --
+-- Last edit: 22/01/23                        Made with love by kulupu Mimuki --
+--------------------------------------------------------------------------------
+-- All changes to colour pallette happen in vars.lua                          --
+--------------------------------------------------------------------------------
+
+----- [ Dependencies ] ---------------------------------------------------------
 
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
@@ -9,44 +15,47 @@ local dpi = xresources.apply_dpi
 local gfs = require("gears.filesystem")
 -- local themes_path = gfs.get_themes_dir()
 local themes_path = "~/.config/awesome/themes/"
+require("vars")
+
+----- [ Settings ] -------------------------------------------------------------
 
 
 local theme = {}
-
 theme.font          = "sans 16"
 
-theme.bg_normal     = "#282a36"
-theme.bg_focus      = "#444751"
-theme.bg_urgent     = "#ff5555"
+theme.bg_normal     = theme_bg
+theme.bg_focus      = theme_select
+theme.bg_urgent     = theme_red
 theme.bg_minimize   = "#000000"
-theme.bg_systray    = theme.bg_normal
+theme.bg_systray    = theme_bg
 
-theme.fg_normal     = "#f8f8f2"
-theme.fg_focus      = "#f8f8f2"
-theme.fg_urgent     = "#f8f8f2"
-theme.fg_minimize   = "#f8f8f2"
+theme.fg_normal     = theme_fg
+theme.fg_focus      = theme_fg
+theme.fg_urgent     = theme_fg
+theme.fg_minimize   = theme_fg
 
 theme.useless_gap   = dpi(4)
 theme.gap_single_client = false
 -- Borders are now handled by smart_borders.lua: enabling this will give you
 -- double borders (but with the ability to colour them differently)
 theme.border_width  = dpi(0)
-theme.border_normal = "#44475a"
-theme.border_focus  = "#bd93f9"
-theme.border_marked = "#6272a4"
+theme.border_normal = theme_select
+theme.border_focus  = theme_accent
+theme.border_marked = theme_special
 
-theme.titlebar_bg_normal = "#44475a"
-theme.titlebar_bg_focus  = "#bd93f9"
-theme.titlebar_bg_urgent = "#ff5555"
+theme.titlebar_bg_normal = theme_select
+theme.titlebar_bg_focus  = theme_accent
+theme.titlebar_bg_urgent = theme_red
 
-theme.titlebar_fg_focus  = "#282a36"
-theme.titlebar_fg_urgent = "#282a36"
+theme.titlebar_fg_focus  = theme_bg
+theme.titlebar_fg_urgent = theme_bg
 
-theme.hotkeys_border_color = "#ff79c6"
-theme.hotkeys_modifiers_fg = "#f8f8f2"
+theme.hotkeys_border_width = dpi(10)
+theme.hotkeys_border_color = theme_accent_alt
+theme.hotkeys_modifiers_fg = theme_fg
 theme.hotkeys_font = "Tlwg Mono Bold 16"
 theme.hotkeys_description_font = theme.font
-theme.hotkeys_label_bg = "#6272a4"
+theme.hotkeys_label_bg = theme_special
 theme.hotkeys_group_margin = dpi(20)
 
 
@@ -136,6 +145,15 @@ theme.layout_cornernw = themes_path.."default/layouts/cornernww.png"
 theme.layout_cornerne = themes_path.."default/layouts/cornernew.png"
 theme.layout_cornersw = themes_path.."default/layouts/cornersww.png"
 theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
+
+theme.lain_icons         = os.getenv("HOME") ..
+                           "/.config/awesome/lain/icons/layout/default/"
+theme.layout_termfair    = theme.lain_icons .. "termfair.png"
+theme.layout_centerfair  = theme.lain_icons .. "centerfair.png"  -- termfair.center
+theme.layout_cascade     = theme.lain_icons .. "cascade.png"
+theme.layout_cascadetile = theme.lain_icons .. "cascadetile.png" -- cascade.tile
+theme.layout_centerwork  = theme.lain_icons .. "centerwork.png"
+theme.layout_centerworkh = theme.lain_icons .. "centerworkh.png" -- centerwork.horizontal
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(

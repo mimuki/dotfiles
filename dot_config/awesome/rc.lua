@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                   rc.lua                                   --
 --                                                                            --
--- Last edit: 19/01/23                        Made with love by kulupu Mimuki --
+-- Last edit: 22/01/23                        Made with love by kulupu Mimuki --
 --------------------------------------------------------------------------------
 -- TODO: Rewrite theme                                                        --
 --       Continue making things pretty                                        --
@@ -27,23 +27,27 @@ beautiful.init("~/.config/awesome/theme.lua")
 ----- [ External Config ] ------------------------------------------------------
 require("keybindings")    -- My default keybindings
 require("rules")          -- Window Rules
+require("vars")           -- Variables
 -- Disable when using smart_borders for a perfomance boost:
 -- require("titlebars")   -- Titlebar config
 require("smart_borders")  -- Border config (technically made of titlebars)
+require("widgets")        -- Topbar widgets
 local lain = require("lain")
+
+local separators = lain.util.separators
+local markup = lain.util.markup
 -- PulseAudio volume (based on multicolor theme)
 local volume = lain.widget.pulse( {
     settings = function()
         -- vlevel = volume_now.left .. "-" .. volume_now.right .. "% | " .. volume_now.device
         vlevel = volume_now.left .. "%"
         if volume_now.muted == "yes" then
-            widget:set_markup(lain.util.markup("#6272a4", vlevel))
+            widget:set_markup(lain.util.markup(theme_special, vlevel))
         end
 
         if volume_now.muted == "no" then
-            widget:set_markup(lain.util.markup("#f8f8f2", vlevel))
+            widget:set_markup(lain.util.markup(theme_fg, vlevel))
         end
---        widget:set_markup(lain.util.markup("#7493d2", vlevel))
     end
 })
 
@@ -61,6 +65,8 @@ awful.layout.layouts = {
     awful.layout.suit.tile.top,
     awful.layout.suit.fair,
     awful.layout.suit.fair.horizontal,
+    lain.layout.centerwork,
+    lain.layout.centerwork.horizontal
 }
 
 
@@ -107,11 +113,6 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
--- {{{ Wibar
--- Create a textclock widget
-mytextclock = wibox.widget.textclock()
-
--- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
                     awful.button({ }, 1, function(t) t:view_only() end),
                     awful.button({ modkey }, 1, function(t)
@@ -205,31 +206,37 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-          --  mylauncher,
-            s.mytaglist,
-          --  s.mypromptbox,
+            wibox.container.background(s.mytaglist, theme_bg),
+            arrow_bg_blue,
+            wibox.container.background(frontInfo, theme_blue),
+            arrow_blue_purple,
+            wibox.container.background(localDate, theme_purple),
+            arrow_purple_pink,
+            wibox.container.background(localTime, theme_pink),
+            arrow_pink_bg,
         },
-	dummy,
-        --s.mytasklist, -- Middle widget
+	dummy, -- Only needed when there are no middle widgets
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
 
             -- mykeyboardlayout,
             wibox.widget.systray(),
-            volume.widget,
-            mytextclock,
-            s.mylayoutbox,
+--            arrow_select_blue,
+            arrow_bg_select,
+            wibox.container.background(volume.widget, theme_select),
+            arrow_select_bg,
+            wibox.container.background(s.mylayoutbox, theme_bg)
         },
     }
  end)
 -- }}}
 
 -- {{{ Mouse bindings
-root.buttons(gears.table.join(
+--root.buttons(gears.table.join(
 --    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
-))
+--    awful.button({ }, 4, awful.tag.viewnext),
+--    awful.button({ }, 5, awful.tag.viewprev)
+--))
 -- }}}
 
 
@@ -253,8 +260,10 @@ root.keys(globalkeys)
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
+    -- TODO: understand what this does enough to rephrase it, the whole
+    --       master/slave phrasing is weird
     -- Set the windows at the slave,
-    -- i.e. put it at the end of others instead of setting it master.
+    -- i.e. put it at the end of others instead of setting it.
     -- if not awesome.startup then awful.client.setslave(c) end
 
     if awesome.startup
