@@ -10,7 +10,6 @@ local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
-
 require('modules/smart_borders'){
 ----- [ Settings ] -------------------------------------------------------------
 	show_button_tooltips = true,

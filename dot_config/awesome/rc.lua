@@ -5,6 +5,7 @@
 --------------------------------------------------------------------------------
 -- TODO: Rewrite theme                                                        --
 --       Continue making things pretty                                        --
+--       Move top bar to its own file                                         --
 --------------------------------------------------------------------------------
 
 ----- [ Dependencies ] ---------------------------------------------------------
@@ -29,6 +30,22 @@ require("rules")          -- Window Rules
 -- Disable when using smart_borders for a perfomance boost:
 -- require("titlebars")   -- Titlebar config
 require("smart_borders")  -- Border config (technically made of titlebars)
+local lain = require("lain")
+-- PulseAudio volume (based on multicolor theme)
+local volume = lain.widget.pulse( {
+    settings = function()
+        -- vlevel = volume_now.left .. "-" .. volume_now.right .. "% | " .. volume_now.device
+        vlevel = volume_now.left .. "%"
+        if volume_now.muted == "yes" then
+            widget:set_markup(lain.util.markup("#6272a4", vlevel))
+        end
+
+        if volume_now.muted == "no" then
+            widget:set_markup(lain.util.markup("#f8f8f2", vlevel))
+        end
+--        widget:set_markup(lain.util.markup("#7493d2", vlevel))
+    end
+})
 
 ----- [ Variables ] ------------------------------------------------------------
 -- This is used later as the default terminal and editor to run.
@@ -196,8 +213,10 @@ awful.screen.connect_for_each_screen(function(s)
         --s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
+
+            -- mykeyboardlayout,
             wibox.widget.systray(),
+            volume.widget,
             mytextclock,
             s.mylayoutbox,
         },

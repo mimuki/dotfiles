@@ -27,6 +27,7 @@ theme.fg_urgent     = "#f8f8f2"
 theme.fg_minimize   = "#f8f8f2"
 
 theme.useless_gap   = dpi(4)
+theme.gap_single_client = false
 -- Borders are now handled by smart_borders.lua: enabling this will give you
 -- double borders (but with the ability to colour them differently)
 theme.border_width  = dpi(0)

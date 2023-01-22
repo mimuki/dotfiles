@@ -16,6 +16,14 @@ local hotkeys_popup = require("awful.hotkeys_popup")
 -- Move window to next/previous tag
 local gmath = require("gears.math")
 
+local lain = require("lain")
+local volume = lain.widget.pulsebar{
+  notification_preset = {
+    position = "top_middle",
+    font = "Monospace 20"
+  }
+}
+
 ----- [ Variables ] ------------------------------------------------------------
 
 modkey = "Mod4" -- GUI/Super/Meta/Windows etc
@@ -134,6 +142,34 @@ awful.key({ modkey            }, "w",
 
 awful.key({ modkey }, "y",  awful.client.floating.toggle,
           { description = "toggle floating", group = "client" }),
+----- [ System Controls ] ------------------------------------------------------
+-- Mute audio
+awful.key({ modkey }, "m",
+            function ()
+              os.execute(string.format(
+                "pactl set-sink-mute %s toggle",
+                volume.device))
+              volume.notify()
+            end,
+          { description = "mute audio", group = "audio" }),
+-- Volume up
+awful.key({ modkey }, "j",
+            function ()
+              os.execute(string.format(
+                "pactl set-sink-volume %s +1%%",
+                volume.device))
+              volume.notify()
+            end,
+          { description = "increase audio", group = "audio" }),
+-- Volume down
+awful.key({ modkey }, "k",
+            function ()
+              os.execute(string.format(
+                "pactl set-sink-volume %s -1%%",
+                volume.device))
+              volume.notify()
+            end,
+          { description = "decrease audio", group = "audio" }),
 
 ----- [ AwesomeWM Meta Controls ] ----------------------------------------------
 
@@ -142,9 +178,7 @@ awful.key({ modkey,           }, "/",      hotkeys_popup.show_help,
 awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
           { description = "go back", group = "tag" }),
 awful.key({ modkey, "Control" }, "r", awesome.restart,
-          { description = "reload awesome", group = "awesome" }),
-awful.key({ modkey, "Shift"   }, "q", awesome.quit,
-          { description = "quit awesome", group = "awesome" })
+          { description = "reload awesome", group = "awesome" })
 )
 ----- [ Client Keys ] ----------------------------------------------------------
 -- TODO: learn why this is seperate from globalkeys
