@@ -1,11 +1,12 @@
 --------------------------------------------------------------------------------
 --                                   rc.lua                                   --
 --                                                                            --
--- Last edit: 22/01/23                        Made with love by kulupu Mimuki --
+-- Last edit: 23/01/23                        Made with love by kulupu Mimuki --
 --------------------------------------------------------------------------------
 -- TODO: Rewrite theme                                                        --
 --       Continue making things pretty                                        --
 --       Move top bar to its own file                                         --
+--       Make the last edit indicator automated?                              --
 --------------------------------------------------------------------------------
 
 ----- [ Dependencies ] ---------------------------------------------------------
@@ -32,24 +33,10 @@ require("vars")           -- Variables
 -- require("titlebars")   -- Titlebar config
 require("smart_borders")  -- Border config (technically made of titlebars)
 require("widgets")        -- Topbar widgets
+-- Lain
 local lain = require("lain")
-
 local separators = lain.util.separators
 local markup = lain.util.markup
--- PulseAudio volume (based on multicolor theme)
-local volume = lain.widget.pulse( {
-    settings = function()
-        -- vlevel = volume_now.left .. "-" .. volume_now.right .. "% | " .. volume_now.device
-        vlevel = volume_now.left .. "%"
-        if volume_now.muted == "yes" then
-            widget:set_markup(lain.util.markup(theme_special, vlevel))
-        end
-
-        if volume_now.muted == "no" then
-            widget:set_markup(lain.util.markup(theme_fg, vlevel))
-        end
-    end
-})
 
 ----- [ Variables ] ------------------------------------------------------------
 -- This is used later as the default terminal and editor to run.
@@ -125,9 +112,9 @@ local taglist_buttons = gears.table.join(
                                               if client.focus then
                                                   client.focus:toggle_tag(t)
                                               end
-                                          end),
-                    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
-                    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
+                                          end)
+--                    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
+--                    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
                 )
 
 local tasklist_buttons = gears.table.join(
@@ -167,12 +154,40 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
+-- Whenever you change tags, make the little triangle be the right colour mostly
+tag.connect_signal("property::selected",
+    function(t)
+        if awful.tag.selected() then
+            -- debug notification yay
+            -- if ntf then naughty.destroy(ntf) end
+            -- ntf = naughty.notify({
+            --     title = "Tag Switched",
+            --     text = awful.tag.selected().name,
+            --     timeout = 2})
+            -- first = true
+            if awful.tag.selected().name == "ilo" then
+                arrow_dynamic.col1 = theme_accent
+                arrow_dynamic:emit_signal("widget::redraw_needed")
+            first = true
+            else
+                arrow_dynamic.col1 = theme_bg
+                arrow_dynamic:emit_signal("widget::redraw_needed")
+
+                -- i can't make the little arrow change if the last tag has
+                -- clients on it and it hurts
+                -- i need to do something along the lines of
+                -- if (that specific tag).clients ~= 0
+                -- but i can't make it work aaaa
+         end
+    end
+    end)
+
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.layouts[1])
+    awful.tag({ "kijetesantakalu", "toki", "musi", "nasa", "ilo" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -188,7 +203,10 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytaglist = awful.widget.taglist {
         screen  = s,
         filter  = awful.widget.taglist.filter.all,
-        buttons = taglist_buttons
+        buttons = taglist_buttons,
+        style   = {
+            font = "linja lipamanka 18"
+        }
     }
 
     -- Create a tasklist widget
@@ -207,13 +225,13 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.container.background(s.mytaglist, theme_bg),
-            arrow_bg_blue,
-            wibox.container.background(frontInfo, theme_blue),
-            arrow_blue_purple,
+            arrow_dynamic,
+            wibox.container.background(frontInfo, theme_pink),
+            arrow_pink_purple,
             wibox.container.background(localDate, theme_purple),
-            arrow_purple_pink,
-            wibox.container.background(localTime, theme_pink),
-            arrow_pink_bg,
+            arrow_purple_blue,
+            wibox.container.background(localTime, theme_blue),
+            arrow_blue_bg,
         },
 	dummy, -- Only needed when there are no middle widgets
         { -- Right widgets

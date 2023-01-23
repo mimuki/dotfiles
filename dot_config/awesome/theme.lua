@@ -21,7 +21,7 @@ require("vars")
 
 
 local theme = {}
-theme.font          = "sans 16"
+theme.font          = theme_font
 
 theme.bg_normal     = theme_bg
 theme.bg_focus      = theme_select
@@ -58,6 +58,10 @@ theme.hotkeys_description_font = theme.font
 theme.hotkeys_label_bg = theme_special
 theme.hotkeys_group_margin = dpi(20)
 
+theme.taglist_bg_focus = theme_accent
+theme.taglist_fg_focus = theme_bg
+theme.taglist_bg_occupied = theme_select
+
 
 -- There are other variable sets
 -- overriding the default one when
@@ -68,18 +72,21 @@ theme.hotkeys_group_margin = dpi(20)
 -- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]
 -- mouse_finder_[color|timeout|animate_timeout|radius|factor]
 -- prompt_[fg|bg|fg_cursor|bg_cursor|font]
--- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
+-- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|
+-- [...]    label_fg|group_margin|font|description_font]
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
+theme.tooltip_border_width = dpi(2)
+theme.tooltip_border_color = theme_accent_alt
 
 -- Generate taglist squares:
-local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-    taglist_square_size, theme.fg_normal
-)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-    taglist_square_size, theme.fg_normal
-)
+-- local taglist_square_size = dpi(4)
+-- theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
+--     taglist_square_size, theme.fg_normal
+-- )
+-- theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
+--     taglist_square_size, theme.fg_normal
+-- )
 
 -- Variables set for theming notifications:
 -- notification_font

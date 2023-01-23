@@ -23,3 +23,7 @@ theme_accent = theme_purple
 
 theme_accent_alt = theme_pink
 theme_special = "#6272a4"
+
+
+----- [ Colours ] --------------------------------------------------------------
+theme_font = "Comfortaa Bold 16"
