@@ -5,7 +5,10 @@
 --------------------------------------------------------------------------------
 
 ----- [ Dependencies ] ---------------------------------------------------------
--- Widget and layout library
+-- Standard awesome library
+local gears = require("gears")
+local awful = require("awful")
+
 local wibox = require("wibox")
 
 local lain = require("lain")
@@ -22,14 +25,27 @@ arrow_blue_purple = separators.arrow_right(theme_blue,   theme_purple)
 arrow_purple_pink = separators.arrow_right(theme_purple, theme_pink)
 arrow_pink_bg     = separators.arrow_right(theme_pink,   theme_bg)
 
+
 ----- [ Time and Date ] --------------------------------------------------------
 
 localTime = wibox.widget.textclock(
-                markup.fontfg("sans 16", theme_bg, " %I:%M %P ",60))
+                markup.fontfg("sans 16", theme_bg, " %I:%M %P ", 60))
 localDate = wibox.widget.textclock(
-                markup.fontfg("sans 16", theme_bg, " %A, %b %e ",1))
+                markup.fontfg("sans 16", theme_bg, " %A, %b %e ", 60))
 
 ----- [ Front Info ] -----------------------------------------------------------
-frontInfo = wibox.widget{
-							text = "soon"
+
+frontInfo = wibox.widget.textbox(" (loading) ") -- placeholder text
+
+gears.timer {
+  timeout = 5, -- seconds
+  call_now = true,
+  autostart = true,
+  callback = function()
+    awful.spawn.easy_async("less /home/mimuki/Documents/Projects/pk-rpc/front.txt",
+      function(out)
+        frontInfo.markup = markup.fontfg("sans 16", theme_bg, out)
+      end
+      )
+  end
 }
