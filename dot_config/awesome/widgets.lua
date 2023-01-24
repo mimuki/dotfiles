@@ -14,6 +14,8 @@ local wibox = require("wibox")
 local lain = require("lain")
 local markup = lain.util.markup
 local separators = lain.util.separators
+
+ battery_widget = require("battery-widget")
 require("vars")
 ----- [ Separators ] -----------------------------------------------------------
 ilo_dynamic_focus = "#0000ff"
@@ -69,3 +71,25 @@ volume = lain.widget.pulse( {
         end
     end
 })
+
+----- [ Battery indicator ] -----------------------------------------------------------
+battery = battery_widget {
+    ac = "AC",
+    adapter = "BAT0",
+    ac_prefix = "AC: ",
+    battery_prefix = "BAT: ",
+    percent_colors = {
+        { 25,  "red"    },
+        { 50,  "orange" },
+        { 999, "green"  },
+    },
+      listen = true,
+    timeout = 10,
+    widget_text = "${AC_BAT}${color_on}${percent}%${color_off}",
+    widget_font = "Deja Vu Sans Mono 16",
+    tooltip_text = "Battery ${state}${time_est}\nCapacity: ${capacity_percent}%",
+    alert_threshold = 5,
+    alert_timeout = 0,
+    alert_title = "Low battery !",
+    alert_text = "${AC_BAT}${time_est}"
+}

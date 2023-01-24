@@ -4,3 +4,6 @@
 [submodule "dot_config/awesome/lain"]
 	path = dot_config/awesome/lain
 	url = https://github.com/lcpz/lain.git
+[submodule "battery-widget"]
+	path = battery-widget
+	url = https://github.com/deficient/battery-widget

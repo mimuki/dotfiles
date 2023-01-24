@@ -225,7 +225,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.container.background(s.mytaglist, theme_bg),
-            arrow_dynamic,
+--            arrow_dynamic,
             wibox.container.background(frontInfo, theme_pink),
             arrow_pink_purple,
             wibox.container.background(localDate, theme_purple),
@@ -240,10 +240,12 @@ awful.screen.connect_for_each_screen(function(s)
             -- mykeyboardlayout,
             wibox.widget.systray(),
 --            arrow_select_blue,
+            require("battery-widget") {},
             arrow_bg_select,
             wibox.container.background(volume.widget, theme_select),
             arrow_select_bg,
-            wibox.container.background(s.mylayoutbox, theme_bg)
+--            wibox.container.background(battery.widget, theme_bg),
+            wibox.container.background(s.mylayoutbox, theme_select)
         },
     }
  end)

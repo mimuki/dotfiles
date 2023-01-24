@@ -38,16 +38,27 @@ globalkeys = gears.table.join(
 awful.key({ modkey,           }, "n", awful.tag.viewprev,
           { description = "view previous tag", group = "tag" }),
 
+awful.key({ modkey,           }, "Left", awful.tag.viewprev),
+
 awful.key({ modkey,           }, "e",
             function () awful.client.focus.byidx(-1) end,
           { description = "focus previous window", group = "window" }),
+
+awful.key({ modkey,           }, "Down",
+            function () awful.client.focus.byidx(-1) end),
 
 awful.key({ modkey,           }, "i",
             function () awful.client.focus.byidx( 1) end,
           { description = "focus next window", group = "window" }),
 
+
+awful.key({ modkey,           }, "Up",
+            function () awful.client.focus.byidx( 1) end),
+
 awful.key({ modkey,           }, "o", awful.tag.viewnext,
           { description = "view next tag", group = "tag" }),
+
+awful.key({ modkey,           }, "Right", awful.tag.viewnext),
 
 
 awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
@@ -152,6 +163,16 @@ awful.key({ modkey }, "m",
               volume.notify()
             end,
           { description = "mute audio", group = "audio" }),
+
+
+awful.key({}, "XF86AudioMute",
+            function ()
+              os.execute(string.format(
+                "pactl set-sink-mute %s toggle",
+                volume.device))
+              volume.notify()
+            end),
+
 -- Volume up
 awful.key({ modkey }, "j",
             function ()
@@ -161,6 +182,15 @@ awful.key({ modkey }, "j",
               volume.notify()
             end,
           { description = "increase audio", group = "audio" }),
+
+awful.key({}, "XF86AudioRaiseVolume",
+            function ()
+              os.execute(string.format(
+                "pactl set-sink-volume %s +1%%",
+                volume.device))
+              volume.notify()
+            end),
+
 -- Volume down
 awful.key({ modkey }, "k",
             function ()
@@ -170,6 +200,20 @@ awful.key({ modkey }, "k",
               volume.notify()
             end,
           { description = "decrease audio", group = "audio" }),
+
+awful.key({}, "XF86AudioLowerVolume",
+            function ()
+              os.execute(string.format(
+                "pactl set-sink-volume %s -1%%",
+                volume.device))
+              volume.notify()
+            end),
+
+
+awful.key({}, "XF86MonBrightnessUp",
+              function() os.execute("xbacklight -inc 5") end),
+awful.key({}, "XF86MonBrightnessDown",
+              function() os.execute("xbacklight -dec 5") end),
 
 ----- [ AwesomeWM Meta Controls ] ----------------------------------------------
 
