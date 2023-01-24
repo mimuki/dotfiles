@@ -7,3 +7,6 @@
 [submodule "battery-widget"]
 	path = battery-widget
 	url = https://github.com/deficient/battery-widget
+[submodule "dot_themes/private_Dracula/gtk"]
+	path = dot_themes/private_Dracula/gtk
+	url = https://github.com/dracula/gtk
