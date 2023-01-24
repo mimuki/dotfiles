@@ -5,7 +5,7 @@
 	path = dot_config/awesome/lain
 	url = https://github.com/lcpz/lain.git
 [submodule "battery-widget"]
-	path = battery-widget
+	path = dot_config/awesome/battery-widget
 	url = https://github.com/deficient/battery-widget
 [submodule "dot_themes/private_Dracula/gtk"]
 	path = dot_themes/private_Dracula/gtk
