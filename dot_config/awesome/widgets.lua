@@ -18,8 +18,8 @@ local separators = lain.util.separators
  battery_widget = require("battery-widget")
 require("vars")
 ----- [ Separators ] -----------------------------------------------------------
-ilo_dynamic_focus = "#0000ff"
-arrow_dynamic     = separators.arrow_right(ilo_dynamic_focus, theme_pink)
+-- arrow_dynamic     = separators.arrow_right(theme_pink, theme_pink)
+blank_pink=wibox.widget.textbox(" ")
 
 arrow_bg_select   = separators.arrow_right(theme_bg,     theme_select)
 arrow_bg_pink     = separators.arrow_right(theme_bg,     theme_pink)

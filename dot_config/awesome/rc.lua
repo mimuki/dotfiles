@@ -155,32 +155,32 @@ end
 screen.connect_signal("property::geometry", set_wallpaper)
 
 -- Whenever you change tags, make the little triangle be the right colour mostly
-tag.connect_signal("property::selected",
-    function(t)
-        if awful.tag.selected() then
-            -- debug notification yay
-            -- if ntf then naughty.destroy(ntf) end
-            -- ntf = naughty.notify({
-            --     title = "Tag Switched",
-            --     text = awful.tag.selected().name,
-            --     timeout = 2})
-            -- first = true
-            if awful.tag.selected().name == "ilo" then
-                arrow_dynamic.col1 = theme_accent
-                arrow_dynamic:emit_signal("widget::redraw_needed")
-            first = true
-            else
-                arrow_dynamic.col1 = theme_bg
-                arrow_dynamic:emit_signal("widget::redraw_needed")
+-- tag.connect_signal("property::selected",
+--     function(t)
+--         if awful.tag.selected() then
+--             -- debug notification yay
+--             -- if ntf then naughty.destroy(ntf) end
+--             -- ntf = naughty.notify({
+--             --     title = "Tag Switched",
+--             --     text = awful.tag.selected().name,
+--             --     timeout = 2})
+--             -- first = true
+--             if awful.tag.selected().name == "ilo" then
+--                 arrow_dynamic.col1 = theme_accent
+--                 arrow_dynamic:emit_signal("widget::redraw_needed")
+--             first = true
+--             else
+--                 arrow_dynamic.col1 = theme_bg
+--                 arrow_dynamic:emit_signal("widget::redraw_needed")
 
-                -- i can't make the little arrow change if the last tag has
-                -- clients on it and it hurts
-                -- i need to do something along the lines of
-                -- if (that specific tag).clients ~= 0
-                -- but i can't make it work aaaa
-         end
-    end
-    end)
+--                 -- i can't make the little arrow change if the last tag has
+--                 -- clients on it and it hurts
+--                 -- i need to do something along the lines of
+--                 -- if (that specific tag).clients ~= 0
+--                 -- but i can't make it work aaaa
+--             end
+--         end
+--     end)
 
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
@@ -225,13 +225,13 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.container.background(s.mytaglist, theme_bg),
---            arrow_dynamic,
+  --  	    wibox.container.background(blank_pink, theme_pink),
             wibox.container.background(frontInfo, theme_pink),
-            arrow_pink_purple,
+ --           arrow_pink_purple,
             wibox.container.background(localDate, theme_purple),
-            arrow_purple_blue,
+ --           arrow_purple_blue,
             wibox.container.background(localTime, theme_blue),
-            arrow_blue_bg,
+ --            arrow_blue_bg,
         },
 	dummy, -- Only needed when there are no middle widgets
         { -- Right widgets
@@ -241,9 +241,9 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
 --            arrow_select_blue,
             require("battery-widget") {},
-            arrow_bg_select,
+--            arrow_bg_select,
             wibox.container.background(volume.widget, theme_select),
-            arrow_select_bg,
+--            arrow_select_bg,
 --            wibox.container.background(battery.widget, theme_bg),
             wibox.container.background(s.mylayoutbox, theme_select)
         },
