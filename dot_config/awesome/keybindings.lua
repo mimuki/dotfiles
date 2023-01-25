@@ -209,7 +209,16 @@ awful.key({}, "XF86AudioLowerVolume",
               volume.notify()
             end),
 
-
+-- toggle microphone 
+awful.key({}, "XF86AudioMicMute",
+              function() os.execute("amixer set Capture toggle") end),
+-- toggle wifi
+awful.key({}, "XF86WakeUp",
+              function() os.execute("wifi toggle") end),
+-- toggle bluetoth
+awful.key({}, "XF86Bluetooth",
+              function() os.execute("bluetooth toggle") end),
+-- adjust brightness
 awful.key({}, "XF86MonBrightnessUp",
               function() os.execute("xbacklight -inc 5") end),
 awful.key({}, "XF86MonBrightnessDown",
