@@ -11,7 +11,7 @@ All the things you need if you're me. Works by using [Chezmoi](https://github.co
 - [rofi](https://github.com/davatorium/rofi)
 ![rofi_filebrowser](./examples/rofi_filebrowser.png)
 - [awesomeWM](https://github.com/awesomeWM/awesome)
-
+- [qutebrowser](https://github.com/qutebrowser/qutebrowser)
 # Included GTK themes
 - [Dracula](https://github.com/dracula/gtk)
 
