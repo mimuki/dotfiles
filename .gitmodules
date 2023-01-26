@@ -11,8 +11,5 @@
 	path = dot_themes/gtk
 	url = https://github.com/dracula/gtk
 [submodule "dracula"]
-	path = dot_config/qutebrowser/qutebrowser-dracula
-	url = https://github.com/mimuki/qutebrowser-dracula
-[submodule "dot_config/qutebrowser/dot_config/qutebrowser/dracula"]
-	path = dot_config/qutebrowser/dot_config/qutebrowser/dracula
+	path = dot_config/qutebrowser/dracula
 	url = https://github.com/mimuki/qutebrowser-dracula
