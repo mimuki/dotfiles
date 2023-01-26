@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                   rc.lua                                   --
 --                                                                            --
--- Last edit: 23/01/23                        Made with love by kulupu Mimuki --
+-- Last edit: 26/01/23                        Made with love by kulupu Mimuki --
 --------------------------------------------------------------------------------
 -- TODO: Rewrite theme                                                        --
 --       Continue making things pretty                                        --
@@ -225,26 +225,28 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.container.background(s.mytaglist, theme_bg),
-  --  	    wibox.container.background(blank_pink, theme_pink),
+
             wibox.container.background(frontInfo, theme_pink),
- --           arrow_pink_purple,
             wibox.container.background(localDate, theme_purple),
- --           arrow_purple_blue,
             wibox.container.background(localTime, theme_blue),
- --            arrow_blue_bg,
+
         },
 	dummy, -- Only needed when there are no middle widgets
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
 
-            -- mykeyboardlayout,
             wibox.widget.systray(),
---            arrow_select_blue,
-            require("battery-widget") {},
---            arrow_bg_select,
+            
+            bluetoothIcon,
+            wifiIcon,
+            
+            wibox.container.background(watts, theme_select),
+            
+            batteryIcon,
+            batteryText,
+
+            wibox.container.background(volumeIcon, theme_select),
             wibox.container.background(volume.widget, theme_select),
---            arrow_select_bg,
---            wibox.container.background(battery.widget, theme_bg),
             wibox.container.background(s.mylayoutbox, theme_select)
         },
     }

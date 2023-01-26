@@ -27,3 +27,4 @@ theme_special = "#6272a4"
 
 ----- [ Colours ] --------------------------------------------------------------
 theme_font = "Comfortaa Bold 16"
+theme_icon = "Font Awesome 6 Free 14"
