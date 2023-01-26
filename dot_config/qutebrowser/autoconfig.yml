@@ -22,7 +22,7 @@ settings:
         J: null
         K: null
         L: null
-        T: set-cmd-text --space :open
+        T: set-cmd-text --space :open --tab
         a: repeat-command
         e: scroll down
         h: null
@@ -32,6 +32,9 @@ settings:
         l: null
         n: back
         o: forward
-        t: set-cmd-text --space :open --tab
+        s: spawn --userscript qute-bitwarden
+        t: set-cmd-text --space :open
+  fonts.default_size:
+    global: 15pt
   hints.chars:
     global: tnseriao

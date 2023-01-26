@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                widgets.lua                                 --
 --                                                                            --
--- Last edit: 26/01/23                        Made with love by kulupu Mimuki --
+-- Last edit: 27/01/23                        Made with love by kulupu Mimuki --
 --------------------------------------------------------------------------------
 
 ----- [ Dependencies ] ---------------------------------------------------------
@@ -17,23 +17,9 @@ local separators = lain.util.separators
 
 battery_widget = require("battery-widget")
 require("vars")
------ [ Separators ] -----------------------------------------------------------
-blank_pink=wibox.widget.textbox(" ")
-
-arrow_bg_select   = separators.arrow_right(theme_bg,     theme_select)
-arrow_bg_pink     = separators.arrow_right(theme_bg,     theme_pink)
-arrow_bg_blue     = separators.arrow_right(theme_bg,     theme_blue)
-arrow_pink_purple = separators.arrow_right(theme_pink,   theme_purple)
-arrow_pink_bg     = separators.arrow_right(theme_pink,   theme_bg)
-arrow_purple_blue = separators.arrow_right(theme_purple, theme_blue)
-arrow_purple_pink = separators.arrow_right(theme_purple, theme_pink)
-arrow_blue_purple = separators.arrow_right(theme_blue,   theme_purple)
-arrow_blue_bg     = separators.arrow_right(theme_blue,   theme_bg)
-arrow_select_bg   = separators.arrow_right(theme_select, theme_bg)
-arrow_select_blue = separators.arrow_right(theme_select, theme_blue)
 
 ----- [ Font Awesome ] --------------------------------------------------------
--- FontAwesome
+
 local function faIcon( code )
   return wibox.widget{
     font = theme_icon,
@@ -69,7 +55,7 @@ gears.timer {
 
 ----- [ Volume indicator ] -----------------------------------------------------------
 
-volumeIcon = faIcon("  ")
+volumeIcon = faIcon("")
 
 volume = lain.widget.pulse( {
     settings = function()
@@ -84,10 +70,14 @@ volume = lain.widget.pulse( {
     end
 })
 ----- [ Current Wattage ] -----------------------------------------------------------
-
+-- TODO: shorten to 1 decimal place
 watts = awful.widget.watch([[awk '{print " " $1*10^-6 " W "}' /sys/class/power_supply/BAT1/power_now]], 5)
 
------ [ Battery indicator ] -----------------------------------------------------------
+----- [ Current Weather ] -----------------------------------------------------------
+-- TODO: remove the + somehow
+weather = awful.widget.watch([[curl wttr.in/adelaide?format="%20%c%t%20\n"]], 3600)
+
+----- [ Battery indicator ] ---------------------------------------------------------
 batteryIcon = battery_widget {
     ac = "AC",
     adapter = "BAT0",
@@ -124,8 +114,7 @@ batteryText = battery_widget {
     alert_title = "Low battery !",
     alert_text = "${AC_BAT}${time_est}"
 }
-
--- wifi
+----- [ Networking ] -----------------------------------------------------------
 
 -- Placeholder text
 wifiIcon = wibox.widget.textbox(markup.fontfg(theme_icon, theme_fg,"  "))
@@ -154,5 +143,5 @@ gears.timer {
             bluetoothIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
         end
       end)
-end
+    end
 }

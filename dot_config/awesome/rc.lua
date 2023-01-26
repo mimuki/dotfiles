@@ -118,26 +118,26 @@ local taglist_buttons = gears.table.join(
                 )
 
 local tasklist_buttons = gears.table.join(
-                     awful.button({ }, 1, function (c)
-                                              if c == client.focus then
-                                                  c.minimized = true
-                                              else
-                                                  c:emit_signal(
-                                                      "request::activate",
-                                                      "tasklist",
-                                                      {raise = true}
-                                                  )
-                                              end
-                                          end),
-                     awful.button({ }, 3, function()
-                                              awful.menu.client_list({ theme = { width = 250 } })
-                                          end),
-                     awful.button({ }, 4, function ()
-                                              awful.client.focus.byidx(1)
-                                          end),
-                     awful.button({ }, 5, function ()
-                                              awful.client.focus.byidx(-1)
-                                          end))
+    awful.button({ }, 1, function (c)
+        if c == client.focus then
+            c.minimized = true
+        else
+            c:emit_signal(
+                "request::activate",
+                "tasklist",
+                {raise = true}
+            )
+        end
+    end),
+    awful.button({ }, 3, function()
+        awful.menu.client_list({ theme = { width = 250 } })
+    end),
+    awful.button({ }, 4, function ()
+        awful.client.focus.byidx(1)
+    end),
+    awful.button({ }, 5, function ()
+        awful.client.focus.byidx(-1)
+    end))
 
 local function set_wallpaper(s)
     -- Wallpaper
@@ -154,34 +154,6 @@ end
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
 
--- Whenever you change tags, make the little triangle be the right colour mostly
--- tag.connect_signal("property::selected",
---     function(t)
---         if awful.tag.selected() then
---             -- debug notification yay
---             -- if ntf then naughty.destroy(ntf) end
---             -- ntf = naughty.notify({
---             --     title = "Tag Switched",
---             --     text = awful.tag.selected().name,
---             --     timeout = 2})
---             -- first = true
---             if awful.tag.selected().name == "ilo" then
---                 arrow_dynamic.col1 = theme_accent
---                 arrow_dynamic:emit_signal("widget::redraw_needed")
---             first = true
---             else
---                 arrow_dynamic.col1 = theme_bg
---                 arrow_dynamic:emit_signal("widget::redraw_needed")
-
---                 -- i can't make the little arrow change if the last tag has
---                 -- clients on it and it hurts
---                 -- i need to do something along the lines of
---                 -- if (that specific tag).clients ~= 0
---                 -- but i can't make it work aaaa
---             end
---         end
---     end)
-
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
@@ -195,10 +167,10 @@ awful.screen.connect_for_each_screen(function(s)
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
     s.mylayoutbox:buttons(gears.table.join(
-                           awful.button({ }, 1, function () awful.layout.inc( 1) end),
-                           awful.button({ }, 3, function () awful.layout.inc(-1) end),
-                           awful.button({ }, 4, function () awful.layout.inc( 1) end),
-                           awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+                          awful.button({ }, 1, function () awful.layout.inc( 1) end),
+                          awful.button({ }, 3, function () awful.layout.inc(-1) end),
+                          awful.button({ }, 4, function () awful.layout.inc( 1) end),
+                          awful.button({ }, 5, function () awful.layout.inc(-1) end)))
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
@@ -237,9 +209,9 @@ awful.screen.connect_for_each_screen(function(s)
 
             wibox.widget.systray(),
             
-            bluetoothIcon,
-            wifiIcon,
-            
+            wibox.container.background(bluetoothIcon, theme_select),
+            wibox.container.background(wifiIcon, theme_select),
+            weather,            
             wibox.container.background(watts, theme_select),
             
             batteryIcon,
