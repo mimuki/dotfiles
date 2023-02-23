@@ -34,7 +34,15 @@ settings:
         o: forward
         s: spawn --userscript qute-bitwarden
         t: set-cmd-text --space :open
+  completion.scrollbar.padding:
+    global: 2
+  completion.scrollbar.width:
+    global: 15
+  content.notifications.enabled:
+    https://ko-fi.com: false
   fonts.default_size:
     global: 15pt
   hints.chars:
     global: tnseriao
+  tabs.indicator.width:
+    global: 0

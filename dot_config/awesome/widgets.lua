@@ -70,8 +70,8 @@ volume = lain.widget.pulse( {
     end
 })
 ----- [ Current Wattage ] -----------------------------------------------------------
--- TODO: shorten to 1 decimal place
-watts = awful.widget.watch([[awk '{print " " $1*10^-6 " W "}' /sys/class/power_supply/BAT1/power_now]], 5)
+-- jan Tepo li wawa a
+watts = awful.widget.watch([[awk '{printf(" %.1f W ", $1*10^-6)}' /sys/class/power_supply/BAT1/power_now]], 5)
 
 ----- [ Current Weather ] -----------------------------------------------------------
 -- TODO: remove the + somehow

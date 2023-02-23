@@ -21,5 +21,5 @@ require('modules/smart_borders'){
 	color_floating_hover = "#8be9fd", -- cyan
 	color_close_hover = "#ff5555",		-- red
 	stealth = true,
-	border_width = dpi(10)
+	border_width = dpi(7)
 }
