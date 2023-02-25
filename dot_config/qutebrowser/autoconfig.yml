@@ -6,43 +6,5 @@
 
 config_version: 2
 settings:
-  aliases:
-    global:
-      q: close
-      qa: quit
-      w: session-save
-      wq: quit --save
-      wqa: quit --save
-  bindings.commands:
-    global:
-      normal:
-        E: tab-prev
-        H: null
-        I: tab-next
-        J: null
-        K: null
-        L: null
-        T: set-cmd-text --space :open --tab
-        a: repeat-command
-        e: scroll down
-        h: null
-        i: scroll up
-        j: null
-        k: null
-        l: null
-        n: back
-        o: forward
-        s: spawn --userscript qute-bitwarden
-        t: set-cmd-text --space :open
-  completion.scrollbar.padding:
-    global: 2
-  completion.scrollbar.width:
-    global: 15
-  content.notifications.enabled:
-    https://ko-fi.com: false
-  fonts.default_size:
-    global: 15pt
-  hints.chars:
-    global: tnseriao
-  tabs.indicator.width:
-    global: 0
+  tabs.favicons.scale:
+    global: 1.0

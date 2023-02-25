@@ -200,7 +200,7 @@ awful.screen.connect_for_each_screen(function(s)
 
             wibox.container.background(frontInfo, theme_pink),
             wibox.container.background(localDate, theme_purple),
-            wibox.container.background(localTime, theme_blue),
+            wibox.container.background(weather, theme_select),
 
         },
 	dummy, -- Only needed when there are no middle widgets
@@ -211,15 +211,16 @@ awful.screen.connect_for_each_screen(function(s)
             
             wibox.container.background(bluetoothIcon, theme_select),
             wibox.container.background(wifiIcon, theme_select),
-            weather,            
-            wibox.container.background(watts, theme_select),
+            wibox.container.background(watts, theme_bg),
             
+            wibox.container.background(volumeIcon, theme_select),
+            wibox.container.background(volume.widget, theme_select),
+
+
             batteryIcon,
             batteryText,
 
-            wibox.container.background(volumeIcon, theme_select),
-            wibox.container.background(volume.widget, theme_select),
-            wibox.container.background(s.mylayoutbox, theme_select)
+            wibox.container.background(localTime, theme_blue),
         },
     }
  end)
