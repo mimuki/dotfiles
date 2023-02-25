@@ -1,10 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 //                                config.rasi                                 //
 //                                                                            //
-// Last edit: 25/12/22                        made with love by kulupu Mimuki //
+// Last edit: 25/02/23                        made with love by kulupu Mimuki //
 ////////////////////////////////////////////////////////////////////////////////
 // TODO: Make the config all pretty looking                                   //
-//       Decide on a new system font                                          //
+//                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 //                                                                            //
 // Project page:                                                              //
@@ -90,7 +90,7 @@
     width:              50%;
     x-offset:           0;
     y-offset:           0;
-    font: 		"TerminessTTF Nerd Font 16";
+    font: 		"Bad Comic 18";
 
 }
 
@@ -131,7 +131,7 @@
     cycle:              true;
     spacing:            1px;
     padding:            2px 0px 0px;
-    lines:              10;
+    lines:              8;
     orientation:        vertical;
 }
 

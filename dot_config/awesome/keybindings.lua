@@ -144,7 +144,7 @@ awful.key({ modkey            }, "p",
           { description = "Search programs", group = "rofi" }),
 
 awful.key({ modkey            }, "f",
-            function () awful.util.spawn("rofi -show filebrowser -theme-str '#listview {lines:8;}'") end,
+            function () awful.util.spawn("rofi -show filebrowser -theme-str '#listview {lines:6;}'") end,
           { description = "Search files", group = "rofi" }),
 
 awful.key({ modkey            }, "w",
