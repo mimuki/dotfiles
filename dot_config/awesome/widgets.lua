@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                widgets.lua                                 --
 --                                                                            --
--- Last edit: 27/01/23                        Made with love by kulupu Mimuki --
+-- Last edit: 07/03/23                        Made with love by kulupu Mimuki --
 --------------------------------------------------------------------------------
 
 ----- [ Dependencies ] ---------------------------------------------------------
@@ -71,7 +71,11 @@ volume = lain.widget.pulse( {
 })
 ----- [ Current Wattage ] -----------------------------------------------------------
 -- jan Tepo li wawa a
-watts = awful.widget.watch([[awk '{printf(" %.1f W ", $1*10^-6)}' /sys/class/power_supply/BAT1/power_now]], 5)
+wattsExternal = awful.widget.watch([[awk '{printf(" %.1f W ", $1*10^-6)}' /sys/class/power_supply/BAT1/power_now]])
+wattsInternal = awful.widget.watch([[awk '{printf(" %.1f W ", $1*10^-6)}' /sys/class/power_supply/BAT0/power_now]])
+-- wattsInternal = awful.widget.watch([[awk '$1!=0{printf(" %.1f W ", $1*10^-6)}' /sys/class/power_supply/BAT0/power_now | head -1]])
+-- wattsExternal = awful.widget.watch([[awk '$1!=0{printf(" %.1f W ", $1*10^-6)}' /sys/class/power_supply/BAT1/power_now | head -1]])
+
 
 ----- [ Current Weather ] -----------------------------------------------------------
 -- TODO: remove the + somehow
@@ -83,6 +87,7 @@ batteryIcon = battery_widget {
     adapter = "BAT0",
     ac_prefix = "  ",
     battery_prefix = "  ",
+
     listen = true,
     timeout = 10,
     widget_text = "${AC_BAT}",
@@ -94,19 +99,31 @@ batteryIcon = battery_widget {
     alert_text = "${AC_BAT}${time_est}"
 }
 
-batteryText = battery_widget {
+
+internalBattery = battery_widget {
+    ac = "AC",
+    adapter = "BAT0",
+    ac_prefix = satansBatteryAC,
+    battery_prefix = satansBatteryBat,
+    listen = true,
+    timeout = 10,
+    widget_text = "${AC_BAT}",
+    widget_font = theme_font,
+    tooltip_text = "Internal battery ${state}${time_est}\nCapacity: ${capacity_percent}%",
+    alert_threshold = 5,
+    alert_timeout = 0,
+    alert_title = "Low battery !",
+    alert_text = "${AC_BAT}${time_est}"
+}
+
+externalBattery = battery_widget {
     ac = "AC",
     adapter = "BAT1",
-    ac_prefix = "",
-    battery_prefix = "",
-    percent_colors = {
-        { 25,  theme_red    },
-        { 50,  theme_orange },
-        { 999, theme_green  },
-    },
-      listen = true,
+    ac_prefix = satansBatteryAC,
+    battery_prefix = satansBatteryBat,
+    listen = true,
     timeout = 10,
-    widget_text = "${AC_BAT}${color_on}${percent}%${color_off} ",
+    widget_text = "${AC_BAT}",
     widget_font = theme_font,
     tooltip_text = "External battery ${state}${time_est}\nCapacity: ${capacity_percent}%",
     alert_threshold = 5,

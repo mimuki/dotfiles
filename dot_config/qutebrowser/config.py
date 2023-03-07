@@ -143,6 +143,14 @@ config.set('content.javascript.enabled', True, 'chrome://*/*')
 # Type: Bool
 config.set('content.javascript.enabled', True, 'qute://*/*')
 
+# Allow websites to record audio.
+# Type: BoolAsk
+# Valid values:
+#   - true
+#   - false
+#   - ask
+config.set('content.media.audio_capture', True, 'https://discord.com')
+
 # Allow websites to show notifications.
 # Type: BoolAsk
 # Valid values:
@@ -169,11 +177,11 @@ c.hints.padding = {'bottom': 0, 'left': 6, 'right': 6, 'top': 0}
 
 # Rounding radius (in pixels) for the edges of hints.
 # Type: Int
-c.hints.radius = 3
+c.hints.radius = 0
 
 # Characters used for hint strings.
 # Type: UniqueCharString
-c.hints.chars = 'tnseriao'
+c.hints.chars = 'ntesiroahdlpjbmgkvufcywqxz'
 
 # When to show the statusbar.
 # Type: String
@@ -181,11 +189,24 @@ c.hints.chars = 'tnseriao'
 #   - always: Always show the statusbar.
 #   - never: Always hide the statusbar.
 #   - in-mode: Show the statusbar when in modes other than normal mode.
-c.statusbar.show = 'in-mode'
+c.statusbar.show = 'always'
 
 # Padding (in pixels) for the statusbar.
 # Type: Padding
 c.statusbar.padding = {'top': 6, 'right': 8, 'bottom': 6, 'left': 8}
+
+# List of widgets displayed in the statusbar.
+# Type: List of StatusbarWidget
+# Valid values:
+#   - url: Current page URL.
+#   - scroll: Percentage of the current page position like `10%`.
+#   - scroll_raw: Raw percentage of the current page position like `10`.
+#   - history: Display an arrow when possible to go back/forward in history.
+#   - tabs: Current active tab, e.g. `2`.
+#   - keypress: Display pressed keys when composing a vi command.
+#   - progress: Progress bar for the current page loading.
+#   - text:foo: Display the static text after the colon, `foo` in the example.
+c.statusbar.widgets = ['keypress', 'url', 'history', 'tabs']
 
 # Scaling factor for favicons in the tab bar. The tab size is unchanged,
 # so big favicons also require extra `tabs.padding`.

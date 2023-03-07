@@ -30,8 +30,9 @@ require("keybindings")    -- My default keybindings
 require("rules")          -- Window Rules
 require("vars")           -- Variables
 -- Disable when using smart_borders for a perfomance boost:
--- require("titlebars")   -- Titlebar config
-require("smart_borders")  -- Border config (technically made of titlebars)
+require("titlebars")   -- Titlebar config
+-- Enable for smart_borders
+-- require("smart_borders")  -- Border config (technically made of titlebars)
 require("widgets")        -- Topbar widgets
 -- Lain
 local lain = require("lain")
@@ -40,7 +41,8 @@ local markup = lain.util.markup
 
 ----- [ Variables ] ------------------------------------------------------------
 -- This is used later as the default terminal and editor to run.
-terminal = "x-terminal-emulator"
+-- terminal = "x-terminal-emulator"
+terminal = "kitty"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -157,6 +159,13 @@ screen.connect_signal("property::geometry", set_wallpaper)
 awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
+    
+    -- Quake application
+    s.quake = lain.util.quake({
+        app = "kitty",
+        name = "kitty",
+        border = theme_border_width
+    })
 
     -- Each screen has its own tag table.
     awful.tag({ "kijetesantakalu", "toki", "musi", "nasa", "ilo" }, s, awful.layout.layouts[1])
@@ -167,10 +176,10 @@ awful.screen.connect_for_each_screen(function(s)
     -- We need one layoutbox per screen.
     s.mylayoutbox = awful.widget.layoutbox(s)
     s.mylayoutbox:buttons(gears.table.join(
-                          awful.button({ }, 1, function () awful.layout.inc( 1) end),
-                          awful.button({ }, 3, function () awful.layout.inc(-1) end),
-                          awful.button({ }, 4, function () awful.layout.inc( 1) end),
-                          awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+      awful.button({ }, 1, function () awful.layout.inc( 1) end),
+      awful.button({ }, 3, function () awful.layout.inc(-1) end),
+      awful.button({ }, 4, function () awful.layout.inc( 1) end),
+      awful.button({ }, 5, function () awful.layout.inc(-1) end)))
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
@@ -206,19 +215,20 @@ awful.screen.connect_for_each_screen(function(s)
 	dummy, -- Only needed when there are no middle widgets
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-
             wibox.widget.systray(),
-            
             wibox.container.background(bluetoothIcon, theme_select),
             wibox.container.background(wifiIcon, theme_select),
-            wibox.container.background(watts, theme_bg),
+
+            wattsInternal,
+            wattsExternal,
             
             wibox.container.background(volumeIcon, theme_select),
             wibox.container.background(volume.widget, theme_select),
 
 
             batteryIcon,
-            batteryText,
+            internalBattery,
+            externalBattery,
 
             wibox.container.background(localTime, theme_blue),
         },
@@ -275,6 +285,15 @@ client.connect_signal("mouse::enter", function(c)
     c:emit_signal("request::activate", "mouse_enter", {raise = false})
 end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
+client.connect_signal("focus", function(c) 
+    if c.floating then
+        c.border_color = theme_accent_alt
+    else
+        c.border_color = beautiful.border_focus
+    end
+end)
+
+client.connect_signal("unfocus", function(c) 
+    c.border_color = beautiful.border_normal 
+end)
 -- }}}

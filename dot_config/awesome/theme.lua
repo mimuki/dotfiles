@@ -34,11 +34,10 @@ theme.fg_focus      = theme_fg
 theme.fg_urgent     = theme_fg
 theme.fg_minimize   = theme_fg
 
-theme.useless_gap   = dpi(0)
+theme.useless_gap   = theme_useless_gap
 theme.gap_single_client = false
--- Borders are now handled by smart_borders.lua: enabling this will give you
--- double borders (but with the ability to colour them differently)
-theme.border_width  = dpi(0)
+
+theme.border_width  = theme_border_width
 theme.border_normal = theme_select
 theme.border_focus  = theme_accent
 theme.border_marked = theme_special
@@ -50,7 +49,7 @@ theme.titlebar_bg_urgent = theme_red
 theme.titlebar_fg_focus  = theme_bg
 theme.titlebar_fg_urgent = theme_bg
 
-theme.hotkeys_border_width = dpi(10)
+theme.hotkeys_border_width = theme_border_width
 theme.hotkeys_border_color = theme_accent_alt
 theme.hotkeys_modifiers_fg = theme_fg
 theme.hotkeys_font = "Tlwg Mono Bold 16"

@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                              keybindings.lua                               --
 --                                                                            --
--- Last edit: 18/01/23                        Made with love by kulupu Mimuki --
+-- Last edit: 07/03/23                        Made with love by kulupu Mimuki --
 --------------------------------------------------------------------------------
 -- TODO: Maybe only have todo files in the main rc.lua?                       --
 --------------------------------------------------------------------------------
@@ -134,7 +134,9 @@ awful.key({ modkey, "Control" }, "space",
 
 ----- [ Program Launchers ] ----------------------------------------------------
 
-awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
+
+awful.key({ modkey,           }, "Return", function () awful.screen.focused().quake:toggle() end),
+awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn(terminal) end,
           { description = "Terminal", group = "programs" }),
 
 ------- [ Rofi ]
@@ -220,9 +222,9 @@ awful.key({}, "XF86Bluetooth",
               function() os.execute("bluetooth toggle") end),
 -- adjust brightness
 awful.key({}, "XF86MonBrightnessUp",
-              function() os.execute("xbacklight -inc 5") end),
+              function() os.execute("xbacklight -inc 1") end),
 awful.key({}, "XF86MonBrightnessDown",
-              function() os.execute("xbacklight -dec 5") end),
+              function() os.execute("xbacklight -dec 1") end),
 
 ----- [ AwesomeWM Meta Controls ] ----------------------------------------------
 
