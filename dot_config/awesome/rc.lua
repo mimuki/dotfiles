@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                   rc.lua                                   --
 --                                                                            --
--- Last edit: 26/01/23                        Made with love by kulupu Mimuki --
+-- Last edit: 07/03/23                        Made with love by kulupu Mimuki --
 --------------------------------------------------------------------------------
 -- TODO: Rewrite theme                                                        --
 --       Continue making things pretty                                        --
@@ -163,7 +163,8 @@ awful.screen.connect_for_each_screen(function(s)
     -- Quake application
     s.quake = lain.util.quake({
         app = "kitty",
-        name = "kitty",
+        name = "Quake",
+        argname = "--name Quake",
         border = theme_border_width
     })
 
