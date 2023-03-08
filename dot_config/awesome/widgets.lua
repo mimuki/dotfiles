@@ -8,15 +8,17 @@
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-
 local wibox = require("wibox")
-
 local lain = require("lain")
+
 local markup = lain.util.markup
 local separators = lain.util.separators
 
 battery_widget = require("battery-widget")
 require("vars")
+
+
+spacer = wibox.widget.textbox(markup.fontfg(theme_font, theme_bg," "))
 
 ----- [ Font Awesome ] --------------------------------------------------------
 
@@ -39,18 +41,23 @@ localDate = wibox.widget.textclock(
 
 ----- [ Front info ] -----------------------------------------------------------
 -- Placeholder text
-frontInfo=wibox.widget.textbox(markup.fontfg(theme_font, theme_bg," (loading) "))
+frontInfo=wibox.widget.textbox(markup.fontfg(theme_font, theme_bg, "(loading)"))
+
 
 gears.timer {
-  timeout = 5, -- seconds
-  call_now = true,
-  autostart = true,
-  callback = function()
-    awful.spawn.easy_async("less /home/mimuki/Documents/Projects/pk-rpc/front.txt",
-      function(out)
-        frontInfo.markup = markup.fontfg(theme_font, theme_bg, out)
-      end)
-  end
+    timeout   = 5,
+    call_now  = true,
+    autostart = true,
+    callback  = function()
+        -- You should read it from `/sys/class/power_supply/` (on Linux)
+        -- instead of spawning a shell. This is only an example.
+        awful.spawn.easy_async_with_shell(
+            "bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/front.sh",
+            function(out)
+              frontInfo.markup = markup.fontfg(theme_font, theme_bg, out)
+            end
+        )
+    end
 }
 
 ----- [ Volume indicator ] -----------------------------------------------------------
@@ -70,17 +77,9 @@ volume = lain.widget.pulse( {
     end
 })
 ----- [ Current Wattage ] -----------------------------------------------------------
--- jan Tepo li wawa a
-wattsExternal = awful.widget.watch([[awk '{printf(" %.1f W ", $1*10^-6)}' /sys/class/power_supply/BAT1/power_now]])
-wattsInternal = awful.widget.watch([[awk '{printf(" %.1f W ", $1*10^-6)}' /sys/class/power_supply/BAT0/power_now]])
--- wattsInternal = awful.widget.watch([[awk '$1!=0{printf(" %.1f W ", $1*10^-6)}' /sys/class/power_supply/BAT0/power_now | head -1]])
--- wattsExternal = awful.widget.watch([[awk '$1!=0{printf(" %.1f W ", $1*10^-6)}' /sys/class/power_supply/BAT1/power_now | head -1]])
-
-
+watts = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh]])
 ----- [ Current Weather ] -----------------------------------------------------------
--- TODO: remove the + somehow
-weather = awful.widget.watch([[curl wttr.in/adelaide?format="%20%c%t%20\n"]], 3600)
-
+weather = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/weather.sh]], 3600)
 ----- [ Battery indicator ] ---------------------------------------------------------
 batteryIcon = battery_widget {
     ac = "AC",
@@ -99,41 +98,17 @@ batteryIcon = battery_widget {
     alert_text = "${AC_BAT}${time_est}"
 }
 
+internalBattery = awful.widget.watch([[
+  awk '$0 > 5 && $0 <= 90 { printf(" " $0  "% ") }' /sys/class/power_supply/BAT0/capacity
+  ]])
+externalBattery = awful.widget.watch([[
+  awk '$0 > 5 && $0 <= 80 { printf(" " $0  "% ") }' /sys/class/power_supply/BAT1/capacity
+  ]])
 
-internalBattery = battery_widget {
-    ac = "AC",
-    adapter = "BAT0",
-    ac_prefix = satansBatteryAC,
-    battery_prefix = satansBatteryBat,
-    listen = true,
-    timeout = 10,
-    widget_text = "${AC_BAT}",
-    widget_font = theme_font,
-    tooltip_text = "Internal battery ${state}${time_est}\nCapacity: ${capacity_percent}%",
-    alert_threshold = 5,
-    alert_timeout = 0,
-    alert_title = "Low battery !",
-    alert_text = "${AC_BAT}${time_est}"
-}
 
-externalBattery = battery_widget {
-    ac = "AC",
-    adapter = "BAT1",
-    ac_prefix = satansBatteryAC,
-    battery_prefix = satansBatteryBat,
-    listen = true,
-    timeout = 10,
-    widget_text = "${AC_BAT}",
-    widget_font = theme_font,
-    tooltip_text = "External battery ${state}${time_est}\nCapacity: ${capacity_percent}%",
-    alert_threshold = 5,
-    alert_timeout = 0,
-    alert_title = "Low battery !",
-    alert_text = "${AC_BAT}${time_est}"
-}
 ----- [ Networking ] -----------------------------------------------------------
 
--- Placeholder text
+-- Placeholder text, ideally this should never appear
 wifiIcon = wibox.widget.textbox(markup.fontfg(theme_icon, theme_fg,"  "))
 bluetoothIcon = wibox.widget.textbox(markup.fontfg(theme_icon, theme_fg,"  "))
 

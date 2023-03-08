@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                   rc.lua                                   --
 --                                                                            --
--- Last edit: 07/03/23                        Made with love by kulupu Mimuki --
+-- Last edit: 08/03/23                        Made with love by kulupu Mimuki --
 --------------------------------------------------------------------------------
 -- TODO: Rewrite theme                                                        --
 --       Continue making things pretty                                        --
@@ -30,8 +30,9 @@ require("keybindings")    -- My default keybindings
 require("rules")          -- Window Rules
 require("vars")           -- Variables
 -- Disable when using smart_borders for a perfomance boost:
-require("titlebars")   -- Titlebar config
+require("titlebars")      -- Titlebar config
 -- Enable for smart_borders
+-- note: you will need to do some DIY because i removed the module ol
 -- require("smart_borders")  -- Border config (technically made of titlebars)
 require("widgets")        -- Topbar widgets
 -- Lain
@@ -52,14 +53,10 @@ modkey = "Mod4" -- GUI/Super/Meta/Windows etc
 awful.layout.layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.tile.top,
---    awful.layout.suit.fair,
---    awful.layout.suit.fair.horizontal,
---    lain.layout.centerwork,
---    lain.layout.centerwork.horizontal
 }
 
 
--- {{{ Error handling
+----- [ Error Handling ] -------------------------------------------------------
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
@@ -85,7 +82,7 @@ end
 -- }}}
 
 
--- {{{ Menu
+----- [ Menu ] -----------------------------------------------------------------
 -- Create a launcher widget and a main menu
 myawesomemenu = {
    { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
@@ -115,8 +112,6 @@ local taglist_buttons = gears.table.join(
                                                   client.focus:toggle_tag(t)
                                               end
                                           end)
---                    awful.button({ }, 4, function(t) awful.tag.viewnext(t.screen) end),
---                    awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
                 )
 
 local tasklist_buttons = gears.table.join(
@@ -208,7 +203,9 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             wibox.container.background(s.mytaglist, theme_bg),
 
+            wibox.container.background(spacer, theme_pink),
             wibox.container.background(frontInfo, theme_pink),
+            wibox.container.background(spacer, theme_pink),
             wibox.container.background(localDate, theme_purple),
             wibox.container.background(weather, theme_select),
 
@@ -219,32 +216,22 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
             wibox.container.background(bluetoothIcon, theme_select),
             wibox.container.background(wifiIcon, theme_select),
-
-            wattsInternal,
-            wattsExternal,
             
-            wibox.container.background(volumeIcon, theme_select),
-            wibox.container.background(volume.widget, theme_select),
+            wibox.container.background(volumeIcon, theme_bg),
+            wibox.container.background(volume.widget, theme_bg),
 
-
+            wibox.container.background(watts, theme_select),
             batteryIcon,
-            internalBattery,
-            externalBattery,
-
+            wibox.container.background(internalBattery, theme_select),
+            wibox.container.background(externalBattery, theme_bg),
             wibox.container.background(localTime, theme_blue),
         },
     }
  end)
 -- }}}
 
--- {{{ Mouse bindings
---root.buttons(gears.table.join(
---    awful.button({ }, 3, function () mymainmenu:toggle() end),
---    awful.button({ }, 4, awful.tag.viewnext),
---    awful.button({ }, 5, awful.tag.viewprev)
---))
--- }}}
 
+----- [ Mouse Support ] --------------------------------------------------------
 
 clientbuttons = gears.table.join(
     awful.button({ }, 1, function (c)
@@ -262,8 +249,8 @@ clientbuttons = gears.table.join(
 
 -- Set keys
 root.keys(globalkeys)
--- }}}
--- {{{ Signals
+
+----- [ Signals ] --------------------------------------------------------------
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
     -- TODO: understand what this does enough to rephrase it, the whole
@@ -297,4 +284,3 @@ end)
 client.connect_signal("unfocus", function(c) 
     c.border_color = beautiful.border_normal 
 end)
--- }}}
