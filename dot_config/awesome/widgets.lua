@@ -99,7 +99,7 @@ batteryIcon = battery_widget {
 }
 
 internalBattery = awful.widget.watch([[
-  awk '$0 > 5 && $0 <= 90 { printf(" " $0  "% ") }' /sys/class/power_supply/BAT0/capacity
+  awk '$0 > 5 && $0 <= 85 { printf(" " $0  "% ") }' /sys/class/power_supply/BAT0/capacity
   ]])
 externalBattery = awful.widget.watch([[
   awk '$0 > 5 && $0 <= 80 { printf(" " $0  "% ") }' /sys/class/power_supply/BAT1/capacity
