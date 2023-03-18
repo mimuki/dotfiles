@@ -7,4 +7,6 @@
 config_version: 2
 settings:
   content.media.audio_capture:
-    https://discord.com: true
+    https://meet.jit.si: true
+  content.media.video_capture:
+    https://meet.jit.si: true
