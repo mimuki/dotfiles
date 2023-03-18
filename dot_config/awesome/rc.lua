@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                   rc.lua                                   --
 --                                                                            --
--- Last edit: 08/03/23                        Made with love by kulupu Mimuki --
+-- Last edit: 13/03/23                        Made with love by kulupu Mimuki --
 --------------------------------------------------------------------------------
 -- TODO: Rewrite theme                                                        --
 --       Continue making things pretty                                        --
@@ -283,4 +283,11 @@ end)
 
 client.connect_signal("unfocus", function(c) 
     c.border_color = beautiful.border_normal 
+end)
+
+-- New floating windows are centered by default (and shouldn't overlap)
+client.connect_signal("request::manage", function(client, context)
+    if client.floating and context == "new" then
+        client.placement = awful.placement.centered + awful.placement.no_overlap
+    end
 end)
