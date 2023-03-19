@@ -6,7 +6,25 @@
 
 config_version: 2
 settings:
-  content.media.audio_capture:
-    https://meet.jit.si: true
-  content.media.video_capture:
-    https://meet.jit.si: true
+  bindings.commands:
+    global:
+      normal:
+        E: tab-prev
+        H: null
+        I: tab-next
+        J: null
+        K: null
+        L: null
+        T: set-cmd-text --space :open --tab
+        a: repeat-command
+        e: scroll down
+        f: hint links
+        h: null
+        i: scroll up
+        j: null
+        k: null
+        l: null
+        n: back
+        o: forward
+        s: spawn --userscript qute-bitwarden
+        t: set-cmd-text --space :open
