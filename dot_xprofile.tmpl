@@ -1,0 +1,23 @@
+################################################################################
+#                                                                              #
+#                                   .xprofile                                  #
+#                                                                              #
+################################################################################
+# -- [ Universal ] ----------------------------------------------------------- #
+keynav "loadconfig ~/.config/keynav/.keynavrc"
+
+# this makes bitwarden cli work
+keyctl link @u @s
+# this makes the graphical "enter your password" thing work
+mate-polkit
+
+# -- [ Machine Specific ] ---------------------------------------------------- #
+{{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
+# This device should be: LAPRATS-2023MNT21
+
+# Disable bluetooth by default
+bluetooth off
+# Set track point speed
+# Note: This assumes nothing is plugged in on boot
+xinput --set-prop "12" "libinput Accel Speed" -0.3
+{{- end }}
