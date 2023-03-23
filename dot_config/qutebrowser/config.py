@@ -75,6 +75,14 @@ config.set('content.cookies.accept', 'all', 'chrome-devtools://*')
 #   - never: Don't accept cookies at all.
 config.set('content.cookies.accept', 'all', 'devtools://*')
 
+# Request websites to minimize non-essentials animations and motion.
+# This results in the `prefers-reduced-motion` CSS media query to
+# evaluate to `reduce` (rather than `no-preference`). On Windows, if
+# this setting is set to False, the system-wide animation setting is
+# considered.
+# Type: Bool
+c.content.prefers_reduced_motion = True
+
 # Value to send in the `Accept-Language` header. Note that the value
 # read from JavaScript is always the global value.
 # Type: String
@@ -651,6 +659,10 @@ config.bind('T', 'set-cmd-text --space :open --tab')
 config.bind('a', 'repeat-command')
 config.bind('e', 'scroll down')
 config.bind('f', 'hint links')
+config.bind('gE', 'tab-move +')
+config.bind('gI', 'tab-move -')
+config.unbind('gJ')
+config.unbind('gK')
 config.unbind('h')
 config.bind('i', 'scroll up')
 config.unbind('j')

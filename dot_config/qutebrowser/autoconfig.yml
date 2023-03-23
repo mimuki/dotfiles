@@ -10,7 +10,6 @@ settings:
     global:
       normal:
         E: tab-prev
-        F: hint all tab
         H: null
         I: tab-next
         J: null
@@ -19,7 +18,11 @@ settings:
         T: set-cmd-text --space :open --tab
         a: repeat-command
         e: scroll down
-        f: hint
+        f: hint links
+        gE: tab-move +
+        gI: tab-move -
+        gJ: null
+        gK: null
         h: null
         i: scroll up
         j: null
