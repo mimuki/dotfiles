@@ -53,6 +53,7 @@ modkey = "Mod4" -- GUI/Super/Meta/Windows etc
 awful.layout.layouts = {
     awful.layout.suit.tile,
     awful.layout.suit.tile.top,
+    awful.layout.suit.max.fullscreen,
 }
 
 
