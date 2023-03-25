@@ -75,14 +75,6 @@ config.set('content.cookies.accept', 'all', 'chrome-devtools://*')
 #   - never: Don't accept cookies at all.
 config.set('content.cookies.accept', 'all', 'devtools://*')
 
-# Request websites to minimize non-essentials animations and motion.
-# This results in the `prefers-reduced-motion` CSS media query to
-# evaluate to `reduce` (rather than `no-preference`). On Windows, if
-# this setting is set to False, the system-wide animation setting is
-# considered.
-# Type: Bool
-c.content.prefers_reduced_motion = True
-
 # Value to send in the `Accept-Language` header. Note that the value
 # read from JavaScript is always the global value.
 # Type: String
@@ -206,7 +198,7 @@ c.hints.radius = 0
 
 # Characters used for hint strings.
 # Type: UniqueCharString
-c.hints.chars = 'ntesiroahdlpjbmgkvufcywqxz'
+c.hints.chars = 'ntesiroahdlpjbmgkvufcyw'
 
 # When to show the statusbar.
 # Type: String
@@ -287,11 +279,6 @@ c.tabs.indicator.width = 0
 # Padding (in pixels) for tab indicators.
 # Type: Padding
 c.tabs.indicator.padding = {'bottom': 2, 'left': 0, 'right': 4, 'top': 2}
-
-# Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
-# for a blank page.
-# Type: FuzzyUrl
-c.url.default_page = 'mimuki.net/newtab'
 
 # Format to use for the window title. The same placeholders like for
 # `tabs.title.format` are defined.
@@ -664,10 +651,6 @@ config.bind('T', 'set-cmd-text --space :open --tab')
 config.bind('a', 'repeat-command')
 config.bind('e', 'scroll down')
 config.bind('f', 'hint links')
-config.bind('gE', 'tab-move +')
-config.bind('gI', 'tab-move -')
-config.unbind('gJ')
-config.unbind('gK')
 config.unbind('h')
 config.bind('i', 'scroll up')
 config.unbind('j')

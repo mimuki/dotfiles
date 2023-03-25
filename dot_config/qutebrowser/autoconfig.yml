@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  fonts.web.family.fixed:
-    global: Fantasque Sans Mono
+  hints.chars:
+    global: ntesiroahdlpjbmgkvufcyw
