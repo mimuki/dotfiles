@@ -1,23 +1,22 @@
 # dotfiles
-All the things you need if you're me. Works by using [Chezmoi](https://github.com/twpayne/chezmoi).
+All the things you need if you're me. Works by using [Chezmoi](https://github.com/twpayne/chezmoi). This [automatically installs some essential + useful programs](https://github.com/mimuki/dotfiles/blob/main/run_onchange_install-packages.sh), as well as my personal configurations of them. If you're not me, good luck- it's all bespoke to my weird accessibility needs and personal tastes.
 
-## To Do:
-- Per device configuration
-- Add more of the programs I use
-- Some sort of "this one command sets up a fresh install and gets all the dependencies for you" maybe 
+# How to use
+` sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply mimuki` installs chezmoi + my config onto a new machine. `chezmoi update` to get the latest changes from github. `chezmoi apply` to apply any local changes to your actual dotfiles. Anything else you need to know should be in the [chezmoi documentation](https://www.chezmoi.io/quick-start/#next-steps).
 
-# Included programs
-- [keynav](https://github.com/jordansissel/keynav)
-- [rofi](https://github.com/davatorium/rofi)
-- [awesomeWM](https://github.com/awesomeWM/awesome)
-- [qutebrowser](https://github.com/qutebrowser/qutebrowser)
-- [kitty](https://github.com/kovidgoyal/kitty)
-# Included GTK themes
-- [Dracula](https://github.com/dracula/gtk)
+## Currently included:
+- [awesomeWM, a tiling window manager](https://github.com/awesomeWM/awesome)
+- [Dracula, a GTK theme](https://github.com/dracula/gtk)
+- [git, a version control system](https://github.com/git/git)
+- [keynav, a mouse replacement](https://github.com/jordansissel/keynav)
+- [kitty, a terminal](https://github.com/kovidgoyal/kitty)
+- [lxappearance, a GTK theme switcher](https://github.com/lxde/lxappearance)
+- [qutebrowser, a browser](https://github.com/qutebrowser/qutebrowser)
+- [rofi, a window switcher, application launcher, and more](https://github.com/davatorium/rofi)
 
-# Examples
+- [Autostarting programs on login](https://github.com/mimuki/dotfiles/blob/main/dot_xprofile.tmpl)
+- [Custom fonts](https://github.com/mimuki/dotfiles/tree/main/dot_fonts)
+
+## Examples
 ![rofi_filebrowser](./examples/rofi_filebrowser.png)
-
-## Useful tutorials
-
-[A Brief Guide To Manage Dotfiles](https://dev.to/jerrynsh/a-brief-guide-to-manage-dotfiles-1h59)
+![awesome_qutebrowser](./examples/awesome_qutebrowser.png)
