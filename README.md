@@ -6,6 +6,7 @@ All the things you need if you're me. Works by using [Chezmoi](https://github.co
 
 ## Currently included:
 - [awesomeWM, a tiling window manager](https://github.com/awesomeWM/awesome)
+- [discordo, a terminal discord client](https://github.com/ayn2op/discordo)
 - [Dracula, a GTK theme](https://github.com/dracula/gtk)
 - [git, a version control system](https://github.com/git/git)
 - [keynav, a mouse replacement](https://github.com/jordansissel/keynav)
@@ -13,6 +14,7 @@ All the things you need if you're me. Works by using [Chezmoi](https://github.co
 - [lxappearance, a GTK theme switcher](https://github.com/lxde/lxappearance)
 - [qutebrowser, a browser](https://github.com/qutebrowser/qutebrowser)
 - [rofi, a window switcher, application launcher, and more](https://github.com/davatorium/rofi)
+
 
 - [Autostarting programs on login](https://github.com/mimuki/dotfiles/blob/main/dot_xprofile.tmpl)
 - [Custom fonts](https://github.com/mimuki/dotfiles/tree/main/dot_fonts)
