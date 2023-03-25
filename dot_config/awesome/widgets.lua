@@ -45,7 +45,7 @@ frontInfo=wibox.widget.textbox(markup.fontfg(theme_font, theme_bg, "(loading)"))
 
 
 gears.timer {
-    timeout   = 5,
+    timeout   = frontTimeout,
     call_now  = true,
     autostart = true,
     callback  = function()
