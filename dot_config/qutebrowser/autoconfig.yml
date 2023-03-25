@@ -9,6 +9,7 @@ settings:
   bindings.commands:
     global:
       normal:
+        ',nt': open --tab mimuki.net/newtab ;; later 500 hint
         E: tab-prev
         H: null
         I: tab-next
@@ -32,3 +33,5 @@ settings:
         o: forward
         s: spawn --userscript qute-bitwarden
         t: set-cmd-text --space :open
+  url.default_page:
+    global: mimuki.net/newtab
