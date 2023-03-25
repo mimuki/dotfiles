@@ -14,7 +14,7 @@ All the things you need if you're me. Works by using [Chezmoi](https://github.co
 - [lxappearance, a GTK theme switcher](https://github.com/lxde/lxappearance)
 - [qutebrowser, a browser](https://github.com/qutebrowser/qutebrowser)
 - [rofi, a window switcher, application launcher, and more](https://github.com/davatorium/rofi)
-
+- [vim, a text editor](https://github.com/vim/vim)
 
 - [Autostarting programs on login](https://github.com/mimuki/dotfiles/blob/main/dot_xprofile.tmpl)
 - [Custom fonts](https://github.com/mimuki/dotfiles/tree/main/dot_fonts)
