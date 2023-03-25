@@ -6,32 +6,5 @@
 
 config_version: 2
 settings:
-  bindings.commands:
-    global:
-      normal:
-        ',nt': open --tab mimuki.net/newtab ;; later 500 hint
-        E: tab-prev
-        H: null
-        I: tab-next
-        J: null
-        K: null
-        L: null
-        T: set-cmd-text --space :open --tab
-        a: repeat-command
-        e: scroll down
-        f: hint links
-        gE: tab-move +
-        gI: tab-move -
-        gJ: null
-        gK: null
-        h: null
-        i: scroll up
-        j: null
-        k: null
-        l: null
-        n: back
-        o: forward
-        s: spawn --userscript qute-bitwarden
-        t: set-cmd-text --space :open
-  url.default_page:
-    global: mimuki.net/newtab
+  fonts.web.family.fixed:
+    global: Fantasque Sans Mono
