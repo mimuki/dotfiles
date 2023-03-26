@@ -6,5 +6,25 @@
 
 config_version: 2
 settings:
-  hints.chars:
-    global: ntesiroahdlpjbmgkvufcyw
+  bindings.commands:
+    global:
+      normal:
+        E: tab-prev
+        H: null
+        I: tab-next
+        J: null
+        K: null
+        L: null
+        T: set-cmd-text --space :open --tab
+        a: repeat-command
+        e: scroll down
+        f: hint
+        h: null
+        i: scroll up
+        j: null
+        k: null
+        l: null
+        n: back
+        o: forward
+        s: spawn --userscript qute-bitwarden
+        t: set-cmd-text --space :open
