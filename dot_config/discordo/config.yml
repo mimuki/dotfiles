@@ -1,6 +1,6 @@
 mouse: true
 messages_limit: 50
-timestamps: true
+timestamps: false
 editor: default
 keys:
     cancel: Esc
