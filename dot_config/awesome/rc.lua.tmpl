@@ -215,16 +215,21 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             wibox.widget.systray(),
+            
+            {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
             wibox.container.background(bluetoothIcon, theme_select),
             wibox.container.background(wifiIcon, theme_select),
-            
+            {{- end }}
             wibox.container.background(volumeIcon, theme_bg),
             wibox.container.background(volume.widget, theme_bg),
 
+            
+            {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
             wibox.container.background(watts, theme_select),
             batteryIcon,
             wibox.container.background(internalBattery, theme_select),
             wibox.container.background(externalBattery, theme_bg),
+            {{- end }}
             wibox.container.background(localTime, theme_blue),
         },
     }
