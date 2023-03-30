@@ -280,6 +280,15 @@ c.tabs.indicator.width = 0
 # Type: Padding
 c.tabs.indicator.padding = {'bottom': 2, 'left': 0, 'right': 4, 'top': 2}
 
+# Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
+# for a blank page.
+# Type: FuzzyUrl
+c.url.default_page = 'https://mimuki.net/newtab'
+
+# Page(s) to open at the start.
+# Type: List of FuzzyUrl, or FuzzyUrl
+c.url.start_pages = 'https://mimuki.net/newtab'
+
 # Format to use for the window title. The same placeholders like for
 # `tabs.title.format` are defined.
 # Type: FormatString
