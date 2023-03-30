@@ -217,18 +217,24 @@ awful.screen.connect_for_each_screen(function(s)
             wibox.widget.systray(),
             
             {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
-            wibox.container.background(bluetoothIcon, theme_select),
-            wibox.container.background(wifiIcon, theme_select),
+            wibox.container.background(bluetoothIcon, theme_bg),
+            wibox.container.background(wifiIcon, theme_bg),
             {{- end }}
-            wibox.container.background(volumeIcon, theme_bg),
-            wibox.container.background(volume.widget, theme_bg),
 
+            wibox.container.background(volumeIcon, theme_select),
+            wibox.container.background(volume.widget, theme_select),
+
+            wibox.container.background(cpuIcon, theme_bg),
+            wibox.container.background(cpuInfo, theme_bg),
+
+            wibox.container.background(ramIcon, theme_select),
+            wibox.container.background(ramInfo, theme_select),
             
             {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
-            wibox.container.background(watts, theme_select),
             batteryIcon,
             wibox.container.background(internalBattery, theme_select),
             wibox.container.background(externalBattery, theme_bg),
+            wibox.container.background(watts, theme_select),
             {{- end }}
             wibox.container.background(localTime, theme_blue),
         },
