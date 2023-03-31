@@ -32,7 +32,7 @@ require("titlebars")      -- Titlebar config
 -- require("smart_borders")  -- Border config (technically made of titlebars)
 require("widgets")        -- Topbar widgets
 require("signals")
-require("shortcuts") -- custom menu
+require("tags") 
 -- Lain
 local lain = require("lain")
 local separators = lain.util.separators
@@ -99,21 +99,6 @@ mainLauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
 -- Menubar configuration
 -- Set the terminal for applications that require it
 menubar.utils.terminal = terminal 
-
-local taglist_buttons = gears.table.join(
-  awful.button({ }, 1, function(t) t:view_only() end),
-  awful.button({ modkey }, 1, function(t)
-    if client.focus then
-      client.focus:move_to_tag(t)
-    end
-  end),
-  awful.button({ }, 3, awful.tag.viewtoggle),
-  awful.button({ modkey }, 3, function(t)
-    if client.focus then
-      client.focus:toggle_tag(t)
-    end
-  end)
-)
 
 local tasklist_buttons = gears.table.join(
   awful.button({ }, 1, function (c)
