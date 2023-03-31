@@ -79,7 +79,7 @@ do
 
 ----- [ Menu ] -----------------------------------------------------------------
 -- Create a launcher widget and a main menu
-myawesomemenu = {
+awesomeMenu = {
    { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
@@ -87,15 +87,15 @@ myawesomemenu = {
    { "quit", function() awesome.quit() end },
 }
 
-mymainmenu = awful.menu(
+mainMenu = awful.menu(
   { items = { 
-      { "awesome", myawesomemenu, beautiful.awesome_icon },
+      { "awesome", awesomeMenu, beautiful.awesome_icon },
       { "open terminal", terminal }
     }
   })
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
+mainLauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
+                                     menu = mainMenu })
 -- Menubar configuration
 -- Set the terminal for applications that require it
 menubar.utils.terminal = terminal 
@@ -202,7 +202,7 @@ awful.screen.connect_for_each_screen(function(s)
     layout = wibox.layout.align.horizontal,
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
-      wibox.container.background(shortcutButton, theme_bg),
+      wibox.container.background(mainLauncher, theme_bg),
       wibox.container.background(spacer, theme_pink),
       wibox.container.background(frontInfo, theme_pink),
       wibox.container.background(spacer, theme_pink),
@@ -260,7 +260,7 @@ clientbuttons = gears.table.join(
 
 
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end)
+    awful.button({ }, 3, function () mainMenu:toggle() end)
 ))
 
 -- Set keys
