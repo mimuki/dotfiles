@@ -1,9 +1,5 @@
 --------------------------------------------------------------------------------
 --                                 theme.lua                                  --
---                                                                            --
--- Last edit: 22/01/23                        Made with love by kulupu Mimuki --
---------------------------------------------------------------------------------
--- All changes to colour pallette happen in vars.lua                          --
 --------------------------------------------------------------------------------
 
 ----- [ Dependencies ] ---------------------------------------------------------
@@ -168,9 +164,10 @@ theme.layout_centerwork  = theme.lain_icons .. "centerwork.png"
 theme.layout_centerworkh = theme.lain_icons .. "centerworkh.png" -- centerwork.horizontal
 
 -- Generate Awesome icon:
-theme.awesome_icon = theme_assets.awesome_icon(
-    theme.menu_height, theme.bg_focus, theme.fg_focus
-)
+theme.awesome_icon = themes_path.."mimuki/icons/logo.png"
+-- theme.awesome_icon = theme_assets.awesome_icon(
+--     theme.menu_height, theme.bg_focus, theme.fg_focus
+-- )
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
