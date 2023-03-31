@@ -7,13 +7,13 @@
 
 ----- [ Dependencies ] ---------------------------------------------------------
 -- Standard awesome library
-local gears = require("gears")
-local awful = require("awful")
+gears = require("gears")
+awful = require("awful")
 require("awful.autofocus")
 -- Widget and layout library
-local wibox = require("wibox")
+wibox = require("wibox")
 -- Theme handling library
-local beautiful = require("beautiful")
+beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
@@ -34,6 +34,7 @@ require("widgets")        -- Topbar widgets
 require("signals")
 require("tags") 
 require("wallpaper") -- Set custom wallpaper
+require("mouse")
 -- Lain
 local lain = require("lain")
 local separators = lain.util.separators
@@ -181,19 +182,19 @@ end)
 
 ----- [ Mouse Support ] --------------------------------------------------------
 
-clientbuttons = gears.table.join(
-  awful.button({ }, 1, function (c)
-    c:emit_signal("request::activate", "mouse_click", {raise = true})
-  end),
-  awful.button({ modkey }, 1, function (c)
-    c:emit_signal("request::activate", "mouse_click", {raise = true})
-    awful.mouse.client.move(c)
-  end),
-  awful.button({ modkey }, 3, function (c)
-    c:emit_signal("request::activate", "mouse_click", {raise = true})
-    awful.mouse.client.resize(c)
-  end)
-)
+-- clientbuttons = gears.table.join(
+--   awful.button({ }, 1, function (c)
+--     c:emit_signal("request::activate", "mouse_click", {raise = true})
+--   end),
+--   awful.button({ modkey }, 1, function (c)
+--     c:emit_signal("request::activate", "mouse_click", {raise = true})
+--     awful.mouse.client.move(c)
+--   end),
+--   awful.button({ modkey }, 3, function (c)
+--     c:emit_signal("request::activate", "mouse_click", {raise = true})
+--     awful.mouse.client.resize(c)
+--   end)
+-- )
 
 
 root.buttons(gears.table.join(

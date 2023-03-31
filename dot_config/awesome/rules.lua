@@ -2,14 +2,6 @@
 --                                  rules.lua                                 --
 --------------------------------------------------------------------------------
 
------ [ Dependencies ] ---------------------------------------------------------
--- Standard awesome library
-local gears = require("gears")
-local awful = require("awful")
--- Theme handling library
-local beautiful = require("beautiful")
-
-
 ----- [ Rules ] ----------------------------------------------------------------
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {

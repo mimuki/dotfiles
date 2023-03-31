@@ -1,16 +1,9 @@
 --------------------------------------------------------------------------------
 --                              keybindings.lua                               --
---                                                                            --
--- Last edit: 07/03/23                        Made with love by kulupu Mimuki --
---------------------------------------------------------------------------------
--- TODO: Maybe only have todo files in the main rc.lua?                       --
 --------------------------------------------------------------------------------
 
 ----- [ Dependencies ] ---------------------------------------------------------
 
--- Standard awesome library
-local gears = require("gears")
-local awful = require("awful")
 -- Notification library
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Move window to next/previous tag
@@ -24,16 +17,11 @@ local volume = lain.widget.pulsebar{
   }
 }
 
------ [ Variables ] ------------------------------------------------------------
-
-modkey = "Mod4" -- GUI/Super/Meta/Windows etc
-homeRow = {"a", "r", "s", "t", "g", "m", "n", "e", "i", "o", "semicolon" }
-totalTags = 5 -- Change to increase or decrease number of tags generated
+require("vars") -- Variables
 
 ----- [ Keybindings ] ----------------------------------------------------------
 globalkeys = gears.table.join(
 ----- [ Focus and Navigation ] -------------------------------------------------
--- For focusing a tag by number, see the end of the file.
 
 awful.key({ modkey,           }, "n", awful.tag.viewprev,
           { description = "view previous tag", group = "tag" }),
@@ -151,15 +139,7 @@ awful.key({ modkey, "Control" }, "space",
             function () awful.layout.inc(-1) end,
           { description = "select previous layout", group = "layout" }),
 
-
-
---awful.key({ modkey, "Mod1"  }, "n",     function () awful.tag.incnmaster( 1, nil, true) end,
---          {description = "increase the number of master clients", group = "layout"}),
---awful.key({ modkey, "Mod1"  }, "o",     function () awful.tag.incnmaster(-1, nil, true) end,
---          {description = "decrease the number of master clients", group = "layout"}),
-
 ----- [ Program Launchers ] ----------------------------------------------------
-
 
 awful.key({ modkey,           }, "Return", function () awful.screen.focused().quake:toggle() end),
 awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn(terminal) end,
@@ -382,31 +362,31 @@ awful.key({ modkey, "Mod1", "Shift" }, "o", function (c) -- move right
 
 -- Create tag bindings automatically, and map them to my home row
 for i = 1, totalTags do
-    globalkeys = gears.table.join(globalkeys,
-        -- View tag only.
-        awful.key({ modkey,         }, homeRow[i],
-                    function ()
-                        local screen = awful.screen.focused()
-                        local tag = screen.tags[i]
-                        if tag then
-                           tag:view_only()
-                        end
-                  end,
-                  { description = "view tag "..i, group = "tag" }),
+globalkeys = gears.table.join(globalkeys,
+  -- View tag only.
+  awful.key({ modkey,         }, homeRow[i],
+    function ()
+      local screen = awful.screen.focused()
+      local tag = screen.tags[i]
+      if tag then
+       tag:view_only()
+      end
+    end,
+    { description = "view tag "..i, group = "tag" }),
 
-        -- Move client to tag.
-        awful.key({ modkey, "Shift" }, homeRow[i],
-                  function ()
-                      if client.focus then
-                          local tag = client.focus.screen.tags[i]
-                          if tag then
-                              client.focus:move_to_tag(tag)
-                          end
-                     end
-                  end,
-                  { description = "move focused window to tag "..i,
-                    group = "tag" })
-    )
+    -- Move client to tag.
+  awful.key({ modkey, "Shift" }, homeRow[i],
+    function ()
+      if client.focus then
+        local tag = client.focus.screen.tags[i]
+        if tag then
+          client.focus:move_to_tag(tag)
+        end
+     end
+    end,
+    { description = "move focused window to tag "..i,
+      group = "tag" })
+)
 end
 
 -- Menu navigation

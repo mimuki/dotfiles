@@ -1,20 +1,23 @@
 --------------------------------------------------------------------------------
 --                                  vars.lua                                  --
 --------------------------------------------------------------------------------
-local beautiful = require("beautiful")
+
 local xresources = require("beautiful.xresources")
-
-local menubar = require("menubar")
 local dpi = xresources.apply_dpi 
------ [ General ] --------------------------------------------------------------
 
+-- local menubar = require("menubar")
+----- [ General ] --------------------------------------------------------------
 
 modkey = "Mod4" -- GUI/Super/Meta/Windows etc
 terminal = "kitty"
 -- (Possibly redundant) Set the terminal for applications that require it
-menubar.utils.terminal = terminal 
+-- menubar.utils.terminal = terminal 
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
+
+homeRow = {"a", "r", "s", "t", "g", "m", "n", "e", "i", "o", "semicolon" }
+totalTags = 5 -- Change to increase or decrease number of tags generated
+
 
 ----- [ Widgets ] --------------------------------------------------------------
 -- 

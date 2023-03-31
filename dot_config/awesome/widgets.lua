@@ -1,14 +1,8 @@
 --------------------------------------------------------------------------------
 --                                widgets.lua                                 --
---                                                                            --
--- Last edit: 07/03/23                        Made with love by kulupu Mimuki --
 --------------------------------------------------------------------------------
 
 ----- [ Dependencies ] ---------------------------------------------------------
--- Standard awesome library
-local gears = require("gears")
-local awful = require("awful")
-local wibox = require("wibox")
 local lain = require("lain")
 
 local markup = lain.util.markup
@@ -16,7 +10,6 @@ local separators = lain.util.separators
 
 battery_widget = require("battery-widget")
 require("vars")
-
 
 spacer = wibox.widget.textbox(markup.fontfg(theme_font, theme_bg," "))
 

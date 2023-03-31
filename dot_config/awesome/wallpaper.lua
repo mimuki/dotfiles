@@ -4,12 +4,6 @@
 -- Sets wallpaper, and updates it when the screen changes.                    --
 --------------------------------------------------------------------------------
 
--- Standard awesome library
-local gears = require("gears")
-local awful = require("awful")
--- Theme handling library
-local beautiful = require("beautiful")
-
 function setWallpaper(s)
 -- Wallpaper
   if beautiful.wallpaper then

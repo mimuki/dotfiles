@@ -2,13 +2,6 @@
 --                                signals.lua                                 --
 --------------------------------------------------------------------------------
 
------ [ Dependencies ] ---------------------------------------------------------
--- Standard awesome library
-local gears = require("gears")
-local awful = require("awful")
--- Theme handling library
-local beautiful = require("beautiful")
-
 ----- [ Signals ] --------------------------------------------------------------
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)

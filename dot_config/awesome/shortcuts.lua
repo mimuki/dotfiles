@@ -1,10 +1,6 @@
 --------------------------------------------------------------------------------
 --                                shortcuts.lua                               --
 --------------------------------------------------------------------------------
-local awful = require("awful")
-local wibox = require("wibox")
-local gears = require("gears")
-local beautiful = require("beautiful")
 require("vars")           -- Variables
 
 --- Widget to add to the wibar
