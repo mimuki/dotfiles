@@ -102,8 +102,9 @@ theme.tooltip_border_color = theme_accent_alt
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path.."default/submenu.png"
-theme.menu_height = dpi(30)
-theme.menu_width  = dpi(200)
+theme.menu_height = dpi(35)
+theme.menu_width  = dpi(250)
+theme.menu_border_color = theme_accent_alt
 
 -- You can add as many variables as
 -- you wish and access them by using
