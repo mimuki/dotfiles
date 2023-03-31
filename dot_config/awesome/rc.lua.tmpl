@@ -33,7 +33,7 @@ require("titlebars")      -- Titlebar config
 require("widgets")        -- Topbar widgets
 require("signals")
 require("tags") 
-require("wallpaper") 
+require("wallpaper") -- Set custom wallpaper
 -- Lain
 local lain = require("lain")
 local separators = lain.util.separators
@@ -103,6 +103,7 @@ mainLauncher = awful.widget.launcher(
 
 awful.screen.connect_for_each_screen(function(s)
   setWallpaper(s)
+  setTags(s)
     
   -- Quake application
   s.quake = lain.util.quake({
@@ -111,9 +112,6 @@ awful.screen.connect_for_each_screen(function(s)
     argname = "--name Quake",
     border = theme_border_width
   })
-
-  -- Each screen has its own tag table.
-  awful.tag({ "•", "•", "•", "•", "•" }, s, awful.layout.layouts[1])
 
   -- -- Create an imagebox widget which will contain an icon indicating which layout we're using.
   -- -- We need one layoutbox per screen.

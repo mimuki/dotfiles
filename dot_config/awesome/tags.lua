@@ -1,9 +1,18 @@
+--------------------------------------------------------------------------------
+--                                  tags.lua                                  --
+--------------------------------------------------------------------------------
+
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
 require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
+
+-- Each screen has its own tag table.
+function setTags(s)
+  awful.tag({ "•", "•", "•", "•", "•" }, s, awful.layout.layouts[1])
+end
 
 taglist_buttons = gears.table.join(
   awful.button({ }, 1, function(t) t:view_only() end),
