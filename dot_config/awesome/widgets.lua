@@ -140,9 +140,12 @@ gears.timer {
 }
 
 
------ [ cpu ] -----------------------------------------------------------
+----- [ Stats ] -----------------------------------------------------------
 -- Placeholder text
-cpuInfo = wibox.widget.textbox(markup.fontfg(theme_icon, theme_fg,"  "))
 cpuInfo= awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/cpu.sh]], 2)
-ramInfo = wibox.widget.textbox(markup.fontfg(theme_icon, theme_fg,"  "))
 ramInfo= awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/ram.sh]], 2)
+
+
+
+-- Keyboard map indicator and switcher
+mykeyboardlayout = awful.widget.keyboardlayout()

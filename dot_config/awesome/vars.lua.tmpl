@@ -8,6 +8,13 @@
 local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi 
+----- [ General ] --------------------------------------------------------------
+
+
+modkey = "Mod4" -- GUI/Super/Meta/Windows etc
+terminal = "kitty"
+editor = os.getenv("EDITOR") or "vim"
+editor_cmd = terminal .. " -e " .. editor
 
 ----- [ Widgets ] --------------------------------------------------------------
 -- 

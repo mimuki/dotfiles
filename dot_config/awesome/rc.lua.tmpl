@@ -41,79 +41,69 @@ local separators = lain.util.separators
 local markup = lain.util.markup
 
 ----- [ Variables ] ------------------------------------------------------------
--- This is used later as the default terminal and editor to run.
--- terminal = "x-terminal-emulator"
-terminal = "kitty"
-editor = os.getenv("EDITOR") or "editor"
-editor_cmd = terminal .. " -e " .. editor
-
-modkey = "Mod4" -- GUI/Super/Meta/Windows etc
 
 -- Enabled layouts
 awful.layout.layouts = {
-    awful.layout.suit.tile,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.max.fullscreen,
+  awful.layout.suit.tile,
+  awful.layout.suit.tile.top,
+  awful.layout.suit.max.fullscreen,
 }
-
 
 ----- [ Error Handling ] -------------------------------------------------------
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
 if awesome.startup_errors then
-    naughty.notify({ preset = naughty.config.presets.critical,
-                     title = "Oops, there were errors during startup!",
-                     text = awesome.startup_errors })
+  naughty.notify(
+    { 
+      preset = naughty.config.presets.critical,
+      title = "Oops, there were errors during startup!",
+      text = awesome.startup_errors 
+    }
+  )
 end
 
 -- Handle runtime errors after startup
 do
-    local in_error = false
+  local in_error = false
     awesome.connect_signal("debug::error", function (err)
-        -- Make sure we don't go into an endless error loop
-        if in_error then return end
+    -- Make sure we don't go into an endless error loop
+      if in_error then return end
         in_error = true
-
         naughty.notify({ preset = naughty.config.presets.critical,
                          title = "Oops, an error happened!",
                          text = tostring(err) })
         in_error = false
-    end)
+  end)
 end
--- }}}
-
 
 ----- [ Menu ] -----------------------------------------------------------------
 -- Create a launcher widget and a main menu
 myawesomemenu = {
-   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end },
+  { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+  { "manual", terminal .. " -e man awesome" },
+  { "edit config", editor_cmd .. " " .. awesome.conffile },
+  { "restart", awesome.restart },
+  { "quit", function() awesome.quit() end },
 }
 
 -- Menubar configuration
-menubar.utils.terminal = terminal -- Set the terminal for applications that require it
--- }}}
-
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+-- Set the terminal for applications that require it
+menubar.utils.terminal = terminal 
 
 local taglist_buttons = gears.table.join(
-                    awful.button({ }, 1, function(t) t:view_only() end),
-                    awful.button({ modkey }, 1, function(t)
-                                              if client.focus then
-                                                  client.focus:move_to_tag(t)
-                                              end
-                                          end),
-                    awful.button({ }, 3, awful.tag.viewtoggle),
-                    awful.button({ modkey }, 3, function(t)
-                                              if client.focus then
-                                                  client.focus:toggle_tag(t)
-                                              end
-                                          end)
-                )
+    awful.button({ }, 1, function(t) t:view_only() end),
+    awful.button({ modkey }, 1, function(t)
+      if client.focus then
+          client.focus:move_to_tag(t)
+      end
+    end),
+    awful.button({ }, 3, awful.tag.viewtoggle),
+    awful.button({ modkey }, 3, function(t)
+      if client.focus then
+          client.focus:toggle_tag(t)
+    end
+    end)
+)
 
 local tasklist_buttons = gears.table.join(
     awful.button({ }, 1, function (c)
