@@ -382,3 +382,11 @@ for i = 1, totalTags do
                     group = "tag" })
     )
 end
+
+-- Menu navigation
+awful.menu.menu_keys.up = { "i", "Up" }
+awful.menu.menu_keys.down = { "e", "Down" }
+awful.menu.menu_keys.exec = { "o", "Right", "Space", "Enter" }
+awful.menu.menu_keys.enter = { "o", "Right", "Space", "Enter" }
+awful.menu.menu_keys.back = { "n", "Left", "Backspace" }
+awful.menu.menu_keys.close = { "Escape" }
