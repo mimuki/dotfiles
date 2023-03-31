@@ -57,10 +57,15 @@ theme.hotkeys_description_font = theme.font
 theme.hotkeys_label_bg = theme_special
 theme.hotkeys_group_margin = dpi(20)
 
-theme.taglist_bg_focus = theme_accent
+theme.taglist_bg_focus = theme_blue
 theme.taglist_fg_focus = theme_bg
+
 theme.taglist_bg_occupied = theme_select
 
+theme.taglist_bg_urgent = theme_red
+theme.taglist_fg_urgent = theme_bg
+
+theme.taglist_fg_empty = theme_select
 
 -- There are other variable sets
 -- overriding the default one when

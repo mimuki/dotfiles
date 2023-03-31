@@ -32,6 +32,7 @@ require("titlebars")      -- Titlebar config
 -- require("smart_borders")  -- Border config (technically made of titlebars)
 require("widgets")        -- Topbar widgets
 require("signals")
+require("shortcuts") -- custom menu
 -- Lain
 local lain = require("lain")
 local separators = lain.util.separators
@@ -164,7 +165,7 @@ awful.screen.connect_for_each_screen(function(s)
   })
 
   -- Each screen has its own tag table.
-  awful.tag({ "Mimuki", "soweli", "kijetesantakalu", "akesi", "waso" }, s, awful.layout.layouts[1])
+  awful.tag({ "•", "•", "•", "•", "•" }, s, awful.layout.layouts[1])
 
   -- Create a promptbox for each screen
   s.mypromptbox = awful.widget.prompt()
@@ -183,7 +184,7 @@ awful.screen.connect_for_each_screen(function(s)
     buttons = taglist_buttons,
     style   = {
       font = "linja lipamanka 18"
-    }
+    } 
   }
 
   -- Create a tasklist widget
@@ -201,13 +202,14 @@ awful.screen.connect_for_each_screen(function(s)
     layout = wibox.layout.align.horizontal,
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
-      wibox.container.background(s.mytaglist, theme_bg),
-
+      wibox.container.background(shortcutButton, theme_bg),
       wibox.container.background(spacer, theme_pink),
       wibox.container.background(frontInfo, theme_pink),
       wibox.container.background(spacer, theme_pink),
       wibox.container.background(localDate, theme_purple),
+      wibox.container.background(s.mytaglist, theme_bg),
       wibox.container.background(weather, theme_select),
+
 
     },
     dummy, -- Only needed when there are no middle widgets
