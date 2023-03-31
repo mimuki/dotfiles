@@ -96,15 +96,31 @@ awful.key({ modkey, "Shift" }, "n", function ()
             end,
           { description = "move window to previous tag", group = "window" }),
 
+awful.key({ modkey, "Shift" }, "Left", function ()
+            local c = client.focus
+            if not c then return end
+            local t = c.screen.selected_tag
+            local tags = c.screen.tags
+            local idx = t.index
+            local newtag = tags[gmath.cycle(#tags, idx - 1)]
+            c:move_to_tag(newtag)
+            end),
+
 awful.key({ modkey, "Shift"   }, "e",
             function () awful.client.swap.byidx( -1) end,
           { description = "swap with previous window",
             group = "window"  }),
 
+awful.key({ modkey, "Shift"   }, "Down",
+            function () awful.client.swap.byidx( -1) end),
+
 awful.key({ modkey, "Shift"   }, "i",
             function () awful.client.swap.byidx(  1) end,
           { description = "swap with next window",
             group = "window"  }),
+awful.key({ modkey, "Shift"   }, "Up",
+            function () awful.client.swap.byidx(  1) end),
+
 
 awful.key({ modkey, "Shift" }, "o", function ()
             local c = client.focus
@@ -116,6 +132,16 @@ awful.key({ modkey, "Shift" }, "o", function ()
             c:move_to_tag(newtag)
          end,
           { description = "move window to next tag", group = "window" }),
+
+awful.key({ modkey, "Shift" }, "Right", function ()
+            local c = client.focus
+            if not c then return end
+            local t = c.screen.selected_tag
+            local tags = c.screen.tags
+            local idx = t.index
+            local newtag = tags[gmath.cycle(#tags, idx + 1)]
+            c:move_to_tag(newtag)
+         end),
 
 awful.key({ modkey,           }, "space",
             function () awful.layout.inc( 1) end,
