@@ -141,10 +141,10 @@ awful.screen.connect_for_each_screen(function(s)
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
       wibox.container.background(mainLauncher, theme_select),
-      wibox.container.background(frontInfo, theme_pink),
-      wibox.container.background(localDate, theme_purple),
-      wibox.container.background(s.mytaglist, theme_bg),
-      wibox.container.background(weather, theme_select),
+      wibox.container.background(frontInfo,    theme_pink),
+      wibox.container.background(localDate,    theme_purple),
+      wibox.container.background(s.mytaglist,  theme_bg),
+      wibox.container.background(weather,      theme_select),
 
 
     },
@@ -152,7 +152,7 @@ awful.screen.connect_for_each_screen(function(s)
     { -- Right widgets
       layout = wibox.layout.fixed.horizontal,
       wibox.widget.systray(),
-
+      moon,
       {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
       -- Display wifi and bluetooth information
       -- This section was added automatically by chezmoi
