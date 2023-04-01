@@ -7,17 +7,13 @@ local lain = require("lain")
 
 local markup = lain.util.markup
 local separators = lain.util.separators
-
-battery_widget = require("battery-widget")
 require("vars")
 
-spacer = wibox.widget.textbox(markup.fontfg(theme_font, theme_bg," "))
-
 ----- [ Font Awesome ] --------------------------------------------------------
-
+-- Use to create a widget that's just a Font Awesome icon
 local function faIcon( code )
   return wibox.widget{
-    font = theme_icon,
+    font   = theme_icon,
     markup = ' <span color="'.. theme_fg ..'">' .. code .. '</span> ',
     align  = 'center',
     valign = 'center',
@@ -28,75 +24,94 @@ end
 ----- [ Time and date ] --------------------------------------------------------
 
 localTime = wibox.widget.textclock(
-                markup.fontfg(theme_font, theme_bg, " %I:%M %P ", 60))
+  markup.fontfg(theme_font, theme_bg, " %I:%M %P ", 60))
 localDate = wibox.widget.textclock(
-                markup.fontfg(theme_font, theme_bg, " %A, %b %e ", 60))
+  markup.fontfg(theme_font, theme_bg, " %A, %b %e ", 60))
 
 ----- [ Front info ] -----------------------------------------------------------
 -- Placeholder text
-frontInfo=wibox.widget.textbox(markup.fontfg(theme_font, theme_bg, "(loading)"))
-
+frontInfo = wibox.widget.textbox(
+  markup.fontfg(theme_font, theme_bg, " (loading) "))
 
 gears.timer {
-    timeout   = frontTimeout,
-    call_now  = true,
-    autostart = true,
-    callback  = function()
-        -- You should read it from `/sys/class/power_supply/` (on Linux)
-        -- instead of spawning a shell. This is only an example.
-        awful.spawn.easy_async_with_shell(
-            "bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/front.sh",
-            function(out)
-              frontInfo.markup = markup.fontfg(theme_font, theme_bg, out)
-            end
-        )
-    end
+  timeout   = frontTimeout,
+  call_now  = true,
+  autostart = true,
+  callback  = function()
+    awful.spawn.easy_async_with_shell(
+      "bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/front.sh",
+      function(out)
+        frontInfo.markup = markup.fontfg(theme_font, theme_bg, out)
+      end
+    )
+  end
 }
 
 ----- [ Volume indicator ] -----------------------------------------------------------
 
-volumeIcon = faIcon("")
+volIcon = faIcon("")
 cpuIcon = faIcon("")
 ramIcon = faIcon("")
-volume = lain.widget.pulse( {
-    settings = function()
-        vlevel = volume_now.left .. "% "
-        if volume_now.muted == "yes" then
-            widget:set_markup(lain.util.markup(theme_special, vlevel))
-        end
 
-        if volume_now.muted == "no" then
-            widget:set_markup(lain.util.markup(theme_fg, vlevel))
-        end
+volume = lain.widget.pulse( {
+  settings = function()
+    vlevel = volume_now.left .. "% "
+    if volume_now.muted == "yes" then
+      widget:set_markup(lain.util.markup(theme_special, vlevel))
     end
+
+    if volume_now.muted == "no" then
+      widget:set_markup(lain.util.markup(theme_fg, vlevel))
+    end
+  end
 })
+
+volInfo = volume.widget -- needed because lain is weird and different
+
 ----- [ Current Wattage ] -----------------------------------------------------------
 watts = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh]])
 ----- [ Current Weather ] -----------------------------------------------------------
 weather = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/weather.sh]], 3600)
 ----- [ Battery indicator ] ---------------------------------------------------------
-batteryIcon = battery_widget {
-    ac = "AC",
-    adapter = "BAT0",
-    ac_prefix = "  ",
-    battery_prefix = "  ",
-
-    listen = true,
-    timeout = 10,
-    widget_text = "${AC_BAT}",
-    widget_font = theme_icon,
-    tooltip_text = "Internal battery ${state}${time_est}\nCapacity: ${capacity_percent}%",
-    alert_threshold = 5,
-    alert_timeout = 0,
-    alert_title = "Low battery !",
-    alert_text = "${AC_BAT}${time_est}"
+batInIcon = faIcon("")
+batExIcon = faIcon("")
+gears.timer {
+  timeout = 5, -- seconds
+  call_now = true,
+  autostart = true,
+  callback = function()
+    awful.spawn.easy_async("cat /sys/class/power_supply/BAT0/status",
+      function(result)
+        if string.match(result, "Discharging") then
+            batInIcon.markup = markup.fontfg(theme_icon, theme_fg, "  ")
+        end
+        if string.match(result, "Not charging") then 
+            batInIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
+        end
+        if string.match(result, "Charging") then 
+            batInIcon.markup = markup.fontfg(theme_icon, theme_fg, "  ")
+        end
+      end)
+    awful.spawn.easy_async("cat /sys/class/power_supply/BAT1/status",
+      function(result)
+        if string.match(result, "Discharging") then
+            batExIcon.markup = markup.fontfg(theme_icon, theme_fg, "  ")
+        end
+        if string.match(result, "Not charging") then 
+            batExIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
+        end
+        if string.match(result, "Charging") then 
+            batExIcon.markup = markup.fontfg(theme_icon, theme_fg, "  ")
+        end
+      end)
+    end
 }
 
-internalBattery = awful.widget.watch([[
-  awk '$0 > 5 && $0 <= 85 { printf(" " $0  "% ") }' /sys/class/power_supply/BAT0/capacity
+batInInfo = awful.widget.watch([[
+  awk '$0 > 5 && $0 <= 85 { printf( $0  "% ") }' /sys/class/power_supply/BAT0/capacity
   ]])
-externalBattery = awful.widget.watch([[
-  awk '$0 > 5 && $0 <= 80 { printf(" " $0  "% ") }' /sys/class/power_supply/BAT1/capacity
+batExInfo = awful.widget.watch([[
+  awk '$0 > 5 && $0 <= 80 { printf( $0  "% ") }' /sys/class/power_supply/BAT1/capacity
   ]])
 
 

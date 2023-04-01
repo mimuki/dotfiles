@@ -140,10 +140,8 @@ awful.screen.connect_for_each_screen(function(s)
     layout = wibox.layout.align.horizontal,
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
-      wibox.container.background(mainLauncher, theme_bg),
-      wibox.container.background(spacer, theme_pink),
+      wibox.container.background(mainLauncher, theme_select),
       wibox.container.background(frontInfo, theme_pink),
-      wibox.container.background(spacer, theme_pink),
       wibox.container.background(localDate, theme_purple),
       wibox.container.background(s.mytaglist, theme_bg),
       wibox.container.background(weather, theme_select),
@@ -160,8 +158,8 @@ awful.screen.connect_for_each_screen(function(s)
       wibox.container.background(wifiIcon, theme_bg),
       {{- end }}
 
-      wibox.container.background(volumeIcon, theme_select),
-      wibox.container.background(volume.widget, theme_select),
+      wibox.container.background(volIcon, theme_select),
+      wibox.container.background(volInfo, theme_select),
 
       wibox.container.background(cpuIcon, theme_bg),
       wibox.container.background(cpuInfo, theme_bg),
@@ -170,9 +168,11 @@ awful.screen.connect_for_each_screen(function(s)
       wibox.container.background(ramInfo, theme_select),
       
       {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
-      batteryIcon,
-      wibox.container.background(internalBattery, theme_select),
-      wibox.container.background(externalBattery, theme_bg),
+
+      wibox.container.background(batInIcon, theme_select),
+      wibox.container.background(batInInfo, theme_select),
+      wibox.container.background(batExIcon, theme_bg),
+      wibox.container.background(batExInfo, theme_bg),
       wibox.container.background(watts, theme_select),
       {{- end }}
       wibox.container.background(localTime, theme_blue),
