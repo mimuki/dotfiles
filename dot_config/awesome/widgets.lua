@@ -4,7 +4,6 @@
 
 ----- [ Dependencies ] ---------------------------------------------------------
 local lain = require("lain")
-
 local markup = lain.util.markup
 local separators = lain.util.separators
 require("vars")
@@ -21,6 +20,15 @@ local function faIcon( code )
   }
 end
 
+
+cpuIcon   = faIcon("")
+ramIcon   = faIcon("")
+volIcon   = faIcon("")
+wifiIcon  = faIcon("  ")
+blueIcon  = faIcon("  ")
+batInIcon = faIcon("  ")
+batExIcon = faIcon("  ")
+
 ----- [ Time and date ] --------------------------------------------------------
 
 localTime = wibox.widget.textclock(
@@ -29,7 +37,7 @@ localDate = wibox.widget.textclock(
   markup.fontfg(theme_font, theme_bg, " %A, %b %e ", 60))
 
 ----- [ Front info ] -----------------------------------------------------------
--- Placeholder text
+-- Placeholder text for initial load
 frontInfo = wibox.widget.textbox(
   markup.fontfg(theme_font, theme_bg, " (loading) "))
 
@@ -49,10 +57,6 @@ gears.timer {
 
 ----- [ Volume indicator ] -----------------------------------------------------------
 
-volIcon = faIcon("")
-cpuIcon = faIcon("")
-ramIcon = faIcon("")
-
 volume = lain.widget.pulse( {
   settings = function()
     vlevel = volume_now.left .. "% "
@@ -68,13 +72,10 @@ volume = lain.widget.pulse( {
 
 volInfo = volume.widget -- needed because lain is weird and different
 
------ [ Current Wattage ] -----------------------------------------------------------
-watts = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh]])
 ----- [ Current Weather ] -----------------------------------------------------------
 weather = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/weather.sh]], 3600)
 ----- [ Battery indicator ] ---------------------------------------------------------
-batInIcon = faIcon("")
-batExIcon = faIcon("")
+
 gears.timer {
   timeout = 5, -- seconds
   call_now = true,
@@ -83,30 +84,31 @@ gears.timer {
     awful.spawn.easy_async("cat /sys/class/power_supply/BAT0/status",
       function(result)
         if string.match(result, "Discharging") then
-            batInIcon.markup = markup.fontfg(theme_icon, theme_fg, "  ")
+            batInIcon.markup = markup.fontfg(theme_icon, theme_red, "  ")
         end
         if string.match(result, "Not charging") then 
             batInIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
         end
         if string.match(result, "Charging") then 
-            batInIcon.markup = markup.fontfg(theme_icon, theme_fg, "  ")
+            batInIcon.markup = markup.fontfg(theme_icon, theme_blue, "  ")
         end
       end)
     awful.spawn.easy_async("cat /sys/class/power_supply/BAT1/status",
       function(result)
         if string.match(result, "Discharging") then
-            batExIcon.markup = markup.fontfg(theme_icon, theme_fg, "  ")
+            batExIcon.markup = markup.fontfg(theme_icon, theme_yellow, "  ")
         end
         if string.match(result, "Not charging") then 
             batExIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
         end
         if string.match(result, "Charging") then 
-            batExIcon.markup = markup.fontfg(theme_icon, theme_fg, "  ")
+            batExIcon.markup = markup.fontfg(theme_icon, theme_green, "  ")
         end
       end)
     end
 }
 
+-- TODO: pad these to two digits, like the RAM and CPU widgets are
 batInInfo = awful.widget.watch([[
   awk '$0 > 5 && $0 <= 85 { printf( $0  "% ") }' /sys/class/power_supply/BAT0/capacity
   ]])
@@ -114,12 +116,10 @@ batExInfo = awful.widget.watch([[
   awk '$0 > 5 && $0 <= 80 { printf( $0  "% ") }' /sys/class/power_supply/BAT1/capacity
   ]])
 
+-- Current wattage
+watts = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh]])
 
 ----- [ Networking ] -----------------------------------------------------------
-
--- Placeholder text, ideally this should never appear
-wifiIcon = wibox.widget.textbox(markup.fontfg(theme_icon, theme_fg,"  "))
-bluetoothIcon = wibox.widget.textbox(markup.fontfg(theme_icon, theme_fg,"  "))
 
 gears.timer {
   timeout = 5, -- seconds
@@ -138,20 +138,19 @@ gears.timer {
     awful.spawn.easy_async("bluetooth",
       function(result)
         if string.match(result, "on") then
-            bluetoothIcon.markup = markup.fontfg(theme_icon, theme_fg, "  ")
+            blueIcon.markup = markup.fontfg(theme_icon, theme_fg, "  ")
         end
         if string.match(result, "off") then 
-            bluetoothIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
+            blueIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
         end
       end)
     end
 }
 
-
 ----- [ Stats ] -----------------------------------------------------------
--- Placeholder text
-cpuInfo= awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/cpu.sh]], 2)
-ramInfo= awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/ram.sh]], 2)
+
+cpuInfo = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/cpu.sh]], 2)
+ramInfo = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/ram.sh]], 2)
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()

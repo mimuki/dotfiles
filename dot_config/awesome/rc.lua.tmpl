@@ -154,7 +154,9 @@ awful.screen.connect_for_each_screen(function(s)
       wibox.widget.systray(),
             
       {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
-      wibox.container.background(bluetoothIcon, theme_bg),
+      -- Display wifi and bluetooth information
+      -- This section was added automatically by chezmoi
+      wibox.container.background(blueIcon, theme_bg),
       wibox.container.background(wifiIcon, theme_bg),
       {{- end }}
 
@@ -168,9 +170,10 @@ awful.screen.connect_for_each_screen(function(s)
       wibox.container.background(ramInfo, theme_select),
       
       {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
-
-      wibox.container.background(batInIcon, theme_select),
-      wibox.container.background(batInInfo, theme_select),
+      -- Display battery information
+      -- This section was added automatically by chezmoi
+      wibox.container.background(batInIcon, theme_bg),
+      wibox.container.background(batInInfo, theme_bg),
       wibox.container.background(batExIcon, theme_bg),
       wibox.container.background(batExInfo, theme_bg),
       wibox.container.background(watts, theme_select),
