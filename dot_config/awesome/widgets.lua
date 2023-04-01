@@ -74,6 +74,7 @@ volInfo = volume.widget -- needed because lain is weird and different
 
 ----- [ Current Weather ] -----------------------------------------------------------
 weather = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/weather.sh]], 3600)
+moon    = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/moon.sh]], 3600)
 ----- [ Battery indicator ] ---------------------------------------------------------
 
 gears.timer {

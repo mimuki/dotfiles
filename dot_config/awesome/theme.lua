@@ -97,7 +97,7 @@ theme.tooltip_border_color = theme_accent_alt
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
-theme.menu_submenu_icon = themes_path.."default/submenu.png"
+theme.menu_submenu_icon = themes_path.."mimuki/icons/point-right.png"
 theme.menu_height = dpi(35)
 theme.menu_width  = dpi(250)
 theme.menu_border_color = theme_accent_alt
