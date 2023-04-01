@@ -48,7 +48,7 @@ theme.titlebar_fg_urgent = theme_bg
 theme.hotkeys_border_width = theme_border_width
 theme.hotkeys_border_color = theme_accent_alt
 theme.hotkeys_modifiers_fg = theme_fg
-theme.hotkeys_font = "Tlwg Mono Bold 16"
+theme.hotkeys_font = "Tlwg Mono Bold 14"
 theme.hotkeys_description_font = theme.font
 theme.hotkeys_label_bg = theme_special
 theme.hotkeys_group_margin = dpi(20)
@@ -137,22 +137,22 @@ theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/m
 theme.wallpaper = themes_path.."dracula/goop_2.png"
 
 -- You can use your own layout icons like this:
-theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
-theme.layout_fairv = themes_path.."default/layouts/fairvw.png"
-theme.layout_floating  = themes_path.."default/layouts/floatingw.png"
-theme.layout_magnifier = themes_path.."default/layouts/magnifierw.png"
-theme.layout_max = themes_path.."default/layouts/maxw.png"
-theme.layout_fullscreen = themes_path.."default/layouts/fullscreenw.png"
-theme.layout_tilebottom = themes_path.."default/layouts/tilebottomw.png"
-theme.layout_tileleft   = themes_path.."default/layouts/tileleftw.png"
-theme.layout_tile = themes_path.."default/layouts/tilew.png"
-theme.layout_tiletop = themes_path.."default/layouts/tiletopw.png"
-theme.layout_spiral  = themes_path.."default/layouts/spiralw.png"
-theme.layout_dwindle = themes_path.."default/layouts/dwindlew.png"
-theme.layout_cornernw = themes_path.."default/layouts/cornernww.png"
-theme.layout_cornerne = themes_path.."default/layouts/cornernew.png"
-theme.layout_cornersw = themes_path.."default/layouts/cornersww.png"
-theme.layout_cornerse = themes_path.."default/layouts/cornersew.png"
+theme.layout_fairh       = themes_path.."default/layouts/fairhw.png"
+theme.layout_fairv       = themes_path.."default/layouts/fairvw.png"
+theme.layout_floating    = themes_path.."default/layouts/floatingw.png"
+theme.layout_magnifier   = themes_path.."default/layouts/magnifierw.png"
+theme.layout_max         = themes_path.."mimuki/icons/maximize.png"
+theme.layout_fullscreen  = themes_path.."mimuki/icons/maximize.png"
+theme.layout_tilebottom  = themes_path.."default/layouts/tilebottomw.png"
+theme.layout_tileleft    = themes_path.."default/layouts/tileleftw.png"
+theme.layout_tile        = themes_path.."mimuki/icons/left-right.png"
+theme.layout_tiletop     = themes_path.."mimuki/icons/up-down.png"
+theme.layout_spiral      = themes_path.."default/layouts/spiralw.png"
+theme.layout_dwindle     = themes_path.."default/layouts/dwindlew.png"
+theme.layout_cornernw    = themes_path.."default/layouts/cornernww.png"
+theme.layout_cornerne    = themes_path.."default/layouts/cornernew.png"
+theme.layout_cornersw    = themes_path.."default/layouts/cornersww.png"
+theme.layout_cornerse    = themes_path.."default/layouts/cornersew.png"
 
 theme.lain_icons         = os.getenv("HOME") ..
                            "/.config/awesome/lain/icons/layout/default/"
@@ -163,11 +163,7 @@ theme.layout_cascadetile = theme.lain_icons .. "cascadetile.png" -- cascade.tile
 theme.layout_centerwork  = theme.lain_icons .. "centerwork.png"
 theme.layout_centerworkh = theme.lain_icons .. "centerworkh.png" -- centerwork.horizontal
 
--- Generate Awesome icon:
 theme.awesome_icon = themes_path.."mimuki/icons/logo.png"
--- theme.awesome_icon = theme_assets.awesome_icon(
---     theme.menu_height, theme.bg_focus, theme.fg_focus
--- )
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.

@@ -46,7 +46,7 @@ local markup = lain.util.markup
 awful.layout.layouts = {
   awful.layout.suit.tile,
   awful.layout.suit.tile.top,
-  awful.layout.suit.max.fullscreen,
+  awful.layout.suit.max,
 }
 
 ----- [ Error Handling ] -------------------------------------------------------
@@ -114,14 +114,14 @@ awful.screen.connect_for_each_screen(function(s)
     border = theme_border_width
   })
 
-  -- -- Create an imagebox widget which will contain an icon indicating which layout we're using.
-  -- -- We need one layoutbox per screen.
-  -- s.mylayoutbox = awful.widget.layoutbox(s)
-  -- s.mylayoutbox:buttons(gears.table.join(
-  --   awful.button({ }, 1, function () awful.layout.inc( 1) end),
-  --   awful.button({ }, 3, function () awful.layout.inc(-1) end),
-  --   awful.button({ }, 4, function () awful.layout.inc( 1) end),
-  --   awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+  -- Create an imagebox widget which will contain an icon indicating which layout we're using.
+  -- We need one layoutbox per screen.
+  s.mylayoutbox = awful.widget.layoutbox(s)
+  s.mylayoutbox:buttons(gears.table.join(
+    awful.button({ }, 1, function () awful.layout.inc( 1) end),
+    awful.button({ }, 3, function () awful.layout.inc(-1) end),
+    awful.button({ }, 4, function () awful.layout.inc( 1) end),
+    awful.button({ }, 5, function () awful.layout.inc(-1) end)))
   -- Create a taglist widget
   s.mytaglist = awful.widget.taglist {
     screen  = s,
@@ -152,13 +152,15 @@ awful.screen.connect_for_each_screen(function(s)
     { -- Right widgets
       layout = wibox.layout.fixed.horizontal,
       wibox.widget.systray(),
-            
+
       {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
       -- Display wifi and bluetooth information
       -- This section was added automatically by chezmoi
       wibox.container.background(blueIcon, theme_bg),
       wibox.container.background(wifiIcon, theme_bg),
       {{- end }}
+
+      wibox.container.background(s.mylayoutbox, theme_bg),
 
       wibox.container.background(volIcon, theme_select),
       wibox.container.background(volInfo, theme_select),
