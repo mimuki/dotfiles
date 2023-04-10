@@ -64,10 +64,12 @@ awful.rules.rules = {
 
 { rule = { class = "livecaptions" },
     properties = { 
+      floating = true,
       ontop = true,
-      border_width = 0
-      }
+      border_width = 0,
+      placement = awful.placement.bottom
     }
+}
 -- Set Firefox to always map on the tag named "2" on screen 1.
 -- { rule = { class = "Firefox" },
 --   properties = { screen = 1, tag = "2" } },
