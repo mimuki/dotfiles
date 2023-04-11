@@ -6,7 +6,5 @@
 
 config_version: 2
 settings:
-  url.default_page:
-    global: https://mimuki.net/newtab
-  url.start_pages:
-    global: https://mimuki.net/newtab
+  content.user_stylesheets:
+    global: ~/.config/qutebrowser/theme.css

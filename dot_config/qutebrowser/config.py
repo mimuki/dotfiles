@@ -176,6 +176,10 @@ config.set('content.notifications.enabled', False, 'https://ko-fi.com')
 #   - ask
 config.set('content.notifications.enabled', True, 'https://myfriendsare.gay')
 
+# List of user stylesheet filenames to use.
+# Type: List of File, or File
+c.content.user_stylesheets = '~/.config/qutebrowser/theme.css'
+
 # Width (in pixels) of the scrollbar in the completion window.
 # Type: Int
 c.completion.scrollbar.width = 15
@@ -650,6 +654,7 @@ c.fonts.default_family = 'Bad Comic'
 c.fonts.default_size = '18pt'
 
 # Bindings for normal mode
+config.bind(',d', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/theme.css ""')
 config.bind('E', 'tab-prev')
 config.unbind('H')
 config.bind('I', 'tab-next')
