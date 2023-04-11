@@ -43,3 +43,9 @@ client.connect_signal("request::manage", function(client, context)
     client.placement = awful.placement.centered + awful.placement.no_overlap
   end
 end)
+
+-- if a client is minimized, no you don't
+-- (solves bug of games disappearing when unfocused)
+client.connect_signal("property::minimized", function(c)
+    c.minimized = false
+end)
