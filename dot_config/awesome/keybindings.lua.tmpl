@@ -5,6 +5,7 @@
 ----- [ Dependencies ] ---------------------------------------------------------
 
 -- Notification library
+local naughty = require("naughty")
 local hotkeys_popup = require("awful.hotkeys_popup")
 -- Move window to next/previous tag
 local gmath = require("gears.math")
@@ -359,11 +360,24 @@ awful.key({ modkey, "Mod1", "Shift" }, "i", function (c) -- move up
 awful.key({ modkey, "Mod1", "Shift" }, "o", function (c) -- move right
             c:relative_move( 100,   0,   0,   0) end),
 
+{{- if eq .chezmoi.hostname "DESKRATS-2020MNT21" }}
 -- Toggle live captions, using Bling's scratchpad feature. Defined in utilities.lua
-awful.key({modkey, }, "c", function()
+awful.key({ modkey, }, "c", function()
   livecaptions:toggle() end,
   { description = "Toggle live captions"})
+{{- end }}
 
+{{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
+-- This device doesn't support live captions
+awful.key({ modkey, }, "c", function()
+  naughty.notify(
+  {
+    title = "Unsupported feature!",
+    text = "LAPRATS-2023MNT21 doesn't support live captions!"
+  })
+  end
+)
+{{- end }}
 )
 
 -- Create tag bindings automatically, and map them to my home row
