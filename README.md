@@ -12,6 +12,7 @@ All the things you need if you're me. Works by using [Chezmoi](https://github.co
 - [keynav, a mouse replacement](https://github.com/jordansissel/keynav)
 - [kitty, a terminal](https://github.com/kovidgoyal/kitty)
 - [lxappearance, a GTK theme switcher](https://github.com/lxde/lxappearance)
+- [picom, a compositor](https://github.com/yshui/picom)
 - [qutebrowser, a browser](https://github.com/qutebrowser/qutebrowser)
 - [rofi, a window switcher, application launcher, and more](https://github.com/davatorium/rofi)
 - [vim, a text editor](https://github.com/vim/vim)
