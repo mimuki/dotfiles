@@ -94,6 +94,9 @@ theme.tooltip_border_color = theme_accent_alt
 -- notification_[width|height|margin]
 -- notification_[border_color|border_width|shape|opacity]
 
+theme.notification_border_color = theme_accent_alt
+theme.notification_border_width = theme_border_width
+
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
