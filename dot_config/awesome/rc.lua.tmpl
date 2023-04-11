@@ -35,11 +35,12 @@ require("signals")
 require("tags") 
 require("wallpaper") -- Set custom wallpaper
 require("mouse")
+require("utilities") 
 -- Lain
 local lain = require("lain")
 local separators = lain.util.separators
 local markup = lain.util.markup
-
+-- Bling
 ----- [ Variables ] ------------------------------------------------------------
 
 -- Enabled layouts
@@ -101,6 +102,7 @@ mainLauncher = awful.widget.launcher(
     image = beautiful.awesome_icon,
     menu = mainMenu,
   })
+
 
 awful.screen.connect_for_each_screen(function(s)
   setWallpaper(s)

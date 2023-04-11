@@ -7,3 +7,6 @@
 [submodule "dracula"]
 	path = dot_config/qutebrowser/dracula
 	url = https://github.com/mimuki/qutebrowser-dracula
+[submodule "dot_config/awesome/bling"]
+	path = dot_config/awesome/bling
+	url = https://github.com/BlingCorp/bling.git

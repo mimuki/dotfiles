@@ -18,7 +18,7 @@ local volume = lain.widget.pulsebar{
 }
 
 require("vars") -- Variables
-
+local bling = require("bling")
 ----- [ Keybindings ] ----------------------------------------------------------
 globalkeys = gears.table.join(
 ----- [ Focus and Navigation ] -------------------------------------------------
@@ -357,7 +357,13 @@ awful.key({ modkey, "Mod1", "Shift" }, "e", function (c) -- move down
 awful.key({ modkey, "Mod1", "Shift" }, "i", function (c) -- move up
             c:relative_move(   0,-100,   0,   0) end),
 awful.key({ modkey, "Mod1", "Shift" }, "o", function (c) -- move right
-            c:relative_move( 100,   0,   0,   0) end)
+            c:relative_move( 100,   0,   0,   0) end),
+
+-- Toggle live captions, using Bling's scratchpad feature. Defined in utilities.lua
+awful.key({modkey, }, "c", function()
+  livecaptions:toggle() end,
+  { description = "Toggle live captions"})
+
 )
 
 -- Create tag bindings automatically, and map them to my home row
