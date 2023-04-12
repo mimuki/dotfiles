@@ -37,15 +37,15 @@ client.connect_signal("unfocus", function(c)
   c.border_color = beautiful.border_normal 
 end)
 
--- New floating windows are centered by default (and shouldn't overlap)
-client.connect_signal("request::manage", function(client, context)
-  if client.floating and context == "new" then
-    client.placement = awful.placement.centered + awful.placement.no_overlap
-  end
-end)
-
 -- if a client is minimized, no you don't
 -- (solves bug of games disappearing when unfocused)
 client.connect_signal("property::minimized", function(c)
     c.minimized = false
+end)
+
+-- no border for maximized windows
+client.connect_signal("property:maximized", function(c)
+    if c.maximized then
+        c.border_width = 0
+    end
 end)
