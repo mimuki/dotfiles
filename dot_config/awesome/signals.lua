@@ -43,9 +43,14 @@ client.connect_signal("property::minimized", function(c)
     c.minimized = false
 end)
 
--- no border for maximized windows
-client.connect_signal("property:maximized", function(c)
-    if c.maximized then
-        c.border_width = 0
+-- No borders when rearranging only 1 non-floating or maximized client
+screen.connect_signal("arrange", function (s)
+    local only_one = #s.tiled_clients == 1
+    for _, c in pairs(s.clients) do
+        if only_one and not c.floating or c.maximized then
+            c.border_width = 0
+        else
+            c.border_width = beautiful.border_width -- normal border width
+        end
     end
 end)
