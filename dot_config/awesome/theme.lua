@@ -167,6 +167,10 @@ theme.layout_centerwork  = theme.lain_icons .. "centerwork.png"
 theme.layout_centerworkh = theme.lain_icons .. "centerworkh.png" -- centerwork.horizontal
 
 theme.awesome_icon = themes_path.."mimuki/icons/logo.png"
+theme.terminal_icon = themes_path.."mimuki/icons/terminal.png"
+theme.folder_icon = themes_path.."mimuki/icons/folder.png"
+theme.window_icon = themes_path.."mimuki/icons/windows.png"
+theme.list_icon = themes_path.."mimuki/icons/list.png"
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.

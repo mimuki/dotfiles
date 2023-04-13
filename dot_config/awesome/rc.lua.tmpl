@@ -94,7 +94,11 @@ awesomeMenu = {
 mainMenu = awful.menu(
   { items = { 
       { "awesome", awesomeMenu, beautiful.awesome_icon },
-      { "open terminal", terminal }
+      { "open terminal", terminal, beautiful.terminal_icon },
+      { "search windows", function () awful.util.spawn("rofi -show drun") end, beautiful.list_icon },
+      { "search windows", function () awful.util.spawn("rofi -show window") end, beautiful.window_icon },
+      { "search files",   function () awful.util.spawn("rofi -show filebrowser -theme-str '#listview {lines:6;}'") end, beautiful.folder_icon },
+
     }
   })
 
@@ -136,8 +140,12 @@ awful.screen.connect_for_each_screen(function(s)
   }
 
   -- Create the wibox
-  s.mywibox = awful.wibar({ position = "top", screen = s, height =
-  40})
+  s.mywibox = awful.wibar(
+  { 
+    position = "top", 
+    screen = s, 
+    height = 40
+  })
 
   -- Add widgets to the wibox
   s.mywibox:setup {
@@ -150,13 +158,12 @@ awful.screen.connect_for_each_screen(function(s)
       wibox.container.background(s.mytaglist,  theme_bg),
       wibox.container.background(weather,      theme_select),
       wibox.container.background(moon,         theme_bg),
-      
-
-
     },
     dummy, -- Only needed when there are no middle widgets
     { -- Right widgets
       layout = wibox.layout.fixed.horizontal,
+      fill_space = true, -- forces the last widget to get a little bigger
+
       wibox.widget.systray(),
       {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
       -- Display wifi and bluetooth information
@@ -180,13 +187,13 @@ awful.screen.connect_for_each_screen(function(s)
       -- Display battery information
       -- This section was added automatically by chezmoi
       wibox.container.background(batInIcon, theme_bg),
-      wibox.container.background(batInInfo, theme_bg),
       wibox.container.background(batExIcon, theme_bg),
+      wibox.container.background(batInInfo, theme_bg),
       wibox.container.background(batExInfo, theme_bg),
       wibox.container.background(watts, theme_select),
       {{- end }}
-      wibox.container.background(localTime, theme_blue),
-    },
+      wibox.container.background(localTime, theme_blue)
+    }
   }
 end)
 
