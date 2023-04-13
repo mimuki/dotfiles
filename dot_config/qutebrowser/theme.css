@@ -6,6 +6,10 @@
  * @description 🧛🏻‍♂️ Dark theme for all the things
  * @source https://github.com/Dracula/BetterDiscord
 **/
+
+* {
+  font-family: "Andika Rats" !important;
+}
 :root {
   /* Dracula Base Colors */
   --dracula-background: #282a36 !important;

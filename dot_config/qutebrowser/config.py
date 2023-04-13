@@ -178,7 +178,7 @@ config.set('content.notifications.enabled', True, 'https://myfriendsare.gay')
 
 # List of user stylesheet filenames to use.
 # Type: List of File, or File
-c.content.user_stylesheets = []
+c.content.user_stylesheets = '~/.config/qutebrowser/theme.css'
 
 # Width (in pixels) of the scrollbar in the completion window.
 # Type: Int
@@ -232,11 +232,11 @@ c.statusbar.widgets = ['keypress', 'url', 'history', 'tabs']
 # Scaling factor for favicons in the tab bar. The tab size is unchanged,
 # so big favicons also require extra `tabs.padding`.
 # Type: Float
-c.tabs.favicons.scale = 1.0
+c.tabs.favicons.scale = 0.8
 
 # Padding (in pixels) around text for tabs.
 # Type: Padding
-c.tabs.padding = {'bottom': 3, 'left': 3, 'right': 0, 'top': 3}
+c.tabs.padding = {'bottom': 0, 'left': 6, 'right': 0, 'top': 0}
 
 # Which tab to select when the focused tab is removed.
 # Type: SelectOnRemove
@@ -644,7 +644,7 @@ c.colors.tabs.pinned.selected.even.bg = '#bd93f9'
 # font setting, it's replaced with the fonts listed here. If set to an
 # empty value, a system-specific monospace default is used.
 # Type: List of Font, or Font
-c.fonts.default_family = 'Bad Comic'
+c.fonts.default_family = 'Andika Rats'
 
 # Default font size to use. Whenever "default_size" is used in a font
 # setting, it's replaced with the size listed here. Valid values are
@@ -652,6 +652,18 @@ c.fonts.default_family = 'Bad Comic'
 # "px" suffix.
 # Type: String
 c.fonts.default_size = '17pt'
+
+# Font used in the completion widget.
+# Type: Font
+c.fonts.completion.entry = 'default_size default_family'
+
+# Font used for the downloadbar.
+# Type: Font
+c.fonts.downloads = 'Fantasque Sans Mono'
+
+# Font family for fixed fonts.
+# Type: FontFamily
+c.fonts.web.family.fixed = 'Fantasque Sans Mono'
 
 # Bindings for normal mode
 config.bind(',d', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/theme.css ""')
