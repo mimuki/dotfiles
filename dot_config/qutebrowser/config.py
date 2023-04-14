@@ -214,7 +214,7 @@ c.statusbar.show = 'always'
 
 # Padding (in pixels) for the statusbar.
 # Type: Padding
-c.statusbar.padding = {'top': 6, 'right': 8, 'bottom': 6, 'left': 8}
+c.statusbar.padding = {'bottom': 0, 'left': 4, 'right': 4, 'top': 0}
 
 # List of widgets displayed in the statusbar.
 # Type: List of StatusbarWidget
@@ -227,7 +227,7 @@ c.statusbar.padding = {'top': 6, 'right': 8, 'bottom': 6, 'left': 8}
 #   - keypress: Display pressed keys when composing a vi command.
 #   - progress: Progress bar for the current page loading.
 #   - text:foo: Display the static text after the colon, `foo` in the example.
-c.statusbar.widgets = ['keypress', 'url', 'history', 'tabs']
+c.statusbar.widgets = ['keypress', 'url']
 
 # Scaling factor for favicons in the tab bar. The tab size is unchanged,
 # so big favicons also require extra `tabs.padding`.
@@ -467,19 +467,19 @@ c.colors.statusbar.normal.bg = '#282a36'
 
 # Foreground color of the statusbar in insert mode.
 # Type: QssColor
-c.colors.statusbar.insert.fg = '#ffffff'
+c.colors.statusbar.insert.fg = '#f8f8f2'
 
 # Background color of the statusbar in insert mode.
 # Type: QssColor
-c.colors.statusbar.insert.bg = '#181920'
+c.colors.statusbar.insert.bg = '#6272a4'
 
 # Foreground color of the statusbar in passthrough mode.
 # Type: QssColor
-c.colors.statusbar.passthrough.fg = '#ffb86c'
+c.colors.statusbar.passthrough.fg = '#282a36'
 
 # Background color of the statusbar in passthrough mode.
 # Type: QssColor
-c.colors.statusbar.passthrough.bg = '#282a36'
+c.colors.statusbar.passthrough.bg = '#ffb86c'
 
 # Foreground color of the statusbar in private browsing mode.
 # Type: QssColor
@@ -527,7 +527,7 @@ c.colors.statusbar.progress.bg = '#282a36'
 
 # Default foreground color of the URL in the statusbar.
 # Type: QssColor
-c.colors.statusbar.url.fg = '#f8f8f2'
+c.colors.statusbar.url.fg = '#6272a4'
 
 # Foreground color of the URL in the statusbar on error.
 # Type: QssColor
@@ -540,12 +540,12 @@ c.colors.statusbar.url.hover.fg = '#8be9fd'
 # Foreground color of the URL in the statusbar on successful load
 # (http).
 # Type: QssColor
-c.colors.statusbar.url.success.http.fg = '#50fa7b'
+c.colors.statusbar.url.success.http.fg = '#6272a4'
 
 # Foreground color of the URL in the statusbar on successful load
 # (https).
 # Type: QssColor
-c.colors.statusbar.url.success.https.fg = '#50fa7b'
+c.colors.statusbar.url.success.https.fg = '#6272a4'
 
 # Foreground color of the URL in the statusbar when there's a warning.
 # Type: QssColor
@@ -659,11 +659,23 @@ c.fonts.completion.entry = 'default_size default_family'
 
 # Font used for the downloadbar.
 # Type: Font
-c.fonts.downloads = 'Fantasque Sans Mono'
+c.fonts.downloads = 'default_size default_family'
 
 # Font family for fixed fonts.
 # Type: FontFamily
 c.fonts.web.family.fixed = 'Fantasque Sans Mono'
+
+# Default font size (in pixels) for regular text.
+# Type: Int
+c.fonts.web.size.default = 18
+
+# Default font size (in pixels) for fixed-pitch text.
+# Type: Int
+c.fonts.web.size.default_fixed = 18
+
+# Hard minimum font size (in pixels).
+# Type: Int
+c.fonts.web.size.minimum = 18
 
 # Bindings for normal mode
 config.bind(',d', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/theme.css ""')
