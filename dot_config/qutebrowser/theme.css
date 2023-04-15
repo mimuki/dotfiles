@@ -382,10 +382,6 @@ span.hljs-meta-string {
   display: none;
 }
 
-/* help button and "for you" inbox bs*/
-.anchor-1X4H4q, .recentsIcon-F3eO1o { 
-  display: none !important;
-}
 /* that folder of servers i want to leave */
 .wrapper-38slSD {
   display: none;
