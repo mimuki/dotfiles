@@ -18,6 +18,13 @@ end
 function markupColour(widget, fg, bg, text)
   widget.markup = markup.color(fg, bg, text)
 end
+
+-- Changes Awesome's theme to a certain colour
+-- Known issue: these don't update until you change tag/focus
+function themeAccent(colour)
+  beautiful.taglist_fg_focus = colour
+  beautiful.border_focus = colour
+end
 ----- [ Font Awesome ] --------------------------------------------------------
 -- Use to create a widget that's just a Font Awesome icon
 local function faIcon( code )
@@ -63,21 +70,18 @@ gears.timer {
           markupColour(frontInfo, theme_bg, "#A6E3A1", out)
           formatColour(localDate, theme_bg, "#89B4FA", dateFormat)
           formatColour(localTime, theme_bg, "#F5C2E7", timeFormat)
-          beautiful.taglist_fg_focus = theme_green
-          beautiful.border_focus = theme_green
+          themeAccent(theme_green)
         elseif string.match(out, "kala") then
           markupColour(frontInfo, theme_bg, "#5988FF", out)
           formatColour(localDate, theme_fg, theme_bg, dateFormat)
           formatColour(localTime, theme_bg, "#5988FF", timeFormat)
-          beautiful.taglist_fg_focus = "#5988FF"
-          beautiful.border_focus = "#5988FF"
+          themeAccent("#5988FF")
 
         else
           markupColour(frontInfo, theme_bg, theme_pink, out)
           formatColour(localDate, theme_bg, theme_purple, dateFormat)
           formatColour(localTime, theme_bg, theme_blue, timeFormat)
-          beautiful.taglist_fg_focus = theme_purple
-          beautiful.border_focus = theme_purple
+          themeAccent(theme_purple)
 
         end
       end
