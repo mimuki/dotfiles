@@ -63,14 +63,15 @@ gears.timer {
           markupColour(frontInfo, theme_bg, "#A6E3A1", out)
           formatColour(localDate, theme_bg, "#89B4FA", dateFormat)
           formatColour(localTime, theme_bg, "#F5C2E7", timeFormat)
-        elseif string.match(out, "Nathan") then
-          markupColour(frontInfo, theme_bg, theme_red, out)
-          formatColour(localDate, theme_bg, theme_purple, dateFormat)
-          formatColour(localTime, theme_bg, theme_blue, timeFormat)
+          beautiful.taglist_fg_focus = theme_green
+          build_panels(mouse.screen)
         else
           markupColour(frontInfo, theme_bg, theme_pink, out)
           formatColour(localDate, theme_bg, theme_purple, dateFormat)
           formatColour(localTime, theme_bg, theme_blue, timeFormat)
+
+          beautiful.taglist_fg_focus = theme_purple
+          build_panels(mouse.screen)
         end
       end
     )

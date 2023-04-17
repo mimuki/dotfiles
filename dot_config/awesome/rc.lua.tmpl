@@ -118,37 +118,9 @@ mainLauncher = awful.widget.launcher(
     image = beautiful.awesome_icon,
     menu = mainMenu,
   })
-
-
-awful.screen.connect_for_each_screen(function(s)
-  setWallpaper(s)
-  setTags(s)
-    
-  -- Quake application
-  s.quake = lain.util.quake({
-    app = "kitty",
-    name = "Quake",
-    argname = "--name Quake",
-    border = theme_border_width
-  })
-
-  -- Create an imagebox widget which will contain an icon indicating which layout we're using.
-  -- We need one layoutbox per screen.
-  s.mylayoutbox = awful.widget.layoutbox(s)
-  s.mylayoutbox:buttons(gears.table.join(
-    awful.button({ }, 1, function () awful.layout.inc( 1) end),
-    awful.button({ }, 3, function () awful.layout.inc(-1) end),
-    awful.button({ }, 4, function () awful.layout.inc( 1) end),
-    awful.button({ }, 5, function () awful.layout.inc(-1) end)))
-  -- Create a taglist widget
-  s.mytaglist = awful.widget.taglist {
-    screen  = s,
-    filter  = awful.widget.taglist.filter.all,
-    buttons = taglist_buttons,
-    style   = {
-      font = "linja lipamanka 18"
-    } 
-  }
+function build_panel(s)
+  -- destroy old panel if it's there (widgets.lua told it to update)
+  if s.mywibox then s.mywibox:remove() end
 
   -- Create the wibox
   s.mywibox = awful.wibar(
@@ -216,6 +188,39 @@ awful.screen.connect_for_each_screen(function(s)
 
     
   }
+end
+
+
+awful.screen.connect_for_each_screen(function(s)
+  setWallpaper(s)
+  setTags(s)
+    
+  -- Quake application
+  s.quake = lain.util.quake({
+    app = "kitty",
+    name = "Quake",
+    argname = "--name Quake",
+    border = theme_border_width
+  })
+
+  -- Create an imagebox widget which will contain an icon indicating which layout we're using.
+  -- We need one layoutbox per screen.
+  s.mylayoutbox = awful.widget.layoutbox(s)
+  s.mylayoutbox:buttons(gears.table.join(
+    awful.button({ }, 1, function () awful.layout.inc( 1) end),
+    awful.button({ }, 3, function () awful.layout.inc(-1) end),
+    awful.button({ }, 4, function () awful.layout.inc( 1) end),
+    awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+  -- Create a taglist widget
+  s.mytaglist = awful.widget.taglist {
+    screen  = s,
+    filter  = awful.widget.taglist.filter.all,
+    buttons = taglist_buttons,
+    style   = {
+      font = "linja lipamanka 18"
+    } 
+  }
+  build_panel(s)
 end)
 
 ----- [ Mouse Support ] --------------------------------------------------------
