@@ -178,3 +178,4 @@ ramInfo = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
+
