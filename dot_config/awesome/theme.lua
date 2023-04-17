@@ -53,14 +53,17 @@ theme.hotkeys_description_font = "Fantasque Sans Mono 20"
 theme.hotkeys_label_bg = theme_special
 theme.hotkeys_group_margin = dpi(8)
 
-theme.taglist_bg_focus = theme_blue
-theme.taglist_fg_focus = theme_bg
-
-theme.taglist_bg_occupied = theme_select
-
-theme.taglist_bg_urgent = theme_red
-theme.taglist_fg_urgent = theme_bg
-
+-- Focused tag (you're looking at it)
+theme.taglist_bg_focus = theme_bg
+theme.taglist_fg_focus = theme_purple
+-- Occupied tag (windows are open there)
+theme.taglist_bg_occupied = theme_bg
+theme.taglist_fg_occupied = theme_special
+-- Urgent tag (a window on that tag wants your attention)
+theme.taglist_bg_urgent = theme_bg
+theme.taglist_fg_urgent = theme_red
+-- Empty tag (nothing's there)
+theme.taglist_bg_empty = theme_bg
 theme.taglist_fg_empty = theme_select
 
 -- There are other variable sets
