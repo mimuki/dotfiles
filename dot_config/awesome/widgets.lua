@@ -64,14 +64,21 @@ gears.timer {
           formatColour(localDate, theme_bg, "#89B4FA", dateFormat)
           formatColour(localTime, theme_bg, "#F5C2E7", timeFormat)
           beautiful.taglist_fg_focus = theme_green
-          build_panels(mouse.screen)
+          beautiful.border_focus = theme_green
+        elseif string.match(out, "kala") then
+          markupColour(frontInfo, theme_bg, "#5988FF", out)
+          formatColour(localDate, theme_fg, theme_bg, dateFormat)
+          formatColour(localTime, theme_bg, "#5988FF", timeFormat)
+          beautiful.taglist_fg_focus = "#5988FF"
+          beautiful.border_focus = "#5988FF"
+
         else
           markupColour(frontInfo, theme_bg, theme_pink, out)
           formatColour(localDate, theme_bg, theme_purple, dateFormat)
           formatColour(localTime, theme_bg, theme_blue, timeFormat)
-
           beautiful.taglist_fg_focus = theme_purple
-          build_panels(mouse.screen)
+          beautiful.border_focus = theme_purple
+
         end
       end
     )

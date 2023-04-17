@@ -140,7 +140,7 @@ function build_panel(s)
       wibox.container.background(mainLauncher, theme_select),
       frontInfo,
       localDate,
-      wibox.container.background(weather,      theme_select),
+      wibox.container.background(weather, theme_select),
 
       wibox.container.background(cpuIcon, theme_bg),
       wibox.container.background(cpuInfo, theme_bg),
@@ -150,19 +150,14 @@ function build_panel(s)
 
 
     },
-    
+    -- Center widgets
       s.mytaglist,
-    -- dummy, -- Only needed when there are no middle widgets
     { -- Right widgets
       layout = wibox.layout.fixed.horizontal,
-      -- fill_space = true, -- forces the last widget to get a little bigger
 
-      wibox.container.background(moon,         theme_bg),
-
-
-
-
+      wibox.container.background(moon, theme_bg),
       wibox.widget.systray(),
+
       {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
       -- Display wifi and bluetooth information
       -- This section was added automatically by chezmoi
@@ -185,8 +180,6 @@ function build_panel(s)
       {{- end }}
       wibox.container.background(localTime, theme_blue)
     }
-
-    
   }
 end
 
