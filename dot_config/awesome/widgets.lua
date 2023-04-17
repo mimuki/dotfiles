@@ -65,6 +65,8 @@ gears.timer {
           formatColour(localTime, theme_bg, "#F5C2E7", timeFormat)
         else
           markupColour(frontInfo, theme_bg, theme_pink, out)
+          formatColour(localDate, theme_bg, theme_purple, dateFormat)
+          formatColour(localTime, theme_bg, theme_blue, timeFormat)
         end
       end
     )
