@@ -45,7 +45,6 @@ batExIcon = faIcon("  ")
 timeFormat = " %I:%M %P "
 dateFormat = " %A, %b %e "
 
-
 localTime = wibox.widget.textclock(
   markup.color(theme_bg, theme_blue, timeFormat))
 localDate = wibox.widget.textclock(
