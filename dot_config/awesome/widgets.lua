@@ -8,6 +8,18 @@ local markup = lain.util.markup
 local separators = lain.util.separators
 require("vars")
 
+----- [ Colours ] --------------------------------------------------------------
+-- Change the foreground and background colour of a widget
+-- For widgets with custom formats (i.e. textclocks), not textboxes
+function formatColour(widget, fg, bg, text)
+  widget.format = "<span foreground='" .. fg .. "' background='" .. bg .. "'>" .. text .. "</span>"
+end
+-- Change the foreground and background colour of a widget
+-- For widgets with custom markup (i.e. text boxes)
+function markupColour(widget, fg, bg, text)
+  widget.markup = markup.color(fg, bg, text)
+end
+
 ----- [ Font Awesome ] --------------------------------------------------------
 -- Use to create a widget that's just a Font Awesome icon
 local function faIcon( code )
@@ -30,13 +42,14 @@ batInIcon = faIcon("  ")
 batExIcon = faIcon("  ")
 
 ----- [ Time and date ] --------------------------------------------------------
-dateColour = theme_purple
-timeColour = theme_blue
+timeFormat = " %I:%M %P "
+dateFormat = " %A, %b %e "
+
 
 localTime = wibox.widget.textclock(
-  markup.color(theme_bg, timeColour, " %I:%M %P ", 60))
+  markup.color(theme_bg, theme_blue, timeFormat))
 localDate = wibox.widget.textclock(
-  markup.color(theme_bg, dateColour, " %A, %b %e ", 60))
+  markup.color(theme_bg, theme_purple, dateFormat))
 
 ----- [ Front info ] -----------------------------------------------------------
 -- Placeholder text for initial load
@@ -53,9 +66,11 @@ gears.timer {
       function(out)
       -- Custom colours for specific headmates
         if string.match(out, "Jade") then
-          frontInfo.markup = markup.color(theme_bg, theme_green, out)
+          markupColour(frontInfo, "#45475a", "#A6E3A1", out)
+          formatColour(localDate, "#45475A", "#89B4FA", dateFormat)
+          formatColour(localTime, "#45475A", "#F5C2E7", timeFormat)
         else
-          frontInfo.markup = markup.color(theme_bg, theme_pink, out)
+          markupColour(frontInfo, theme_bg, theme_pink, out)
         end
       end
     )
