@@ -25,6 +25,7 @@ client.connect_signal("mouse::enter", function(c)
   c:emit_signal("request::activate", "mouse_enter", {raise = false})
 end)
 
+-- Different focus colours for floating & tiled windows
 client.connect_signal("focus", function(c) 
   if c.floating then
     c.border_color = theme_accent_alt
@@ -49,8 +50,11 @@ screen.connect_signal("arrange", function (s)
     for _, c in pairs(s.clients) do
         if only_one and not c.floating or c.maximized then
             c.border_width = 0
+        -- this breaks the borderless captions in rules.lua, oops
+        -- need to fix this later, probably something along the lines
+        -- of "if the class of the thing is livecaptions, don't"
         else
-            c.border_width = beautiful.border_width -- normal border width
+            c.border_width = beautiful.border_width
         end
     end
 end)

@@ -48,10 +48,10 @@ theme.titlebar_fg_urgent = theme_bg
 theme.hotkeys_border_width = theme_border_width
 theme.hotkeys_border_color = theme_accent_alt
 theme.hotkeys_modifiers_fg = theme_fg
-theme.hotkeys_font = "Fantasque Sans Mono 14"
-theme.hotkeys_description_font = theme.font
+theme.hotkeys_font = "Fantasque Sans Mono 20"
+theme.hotkeys_description_font = "Fantasque Sans Mono 20"
 theme.hotkeys_label_bg = theme_special
-theme.hotkeys_group_margin = dpi(20)
+theme.hotkeys_group_margin = dpi(8)
 
 theme.taglist_bg_focus = theme_blue
 theme.taglist_fg_focus = theme_bg

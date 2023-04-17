@@ -30,17 +30,19 @@ batInIcon = faIcon("  ")
 batExIcon = faIcon("  ")
 
 ----- [ Time and date ] --------------------------------------------------------
+dateColour = theme_purple
+timeColour = theme_blue
 
 localTime = wibox.widget.textclock(
-  markup.fontfg(theme_font, theme_bg, " %I:%M %P ", 60))
+  markup.color(theme_bg, timeColour, " %I:%M %P ", 60))
 localDate = wibox.widget.textclock(
-  markup.fontfg(theme_font, theme_bg, " %A, %b %e ", 60))
+  markup.color(theme_bg, dateColour, " %A, %b %e ", 60))
 
 ----- [ Front info ] -----------------------------------------------------------
 -- Placeholder text for initial load
 frontInfo = wibox.widget.textbox(
-  markup.fontfg(theme_font, theme_bg, " (loading) "))
-
+  markup.color(theme_bg, theme_pink, " (loading) ")
+)
 gears.timer {
   timeout   = frontTimeout,
   call_now  = true,
@@ -49,14 +51,19 @@ gears.timer {
     awful.spawn.easy_async_with_shell(
       "bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/front.sh",
       function(out)
-        frontInfo.markup = markup.fontfg(theme_font, theme_bg, out)
+      -- Custom colours for specific headmates
+        if string.match(out, "Jade") then
+          frontInfo.markup = markup.color(theme_bg, theme_green, out)
+        else
+          frontInfo.markup = markup.color(theme_bg, theme_pink, out)
+        end
       end
     )
   end
 }
 
 ----- [ Volume indicator ] -----------------------------------------------------------
-
+-- TODO: the rest of this file should get updated to use markup.color, oops
 volume = lain.widget.pulse( {
   settings = function()
     vlevel = volume_now.left .. "% "
