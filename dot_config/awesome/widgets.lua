@@ -83,11 +83,13 @@ volume = lain.widget.pulse( {
   settings = function()
     vlevel = volume_now.left .. "% "
     if volume_now.muted == "yes" then
-      widget:set_markup(lain.util.markup(theme_special, vlevel))
+      -- widget:set_markup(lain.util.markup(theme_special, vlevel))
+      markupColour(volInfo, theme_special, theme_select, vlevel)
     end
 
     if volume_now.muted == "no" then
       widget:set_markup(lain.util.markup(theme_fg, vlevel))
+      markupColour(volInfo, theme_fg, theme_select, vlevel)
     end
   end
 })
