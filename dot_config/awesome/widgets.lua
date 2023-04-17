@@ -66,9 +66,9 @@ gears.timer {
       function(out)
       -- Custom colours for specific headmates
         if string.match(out, "Jade") then
-          markupColour(frontInfo, "#45475a", "#A6E3A1", out)
-          formatColour(localDate, "#45475A", "#89B4FA", dateFormat)
-          formatColour(localTime, "#45475A", "#F5C2E7", timeFormat)
+          markupColour(frontInfo, theme_bg, "#A6E3A1", out)
+          formatColour(localDate, theme_bg, "#89B4FA", dateFormat)
+          formatColour(localTime, theme_bg, "#F5C2E7", timeFormat)
         else
           markupColour(frontInfo, theme_bg, theme_pink, out)
         end
