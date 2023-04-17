@@ -7,7 +7,6 @@ local lain = require("lain")
 local markup = lain.util.markup
 local separators = lain.util.separators
 require("vars")
-
 ----- [ Colours ] --------------------------------------------------------------
 -- Change the foreground and background colour of a widget
 -- For widgets with custom formats (i.e. textclocks), not textboxes
@@ -19,7 +18,6 @@ end
 function markupColour(widget, fg, bg, text)
   widget.markup = markup.color(fg, bg, text)
 end
-
 ----- [ Font Awesome ] --------------------------------------------------------
 -- Use to create a widget that's just a Font Awesome icon
 local function faIcon( code )
@@ -32,7 +30,6 @@ local function faIcon( code )
   }
 end
 
-
 cpuIcon   = faIcon("")
 ramIcon   = faIcon("")
 volIcon   = faIcon("")
@@ -40,7 +37,6 @@ wifiIcon  = faIcon("  ")
 blueIcon  = faIcon("  ")
 batInIcon = faIcon("  ")
 batExIcon = faIcon("  ")
-
 ----- [ Time and date ] --------------------------------------------------------
 timeFormat = " %I:%M %P "
 dateFormat = " %A, %b %e "
@@ -49,7 +45,6 @@ localTime = wibox.widget.textclock(
   markup.color(theme_bg, theme_blue, timeFormat))
 localDate = wibox.widget.textclock(
   markup.color(theme_bg, theme_purple, dateFormat))
-
 ----- [ Front info ] -----------------------------------------------------------
 -- Placeholder text for initial load
 frontInfo = wibox.widget.textbox(
@@ -77,7 +72,6 @@ gears.timer {
 }
 
 ----- [ Volume indicator ] -----------------------------------------------------------
--- TODO: the rest of this file should get updated to use markup.color, oops
 volume = lain.widget.pulse( {
   settings = function()
     vlevel = volume_now.left .. "% "
@@ -94,12 +88,10 @@ volume = lain.widget.pulse( {
 })
 
 volInfo = volume.widget -- needed because lain is weird and different
-
 ----- [ Current Weather ] -----------------------------------------------------------
 weather = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/weather.sh]], 3600)
 moon    = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/moon.sh]], 3600)
 ----- [ Battery indicator ] ---------------------------------------------------------
-
 gears.timer {
   timeout = 5, -- seconds
   call_now = true,
@@ -142,9 +134,7 @@ batExInfo = awful.widget.watch([[
 
 -- Current wattage
 watts = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh]])
-
 ----- [ Networking ] -----------------------------------------------------------
-
 gears.timer {
   timeout = 5, -- seconds
   call_now = true,
@@ -170,12 +160,9 @@ gears.timer {
       end)
     end
 }
-
 ----- [ Stats ] -----------------------------------------------------------
-
 cpuInfo = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/cpu.sh]], 2)
 ramInfo = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/ram.sh]], 2)
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
-
