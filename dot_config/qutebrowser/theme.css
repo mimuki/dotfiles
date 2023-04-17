@@ -139,37 +139,12 @@
   .scrollerThemed-2oenus.themedWithTrack-q8E3vB
   .scroller-2FKFPG::-webkit-scrollbar-track-piece {
   background-color: var(--dracula-selection) !important;
-  border: 4px solid var(--dracula-background) !important;
-  border-radius: 8px !important;
-}
-/* Outlines */
-.scroller-kQBbkU,
-.form-3gdLxP,
-.members-3WRCEx,
-.scroller-1ox3I2,
-.panels-3wFtMD,
-.scroller-3X7KbA,
-.container-ZMc96U.themed-Hp1KC_,
-.header-3OsQeK,
-.searchBar-zdmu7v,
-.scroller-2LSbBU,
-.searchBar-3TnChZ,
-.peopleColumn-1wMU14,
-.container-3u6dG-,
-.scroller-9moviB,
-.nowPlayingColumn-1eCBCN,
-.header-2V-4Sw,
-.contentRegion-3HkfJJ {
-  border-color: var(--dracula-current-line) !important;
-  border-style: solid !important;
 }
 
 /* Settings Content Pane */
 .contentRegion-3HkfJJ {
   border-width: 0px !important;
 }
-
-
 
 
 /* --[ Borders and Focus ]--------------------------------------------------- */
@@ -183,13 +158,13 @@
 /* Channel List */
 .scroller-1ox3I2,
 /* User Area */
-.panels-3wFtMD,
+.panels-3wFtMD {
 /* Guilds list*/
-.tree-3agP2X,
+/*.tree-3agP2X,*/
 /* Channel Header */
-.container-ZMc96U.themed-Hp1KC_,
+/*.container-ZMc96U.themed-Hp1KC_,*/
 /* Guild header */
-.header-3OsQeK  {
+/*.header-3OsQeK  {*/
   border: var(--dracula-selection) solid;
   border-width: 4px !important;
 }
@@ -206,12 +181,6 @@
 }
 
 
-
-/* Guild Header */
- {
-  border-width: 4px !important;
-
-}
 /* Search Bar */
 .searchBar-zdmu7v {
   border-color: red !important;
