@@ -200,8 +200,8 @@ volume = lain.widget.pulse( {
     if volume_now.muted == "yes" then
       vlevel = volume_now.left .. "% "
       beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume_mute.png"
-      volIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.vol_icon, theme_fg)))      
-      markupColour(volInfo, theme_special, "#70759466", vlevel)
+      volIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.vol_icon, theme_orange)))      
+      markupColour(volInfo, theme_orange, "#70759466", vlevel)
     end
 
     if volume_now.muted == "no" then
@@ -327,7 +327,7 @@ ramIcon = wibox.widget.imagebox(gears.color.recolor_image(beautiful.ram_icon, th
 cpuInfo, cpuInfoTimer = awful.widget.watch(
   [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/cpu.sh]], 2,
   function(widget, out)
-    markupColour(cpuInfo, theme_fg, theme_bg, out)
+    cpuInfo.markup = markup.fg.color(theme_fg, out)
   end)
 ramInfo, ramInfoTimer = awful.widget.watch(
   [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/ram.sh]], 2,
