@@ -96,29 +96,28 @@ gears.timer {
           -- })
           if string.match(out, "Jade") then
             -- Set new theme colours
-            theme_red    = "#F38BA8"
-            theme_orange = "#ffb86c"
-            theme_yellow = "#F9E2AF"
+            theme_red    = "#B23636" -- 
+            theme_orange = "#F2854A" --
+            theme_yellow = "#664233"
             theme_green  = "#A6E3A1"
             theme_blue   = "#89B4FA"
             theme_purple = "#bd93f9"
-            theme_pink   = "#F5C2E7"
+            theme_pink   = "#992E2E"
 
-            theme_bg     = "#45475A"
-            theme_fg     = "#BAC2DE"
-            theme_select = "#585B70"
+            theme_bg     = "#F0DBD1" --
+            theme_fg     = "#4C3226" --
+            theme_select = "#BF9986"
             theme_special = "#A6ADC8"
 
-            beautiful.taglist_fg_empty = theme_select
             -- TODO: maybe just have theme accents above, since i wanna put these
             -- colours in their own files anyways it wouldn't change much i think
-            themeAccent(theme_green)
-            themeAccentAlt(theme_pink)
+            themeAccent(theme_red)
+            themeAccentAlt(theme_orange)
             themeBg(theme_bg)
 
             markupColour(frontInfo, theme_bg, theme_accent, out)
-            formatColour(localDate, theme_bg, theme_blue, dateFormat)
-            formatColour(localTime, theme_bg, theme_pink, timeFormat)
+            formatColour(localDate, theme_bg, theme_pink, dateFormat)
+            formatColour(localTime, theme_bg, theme_yellow, timeFormat)
           elseif string.match(out, "kala") then
 
             theme_red    = "#ff5555"
@@ -213,25 +212,32 @@ gears.timer {
     awful.spawn.easy_async("cat /sys/class/power_supply/BAT0/status",
       function(result)
         if string.match(result, "Discharging") then
-            batInIcon.markup = markup.fontfg(theme_icon, theme_red, "  ")
+            -- batInIcon.markup = markup.fontfg(theme_icon, theme_red, "  ")
+            markupColour(batInIcon, theme_red, theme_bg, "  ")
         end
         if string.match(result, "Not charging") then 
-            batInIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
+            -- batInIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
+            markupColour(batInIcon, theme_fg, theme_fg, "")
+
         end
         if string.match(result, "Charging") then 
-            batInIcon.markup = markup.fontfg(theme_icon, theme_blue, "  ")
+            markupColour(batInIcon, theme_blue, theme_bg, "  ")
+            -- batInIcon.markup = markup.fontfg(theme_icon, theme_blue, "  ")
         end
       end)
     awful.spawn.easy_async("cat /sys/class/power_supply/BAT1/status",
       function(result)
         if string.match(result, "Discharging") then
-            batExIcon.markup = markup.fontfg(theme_icon, theme_yellow, "  ")
+            markupColour(batExIcon, theme_orange, theme_bg, "  ")
+            -- batExIcon.markup = markup.fontfg(theme_icon, theme_yellow, "  ")
         end
         if string.match(result, "Not charging") then 
-            batExIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
+            markupColour(batInIcon, theme_fg, theme_fg, "")
+            -- batExIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
         end
         if string.match(result, "Charging") then 
-            batExIcon.markup = markup.fontfg(theme_icon, theme_green, "  ")
+            markupColour(batInIcon, theme_green, theme_bg, "  ")
+            -- batExIcon.markup = markup.fontfg(theme_icon, theme_green, "  ")
         end
       end)
     end
@@ -240,13 +246,22 @@ gears.timer {
 -- TODO: pad these to two digits, like the RAM and CPU widgets are
 batInInfo = awful.widget.watch([[
   awk '$0 > 5 && $0 <= 85 { printf( $0  "% ") }' /sys/class/power_supply/BAT0/capacity
-  ]])
+  ]], 5, function(widget, out)
+    markupColour(batInInfo, theme_fg, theme_bg, out)
+  end)
 batExInfo = awful.widget.watch([[
   awk '$0 > 5 && $0 <= 80 { printf( $0  "% ") }' /sys/class/power_supply/BAT1/capacity
-  ]])
+  ]], 5, function(widget, out)
+    markupColour(batExInfo, theme_fg, theme_bg, out)
+  end
+)
 
 -- Current wattage
-watts = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh]])
+watts = awful.widget.watch([[
+  bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh
+  ]], 5, function(widget, out)
+    markupColour(watts, theme_fg, theme_select, out)
+  end)
 ----- [ Networking ] -----------------------------------------------------------
 gears.timer {
   timeout = 5, -- seconds
@@ -256,19 +271,19 @@ gears.timer {
     awful.spawn.easy_async("wifi",
       function(result)
         if string.match(result, "on") then
-            wifiIcon.markup = markup.fontfg(theme_icon, theme_fg, "  ")
+            markupColour(wifiIcon, theme_fg, theme_bg, "  ")
         end
-        if string.match(result, "off") then 
-            wifiIcon.markup = markup.fontfg(theme_icon, theme_fg, "  ")
+        if string.match(result, "off") then
+            markupColour(wifiIcon, theme_red, theme_bg, "  ")
         end
       end)
     awful.spawn.easy_async("bluetooth",
       function(result)
         if string.match(result, "on") then
-            blueIcon.markup = markup.fontfg(theme_icon, theme_fg, "  ")
+            markupColour(blueIcon, theme_fg, theme_bg, "  ")
         end
         if string.match(result, "off") then 
-            blueIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
+            markupColour(blueIcon, theme_fg, theme_fg, "")
         end
       end)
     end
