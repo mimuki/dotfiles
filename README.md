@@ -23,3 +23,6 @@ All the things you need if you're me. Works by using [Chezmoi](https://github.co
 ## Examples
 ![rofi_filebrowser](./examples/rofi_filebrowser.png)
 ![awesome_qutebrowser](./examples/awesome_qutebrowser.png)
+
+## Attribution
+awesomeWM CPU/RAM/Volume/Battery icons are from [icons8](https://icons8.com/)

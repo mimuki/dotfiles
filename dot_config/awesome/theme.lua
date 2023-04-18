@@ -174,6 +174,11 @@ theme.terminal_icon = themes_path.."mimuki/icons/terminal.png"
 theme.folder_icon = themes_path.."mimuki/icons/folder.png"
 theme.window_icon = themes_path.."mimuki/icons/windows.png"
 theme.list_icon = themes_path.."mimuki/icons/list.png"
+-- theme.cpu_icon = themes_path.."mimuki/icons/logo.png"
+theme.cpu_icon = themes_path.."mimuki/icons/cpu.png"
+theme.ram_icon = themes_path.."mimuki/icons/ram.png"
+theme.vol_icon = themes_path.."mimuki/icons/logo.png"
+
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.

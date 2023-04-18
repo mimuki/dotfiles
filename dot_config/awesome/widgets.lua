@@ -21,19 +21,17 @@ local function faIcon( code )
   }
 end
 
-cpuIcon   = faIcon("")
-ramIcon   = faIcon("")
-volIcon   = faIcon("")
 wifiIcon  = faIcon("")
 blueIcon  = faIcon("")
-batInIcon = faIcon("")
-batExIcon = faIcon("")
 ----- [ Time and date ] --------------------------------------------------------
-timeFormat = " %I:%M %P "
-dateFormat = " %A, %b %e "
+timeFormat = " %I:%M %P "  -- 01:42 pm
+dateFormat = " %A, %b %e " -- Tuesday, Apr 18
 
 localTime = wibox.widget.textclock(
-  markup.color(theme_bg, theme_blue, timeFormat))
+   markup.color(theme_bg, theme_blue, timeFormat)
+
+  )
+
 localDate = wibox.widget.textclock(
   markup.color(theme_bg, theme_purple, dateFormat))
 ----- [ Front info ] -----------------------------------------------------------
@@ -76,10 +74,16 @@ gears.timer {
             -- colours in their own files anyways it wouldn't change much i think
             themeAccent(theme_red)
             themeAccentAlt(theme_orange)
+            themeSelect(theme_select)
+            themeBg(theme_bg)
+            themeFg(theme_fg)
+
+            awful.screen.focused().mytaglist._do_taglist_update()
 
             markupColour(frontInfo, theme_bg, theme_accent, out)
             formatColour(localDate, theme_bg, grylt_accent_lowlight, dateFormat)
             formatColour(localTime, theme_bg, theme_yellow, timeFormat)
+          
           elseif string.match(out, "kala") then
 
             theme_red    = "#ff5555"
@@ -97,11 +101,15 @@ gears.timer {
 
             themeAccent(theme_blue)
             themeAccentAlt(theme_green)
+            themeSelect(theme_select)
+            themeBg(theme_bg)
+            themeFg(theme_fg)
 
+            awful.screen.focused().mytaglist._do_taglist_update()
             markupColour(frontInfo, theme_bg, theme_accent, out)
             formatColour(localDate, theme_fg, theme_bg, dateFormat)
             formatColour(localTime, theme_accent, theme_bg, timeFormat)
-          elseif string.match(out, "Nathan") then
+          elseif string.match(out, "nathan") then
             theme_red    = hajke_red
             theme_orange = hajke_orange
             theme_yellow = hajke_yellow
@@ -117,6 +125,11 @@ gears.timer {
 
             themeAccent(theme_purple)
             themeAccentAlt(theme_pink)
+            themeSelect(theme_select)
+            themeBg(theme_bg)
+            themeFg(theme_fg)
+
+            awful.screen.focused().mytaglist._do_taglist_update()
 
             markupColour(frontInfo, theme_bg, theme_accent_alt, out)
             formatColour(localDate, theme_bg, theme_accent, dateFormat)
@@ -141,27 +154,27 @@ gears.timer {
             markupColour(frontInfo, theme_bg, theme_pink, out)
             formatColour(localDate, theme_bg, theme_purple, dateFormat)
             formatColour(localTime, theme_bg, theme_blue, timeFormat)
-            themeAccent(theme_purple)
-          end
-          themeBg(theme_bg)
-          themeSelect(theme_select)
+            awful.screen.focused().mytaglist._do_taglist_update()
 
+          end
+        
           volume.update() -- Volume widget colours
+
           -- Without this, taglist colours only change when focus changes
-          awful.screen.focused().mytaglist._do_taglist_update()
+          -- awful.screen.focused().mytaglist._do_taglist_update()
           
           weatherTimer:emit_signal("timeout")
+          cpuInfoTimer:emit_signal("timeout")
+          ramInfoTimer:emit_signal("timeout")
           batInInfoTimer:emit_signal("timeout")
           batExInfoTimer:emit_signal("timeout")
-          ramInfoTimer:emit_signal("timeout")
-          cpuInfoTimer:emit_signal("timeout")
           wattsTimer:emit_signal("timeout")
 
           -- Remove the current wibox and build a new one
           -- If i can find a way to update the bar's backgoround
           -- this might not be needed
-          awful.screen.focused().mywibox.visible = false
-          build_panel(awful.screen.focused())
+          -- awful.screen.focused().mywibox.visible = false
+          -- build_panel(awful.screen.focused())
 
         -- else -- if front didn't change
         --   naughty.notify(
@@ -169,36 +182,55 @@ gears.timer {
         --       title = "Front was the same",
         --       text = "This should do a thing"
         --     })
-        end
+            end
         end
     )
   end
 }
 ----- [ Volume indicator ] -----------------------------------------------------------
+volIcon = wibox.widget.imagebox("/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume.png"  )
+
 volume = lain.widget.pulse( {
   settings = function()
     vlevel = volume_now.left .. "% "
-    markupColour(volIcon, theme_fg, theme_select, "  ")
+    -- markupColour(volIcon, theme_fg, theme_select, "  ")
     if volume_now.muted == "yes" then
-      -- widget:set_markup(lain.util.markup(theme_special, vlevel))
-      markupColour(volInfo, theme_special, theme_select, vlevel)
+      vlevel = volume_now.left .. "% "
+      beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume_mute.png"
+      volIcon:set_image(gears.surface.load_uncached(beautiful.vol_icon))      
+      markupColour(volInfo, theme_special, "#70759466", vlevel)
     end
 
     if volume_now.muted == "no" then
       widget:set_markup(lain.util.markup(theme_fg, vlevel))
-      markupColour(volInfo, theme_fg, theme_select, vlevel)
+      markupColour(volInfo, theme_fg, "#70759466", vlevel)
+
+      if volume_now.left <= "30" then 
+      beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume_low.png"
+      volIcon:set_image(gears.surface.load_uncached(beautiful.vol_icon)) 
+
+      else
+      beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume.png"
+      volIcon:set_image(gears.surface.load_uncached(beautiful.vol_icon))  
+      end
     end
   end
 })
 
 volInfo = volume.widget -- needed because lain is weird and different
+
 ----- [ Current Weather ] -----------------------------------------------------------
 weather, weatherTimer = awful.widget.watch(
   [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/weather.sh]], 3600, 
   function(widget, out)
-    markupColour(weather, theme_fg, theme_select, out)
+    markupColour(weather, theme_fg, "#70759466", out)
   end)
-moon    = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/moon.sh]], 3600)
+-- moon    = awful.widget.watch([[
+--   bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/moon.sh]], 3600,
+--   function(widget, out)
+--     markupColour(moon, theme_fg, theme_bg, out)
+--   end)
+
 ----- [ Battery indicator ] ---------------------------------------------------------
 gears.timer {
   timeout = 5, -- seconds
@@ -208,39 +240,44 @@ gears.timer {
     awful.spawn.easy_async("cat /sys/class/power_supply/BAT0/status",
       function(result)
         if string.match(result, "Discharging") then
-            markupColour(batInIcon, theme_red, theme_bg, "  ")
+            -- batInIcon.markup = markup.fontfg(theme_icon, theme_red, "  ")
+            -- markupColour(batInIcon, theme_red, theme_bg, "  ")
         end
         if string.match(result, "Not charging") then 
-            markupColour(batInIcon, theme_fg, theme_fg, "")
+            -- batInIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
+            -- markupColour(batInIcon, theme_fg, theme_fg, "")
 
         end
         if string.match(result, "Charging") then 
-            markupColour(batInIcon, theme_blue, theme_bg, "  ")
+            -- markupColour(batInIcon, theme_blue, theme_bg, "  ")
+            -- batInIcon.markup = markup.fontfg(theme_icon, theme_blue, "  ")
         end
       end)
     awful.spawn.easy_async("cat /sys/class/power_supply/BAT1/status",
       function(result)
         if string.match(result, "Discharging") then
-            markupColour(batExIcon, theme_orange, theme_bg, "  ")
+            -- markupColour(batExIcon, theme_orange, theme_bg, "  ")
+            -- batExIcon.markup = markup.fontfg(theme_icon, theme_yellow, "  ")
         end
         if string.match(result, "Not charging") then 
-            markupColour(batExIcon, theme_fg, theme_fg, "")
+            -- markupColour(batInIcon, theme_fg, theme_fg, "")
+            -- batExIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
         end
         if string.match(result, "Charging") then 
-            markupColour(batExIcon, theme_green, theme_bg, "  ")
+            -- markupColour(batInIcon, theme_green, theme_bg, "  ")
+            -- batExIcon.markup = markup.fontfg(theme_icon, theme_green, "  ")
         end
       end)
     end
 }
-
 -- TODO: pad these to two digits, like the RAM and CPU widgets are
 batInInfo, batInInfoTimer = awful.widget.watch([[
-  awk '$0 > 5 && $0 <= 85 { printf( $0  "% ") }' /sys/class/power_supply/BAT0/capacity
+  awk '$0 > 5 && $0 <= 85 { printf( " I:" $0  "% ") }' /sys/class/power_supply/BAT0/capacity
   ]], 5, function(widget, out)
     markupColour(batInInfo, theme_fg, theme_bg, out)
   end)
 batExInfo, batExInfoTimer = awful.widget.watch([[
-  awk '$0 > 5 && $0 <= 80 { printf( $0  "% ") }' /sys/class/power_supply/BAT1/capacity
+  awk '$0 > 5 && $0 <= 80 { printf( " E:" $0  "% ") }' /sys/class/power_supply/BAT1/capacity
   ]], 5, function(widget, out)
     markupColour(batExInfo, theme_fg, theme_bg, out)
   end
@@ -250,7 +287,7 @@ batExInfo, batExInfoTimer = awful.widget.watch([[
 watts, wattsTimer = awful.widget.watch([[
   bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh
   ]], 5, function(widget, out)
-    markupColour(watts, theme_fg, theme_select, out)
+    markupColour(watts, theme_fg, "#70759466", out)
   end)
 ----- [ Networking ] -----------------------------------------------------------
 gears.timer {
@@ -261,7 +298,7 @@ gears.timer {
     awful.spawn.easy_async("wifi",
       function(result)
         if string.match(result, "on") then
-            markupColour(wifiIcon, theme_fg, theme_bg, "  ")
+            markupColour(wifiIcon, theme_fg, theme_bg, "")
         end
         if string.match(result, "off") then
             markupColour(wifiIcon, theme_red, theme_bg, "  ")
@@ -279,17 +316,22 @@ gears.timer {
     end
 }
 ----- [ Stats ] -----------------------------------------------------------
+cpuIcon = wibox.widget.imagebox(gears.color.recolor_image(beautiful.cpu_icon, theme_fg))
+ramImage = wibox.widget.imagebox(gears.color.recolor_image(beautiful.ram_icon, theme_fg))
+
+ramIcon = wibox.widget.background()
+ramIcon:set_widget(ramImage)
+ramIcon:set_bg("#70759466")
+
 cpuInfo, cpuInfoTimer = awful.widget.watch(
   [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/cpu.sh]], 2,
   function(widget, out)
     markupColour(cpuInfo, theme_fg, theme_bg, out)
-    markupColour(cpuIcon, theme_fg, theme_bg, "  ")
   end)
 ramInfo, ramInfoTimer = awful.widget.watch(
   [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/ram.sh]], 2,
   function(widget, out)
-    markupColour(ramInfo, theme_fg, theme_select, out)
-    markupColour(ramIcon, theme_fg, theme_select, "  ")
+    markupColour(ramInfo, theme_fg, "#70759466", out)
   end)
 
 -- Keyboard map indicator and switcher

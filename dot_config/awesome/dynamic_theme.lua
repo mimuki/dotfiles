@@ -1,5 +1,6 @@
 require("themes.mimuki.members.main")
 
+
 ----- [ Colours ] --------------------------------------------------------------
 -- Change the foreground and background colour of a widget
 -- For widgets with custom formats (i.e. textclocks), not textboxes
@@ -15,6 +16,7 @@ end
 -- Changes Awesome's theme to a certain colour
 function themeBg(colour)
   theme_bg = colour 
+  awful.screen.focused().mywibox.bg = colour
   beautiful.bg_normal = colour
   beautiful.bg_systray = colour
   beautiful.titlebar_fg_focus = colour
@@ -23,6 +25,15 @@ function themeBg(colour)
   beautiful.taglist_bg_occupied = colour
   beautiful.taglist_bg_urgent = colour
   beautiful.taglist_bg_empty = colour
+
+end
+
+function themeFg(colour)
+  theme_fg = colour
+  cpuIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.cpu_icon, colour)))
+  ramImage:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.ram_icon, colour)))
+  volImage:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.vol_icon, colour))) 
+
 end
 
 function themeAccent(colour)
@@ -46,4 +57,6 @@ function themeSelect(colour)
   beautiful.border_normal = colour
   beautiful.titlebar_bg_normal = colour 
   beautiful.taglist_fg_empty = colour
+  -- ramIcon:set_bg(colour)
+  -- volIcon:set_bg(colour)
 end
