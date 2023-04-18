@@ -109,7 +109,7 @@ gears.timer {
             markupColour(frontInfo, theme_bg, theme_accent, out)
             formatColour(localDate, theme_fg, theme_bg, dateFormat)
             formatColour(localTime, theme_accent, theme_bg, timeFormat)
-          elseif string.match(out, "nathan") then
+          elseif string.match(out, "Nathan") then
             theme_red    = hajke_red
             theme_orange = hajke_orange
             theme_yellow = hajke_yellow
