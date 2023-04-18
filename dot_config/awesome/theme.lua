@@ -96,6 +96,8 @@ theme.tooltip_border_color = theme_accent_alt
 -- notification_[bg|fg]
 -- notification_[width|height|margin]
 -- notification_[border_color|border_width|shape|opacity]
+theme.notifcation_bg = theme_bg
+theme.notifcation_fg = theme_fg
 
 theme.notification_border_color = theme_accent_alt
 theme.notification_border_width = theme_border_width

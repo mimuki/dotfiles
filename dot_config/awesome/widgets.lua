@@ -200,7 +200,7 @@ volume = lain.widget.pulse( {
     if volume_now.muted == "yes" then
       vlevel = volume_now.left .. "% "
       beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume_mute.png"
-      volIcon:set_image(gears.surface.load_uncached(beautiful.vol_icon))      
+      volIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.vol_icon, theme_fg)))      
       markupColour(volInfo, theme_special, "#70759466", vlevel)
     end
 
@@ -210,11 +210,12 @@ volume = lain.widget.pulse( {
 
       if volume_now.left <= "30" then 
       beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume_low.png"
-      volIcon:set_image(gears.surface.load_uncached(beautiful.vol_icon)) 
+      volIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.vol_icon, theme_fg)))      
 
       else
       beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume.png"
-      volIcon:set_image(gears.surface.load_uncached(beautiful.vol_icon))  
+      volIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.vol_icon, theme_fg)))      
+
       end
     end
   end
@@ -277,12 +278,13 @@ gears.timer {
 batInInfo, batInInfoTimer = awful.widget.watch([[
   awk '$0 > 5 && $0 <= 85 { printf( " I:" $0  "% ") }' /sys/class/power_supply/BAT0/capacity
   ]], 5, function(widget, out)
-    markupColour(batInInfo, theme_fg, theme_bg, out)
+    batInInfo.markup = markup.fg.color(theme_fg, out)
   end)
 batExInfo, batExInfoTimer = awful.widget.watch([[
   awk '$0 > 5 && $0 <= 80 { printf( " E:" $0  "% ") }' /sys/class/power_supply/BAT1/capacity
   ]], 5, function(widget, out)
-    markupColour(batExInfo, theme_fg, theme_bg, out)
+    batExInfo.markup = markup.fg.color(theme_fg, out)
+
   end
 )
 

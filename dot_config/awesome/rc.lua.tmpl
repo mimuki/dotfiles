@@ -173,11 +173,11 @@ function build_panel(s)
       -- Display battery information
       -- This section was added automatically by chezmoi
       wibox.container.background(batInInfo, theme_bg),
-      wibox.container.background(batExInfo, theme_bg),
+      batExInfo,
       watts,
       {{- end }}
       wibox.container.background(localTime, theme_blue)
-      
+
     }
   }
 end
