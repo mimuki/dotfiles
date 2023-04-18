@@ -144,7 +144,7 @@ function build_panel(s)
       cpuIcon,
       cpuInfo,
 
-      ramIcon,
+      wibox.container.background(ramIcon, "#70759466"),
       ramInfo,
 
 
@@ -167,14 +167,14 @@ function build_panel(s)
       -- wibox.container.background(s.mylayoutbox, theme_bg),
       
       wibox.container.background(volIcon, "#70759466"),
-      wibox.container.background(volInfo, "#70759466"),
+      volInfo, 
 
       {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
       -- Display battery information
       -- This section was added automatically by chezmoi
       wibox.container.background(batInInfo, theme_bg),
       wibox.container.background(batExInfo, theme_bg),
-      wibox.container.background(watts, "#70759466"),
+      watts,
       wibox.container.background(localTime, theme_blue)
 
       {{- end }}

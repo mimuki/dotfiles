@@ -150,7 +150,10 @@ gears.timer {
 
             themeAccent(theme_purple)
             themeAccentAlt(theme_pink)
-
+            themeSelect(theme_select)
+            themeBg(theme_bg)
+            themeFg(theme_fg)
+            
             markupColour(frontInfo, theme_bg, theme_pink, out)
             formatColour(localDate, theme_bg, theme_purple, dateFormat)
             formatColour(localTime, theme_bg, theme_blue, timeFormat)
@@ -317,11 +320,7 @@ gears.timer {
 }
 ----- [ Stats ] -----------------------------------------------------------
 cpuIcon = wibox.widget.imagebox(gears.color.recolor_image(beautiful.cpu_icon, theme_fg))
-ramImage = wibox.widget.imagebox(gears.color.recolor_image(beautiful.ram_icon, theme_fg))
-
-ramIcon = wibox.widget.background()
-ramIcon:set_widget(ramImage)
-ramIcon:set_bg("#70759466")
+ramIcon = wibox.widget.imagebox(gears.color.recolor_image(beautiful.ram_icon, theme_fg))
 
 cpuInfo, cpuInfoTimer = awful.widget.watch(
   [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/cpu.sh]], 2,

@@ -31,8 +31,8 @@ end
 function themeFg(colour)
   theme_fg = colour
   cpuIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.cpu_icon, colour)))
-  ramImage:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.ram_icon, colour)))
-  volImage:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.vol_icon, colour))) 
+  ramIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.ram_icon, colour)))
+  volIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.vol_icon, colour))) 
 
 end
 
