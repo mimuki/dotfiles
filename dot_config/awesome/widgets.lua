@@ -3,49 +3,12 @@
 --------------------------------------------------------------------------------
 
 ----- [ Dependencies ] ---------------------------------------------------------
-local lain = require("lain")
-local markup = lain.util.markup
-local separators = lain.util.separators
+lain = require("lain")
+markup = lain.util.markup
+separators = lain.util.separators
 require("vars")
------ [ Colours ] --------------------------------------------------------------
--- Change the foreground and background colour of a widget
--- For widgets with custom formats (i.e. textclocks), not textboxes
-function formatColour(widget, fg, bg, text)
-  widget.format = "<span foreground='" .. fg .. "' background='" .. bg .. "'>" .. text .. "</span>"
-end
--- Change the foreground and background colour of a widget
--- For widgets with custom markup (i.e. text boxes)
-function markupColour(widget, fg, bg, text)
-  widget.markup = markup.color(fg, bg, text)
-end
+require("dynamic_theme")
 
--- Changes Awesome's theme to a certain colour
-function themeBg(colour)
-  theme_bg = colour 
-  beautiful.bg_normal = colour
-  beautiful.bg_systray = colour
-  beautiful.titlebar_fg_focus = colour
-  beautiful.titlebar_fg_urgent = colour
-  beautiful.taglist_bg_focus = colour
-  beautiful.taglist_bg_occupied = colour
-  beautiful.taglist_bg_urgent = colour
-  beautiful.taglist_bg_empty = colour
-end
-
-function themeAccent(colour)
-  theme_accent = colour
-  beautiful.taglist_fg_focus = colour
-  beautiful.border_focus = colour
-  beautiful.titlebar_bg_focus = colour 
-
-end
-
-function themeAccentAlt(colour)
-  theme_accent_alt = colour
-  beautiful.hotkeys_border_color = colour  -- TODO: doesnt seem to update properly
-  beautiful.tooltip_border_color = colour
-  beautiful.notification_border_color = colour
-end
 ----- [ Font Awesome ] --------------------------------------------------------
 -- Use to create a widget that's just a Font Awesome icon
 local function faIcon( code )
@@ -61,10 +24,10 @@ end
 cpuIcon   = faIcon("")
 ramIcon   = faIcon("")
 volIcon   = faIcon("")
-wifiIcon  = faIcon("  ")
-blueIcon  = faIcon("  ")
-batInIcon = faIcon("  ")
-batExIcon = faIcon("  ")
+wifiIcon  = faIcon("")
+blueIcon  = faIcon("")
+batInIcon = faIcon("")
+batExIcon = faIcon("")
 ----- [ Time and date ] --------------------------------------------------------
 timeFormat = " %I:%M %P "
 dateFormat = " %A, %b %e "
@@ -187,6 +150,7 @@ gears.timer {
 volume = lain.widget.pulse( {
   settings = function()
     vlevel = volume_now.left .. "% "
+    markupColour(volIcon, theme_fg, theme_select, "  ")
     if volume_now.muted == "yes" then
       -- widget:set_markup(lain.util.markup(theme_special, vlevel))
       markupColour(volInfo, theme_special, theme_select, vlevel)
@@ -201,7 +165,8 @@ volume = lain.widget.pulse( {
 
 volInfo = volume.widget -- needed because lain is weird and different
 ----- [ Current Weather ] -----------------------------------------------------------
-weather = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/weather.sh]], 3600)
+weather = awful.widget.watch(
+  [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/weather.sh]], 3600)
 moon    = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/moon.sh]], 3600)
 ----- [ Battery indicator ] ---------------------------------------------------------
 gears.timer {
@@ -212,32 +177,26 @@ gears.timer {
     awful.spawn.easy_async("cat /sys/class/power_supply/BAT0/status",
       function(result)
         if string.match(result, "Discharging") then
-            -- batInIcon.markup = markup.fontfg(theme_icon, theme_red, "  ")
             markupColour(batInIcon, theme_red, theme_bg, "  ")
         end
         if string.match(result, "Not charging") then 
-            -- batInIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
             markupColour(batInIcon, theme_fg, theme_fg, "")
 
         end
         if string.match(result, "Charging") then 
             markupColour(batInIcon, theme_blue, theme_bg, "  ")
-            -- batInIcon.markup = markup.fontfg(theme_icon, theme_blue, "  ")
         end
       end)
     awful.spawn.easy_async("cat /sys/class/power_supply/BAT1/status",
       function(result)
         if string.match(result, "Discharging") then
             markupColour(batExIcon, theme_orange, theme_bg, "  ")
-            -- batExIcon.markup = markup.fontfg(theme_icon, theme_yellow, "  ")
         end
         if string.match(result, "Not charging") then 
-            markupColour(batInIcon, theme_fg, theme_fg, "")
-            -- batExIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
+            markupColour(batExIcon, theme_fg, theme_fg, "")
         end
         if string.match(result, "Charging") then 
-            markupColour(batInIcon, theme_green, theme_bg, "  ")
-            -- batExIcon.markup = markup.fontfg(theme_icon, theme_green, "  ")
+            markupColour(batExIcon, theme_green, theme_bg, "  ")
         end
       end)
     end
@@ -289,8 +248,18 @@ gears.timer {
     end
 }
 ----- [ Stats ] -----------------------------------------------------------
-cpuInfo = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/cpu.sh]], 2)
-ramInfo = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/ram.sh]], 2)
+cpuInfo = awful.widget.watch(
+  [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/cpu.sh]], 2,
+  function(widget, out)
+    markupColour(cpuInfo, theme_fg, theme_bg, out)
+    markupColour(cpuIcon, theme_fg, theme_bg, "  ")
+  end)
+ramInfo = awful.widget.watch(
+  [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/ram.sh]], 2,
+  function(widget, out)
+    markupColour(ramInfo, theme_fg, theme_select, out)
+    markupColour(ramIcon, theme_fg, theme_select, "  ")
+  end)
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
