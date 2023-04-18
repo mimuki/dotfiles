@@ -139,11 +139,12 @@ function build_panel(s)
       wibox.container.background(mainLauncher, theme_select),
       frontInfo,
       localDate,
-      wibox.container.background(weather, theme_select),
+      weather,
 
-      wibox.container.background(cpuIcon, theme_bg),
-      wibox.container.background(cpuInfo, theme_bg),
-
+      cpuIcon,
+      cpuInfo,
+      -- the icon we're using for the icons is shorter than main font
+      -- would be nice to either fix that or switch to pngs
       wibox.container.background(ramIcon, theme_select),
       wibox.container.background(ramInfo, theme_select),
 

@@ -76,8 +76,6 @@ gears.timer {
             -- colours in their own files anyways it wouldn't change much i think
             themeAccent(theme_red)
             themeAccentAlt(theme_orange)
-            themeBg(theme_bg)
-            themeSelect(theme_select)
 
             markupColour(frontInfo, theme_bg, theme_accent, out)
             formatColour(localDate, theme_bg, grylt_accent_lowlight, dateFormat)
@@ -99,12 +97,30 @@ gears.timer {
 
             themeAccent(theme_blue)
             themeAccentAlt(theme_green)
-            themeBg(theme_bg)
-            themeSelect(theme_select)
 
             markupColour(frontInfo, theme_bg, theme_accent, out)
             formatColour(localDate, theme_fg, theme_bg, dateFormat)
             formatColour(localTime, theme_accent, theme_bg, timeFormat)
+          elseif string.match(out, "Nathan") then
+            theme_red    = hajke_red
+            theme_orange = hajke_orange
+            theme_yellow = hajke_yellow
+            theme_green  = hajke_green
+            theme_blue   = hajke_blue
+            theme_purple = hajke_purple
+            theme_pink   = hajke_pink
+
+            theme_bg     = hajke_bg
+            theme_fg     = hajke_fg
+            theme_select = hajke_select
+            theme_special = hajke_special
+
+            themeAccent(theme_purple)
+            themeAccentAlt(theme_pink)
+
+            markupColour(frontInfo, theme_bg, theme_accent_alt, out)
+            formatColour(localDate, theme_bg, theme_accent, dateFormat)
+            formatColour(localTime, theme_blue, theme_bg, timeFormat)
           else 
             theme_red    = "#ff5555"
             theme_orange = "#ffb86c"
@@ -121,18 +137,19 @@ gears.timer {
 
             themeAccent(theme_purple)
             themeAccentAlt(theme_pink)
-            themeBg(theme_bg)
-            themeSelect(theme_select)
 
             markupColour(frontInfo, theme_bg, theme_pink, out)
             formatColour(localDate, theme_bg, theme_purple, dateFormat)
             formatColour(localTime, theme_bg, theme_blue, timeFormat)
             themeAccent(theme_purple)
           end
+          themeBg(theme_bg)
+          themeSelect(theme_select)
 
           volume.update() -- Volume widget colours
           -- Without this, taglist colours only change when focus changes
           awful.screen.focused().mytaglist._do_taglist_update()
+          
           weatherTimer:emit_signal("timeout")
           batInInfoTimer:emit_signal("timeout")
           batExInfoTimer:emit_signal("timeout")
