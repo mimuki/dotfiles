@@ -172,7 +172,7 @@ function build_panel(s)
       {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
       -- Display battery information
       -- This section was added automatically by chezmoi
-      wibox.container.background(batInInfo, theme_bg),
+      batInInfo,
       batExInfo,
       watts,
       {{- end }}
