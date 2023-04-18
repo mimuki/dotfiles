@@ -59,27 +59,28 @@ gears.timer {
           -- })
           if string.match(out, "Jade") then
             -- Set new theme colours
-            theme_red    = "#B23636" -- 
-            theme_orange = "#F2854A" --
-            theme_yellow = "#664233"
-            theme_green  = "#A6E3A1"
-            theme_blue   = "#89B4FA"
-            theme_purple = "#bd93f9"
-            theme_pink   = "#992E2E"
+            theme_red    = grylt_red
+            theme_orange = grylt_orange
+            theme_yellow = grylt_yellow
+            theme_green  = grylt_green
+            theme_blue   = grylt_blue
+            theme_purple = grylt_purple
+            theme_pink   = grylt_pink
 
-            theme_bg     = "#F0DBD1" --
-            theme_fg     = "#4C3226" --
-            theme_select = "#BF9986"
-            theme_special = "#A6ADC8"
+            theme_bg     = grylt_bg
+            theme_fg     = grylt_fg
+            theme_select = grylt_select
+            theme_special = grylt_special
 
             -- TODO: maybe just have theme accents above, since i wanna put these
             -- colours in their own files anyways it wouldn't change much i think
             themeAccent(theme_red)
             themeAccentAlt(theme_orange)
             themeBg(theme_bg)
+            themeSelect(theme_select)
 
             markupColour(frontInfo, theme_bg, theme_accent, out)
-            formatColour(localDate, theme_bg, theme_pink, dateFormat)
+            formatColour(localDate, theme_bg, grylt_accent_lowlight, dateFormat)
             formatColour(localTime, theme_bg, theme_yellow, timeFormat)
           elseif string.match(out, "kala") then
 
@@ -99,6 +100,7 @@ gears.timer {
             themeAccent(theme_blue)
             themeAccentAlt(theme_green)
             themeBg(theme_bg)
+            themeSelect(theme_select)
 
             markupColour(frontInfo, theme_bg, theme_accent, out)
             formatColour(localDate, theme_fg, theme_bg, dateFormat)
@@ -120,6 +122,7 @@ gears.timer {
             themeAccent(theme_purple)
             themeAccentAlt(theme_pink)
             themeBg(theme_bg)
+            themeSelect(theme_select)
 
             markupColour(frontInfo, theme_bg, theme_pink, out)
             formatColour(localDate, theme_bg, theme_purple, dateFormat)
@@ -130,8 +133,16 @@ gears.timer {
           volume.update() -- Volume widget colours
           -- Without this, taglist colours only change when focus changes
           awful.screen.focused().mytaglist._do_taglist_update()
+          weatherTimer:emit_signal("timeout")
+          batInInfoTimer:emit_signal("timeout")
+          batExInfoTimer:emit_signal("timeout")
+          ramInfoTimer:emit_signal("timeout")
+          cpuInfoTimer:emit_signal("timeout")
+          wattsTimer:emit_signal("timeout")
 
           -- Remove the current wibox and build a new one
+          -- If i can find a way to update the bar's backgoround
+          -- this might not be needed
           awful.screen.focused().mywibox.visible = false
           build_panel(awful.screen.focused())
 
@@ -165,8 +176,11 @@ volume = lain.widget.pulse( {
 
 volInfo = volume.widget -- needed because lain is weird and different
 ----- [ Current Weather ] -----------------------------------------------------------
-weather = awful.widget.watch(
-  [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/weather.sh]], 3600)
+weather, weatherTimer = awful.widget.watch(
+  [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/weather.sh]], 3600, 
+  function(widget, out)
+    markupColour(weather, theme_fg, theme_select, out)
+  end)
 moon    = awful.widget.watch([[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/moon.sh]], 3600)
 ----- [ Battery indicator ] ---------------------------------------------------------
 gears.timer {
@@ -203,12 +217,12 @@ gears.timer {
 }
 
 -- TODO: pad these to two digits, like the RAM and CPU widgets are
-batInInfo = awful.widget.watch([[
+batInInfo, batInInfoTimer = awful.widget.watch([[
   awk '$0 > 5 && $0 <= 85 { printf( $0  "% ") }' /sys/class/power_supply/BAT0/capacity
   ]], 5, function(widget, out)
     markupColour(batInInfo, theme_fg, theme_bg, out)
   end)
-batExInfo = awful.widget.watch([[
+batExInfo, batExInfoTimer = awful.widget.watch([[
   awk '$0 > 5 && $0 <= 80 { printf( $0  "% ") }' /sys/class/power_supply/BAT1/capacity
   ]], 5, function(widget, out)
     markupColour(batExInfo, theme_fg, theme_bg, out)
@@ -216,7 +230,7 @@ batExInfo = awful.widget.watch([[
 )
 
 -- Current wattage
-watts = awful.widget.watch([[
+watts, wattsTimer = awful.widget.watch([[
   bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh
   ]], 5, function(widget, out)
     markupColour(watts, theme_fg, theme_select, out)
@@ -248,13 +262,13 @@ gears.timer {
     end
 }
 ----- [ Stats ] -----------------------------------------------------------
-cpuInfo = awful.widget.watch(
+cpuInfo, cpuInfoTimer = awful.widget.watch(
   [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/cpu.sh]], 2,
   function(widget, out)
     markupColour(cpuInfo, theme_fg, theme_bg, out)
     markupColour(cpuIcon, theme_fg, theme_bg, "  ")
   end)
-ramInfo = awful.widget.watch(
+ramInfo, ramInfoTimer = awful.widget.watch(
   [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/ram.sh]], 2,
   function(widget, out)
     markupColour(ramInfo, theme_fg, theme_select, out)
