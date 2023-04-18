@@ -1,4 +1,4 @@
---------------------------------------------------------------------------------
+ --------------------------------------------------------------------------------
 --                                widgets.lua                                 --
 --------------------------------------------------------------------------------
 
@@ -20,10 +20,31 @@ function markupColour(widget, fg, bg, text)
 end
 
 -- Changes Awesome's theme to a certain colour
--- Known issue: these don't update until you change tag/focus
+function themeBg(colour)
+  theme_bg = colour 
+  beautiful.bg_normal = colour
+  beautiful.bg_systray = colour
+  beautiful.titlebar_fg_focus = colour
+  beautiful.titlebar_fg_urgent = colour
+  beautiful.taglist_bg_focus = colour
+  beautiful.taglist_bg_occupied = colour
+  beautiful.taglist_bg_urgent = colour
+  beautiful.taglist_bg_empty = colour
+end
+
 function themeAccent(colour)
+  theme_accent = colour
   beautiful.taglist_fg_focus = colour
   beautiful.border_focus = colour
+  beautiful.titlebar_bg_focus = colour 
+
+end
+
+function themeAccentAlt(colour)
+  theme_accent_alt = colour
+  beautiful.hotkeys_border_color = colour  -- TODO: doesnt seem to update properly
+  beautiful.tooltip_border_color = colour
+  beautiful.notification_border_color = colour
 end
 ----- [ Font Awesome ] --------------------------------------------------------
 -- Use to create a widget that's just a Font Awesome icon
@@ -66,29 +87,103 @@ gears.timer {
       "bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/front.sh",
       function(out)
       -- Custom colours for specific headmates
-        if string.match(out, "Jade") then
-          markupColour(frontInfo, theme_bg, "#A6E3A1", out)
-          formatColour(localDate, theme_bg, "#89B4FA", dateFormat)
-          formatColour(localTime, theme_bg, "#F5C2E7", timeFormat)
-          themeAccent(theme_green)
-        elseif string.match(out, "kala") then
-          markupColour(frontInfo, theme_bg, "#5988FF", out)
-          formatColour(localDate, theme_fg, theme_bg, dateFormat)
-          formatColour(localTime, theme_bg, "#5988FF", timeFormat)
-          themeAccent("#5988FF")
+        if out ~= lastFront then -- front changed
+          lastFront = out
+          -- naughty.notify(
+          -- {
+          --   title = "Front was different",
+          --   text = "This should do a thing"
+          -- })
+          if string.match(out, "Jade") then
+            -- Set new theme colours
+            theme_red    = "#F38BA8"
+            theme_orange = "#ffb86c"
+            theme_yellow = "#F9E2AF"
+            theme_green  = "#A6E3A1"
+            theme_blue   = "#89B4FA"
+            theme_purple = "#bd93f9"
+            theme_pink   = "#F5C2E7"
 
-        else
-          markupColour(frontInfo, theme_bg, theme_pink, out)
-          formatColour(localDate, theme_bg, theme_purple, dateFormat)
-          formatColour(localTime, theme_bg, theme_blue, timeFormat)
-          themeAccent(theme_purple)
+            theme_bg     = "#45475A"
+            theme_fg     = "#BAC2DE"
+            theme_select = "#585B70"
+            theme_special = "#A6ADC8"
 
+            beautiful.taglist_fg_empty = theme_select
+            -- TODO: maybe just have theme accents above, since i wanna put these
+            -- colours in their own files anyways it wouldn't change much i think
+            themeAccent(theme_green)
+            themeAccentAlt(theme_pink)
+            themeBg(theme_bg)
+
+            markupColour(frontInfo, theme_bg, theme_accent, out)
+            formatColour(localDate, theme_bg, theme_blue, dateFormat)
+            formatColour(localTime, theme_bg, theme_pink, timeFormat)
+          elseif string.match(out, "kala") then
+
+            theme_red    = "#ff5555"
+            theme_orange = "#ffb86c"
+            theme_yellow = "#f1fa8c"
+            theme_green  = "#50fa7b"
+            theme_blue   = "#5988FF"
+            theme_purple = "#bd93f9"
+            theme_pink   = "#ff79c6"
+
+            theme_bg     = "#282a36"
+            theme_fg     = "#f8f8f2"
+            theme_select = "#44475a"
+            theme_special = "#6272a4"
+
+            themeAccent(theme_blue)
+            themeAccentAlt(theme_green)
+            themeBg(theme_bg)
+
+            markupColour(frontInfo, theme_bg, theme_accent, out)
+            formatColour(localDate, theme_fg, theme_bg, dateFormat)
+            formatColour(localTime, theme_accent, theme_bg, timeFormat)
+          else 
+            theme_red    = "#ff5555"
+            theme_orange = "#ffb86c"
+            theme_yellow = "#f1fa8c"
+            theme_green  = "#50fa7b"
+            theme_blue   = "#8be9fd"
+            theme_purple = "#bd93f9"
+            theme_pink   = "#ff79c6"
+
+            theme_bg     = "#282a36"
+            theme_fg     = "#f8f8f2"
+            theme_select = "#44475a"
+            theme_special = "#6272a4"
+
+            themeAccent(theme_purple)
+            themeAccentAlt(theme_pink)
+            themeBg(theme_bg)
+
+            markupColour(frontInfo, theme_bg, theme_pink, out)
+            formatColour(localDate, theme_bg, theme_purple, dateFormat)
+            formatColour(localTime, theme_bg, theme_blue, timeFormat)
+            themeAccent(theme_purple)
+          end
+
+          volume.update() -- Volume widget colours
+          -- Without this, taglist colours only change when focus changes
+          awful.screen.focused().mytaglist._do_taglist_update()
+
+          -- Remove the current wibox and build a new one
+          awful.screen.focused().mywibox.visible = false
+          build_panel(awful.screen.focused())
+
+        -- else -- if front didn't change
+        --   naughty.notify(
+        --     {
+        --       title = "Front was the same",
+        --       text = "This should do a thing"
+        --     })
         end
-      end
+        end
     )
   end
 }
-
 ----- [ Volume indicator ] -----------------------------------------------------------
 volume = lain.widget.pulse( {
   settings = function()

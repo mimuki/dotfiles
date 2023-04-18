@@ -15,7 +15,7 @@ wibox = require("wibox")
 -- Theme handling library
 beautiful = require("beautiful")
 -- Notification library
-local naughty = require("naughty")
+naughty = require("naughty")
 local menubar = require("menubar")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
@@ -119,15 +119,14 @@ mainLauncher = awful.widget.launcher(
     menu = mainMenu,
   })
 function build_panel(s)
-  -- destroy old panel if it's there (widgets.lua told it to update)
-  if s.mywibox then s.mywibox:remove() end
-
   -- Create the wibox
   s.mywibox = awful.wibar(
   { 
     position = "top", 
     screen = s, 
-    height = 40
+    -- Only as tall as the main font
+    -- Avoids funny colour & scaling issues
+    height = beautiful.get_font_height(theme_font) 
   })
 
   -- Add widgets to the wibox
