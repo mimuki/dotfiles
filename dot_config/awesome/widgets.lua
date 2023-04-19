@@ -236,6 +236,9 @@ weather, weatherTimer = awful.widget.watch(
 --   end)
 
 ----- [ Battery indicator ] ---------------------------------------------------------
+batInIcon = wibox.widget.imagebox(gears.color.recolor_image(beautiful.bat_icon, theme_red))
+batExIcon = wibox.widget.imagebox(gears.color.recolor_image(beautiful.bat_icon, theme_yellow))
+
 gears.timer {
   timeout = 5, -- seconds
   call_now = true,
@@ -244,44 +247,37 @@ gears.timer {
     awful.spawn.easy_async("cat /sys/class/power_supply/BAT0/status",
       function(result)
         if string.match(result, "Discharging") then
-            -- batInIcon.markup = markup.fontfg(theme_icon, theme_red, "  ")
-            -- markupColour(batInIcon, theme_red, theme_bg, "  ")
+          batInIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_icon, "#ff5555")))
         end
         if string.match(result, "Not charging") then 
-            -- batInIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
-            -- markupColour(batInIcon, theme_fg, theme_fg, "")
-
+          batInIcon.visible = false
         end
         if string.match(result, "Charging") then 
-            -- markupColour(batInIcon, theme_blue, theme_bg, "  ")
-            -- batInIcon.markup = markup.fontfg(theme_icon, theme_blue, "  ")
+          batInIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_charging_icon, "#8be9fd")))
         end
       end)
     awful.spawn.easy_async("cat /sys/class/power_supply/BAT1/status",
       function(result)
         if string.match(result, "Discharging") then
-            -- markupColour(batExIcon, theme_orange, theme_bg, "  ")
-            -- batExIcon.markup = markup.fontfg(theme_icon, theme_yellow, "  ")
+          batExIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_icon, "#f1fa8c")))
         end
         if string.match(result, "Not charging") then 
-            -- markupColour(batInIcon, theme_fg, theme_fg, "")
-            -- batExIcon.markup = markup.fontfg(theme_icon, theme_fg, "")
+          batExIcon.visible = false
         end
         if string.match(result, "Charging") then 
-            -- markupColour(batInIcon, theme_green, theme_bg, "  ")
-            -- batExIcon.markup = markup.fontfg(theme_icon, theme_green, "  ")
+          batExIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_charging_icon, "#50fa7b")))
         end
       end)
     end
 }
 -- TODO: pad these to two digits, like the RAM and CPU widgets are
 batInInfo, batInInfoTimer = awful.widget.watch([[
-  awk '$0 > 5 && $0 <= 85 { printf( " I:" $0  "% ") }' /sys/class/power_supply/BAT0/capacity
+  awk '$0 > 5 && $0 <= 85 { printf( $0  "% ") }' /sys/class/power_supply/BAT0/capacity
   ]], 5, function(widget, out)
     batInInfo.markup = markup.fg.color(theme_fg, out)
   end)
 batExInfo, batExInfoTimer = awful.widget.watch([[
-  awk '$0 > 5 && $0 <= 80 { printf( " E:" $0  "% ") }' /sys/class/power_supply/BAT1/capacity
+  awk '$0 > 5 && $0 <= 80 { printf( $0  "% ") }' /sys/class/power_supply/BAT1/capacity
   ]], 5, function(widget, out)
     batExInfo.markup = markup.fg.color(theme_fg, out)
 

@@ -179,6 +179,8 @@ theme.list_icon = themes_path.."mimuki/icons/list.png"
 -- theme.cpu_icon = themes_path.."mimuki/icons/logo.png"
 theme.cpu_icon = themes_path.."mimuki/icons/cpu.png"
 theme.ram_icon = themes_path.."mimuki/icons/ram.png"
+theme.bat_icon = themes_path.."mimuki/icons/battery.png"
+theme.bat_charging_icon = themes_path.."mimuki/icons/battery_charging.png"
 theme.vol_icon = themes_path.."mimuki/icons/logo.png"
 
 
