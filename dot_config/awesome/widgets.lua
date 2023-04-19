@@ -303,7 +303,7 @@ gears.timer {
     awful.spawn.easy_async("wifi",
       function(result)
         if string.match(result, "on") then
-            markupColour(wifiIcon, theme_fg, theme_bg, "")
+            markupColour(wifiIcon, theme_fg, theme_bg, "") -- 
         end
         if string.match(result, "off") then
             markupColour(wifiIcon, theme_red, theme_bg, "  ")

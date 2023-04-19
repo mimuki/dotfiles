@@ -140,21 +140,7 @@ function build_panel(s)
       frontInfo,
       localDate,
       weather,
-
-      cpuIcon,
-      cpuInfo,
-
-      wibox.container.background(ramIcon, "#70759466"),
-      ramInfo,
-
-
-    },
-    -- Center widgets
-      s.mytaglist,
-    { -- Right widgets
-      layout = wibox.layout.fixed.horizontal,
       
-      -- wibox.container.background(moon, theme_bg),
       wibox.widget.systray(),
       
 
@@ -164,8 +150,23 @@ function build_panel(s)
       wibox.container.background(blueIcon, theme_bg),
       wibox.container.background(wifiIcon, theme_bg),
       {{- end }}
-      -- wibox.container.background(s.mylayoutbox, theme_bg),
+
+
+    },
+    -- Center widgets
+      s.mytaglist,
+    { -- Right widgets
+      layout = wibox.layout.fixed.horizontal,
       
+      -- wibox.container.background(moon, theme_bg),
+
+      -- wibox.container.background(s.mylayoutbox, theme_bg),
+
+
+      wibox.container.background(ramIcon, "#70759466"),
+      ramInfo,
+      cpuIcon,
+      cpuInfo,
       wibox.container.background(volIcon, "#70759466"),
       volInfo, 
 

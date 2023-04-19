@@ -50,6 +50,8 @@ function themeAccentAlt(colour)
   beautiful.hotkeys_border_color = colour  -- TODO: doesnt seem to update properly
   beautiful.tooltip_border_color = colour
   beautiful.notification_border_color = colour
+  beautiful.menu_border_color = colour -- TODO: doesn't apply to the *main* menu, only submenus
+
 end
 
 function themeSelect(colour)
