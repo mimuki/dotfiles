@@ -1,27 +1,27 @@
 
 -- default background colour
-grylt_bg = "#F0DBD1"
+grylt_bg = "#2a211c"
 -- default select colour
 -- must have good contrast with grylt_fg
-grylt_select = "#BF9986"
+grylt_select = "#555753"
 
 -- default foreground colour
 -- must have good contrast with grylt_bg and grylt_select
-grylt_fg = "#4C3226"
+grylt_fg = "#EEEEEC"
 
 
 -- [ Colours ] ----
 -- For use later in the file
 
-grylt_red    = "#B23636" -- 
-grylt_orange = "#F2854A" --
-grylt_yellow = "#664233"
-grylt_green  = "#73B72B"
-grylt_blue   = "#89B4FA"
-grylt_purple = "#992E2E" -- 
-grylt_pink   = "#E74985" --
+grylt_red    = "#EF2929" -- 
+grylt_orange = "#F2854A" 
+grylt_yellow = "#FFB5C"--
+grylt_green  = "#9AFF87"--
+grylt_blue   = "#34E2E2"
+grylt_purple = "#43A8ED" -- 
+grylt_pink   = "#FF818A" --
 
-grylt_special = "#A6ADC8" 
+grylt_special = "#D3D7Cf" 
 
 
 -- specific thingies
@@ -29,18 +29,18 @@ grylt_special = "#A6ADC8"
 -- Accent colour
 grylt_accent = grylt_pink
 -- darker accent
-grylt_accent_lowlight = "#992E2E"
+grylt_accent_lowlight = "#C5656B"
 
 -- Secondary accent colour
-grylt_accent_alt = grylt_orange
+grylt_accent_alt = grylt_blue
 
 
 -- fg of "start menu"
 grylt_menu_icon_fg = grylt_fg
 -- bg of "start menu"
-grylt_menu_icon_bg = grylt_select
+grylt_menu_icon_bg = grylt_green
 
 -- fg of current front
-grylt_widget_front_fg = grylt_fg
+grylt_widget_front_fg = grylt_bg
 -- bg of current front
-grylt_widget_front_bg = grylt_red
+grylt_widget_front_bg = grylt_green

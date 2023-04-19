@@ -72,17 +72,17 @@ gears.timer {
 
             -- TODO: maybe just have theme accents above, since i wanna put these
             -- colours in their own files anyways it wouldn't change much i think
-            themeAccent(theme_red)
-            themeAccentAlt(theme_orange)
+            themeAccent(theme_green)
+            themeAccentAlt(theme_pink)
             themeSelect(theme_select)
             themeBg(theme_bg)
             themeFg(theme_fg)
 
             awful.screen.focused().mytaglist._do_taglist_update()
 
-            markupColour(frontInfo, theme_bg, theme_accent, out)
-            formatColour(localDate, theme_bg, grylt_accent_lowlight, dateFormat)
-            formatColour(localTime, theme_bg, theme_yellow, timeFormat)
+            markupColour(frontInfo, grylt_widget_front_fg, grylt_widget_front_bg, out)
+            formatColour(localDate, theme_bg, theme_blue, dateFormat)
+            formatColour(localTime, theme_bg, theme_pink, timeFormat)
           
           elseif string.match(out, "kala") then
 
@@ -201,12 +201,12 @@ volume = lain.widget.pulse( {
       vlevel = volume_now.left .. "% "
       beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume_mute.png"
       volIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.vol_icon, theme_orange)))      
-      markupColour(volInfo, theme_orange, "#70759466", vlevel)
+      markupColour(volInfo, theme_orange, "#b8bff222", vlevel)
     end
 
     if volume_now.muted == "no" then
       widget:set_markup(lain.util.markup(theme_fg, vlevel))
-      markupColour(volInfo, theme_fg, "#70759466", vlevel)
+      markupColour(volInfo, theme_fg, "#b8bff222", vlevel)
 
       if volume_now.left <= "30" then 
       beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume_low.png"
@@ -227,7 +227,7 @@ volInfo = volume.widget -- needed because lain is weird and different
 weather, weatherTimer = awful.widget.watch(
   [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/weather.sh]], 3600, 
   function(widget, out)
-    markupColour(weather, theme_fg, "#70759466", out)
+    markupColour(weather, theme_fg, "#b8bff222", out)
   end)
 -- moon    = awful.widget.watch([[
 --   bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/moon.sh]], 3600,
@@ -292,7 +292,7 @@ batExInfo, batExInfoTimer = awful.widget.watch([[
 watts, wattsTimer = awful.widget.watch([[
   bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh
   ]], 5, function(widget, out)
-    markupColour(watts, theme_fg, "#70759466", out)
+    markupColour(watts, theme_fg, "#b8bff222", out)
   end)
 ----- [ Networking ] -----------------------------------------------------------
 gears.timer {
@@ -332,7 +332,7 @@ cpuInfo, cpuInfoTimer = awful.widget.watch(
 ramInfo, ramInfoTimer = awful.widget.watch(
   [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/ram.sh]], 2,
   function(widget, out)
-    markupColour(ramInfo, theme_fg, "#70759466", out)
+    markupColour(ramInfo, theme_fg, "#b8bff222", out)
   end)
 
 -- Keyboard map indicator and switcher
