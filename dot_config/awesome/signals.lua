@@ -50,11 +50,14 @@ screen.connect_signal("arrange", function (s)
     for _, c in pairs(s.clients) do
         if only_one and not c.floating or c.maximized then
             c.border_width = 0
-        -- this breaks the borderless captions in rules.lua, oops
-        -- need to fix this later, probably something along the lines
-        -- of "if the class of the thing is livecaptions, don't"
-        else
-            c.border_width = beautiful.border_width
+        else -- Thin borders for live captions
+          if c.class == "livecaptions" then
+            c.border_width = 1
+            c.ontop = true
+            c.sticky = true
+          else -- Normal borders for everything else
+            c.border_width = beautiful.border_width 
+          end
         end
     end
 end)
