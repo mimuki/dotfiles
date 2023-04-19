@@ -105,6 +105,10 @@ theme.notification_border_width = theme_border_width
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
 -- menu_[border_color|border_width]
+theme.menu_bg_normal = theme_bg
+theme.menu_bg_focus = theme_select
+theme.menu_fg_normal = theme_fg
+theme.menu_fg_focus = theme_fg
 theme.menu_submenu_icon = themes_path.."mimuki/icons/point-right.png"
 theme.menu_height = dpi(35)
 theme.menu_width  = dpi(250)

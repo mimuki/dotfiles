@@ -26,6 +26,7 @@ function themeBg(colour)
   beautiful.taglist_bg_urgent = colour
   beautiful.taglist_bg_empty = colour
   beautiful.notifcation_bg = colour
+  beautiful.menu_bg_normal = colour -- this doesnt work for some reason
 
 end
 
@@ -34,6 +35,8 @@ function themeFg(colour)
   cpuIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.cpu_icon, colour)))
   ramIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.ram_icon, colour)))
   volIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.vol_icon, colour))) 
+  beautiful.menu_fg_normal = colour -- also broken
+  beautiful.menu_fg_focus = colour
   beautiful.notifcation_fg = colour -- broken rn, oops. i think its the same issue 
 end                                 -- as the notif border thing
 
@@ -60,6 +63,8 @@ function themeSelect(colour)
   beautiful.border_normal = colour
   beautiful.titlebar_bg_normal = colour 
   beautiful.taglist_fg_empty = colour
+  beautiful.menu_bg_focus = colour
+
   -- ramIcon:set_bg(colour)
   -- volIcon:set_bg(colour)
 end
