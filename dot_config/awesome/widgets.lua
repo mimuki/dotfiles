@@ -34,6 +34,7 @@ function quake(s) -- Drop down terminal
 end
 
 function tagList(s) -- Current tags
+  awful.tag({ "•", "•", "•", "•", "•" }, s, awful.layout.layouts[1])
   s.mytaglist = awful.widget.taglist {
     screen  = s,
     filter  = awful.widget.taglist.filter.all,
@@ -42,11 +43,6 @@ function tagList(s) -- Current tags
       font = "linja lipamanka 18"
     } 
   }
-end
-
--- Each screen has its own tag table.
-function setTags(s)
-  awful.tag({ "•", "•", "•", "•", "•" }, s, awful.layout.layouts[1])
 end
 
 taglist_buttons = gears.table.join(

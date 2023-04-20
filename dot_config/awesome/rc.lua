@@ -46,24 +46,23 @@ end
 -- Handle runtime errors after startup
 do
   local in_error = false
-    awesome.connect_signal("debug::error", function (err)
-    -- Make sure we don't go into an endless error loop
-      if in_error then return end
-        in_error = true
-        naughty.notify(
-          { 
-            preset = naughty.config.presets.critical,
-            title = "Oops, an error happened!",
-            text = tostring(err) 
-          })
-        in_error = false
-    end)
-  end
+  awesome.connect_signal("debug::error", function (err)
+  -- Make sure we don't go into an endless error loop
+    if in_error then return end
+      in_error = true
+      naughty.notify(
+        { 
+          preset = naughty.config.presets.critical,
+          title = "Oops, an error happened!",
+          text = tostring(err) 
+        })
+      in_error = false
+  end)
+end
 
 -- Each screen gets its own...
 awful.screen.connect_for_each_screen(function(s)
   setWallpaper(s) -- ...wallpaper
-  setTags(s)      -- ...tags
   quake(s)        -- ...quake-style terminal
   tagList(s)      -- ...taglist
   layoutBox(s)    -- ...layout box
