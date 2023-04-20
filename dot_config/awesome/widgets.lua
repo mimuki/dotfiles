@@ -23,22 +23,48 @@ end
 
 wifiIcon  = faIcon("")
 blueIcon  = faIcon("")
+----- [ Per-screen widgets ] ---------------------------------------------------
+function quake(s) -- Drop down terminal
+  s.quake = lain.util.quake({
+    app = "kitty",
+    name = "Quake",
+    argname = "--name Quake",
+    border = theme_border_width
+  })
+end
+
+function tagList(s) -- Current tags
+  s.mytaglist = awful.widget.taglist {
+    screen  = s,
+    filter  = awful.widget.taglist.filter.all,
+    buttons = taglist_buttons,
+    style   = {
+      font = "linja lipamanka 18"
+    } 
+  }
+end
+
+function layoutBox(s) -- Current tiling layout
+  s.mylayoutbox = awful.widget.layoutbox(s)
+  s.mylayoutbox:buttons(gears.table.join(
+    awful.button({ }, 1, function () awful.layout.inc( 1) end),
+    awful.button({ }, 3, function () awful.layout.inc(-1) end),
+    awful.button({ }, 4, function () awful.layout.inc( 1) end),
+    awful.button({ }, 5, function () awful.layout.inc(-1) end)
+  ))
+end
 ----- [ Time and date ] --------------------------------------------------------
 timeFormat = " %I:%M %P "  -- 01:42 pm
 dateFormat = " %A, %b %e " -- Tuesday, Apr 18
 
 localTime = wibox.widget.textclock(
-   markup.color(theme_bg, theme_blue, timeFormat)
-
-  )
+   markup.color(theme_bg, theme_blue, timeFormat))
 
 localDate = wibox.widget.textclock(
   markup.color(theme_bg, theme_purple, dateFormat))
 ----- [ Front info ] -----------------------------------------------------------
--- Placeholder text for initial load
-frontInfo = wibox.widget.textbox(
-  markup.color(theme_bg, theme_pink, " (loading) ")
-)
+frontInfo = wibox.widget.textbox(markup.color(theme_bg, theme_pink, ""))
+
 gears.timer {
   timeout   = frontTimeout,
   call_now  = true,

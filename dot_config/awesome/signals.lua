@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                signals.lua                                 --
 --------------------------------------------------------------------------------
-
+require("wallpaper")
 ----- [ Signals ] --------------------------------------------------------------
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
@@ -61,3 +61,6 @@ screen.connect_signal("arrange", function (s)
         end
     end
 end)
+
+-- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
+screen.connect_signal("property::geometry", setWallpaper)

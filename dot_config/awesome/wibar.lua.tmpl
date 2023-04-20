@@ -1,0 +1,67 @@
+function buildWibar(s)
+  -- Create the wibox
+  s.mywibox = awful.wibar(
+  { 
+    position = "top", 
+    screen = s, 
+    -- Only as tall as the main font
+    -- Avoids funny colour & scaling issues
+    height = beautiful.get_font_height(theme_font) 
+  })
+
+  -- Add widgets to the wibox
+  s.mywibox:setup {
+    layout = wibox.layout.align.horizontal,
+    expand = "none",
+
+    { -- Left widgets
+      layout = wibox.layout.fixed.horizontal,
+      wibox.container.background(mainLauncher, "#b8bff222"),
+      frontInfo,
+      localDate,
+      weather,
+      
+      wibox.widget.systray(),
+      
+
+      {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
+      -- Display wifi and bluetooth information
+      -- This section was added automatically by chezmoi
+      blueIcon,
+      wifiIcon,
+      {{- end }}
+
+
+    },
+    -- Center widgets
+      s.mytaglist,
+    { -- Right widgets
+      layout = wibox.layout.fixed.horizontal,
+      
+      -- wibox.container.background(moon, theme_bg),
+
+      -- wibox.container.background(s.mylayoutbox, theme_bg),
+
+
+      wibox.container.background(ramIcon, "#b8bff222"),
+      ramInfo,
+      cpuIcon,
+      cpuInfo,
+      wibox.container.background(volIcon, "#b8bff222"),
+      volInfo, 
+
+      {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
+      -- Display battery information
+      -- This section was added automatically by chezmoi
+      batInIcon,
+      batExIcon,
+      batInInfo,
+      batExInfo,
+      watts,
+      {{- end }}
+
+      wibox.container.background(localTime, theme_blue)
+
+    }
+  }
+end

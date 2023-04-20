@@ -27,7 +27,6 @@ function themeBg(colour)
   beautiful.taglist_bg_empty = colour
   beautiful.notifcation_bg = colour
   beautiful.menu_bg_normal = colour -- this doesnt work for some reason
-
 end
 
 function themeFg(colour)
@@ -45,7 +44,6 @@ function themeAccent(colour)
   beautiful.taglist_fg_focus = colour
   beautiful.border_focus = colour
   beautiful.titlebar_bg_focus = colour 
-
 end
 
 function themeAccentAlt(colour)
@@ -54,7 +52,6 @@ function themeAccentAlt(colour)
   beautiful.tooltip_border_color = colour
   beautiful.notification_border_color = colour
   beautiful.menu_border_color = colour -- TODO: doesn't apply to the *main* menu, only submenus
-
 end
 
 function themeSelect(colour)
@@ -64,7 +61,6 @@ function themeSelect(colour)
   beautiful.titlebar_bg_normal = colour 
   beautiful.taglist_fg_empty = colour
   beautiful.menu_bg_focus = colour
-
   -- ramIcon:set_bg(colour)
   -- volIcon:set_bg(colour)
 end
