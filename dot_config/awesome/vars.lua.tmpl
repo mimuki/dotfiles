@@ -14,6 +14,7 @@ terminal = "kitty"
 -- menubar.utils.terminal = terminal 
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
+themePath = "~/.config/awesome/themes/"
 
 homeRow = {"a", "r", "s", "t", "g", "m", "n", "e", "i", "o", "semicolon" }
 totalTags = 5 -- Change to increase or decrease number of tags generated
@@ -63,4 +64,3 @@ theme_font = "Andika Rats 18"
 theme_icon = "Font Awesome 6 Free 14"
 theme_border_width = dpi(7)
 theme_useless_gap = dpi(0)
-
