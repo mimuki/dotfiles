@@ -44,6 +44,26 @@ function tagList(s) -- Current tags
   }
 end
 
+-- Each screen has its own tag table.
+function setTags(s)
+  awful.tag({ "•", "•", "•", "•", "•" }, s, awful.layout.layouts[1])
+end
+
+taglist_buttons = gears.table.join(
+  awful.button({ }, 1, function(t) t:view_only() end),
+  awful.button({ modkey }, 1, function(t)
+    if client.focus then
+      client.focus:move_to_tag(t)
+    end
+  end),
+  awful.button({ }, 3, awful.tag.viewtoggle),
+  awful.button({ modkey }, 3, function(t)
+    if client.focus then
+      client.focus:toggle_tag(t)
+    end
+  end)
+)
+
 function layoutBox(s) -- Current tiling layout
   s.mylayoutbox = awful.widget.layoutbox(s)
   s.mylayoutbox:buttons(gears.table.join(
@@ -53,6 +73,57 @@ function layoutBox(s) -- Current tiling layout
     awful.button({ }, 5, function () awful.layout.inc(-1) end)
   ))
 end
+----- [ Menu ] -----------------------------------------------------------------
+-- Create a launcher widget and a main menu
+awesomeMenu = {
+   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+   { "edit config", terminal .. " chezmoi edit " .. awesome.conffile },
+   { "restart awesome", awesome.restart },
+   { "quit", function() awesome.quit() end },
+}
+
+browserMenu = {
+  { "qutebrowser", function() awful.util.spawn("qutebrowser") end },
+  { "firefox",     function() awful.util.spawn("firefox") end },
+}
+funMenu = {
+  { "youtube",     function() awful.util.spawn("freetube") end },
+  { "minecraft",   function() awful.util.spawn("minecraft-launcher") end },
+  { "steam",       function() awful.util.spawn("steam") end },
+}
+
+mainMenu = awful.menu(
+  { items = { 
+      { "browsers", browserMenu },
+      { "fun", funMenu },
+      { "terminal", terminal, beautiful.terminal_icon },
+      { "search programs", function () awful.util.spawn("rofi -show drun") end, beautiful.list_icon },
+      { "search windows",  function () awful.util.spawn("rofi -show window") end, beautiful.window_icon },
+      { "search files",    function () awful.util.spawn("rofi -show filebrowser -theme-str '#listview {lines:6;}'") end, beautiful.folder_icon },
+      { "awesome", awesomeMenu, beautiful.awesome_icon },
+
+    }
+  })
+
+mainLauncher = awful.widget.button(
+  { 
+    image = beautiful.awesome_icon,
+    menu = mainMenu,
+  })
+
+mainLauncher:buttons(gears.table.join(
+    mainLauncher:buttons(),
+    awful.button({}, 1, nil, 
+      function() 
+        mainMenu:toggle(
+          {
+            coords = {
+              x = 0, 
+              y = 0 
+            }
+          })
+      end)
+))
 ----- [ Time and date ] --------------------------------------------------------
 timeFormat = " %I:%M %P "  -- 01:42 pm
 dateFormat = " %A, %b %e " -- Tuesday, Apr 18
@@ -359,3 +430,4 @@ ramInfo, ramInfoTimer = awful.widget.watch(
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
+

@@ -1,11 +1,8 @@
 --------------------------------------------------------------------------------
 --                                 mouse.lua                                  --
 --------------------------------------------------------------------------------
--- Handles mouse stuff                                                        -- 
--- TODO: actually i think this hasn't worked for a while                      --
---------------------------------------------------------------------------------
 
-clientbuttons = gears.table.join(
+clientbuttons = gears.table.join( -- might be broken??
   awful.button({ }, 1, function (c)
     c:emit_signal("request::activate", "mouse_click", {raise = true})
   end),
@@ -18,3 +15,8 @@ clientbuttons = gears.table.join(
     awful.mouse.client.resize(c)
   end)
 )
+
+
+root.buttons(gears.table.join(
+    awful.button({ }, 3, function () mainMenu:toggle() end)
+))
