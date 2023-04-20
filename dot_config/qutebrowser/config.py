@@ -284,6 +284,11 @@ c.tabs.indicator.width = 0
 # Type: Padding
 c.tabs.indicator.padding = {'bottom': 2, 'left': 0, 'right': 4, 'top': 2}
 
+# Show tooltips on tabs. Note this setting only affects windows opened
+# after it has been set.
+# Type: Bool
+c.tabs.tooltips = False
+
 # Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
 # for a blank page.
 # Type: FuzzyUrl
