@@ -18,6 +18,13 @@ config.load_autoconfig(False)
 # Type: Dict
 c.aliases = {'q': 'close', 'qa': 'quit', 'w': 'session-save', 'wq': 'quit --save', 'wqa': 'quit --save'}
 
+# Force a Qt platformtheme to use. This sets the `QT_QPA_PLATFORMTHEME`
+# environment variable which controls dialogs like the filepicker. By
+# default, Qt determines the platform theme based on the desktop
+# environment.
+# Type: String
+c.qt.force_platformtheme = 'qt5ct'
+
 # Always restore open sites when qutebrowser is reopened. Without this
 # option set, `:wq` (`:quit --save`) needs to be used to save open tabs
 # (and restore them), while quitting qutebrowser in any other way will
