@@ -1,33 +1,24 @@
 --------------------------------------------------------------------------------
 --                                  vars.lua                                  --
 --------------------------------------------------------------------------------
--- Future me don't add on to this
--- I wanna move most or all things here to theme.lua
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi 
-
--- local menubar = require("menubar")
 ----- [ General ] --------------------------------------------------------------
-
 modkey = "Mod4" -- GUI/Super/Meta/Windows etc
 terminal = "kitty"
--- (Possibly redundant) Set the terminal for applications that require it
--- menubar.utils.terminal = terminal 
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
-themePath = "~/.config/awesome/themes/"
 
 homeRow = {"a", "r", "s", "t", "g", "m", "n", "e", "i", "o", "semicolon" }
 totalTags = 5 -- Change to increase or decrease number of tags generated
+
 -- Enabled layouts
 awful.layout.layouts = {
   awful.layout.suit.tile,
   awful.layout.suit.tile.top,
   awful.layout.suit.max.fullscreen,
 }
-
 ----- [ Widgets ] --------------------------------------------------------------
--- 
 -- This is generated automatically by Chezmoi
 {{- if eq .chezmoi.hostname "DESKRATS-2020MNT21" }}
 -- This machine should be DESKRATS-2020MNT21
@@ -39,29 +30,3 @@ frontTimeout = 5
 -- This machine wasn't recognized by Chezmoi
 frontTimeout = 600
 {{ end }}
------ [ Colours ] --------------------------------------------------------------
--- TODO: ditch the colour names and instead be descriptive somehow
--- or just colours 1 through ??
-theme_red    = "#ff5555"
-theme_orange = "#ffb86c"
-theme_yellow = "#f1fa8c"
-theme_green  = "#50fa7b"
-theme_blue   = "#8be9fd"
-theme_purple = "#bd93f9"
-theme_pink   = "#ff79c6"
-
-theme_bg     = "#282a36"
-theme_fg     = "#f8f8f2"
-theme_select = "#44475a"-- "#70759466"-- "#44475a"
-theme_accent = theme_purple
-
-theme_accent_alt = theme_pink
-theme_special = "#6272a4"
-
-beautiful.border_color_floating_active = theme_pink
-
------ [ Fonts ] --------------------------------------------------------------
-theme_font = "Andika Rats 18" 
-theme_icon = "Font Awesome 6 Free 14"
-theme_border_width = dpi(7)
-theme_useless_gap = dpi(0)

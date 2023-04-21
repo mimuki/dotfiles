@@ -6,7 +6,7 @@ function buildWibar(s)
     screen = s, 
     -- Only as tall as the main font
     -- Avoids funny colour & scaling issues
-    height = beautiful.get_font_height(theme_font) 
+    height = beautiful.get_font_height(beautiful.font) 
   })
 
   -- Add widgets to the wibox
@@ -38,9 +38,9 @@ function buildWibar(s)
     { -- Right widgets
       layout = wibox.layout.fixed.horizontal,
       
-      -- wibox.container.background(moon, theme_bg),
+      --moon,
 
-      -- wibox.container.background(s.mylayoutbox, theme_bg),
+      -- s.mylayoutbox,
 
 
       wibox.container.background(ramIcon, "#b8bff222"),
@@ -60,7 +60,7 @@ function buildWibar(s)
       watts,
       {{- end }}
 
-      wibox.container.background(localTime, theme_blue)
+      wibox.container.background(localTime, beautiful.blue)
 
     }
   }

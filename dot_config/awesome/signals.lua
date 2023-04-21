@@ -28,7 +28,7 @@ end)
 -- Different focus colours for floating & tiled windows
 client.connect_signal("focus", function(c) 
   if c.floating then
-    c.border_color = theme_accent_alt
+    c.border_color = beautiful.accent_alt
   else
     c.border_color = beautiful.border_focus
   end

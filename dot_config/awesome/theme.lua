@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                 theme.lua                                  --
 --------------------------------------------------------------------------------
-
+-- v1.1
 ----- [ Dependencies ] ---------------------------------------------------------
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -31,6 +31,12 @@ theme.pink    = "#ff79c6"
 
 theme.accent     = theme.purple
 theme.accent_alt = theme.pink
+
+theme.error = theme.red 
+theme.warn  = theme.orange
+
+theme.bg = theme.black 
+theme.fg = theme.white
 ----- [ Background ] -----------------------------------------------------------
 theme.bg_normal     = theme.black
 theme.bg_focus      = theme.l_black
