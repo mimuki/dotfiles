@@ -1,9 +1,6 @@
 --------------------------------------------------------------------------------
 --                                   rc.lua                                   --
 --------------------------------------------------------------------------------
--- TODO: Rewrite theme                                                        --
---       Move top bar to its own file                                         --
---------------------------------------------------------------------------------
 
 ----- [ Dependencies ] ---------------------------------------------------------
 -- Standard awesome library
@@ -19,17 +16,6 @@ naughty = require("naughty")
 
 -- Set theme
 beautiful.init("~/.config/awesome/theme.lua")
------ [ External Config ] ------------------------------------------------------
-require("vars")        -- Variables
-require("keybindings") -- Default keybindings
-require("rules")       -- Window Rules
-require("signals")     -- "When this happens, do this" witchcraft
-require("wibar")       -- Top bar
-require("widgets")     -- Topbar widgets
-require("utilities")   -- Bonus useful things
-require("titlebars")   -- Titlebar config
-require("wallpaper")   -- Set custom wallpaper
-require("mouse")       -- Mouse specific features like right click menu
 ----- [ Error Handling ] -------------------------------------------------------
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -59,6 +45,17 @@ do
       in_error = false
   end)
 end
+----- [ External Config ] ------------------------------------------------------
+require("vars")        -- Variables
+require("keybindings") -- Default keybindings
+require("rules")       -- Window Rules
+require("signals")     -- "When this happens, do this" witchcraft
+require("wibar")       -- Top bar
+require("widgets")     -- Topbar widgets
+require("utilities")   -- Bonus useful things
+require("titlebars")   -- Titlebar config
+require("wallpaper")   -- Set custom wallpaper
+require("mouse")       -- Mouse specific features like right click menu
 
 -- Each screen gets its own...
 awful.screen.connect_for_each_screen(function(s)
