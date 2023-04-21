@@ -73,7 +73,7 @@ theme.titlebar_fg_urgent = theme.black
 
 theme.hotkeys_modifiers_fg = theme.white
 
-theme.taglist_fg_focus    = theme.orange
+theme.taglist_fg_focus    = theme.accent
 theme.taglist_fg_occupied = theme.grey
 theme.taglist_fg_urgent   = theme.red
 theme.taglist_fg_empty    = theme.l_black
