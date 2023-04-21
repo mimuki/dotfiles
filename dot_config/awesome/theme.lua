@@ -5,142 +5,153 @@
 ----- [ Dependencies ] ---------------------------------------------------------
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
-require("vars")
------ [ Settings ] -------------------------------------------------------------
 local theme = {}
-theme.font              = theme_font 
-theme.notification_font = theme_font
+----- [ Settings ] -------------------------------------------------------------
+theme.font              = "Andika Rats 18" 
+theme.notification_font = theme.font
+
+theme.dir = "~/.config/awesome/themes/"
+
+theme.wallpaper = theme.dir .. "dracula/goop_2.png"
 
 theme.hotkeys_font             = "Fantasque Sans Mono 20"
 theme.hotkeys_description_font = "Fantasque Sans Mono 20"
------ [ Background ] ----------------------------------------------------------
-theme.bg_normal     = theme_bg
-theme.bg_focus      = theme_select
-theme.bg_urgent     = theme_red
-theme.bg_systray    = theme_bg
-theme.bg_minimize   = theme_select
+----- [ Colours ] --------------------------------------------------------------
+theme.black   = "#282a36"
+theme.l_black = "#44475a"
+theme.grey    = "#6272a4"
+theme.white   = "#f8f8f2"
+theme.red     = "#ff5555"
+theme.orange  = "#ffb86c"
+theme.yellow  = "#f1fa8c"
+theme.green   = "#50fa7b"
+theme.blue    = "#8be9fd"
+theme.purple  = "#bd93f9"
+theme.pink    = "#ff79c6"
 
-theme.titlebar_bg_normal = theme_select
-theme.titlebar_bg_focus  = theme_accent
-theme.titlebar_bg_urgent = theme_red
+theme.accent     = theme.purple
+theme.accent_alt = theme.pink
+----- [ Background ] -----------------------------------------------------------
+theme.bg_normal     = theme.black
+theme.bg_focus      = theme.l_black
+theme.bg_urgent     = theme.red
+theme.bg_systray    = theme.black
+theme.bg_minimize   = theme.l_black
 
-theme.hotkeys_label_bg = theme_special
+theme.titlebar_bg_normal = theme.l_black
+theme.titlebar_bg_focus  = theme.accent
+theme.titlebar_bg_urgent = theme.red
 
-theme.taglist_bg_focus    = theme_bg
-theme.taglist_bg_occupied = theme_bg
-theme.taglist_bg_urgent   = theme_bg
-theme.taglist_bg_empty    = theme_bg
+theme.hotkeys_label_bg = theme.grey
 
-theme.tooltip_bg = theme_bg
+theme.taglist_bg_focus    = theme.black
+theme.taglist_bg_occupied = theme.black
+theme.taglist_bg_urgent   = theme.black
+theme.taglist_bg_empty    = theme.black
 
-theme.notifcation_bg = theme_bg
+theme.tooltip_bg = theme.black
 
-theme.menu_bg_normal = theme_bg
-theme.menu_bg_focus  = theme_select
------ [ Foreground ] ------------------------------------------------------------
-theme.fg_normal     = theme_fg
-theme.fg_focus      = theme_fg
-theme.fg_urgent     = theme_fg
-theme.fg_minimize   = theme_fg
+theme.notifcation_bg = theme.black
 
-theme.titlebar_fg_normal = theme_bg
-theme.titlebar_fg_focus  = theme_bg
-theme.titlebar_fg_urgent = theme_bg
+theme.menu_bg_normal = theme.black
+theme.menu_bg_focus  = theme.l_black
+----- [ Foreground ] -----------------------------------------------------------
+theme.fg_normal     = theme.white
+theme.fg_focus      = theme.white
+theme.fg_urgent     = theme.white
+theme.fg_minimize   = theme.white
 
-theme.hotkeys_modifiers_fg = theme_fg
+theme.titlebar_fg_normal = theme.black
+theme.titlebar_fg_focus  = theme.black
+theme.titlebar_fg_urgent = theme.black
 
-theme.taglist_fg_focus    = theme_purple
-theme.taglist_fg_occupied = theme_special
-theme.taglist_fg_urgent   = theme_red
-theme.taglist_fg_empty    = theme_select
+theme.hotkeys_modifiers_fg = theme.white
 
-theme.tooltip_fg = theme_fg
+theme.taglist_fg_focus    = theme.accent
+theme.taglist_fg_occupied = theme.grey
+theme.taglist_fg_urgent   = theme.red
+theme.taglist_fg_empty    = theme.l_black
 
-theme.notifcation_fg = theme_fg
+theme.tooltip_fg = theme.white
 
-theme.menu_fg_normal = theme_fg
-theme.menu_fg_focus  = theme_fg
+theme.notifcation_fg = theme.white
+
+theme.menu_fg_normal = theme.white
+theme.menu_fg_focus  = theme.white
 ----- [ Borders & Gaps ] -------------------------------------------------------
-theme.useless_gap       = theme_useless_gap 
+theme.useless_gap       = dpi(0)
 theme.gap_single_client = false
 
-theme.border_width  = theme_border_width
-theme.border_normal = theme_select
-theme.border_focus  = theme_accent
-theme.border_marked = theme_special
+theme.border_width  = dpi(7)
+theme.border_normal = theme.l_black
+theme.border_focus  = theme.accent
+theme.border_marked = theme.grey
 
-theme.hotkeys_border_width = theme_border_width
-theme.hotkeys_border_color = theme_accent_alt
+theme.hotkeys_border_width = theme.border_width
+theme.hotkeys_border_color = theme.accent_alt
 theme.hotkeys_group_margin = dpi(8)
 
 theme.tooltip_border_width = dpi(2)
-theme.tooltip_border_color = theme_accent_alt
+theme.tooltip_border_color = theme.accent_alt
 
-theme.notification_border_color = theme_accent_alt
-theme.notification_border_width = theme_border_width
+theme.notification_border_color = theme.accent_alt
+theme.notification_border_width = theme.border_width
 
-theme.menu_border_color = theme_accent_alt
-theme.menu_border_width = theme_border_width
+theme.menu_border_color = theme.accent_alt
+theme.menu_border_width = theme.border_width
 
 theme.notification_width  = 560
 theme.notification_height = 140
 ----- [ Other Stuff ] ----------------------------------------------------------
 -- ran out of spoons lol
-theme.menu_submenu_icon = themePath.."mimuki/icons/point-right.png"
+theme.menu_submenu_icon = theme.dir .."mimuki/icons/point-right.png"
 theme.menu_height = dpi(35)
 theme.menu_width  = dpi(250)
 
--- You can add as many variables as
--- you wish and access them by using
--- beautiful.variable in your rc.lua
---theme.bg_widget = "#cc0000"
+----- [ Titlebar Icons ] -------------------------------------------------------
+theme.titlebar_close_button_normal = theme.dir .."default/titlebar/close_normal.png"
+theme.titlebar_close_button_focus  = theme.dir .."default/titlebar/close_focus.png"
 
--- Define the image to load
-theme.titlebar_close_button_normal = themePath.."default/titlebar/close_normal.png"
-theme.titlebar_close_button_focus  = themePath.."default/titlebar/close_focus.png"
+theme.titlebar_minimize_button_normal = theme.dir .."default/titlebar/minimize_normal.png"
+theme.titlebar_minimize_button_focus  = theme.dir .."default/titlebar/minimize_focus.png"
 
-theme.titlebar_minimize_button_normal = themePath.."default/titlebar/minimize_normal.png"
-theme.titlebar_minimize_button_focus  = themePath.."default/titlebar/minimize_focus.png"
+theme.titlebar_ontop_button_normal_inactive = theme.dir .."default/titlebar/ontop_normal_inactive.png"
+theme.titlebar_ontop_button_focus_inactive  = theme.dir .."default/titlebar/ontop_focus_inactive.png"
+theme.titlebar_ontop_button_normal_active = theme.dir .."default/titlebar/ontop_normal_active.png"
+theme.titlebar_ontop_button_focus_active  = theme.dir .."default/titlebar/ontop_focus_active.png"
 
-theme.titlebar_ontop_button_normal_inactive = themePath.."default/titlebar/ontop_normal_inactive.png"
-theme.titlebar_ontop_button_focus_inactive  = themePath.."default/titlebar/ontop_focus_inactive.png"
-theme.titlebar_ontop_button_normal_active = themePath.."default/titlebar/ontop_normal_active.png"
-theme.titlebar_ontop_button_focus_active  = themePath.."default/titlebar/ontop_focus_active.png"
+theme.titlebar_sticky_button_normal_inactive = theme.dir .."default/titlebar/sticky_normal_inactive.png"
+theme.titlebar_sticky_button_focus_inactive  = theme.dir .."default/titlebar/sticky_focus_inactive.png"
+theme.titlebar_sticky_button_normal_active = theme.dir .."default/titlebar/sticky_normal_active.png"
+theme.titlebar_sticky_button_focus_active  = theme.dir .."default/titlebar/sticky_focus_active.png"
 
-theme.titlebar_sticky_button_normal_inactive = themePath.."default/titlebar/sticky_normal_inactive.png"
-theme.titlebar_sticky_button_focus_inactive  = themePath.."default/titlebar/sticky_focus_inactive.png"
-theme.titlebar_sticky_button_normal_active = themePath.."default/titlebar/sticky_normal_active.png"
-theme.titlebar_sticky_button_focus_active  = themePath.."default/titlebar/sticky_focus_active.png"
+theme.titlebar_floating_button_normal_inactive = theme.dir .."default/titlebar/floating_normal_inactive.png"
+theme.titlebar_floating_button_focus_inactive  = theme.dir .."default/titlebar/floating_focus_inactive.png"
+theme.titlebar_floating_button_normal_active = theme.dir .."default/titlebar/floating_normal_active.png"
+theme.titlebar_floating_button_focus_active  = theme.dir .."default/titlebar/floating_focus_active.png"
 
-theme.titlebar_floating_button_normal_inactive = themePath.."default/titlebar/floating_normal_inactive.png"
-theme.titlebar_floating_button_focus_inactive  = themePath.."default/titlebar/floating_focus_inactive.png"
-theme.titlebar_floating_button_normal_active = themePath.."default/titlebar/floating_normal_active.png"
-theme.titlebar_floating_button_focus_active  = themePath.."default/titlebar/floating_focus_active.png"
+theme.titlebar_maximized_button_normal_inactive = theme.dir .."default/titlebar/maximized_normal_inactive.png"
+theme.titlebar_maximized_button_focus_inactive  = theme.dir .."default/titlebar/maximized_focus_inactive.png"
+theme.titlebar_maximized_button_normal_active = theme.dir .."default/titlebar/maximized_normal_active.png"
+theme.titlebar_maximized_button_focus_active  = theme.dir .."default/titlebar/maximized_focus_active.png"
 
-theme.titlebar_maximized_button_normal_inactive = themePath.."default/titlebar/maximized_normal_inactive.png"
-theme.titlebar_maximized_button_focus_inactive  = themePath.."default/titlebar/maximized_focus_inactive.png"
-theme.titlebar_maximized_button_normal_active = themePath.."default/titlebar/maximized_normal_active.png"
-theme.titlebar_maximized_button_focus_active  = themePath.."default/titlebar/maximized_focus_active.png"
-
-theme.wallpaper = themePath.."dracula/goop_2.png"
-
--- You can use your own layout icons like this:
-theme.layout_fairh       = themePath.."default/layouts/fairhw.png"
-theme.layout_fairv       = themePath.."default/layouts/fairvw.png"
-theme.layout_floating    = themePath.."default/layouts/floatingw.png"
-theme.layout_magnifier   = themePath.."default/layouts/magnifierw.png"
-theme.layout_max         = themePath.."mimuki/icons/maximize.png"
-theme.layout_fullscreen  = themePath.."mimuki/icons/maximize.png"
-theme.layout_tilebottom  = themePath.."default/layouts/tilebottomw.png"
-theme.layout_tileleft    = themePath.."default/layouts/tileleftw.png"
-theme.layout_tile        = themePath.."mimuki/icons/left-right.png"
-theme.layout_tiletop     = themePath.."mimuki/icons/up-down.png"
-theme.layout_spiral      = themePath.."default/layouts/spiralw.png"
-theme.layout_dwindle     = themePath.."default/layouts/dwindlew.png"
-theme.layout_cornernw    = themePath.."default/layouts/cornernww.png"
-theme.layout_cornerne    = themePath.."default/layouts/cornernew.png"
-theme.layout_cornersw    = themePath.."default/layouts/cornersww.png"
-theme.layout_cornerse    = themePath.."default/layouts/cornersew.png"
+----- [ Layout Icons ] ---------------------------------------------------------
+theme.layout_fairh       = theme.dir .."default/layouts/fairhw.png"
+theme.layout_fairv       = theme.dir .."default/layouts/fairvw.png"
+theme.layout_floating    = theme.dir .."default/layouts/floatingw.png"
+theme.layout_magnifier   = theme.dir .."default/layouts/magnifierw.png"
+theme.layout_max         = theme.dir .."mimuki/icons/maximize.png"
+theme.layout_fullscreen  = theme.dir .."mimuki/icons/maximize.png"
+theme.layout_tilebottom  = theme.dir .."default/layouts/tilebottomw.png"
+theme.layout_tileleft    = theme.dir .."default/layouts/tileleftw.png"
+theme.layout_tile        = theme.dir .."mimuki/icons/left-right.png"
+theme.layout_tiletop     = theme.dir .."mimuki/icons/up-down.png"
+theme.layout_spiral      = theme.dir .."default/layouts/spiralw.png"
+theme.layout_dwindle     = theme.dir .."default/layouts/dwindlew.png"
+theme.layout_cornernw    = theme.dir .."default/layouts/cornernww.png"
+theme.layout_cornerne    = theme.dir .."default/layouts/cornernew.png"
+theme.layout_cornersw    = theme.dir .."default/layouts/cornersww.png"
+theme.layout_cornerse    = theme.dir .."default/layouts/cornersew.png"
 
 theme.lain_icons         = os.getenv("HOME") ..
                            "/.config/awesome/lain/icons/layout/default/"
@@ -150,18 +161,18 @@ theme.layout_cascade     = theme.lain_icons .. "cascade.png"
 theme.layout_cascadetile = theme.lain_icons .. "cascadetile.png" -- cascade.tile
 theme.layout_centerwork  = theme.lain_icons .. "centerwork.png"
 theme.layout_centerworkh = theme.lain_icons .. "centerworkh.png" -- centerwork.horizontal
+----- [ Wibar Icons ] ----------------------------------------------------------
+theme.awesome_icon  = theme.dir .."mimuki/icons/logo.png"
+theme.terminal_icon = theme.dir .."mimuki/icons/terminal.png"
+theme.folder_icon   = theme.dir .."mimuki/icons/folder.png"
+theme.window_icon   = theme.dir .."mimuki/icons/windows.png"
+theme.list_icon     = theme.dir .."mimuki/icons/list.png"
+theme.cpu_icon      = theme.dir .."mimuki/icons/cpu.png"
+theme.ram_icon      = theme.dir .."mimuki/icons/ram.png"
+theme.vol_icon      = theme.dir .."mimuki/icons/logo.png"
 
-theme.awesome_icon = themePath.."mimuki/icons/logo.png"
-theme.terminal_icon = themePath.."mimuki/icons/terminal.png"
-theme.folder_icon = themePath.."mimuki/icons/folder.png"
-theme.window_icon = themePath.."mimuki/icons/windows.png"
-theme.list_icon = themePath.."mimuki/icons/list.png"
-theme.cpu_icon = themePath.."mimuki/icons/cpu.png"
-theme.ram_icon = themePath.."mimuki/icons/ram.png"
-theme.bat_icon = themePath.."mimuki/icons/battery.png"
-theme.bat_charging_icon = themePath.."mimuki/icons/battery_charging.png"
-theme.vol_icon = themePath.."mimuki/icons/logo.png"
-
+theme.bat_icon          = theme.dir .."mimuki/icons/battery.png"
+theme.bat_charging_icon = theme.dir .."mimuki/icons/battery_charging.png"
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
