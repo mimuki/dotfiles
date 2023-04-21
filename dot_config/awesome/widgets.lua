@@ -173,6 +173,12 @@ gears.timer {
             markupColour(frontInfo, beautiful.black, beautiful.accent, out)
             formatColour(localDate, beautiful.black, beautiful.accent_alt, dateFormat)
             formatColour(localTime, beautiful.black, beautiful.yellow, timeFormat)
+          elseif string.match(out, "Emmett") then
+            beautiful.init("~/.config/awesome/themes/mimuki/members/eaiac.lua")
+            -- Custom widgets
+            markupColour(frontInfo, beautiful.black, beautiful.accent, out)
+            formatColour(localDate, beautiful.black, beautiful.accent_alt, dateFormat)
+            formatColour(localTime, beautiful.black, beautiful.accent, timeFormat)
           else -- Doesn't have a theme; use default
             beautiful.init("~/.config/awesome/theme.lua")
 
