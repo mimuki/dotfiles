@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                 grylt.lua                                  --
 --------------------------------------------------------------------------------
--- v1.1
+-- v1.2
 ----- [ Dependencies ] ---------------------------------------------------------
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -113,7 +113,6 @@ theme.notification_height = 140
 theme.menu_submenu_icon = theme.dir .."mimuki/icons/point-right.png"
 theme.menu_height = dpi(35)
 theme.menu_width  = dpi(250)
-
 ----- [ Titlebar Icons ] -------------------------------------------------------
 theme.titlebar_close_button_normal = theme.dir .."default/titlebar/close_normal.png"
 theme.titlebar_close_button_focus  = theme.dir .."default/titlebar/close_focus.png"
@@ -140,7 +139,6 @@ theme.titlebar_maximized_button_normal_inactive = theme.dir .."default/titlebar/
 theme.titlebar_maximized_button_focus_inactive  = theme.dir .."default/titlebar/maximized_focus_inactive.png"
 theme.titlebar_maximized_button_normal_active = theme.dir .."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = theme.dir .."default/titlebar/maximized_focus_active.png"
-
 ----- [ Layout Icons ] ---------------------------------------------------------
 theme.layout_fairh       = theme.dir .."default/layouts/fairhw.png"
 theme.layout_fairv       = theme.dir .."default/layouts/fairvw.png"
@@ -175,7 +173,7 @@ theme.window_icon   = theme.dir .."mimuki/icons/windows.png"
 theme.list_icon     = theme.dir .."mimuki/icons/list.png"
 theme.cpu_icon      = theme.dir .."mimuki/icons/cpu.png"
 theme.ram_icon      = theme.dir .."mimuki/icons/ram.png"
-theme.vol_icon      = theme.dir .."mimuki/icons/logo.png"
+theme.vol_icon      = theme.dir .."mimuki/icons/volume.png"
 
 theme.bat_icon          = theme.dir .."mimuki/icons/battery.png"
 theme.bat_charging_icon = theme.dir .."mimuki/icons/battery_charging.png"
