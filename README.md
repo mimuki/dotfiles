@@ -21,8 +21,7 @@ All the things you need if you're me. Works by using [Chezmoi](https://github.co
 - [Custom fonts](https://github.com/mimuki/dotfiles/tree/main/dot_fonts)
 
 ## Examples
-![rofi_filebrowser](./examples/rofi_filebrowser.png)
-![awesome_qutebrowser](./examples/awesome_qutebrowser.png)
+![screenshot_1](./examples/screenshot_1.png)
 
 ## Attribution
 awesomeWM CPU/RAM/Volume/Battery icons are from [icons8](https://icons8.com/)
