@@ -105,7 +105,3 @@ ctrl+alt+shift+n move-left  0.25, warp
 ctrl+alt+shift+e move-down  0.25, warp
 ctrl+alt+shift+i move-up    0.25, warp
 ctrl+alt+shift+o move-right 0.25, warp
-ctrl+alt+shift+left move-left 0.25, warp
-ctrl+alt+shift+down move-down 0.25, warp
-ctrl+alt+shift+up move-up 0.25, warp
-ctrl+alt+shift+right move-right 0.25, warp
