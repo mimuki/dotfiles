@@ -27,7 +27,7 @@ au InsertEnter * set cul " Highlight current row when in insert mode
 au InsertLeave * set nocul " Un-highlight it when you leave
 
 call plug#begin() " Plugins
-Plug 'junegunn/goyo.vim' " 
+Plug 'mimuki/goyo.vim' " 
 Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 colorscheme dracula
