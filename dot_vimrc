@@ -22,6 +22,10 @@ set ruler           " Show row and column ruler information
 set undolevels=1000 " Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
 set scrolloff=12 " Keep cursor roughly centered on screen
+set cursorline cursorlineopt=screenline " Cursorline doesn't wrap on long lines
+au InsertEnter * set cul " Highlight current row when in insert mode
+au InsertLeave * set nocul " Un-highlight it when you leave
+
 call plug#begin() " Plugins
 Plug 'junegunn/goyo.vim' " 
 Plug 'dracula/vim', { 'as': 'dracula' }
@@ -31,6 +35,8 @@ if (has("termguicolors")) " Fix terminal background colour
   set termguicolors
 endif
 
+let g:goyo_margin_top = 0
+let g:goyo_margin_bottom = 0
 " On window resize, if goyo is active, do <c-w>= to resize the window
 autocmd VimResized * if exists('#goyo') | exe "normal \<c-w>=" | endif
 
