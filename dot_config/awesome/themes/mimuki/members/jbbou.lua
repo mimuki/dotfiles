@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                 jbbou.lua                                  --
 --------------------------------------------------------------------------------
--- v1.2
+-- v1.3
 ----- [ Dependencies ] ---------------------------------------------------------
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -106,8 +106,8 @@ theme.notification_border_width = theme.border_width
 theme.menu_border_color = theme.accent_alt
 theme.menu_border_width = theme.border_width
 
-theme.notification_width  = 560
-theme.notification_height = 140
+theme.notification_width  = 600
+-- theme.notification_height = 140
 ----- [ Other Stuff ] ----------------------------------------------------------
 -- ran out of spoons lol
 theme.menu_submenu_icon = theme.dir .."mimuki/icons/point-right.png"
