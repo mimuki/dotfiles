@@ -1,4 +1,4 @@
-#! /bin/bash
-mu=`date +%Y/%m\ %B/`
-vim ~/Documents/Years/"$mu"To\ Do.md
+#!/usr/bin/env bash
+# Open current to do list
+exec vim "$HOME/Documents/Years/$(date "+%Y/%m %B/")To Do.md"
 
