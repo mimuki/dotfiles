@@ -1,0 +1,5 @@
+#! /bin/bash
+# Open today's journal file
+mu=`date +%Y/%m\ %B/%A\,\ %b\ %d`
+vim ~/Documents/Years/"$mu".md
+

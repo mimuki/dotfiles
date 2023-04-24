@@ -1,0 +1,4 @@
+#! /bin/bash
+mu=`date +%Y/%m\ %B/`
+vim ~/Documents/Years/"$mu"To\ Do.md
+
