@@ -1,5 +1,5 @@
+" --- [ Settings ] ----------------------------------------------------------- "
 set number          " Show line numbers
- 
 set linebreak       " Break lines at word (requires Wrap lines)
 set showbreak=+++\  " Wrap-broken line prefix
 set textwidth=80    " Line wrap (number of cols)
@@ -23,8 +23,10 @@ set undolevels=1000 " Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
 
 set cursorline cursorlineopt=screenline " Cursorline doesn't wrap on long lines
-au InsertEnter * set cul " Highlight current row when in insert mode
-au InsertLeave * set nocul " Un-highlight it when you leave
+
+" Highlight current row, but only in insert mode
+au InsertEnter * set cul 
+au InsertLeave * set nocul 
 
 " Keep cursor centered on screen
 augroup VCenterCursor
@@ -32,17 +34,17 @@ augroup VCenterCursor
   au BufEnter,WinEnter,WinNew,VimResized *,*.*
         \ let &scrolloff=winheight(win_getid())/2
 augroup END
+" --- [ Plugins ] ------------------------------------------------------------ "
 call plug#begin() " Plugins
 Plug 'mimuki/goyo.vim' " 
 Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
+" --- [ Theme ] -------------------------------------------------------------- "
 colorscheme dracula
 if (has("termguicolors")) " Fix terminal background colour
   set termguicolors
 endif
-
-let g:goyo_margin_top = 0
-let g:goyo_margin_bottom = 0
+" --- [ Goyo ] --------------------------------------------------------------- "
 " On window resize, if goyo is active, do <c-w>= to resize the window
 autocmd VimResized * if exists('#goyo') | exe "normal \<c-w>=" | endif
 
@@ -54,8 +56,8 @@ function! s:goyo_enter()
   cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
 endfunction
 
+" Quit Vim if this is the only remaining buffer
 function! s:goyo_leave()
-  " Quit Vim if this is the only remaining buffer
   if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
     if b:quitting_bang
       qa!
