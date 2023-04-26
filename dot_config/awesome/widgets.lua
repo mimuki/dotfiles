@@ -163,19 +163,21 @@ gears.timer {
           end
           
           markupColour(frontInfo, beautiful.front_fg, beautiful.front_bg, " " .. front.name .. " ")
-          
-          if front.wallpaper == nil then -- Use default wallpaper
-            gears.wallpaper.maximized(beautiful.wallpaper, awful.screen.focused())
-          else -- Use member's wallpaper
-            local https = require "ssl.https" 
-            local body, code = https.request(front.wallpaper) 
-            if not body then error(code) end 
-            local f = assert(io.open(beautiful.dir .. "mimuki/wallpapers/" .. front.id .. ".png", 'wb')) -- open in "binary" mode 
-            f:write(body) 
-            f:close()
-            beautiful.wallpaper = beautiful.dir .. "mimuki/wallpapers/" .. front.id .. ".png"
-            gears.wallpaper.maximized(beautiful.wallpaper, awful.screen.focused())
+
+          if front.avatar ~= nil then -- use members avatar for menu icon
+            getImage(front.avatar, beautiful.dir .. "mimuki/icons/" .. front.id .. ".png")
+            beautiful.awesome_icon = beautiful.dir .. "mimuki/icons/" .. front.id .. ".png"
           end
+
+          mainLauncher:set_image(beautiful.awesome_icon)
+
+          if front.wallpaper ~= nil then --- Use member's wallpaper
+            getImage(front.wallpaper, beautiful.dir .. "mimuki/wallpapers/" .. front.id .. ".png")
+            beautiful.wallpaper = beautiful.dir .. "mimuki/wallpapers/" .. front.id .. ".png"
+            -- gears.wallpaper.maximized(beautiful.wallpaper, awful.screen.focused())
+          end
+          
+          gears.wallpaper.maximized(beautiful.wallpaper, awful.screen.focused())
 
           refreshWibox()
         else -- if front didn't change
@@ -184,8 +186,8 @@ gears.timer {
         --       title = "Front was the same",
         --       text = "This should do a thing"
         --     })
-            end
         end
+    end
     )
   end
 }

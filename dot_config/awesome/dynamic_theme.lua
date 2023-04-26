@@ -32,3 +32,12 @@ function fileExists(name)
    local f=io.open(name,"r")
    if f~=nil then io.close(f) return true else return false end
 end
+
+function getImage(url, dir)
+  local https = require "ssl.https" 
+  local body, code = https.request(url) 
+  if not body then error(code) end 
+  local f = assert(io.open(dir, 'wb')) -- open in "binary" mode 
+  f:write(body) 
+  f:close()
+end
