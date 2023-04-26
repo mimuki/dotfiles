@@ -154,7 +154,7 @@ gears.timer {
           else -- Fix formatting so we can use their colour
             front.colour = "#" .. front.colour
           end
-          
+
           -- use member's theme, or default if not
           if fileExists(beautiful.dir .. "mimuki/members/".. front.id ..".lua") == true then 
             beautiful.init(beautiful.dir .. "mimuki/members/".. front.id ..".lua")
@@ -162,7 +162,7 @@ gears.timer {
             beautiful.init("~/.config/awesome/theme.lua")
           end
           
-          markupColour(frontInfo, beautiful.front_fg, front.colour, " " .. front.name .. " ")
+          markupColour(frontInfo, beautiful.front_fg, beautiful.front_bg, " " .. front.name .. " ")
           
           if front.wallpaper == nil then -- Use default wallpaper
             gears.wallpaper.maximized(beautiful.wallpaper, awful.screen.focused())
@@ -178,7 +178,7 @@ gears.timer {
           end
 
           refreshWibox()
-        -- else -- if front didn't change
+        else -- if front didn't change
         --   naughty.notify(
         --     {
         --       title = "Front was the same",
