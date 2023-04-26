@@ -164,22 +164,8 @@ gears.timer {
             beautiful.init("~/.config/awesome/theme.lua")
           end
           markupColour(frontInfo, beautiful.front_fg, beautiful.front_bg, out)
-          formatColour(localDate, beautiful.date_fg, beautiful.date_bg, dateFormat)
-          formatColour(localTime, beautiful.time_fg, beautiful.time_bg, timeFormat)
-          awful.screen.focused().mywibox.bg = beautiful.bg -- Update wibox
 
-          refreshIcons()
-          volume.update() -- Volume widget colours
-
-          -- Without this, taglist colours only change when focus changes
-          awful.screen.focused().mytaglist._do_taglist_update()
-          
-          weatherTimer:emit_signal("timeout")
-          cpuInfoTimer:emit_signal("timeout")
-          ramInfoTimer:emit_signal("timeout")
-          batInInfoTimer:emit_signal("timeout")
-          batExInfoTimer:emit_signal("timeout")
-          wattsTimer:emit_signal("timeout")
+          refreshWibox()
         -- else -- if front didn't change
         --   naughty.notify(
         --     {
