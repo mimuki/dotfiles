@@ -4,6 +4,7 @@
 
 ----- [ Dependencies ] ---------------------------------------------------------
 lain = require("lain")
+json = require("lunajson")
 markup = lain.util.markup
 separators = lain.util.separators
 require("vars")
@@ -140,7 +141,7 @@ gears.timer {
     awful.spawn.easy_async_with_shell(
       "bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/front.sh",
       function(out)
-      -- Custom colours for specific headmates
+        front = json.decode(out)
         if out ~= lastFront then -- front changed
           lastFront = out
           -- naughty.notify(
@@ -148,22 +149,33 @@ gears.timer {
           --   title = "Front was different",
           --   text = "This should do a thing"
           -- })
-          if string.match(out, "Jade") then
-            beautiful.init("~/.config/awesome/themes/mimuki/members/grylt.lua")
-          elseif string.match(out, "kala") then
-            beautiful.init("~/.config/awesome/themes/mimuki/members/tojvf.lua")
-          elseif string.match(out, "Nathan") then
-            beautiful.init("~/.config/awesome/themes/mimuki/members/hajke.lua")
-          elseif string.match(out, "Nox") then
-            beautiful.init("~/.config/awesome/themes/mimuki/members/jbbou.lua")
-          elseif string.match(out, "Emmett") then
-            beautiful.init("~/.config/awesome/themes/mimuki/members/eaiac.lua")
-          elseif string.match(out, "Jay") then
-            beautiful.init("~/.config/awesome/themes/mimuki/members/eqtgr.lua")
-          else -- Doesn't have a theme; use default
+          if front.colour == nil then -- Fronter has no colour
+            front.colour = "#ff79c6"
+          else -- Fix formatting so we can use their colour
+            front.colour = "#" .. front.colour
+          end
+          
+          -- use member's theme, or default if not
+          if fileExists(beautiful.dir .. "mimuki/members/".. front.id ..".lua") == true then 
+            beautiful.init(beautiful.dir .. "mimuki/members/".. front.id ..".lua")
+          else
             beautiful.init("~/.config/awesome/theme.lua")
           end
-          markupColour(frontInfo, beautiful.front_fg, beautiful.front_bg, out)
+          
+          markupColour(frontInfo, beautiful.front_fg, front.colour, " " .. front.name .. " ")
+          
+          if front.wallpaper == nil then -- Use default wallpaper
+            gears.wallpaper.maximized(beautiful.wallpaper, awful.screen.focused())
+          else -- Use member's wallpaper
+            local https = require "ssl.https" 
+            local body, code = https.request(front.wallpaper) 
+            if not body then error(code) end 
+            local f = assert(io.open(beautiful.dir .. "mimuki/wallpapers/" .. front.id .. ".png", 'wb')) -- open in "binary" mode 
+            f:write(body) 
+            f:close()
+            beautiful.wallpaper = beautiful.dir .. "mimuki/wallpapers/" .. front.id .. ".png"
+            gears.wallpaper.maximized(beautiful.wallpaper, awful.screen.focused())
+          end
 
           refreshWibox()
         -- else -- if front didn't change

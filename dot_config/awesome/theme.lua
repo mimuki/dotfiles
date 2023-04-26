@@ -38,12 +38,12 @@ theme.warn  = theme.orange
 theme.bg = theme.black 
 theme.fg = theme.white
 ----- [ Widgets ] --------------------------------------------------------------
-theme_front_fg = theme.bg
-theme_front_bg = theme.accent_alt 
-theme_date_fg  = theme.bg
-theme_date_bg  = theme.accent
-theme_time_fg  = theme.blue
-theme_time_bg  = theme.bg
+theme.front_fg = theme.bg
+theme.front_bg = theme.accent_alt 
+theme.date_fg  = theme.bg
+theme.date_bg  = theme.accent
+theme.time_fg  = theme.blue
+theme.time_bg  = theme.bg
 ----- [ Background ] -----------------------------------------------------------
 theme.bg_normal     = theme.black
 theme.bg_focus      = theme.l_black
