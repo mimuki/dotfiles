@@ -165,16 +165,23 @@ gears.timer {
           markupColour(frontInfo, beautiful.front_fg, beautiful.front_bg, " " .. front.name .. " ")
 
           if front.avatar ~= nil then -- use members avatar for menu icon
-            getImage(front.avatar, beautiful.dir .. "mimuki/icons/" .. front.id .. ".png")
+          -- Only download it once
+          -- TODO: some way of checking if the web version is a different image
+            if fileExists(beautiful.dir .. "mimuki/icons/".. front.id ..".png") == false then 
+              getImage(front.avatar, beautiful.dir .. "mimuki/icons/" .. front.id .. ".png")
+            end
             beautiful.awesome_icon = beautiful.dir .. "mimuki/icons/" .. front.id .. ".png"
           end
 
           mainLauncher:set_image(beautiful.awesome_icon)
 
           if front.wallpaper ~= nil then --- Use member's wallpaper
-            getImage(front.wallpaper, beautiful.dir .. "mimuki/wallpapers/" .. front.id .. ".png")
+          -- Only download it once
+          -- TODO: some way of checking if the web version is a different image
+            if fileExists(beautiful.dir .. "mimuki/wallpapers/".. front.id ..".png") == false then 
+              getImage(front.wallpaper, beautiful.dir .. "mimuki/wallpapers/" .. front.id .. ".png")
+            end
             beautiful.wallpaper = beautiful.dir .. "mimuki/wallpapers/" .. front.id .. ".png"
-            -- gears.wallpaper.maximized(beautiful.wallpaper, awful.screen.focused())
           end
           
           gears.wallpaper.maximized(beautiful.wallpaper, awful.screen.focused())
