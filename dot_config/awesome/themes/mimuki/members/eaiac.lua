@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                 eaiac.lua                                  --
 --------------------------------------------------------------------------------
--- v1.3
+-- v1.4
 ----- [ Dependencies ] ---------------------------------------------------------
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -37,6 +37,13 @@ theme.warn  = theme.orange
 
 theme.bg = theme.black 
 theme.fg = theme.white
+----- [ Widgets ] --------------------------------------------------------------
+theme.front_fg = theme.bg
+theme.front_bg = theme.accent
+theme.date_fg  = theme.bg
+theme.date_bg  = theme.accent_alt
+theme.time_fg  = theme.bg
+theme.time_bg  = theme.accent
 ----- [ Background ] -----------------------------------------------------------
 theme.bg_normal     = theme.black
 theme.bg_focus      = theme.l_black

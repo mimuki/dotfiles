@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                 tojvf.lua                                  --
 --------------------------------------------------------------------------------
--- v1.3
+-- v1.4
 ----- [ Dependencies ] ---------------------------------------------------------
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -37,6 +37,13 @@ theme.warn  = theme.orange
 
 theme.bg = theme.black 
 theme.fg = theme.white
+----- [ Widgets ] --------------------------------------------------------------
+theme.front_fg = theme.bg
+theme.front_bg = theme.accent
+theme.date_fg  = theme.fg
+theme.date_bg  = theme.bg
+theme.time_fg  = theme.accent
+theme.time_bg  = theme.bg
 ----- [ Background ] -----------------------------------------------------------
 theme.bg_normal     = theme.black
 theme.bg_focus      = theme.l_black

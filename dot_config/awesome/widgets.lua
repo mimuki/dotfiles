@@ -150,49 +150,22 @@ gears.timer {
           -- })
           if string.match(out, "Jade") then
             beautiful.init("~/.config/awesome/themes/mimuki/members/grylt.lua")
-            -- Custom widgets
-            markupColour(frontInfo, beautiful.bg, beautiful.pink, out)
-            formatColour(localDate, beautiful.bg, beautiful.blue, dateFormat)
-            formatColour(localTime, beautiful.bg, beautiful.pink, timeFormat)
-          
           elseif string.match(out, "kala") then
             beautiful.init("~/.config/awesome/themes/mimuki/members/tojvf.lua")
-            -- Custom widgets
-            markupColour(frontInfo, beautiful.bg, beautiful.accent, out)
-            formatColour(localDate, beautiful.fg, beautiful.bg, dateFormat)
-            formatColour(localTime, beautiful.accent, beautiful.bg, timeFormat)
           elseif string.match(out, "Nathan") then
             beautiful.init("~/.config/awesome/themes/mimuki/members/hajke.lua")
-            -- Custom widgets
-            markupColour(frontInfo, beautiful.bg, beautiful.accent_alt, out)
-            formatColour(localDate, beautiful.bg, beautiful.accent, dateFormat)
-            formatColour(localTime, beautiful.blue, beautiful.bg, timeFormat)
           elseif string.match(out, "Nox") then
             beautiful.init("~/.config/awesome/themes/mimuki/members/jbbou.lua")
-            -- Custom widgets
-            markupColour(frontInfo, beautiful.black, beautiful.accent, out)
-            formatColour(localDate, beautiful.black, beautiful.accent_alt, dateFormat)
-            formatColour(localTime, beautiful.black, beautiful.yellow, timeFormat)
           elseif string.match(out, "Emmett") then
             beautiful.init("~/.config/awesome/themes/mimuki/members/eaiac.lua")
-            -- Custom widgets
-            markupColour(frontInfo, beautiful.black, beautiful.accent, out)
-            formatColour(localDate, beautiful.black, beautiful.accent_alt, dateFormat)
-            formatColour(localTime, beautiful.black, beautiful.accent, timeFormat)
           elseif string.match(out, "Jay") then
             beautiful.init("~/.config/awesome/themes/mimuki/members/eqtgr.lua")
-            -- Custom widgets
-            markupColour(frontInfo, beautiful.black, beautiful.accent, out)
-            formatColour(localDate, beautiful.black, beautiful.yellow, dateFormat)
-            formatColour(localTime, beautiful.accent_alt, beautiful.black, timeFormat)
           else -- Doesn't have a theme; use default
             beautiful.init("~/.config/awesome/theme.lua")
-
-            markupColour(frontInfo, beautiful.bg, beautiful.pink, out)
-            formatColour(localDate, beautiful.bg, beautiful.purple, dateFormat)
-            formatColour(localTime, beautiful.bg, beautiful.blue, timeFormat)
-
           end
+          markupColour(frontInfo, beautiful.front_fg, beautiful.front_bg, out)
+          formatColour(localDate, beautiful.date_fg, beautiful.date_bg, dateFormat)
+          formatColour(localTime, beautiful.time_fg, beautiful.time_bg, timeFormat)
           awful.screen.focused().mywibox.bg = beautiful.bg -- Update wibox
 
           refreshIcons()
