@@ -141,9 +141,9 @@ gears.timer {
     awful.spawn.easy_async_with_shell(
       "bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/front.sh",
       function(out)
-        front = json.decode(out)
         if out ~= lastFront then -- front changed
           lastFront = out
+          front = json.decode(out)
           -- naughty.notify(
           -- {
           --   title = "Front was different",

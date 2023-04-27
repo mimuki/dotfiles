@@ -29,8 +29,8 @@ theme.blue    = "#65aef7"
 theme.purple  = "#aa7ff0"
 theme.pink    = "#43c1be"
 
-theme.accent     = theme.pink
-theme.accent_alt = theme.red
+theme.accent     = theme.purple
+theme.accent_alt = theme.pink
 
 theme.error = theme.red 
 theme.warn  = theme.orange
