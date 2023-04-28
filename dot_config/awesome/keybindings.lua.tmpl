@@ -50,8 +50,8 @@ awful.key({ modkey,           }, "o", awful.tag.viewnext,
 awful.key({ modkey,           }, "Right", awful.tag.viewnext),
 
 
-awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
-          { description = "jump to urgent window", group = "window" }),
+-- awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
+--           { description = "jump to urgent window", group = "window" }),
 
 awful.key({ modkey,           }, "Tab",
             function ()
@@ -359,6 +359,10 @@ awful.key({ modkey, "Mod1", "Shift" }, "i", function (c) -- move up
             c:relative_move(   0,-100,   0,   0) end),
 awful.key({ modkey, "Mod1", "Shift" }, "o", function (c) -- move right
             c:relative_move( 100,   0,   0,   0) end),
+
+awful.key({ modkey, }, "u", function()
+  pyradio:toggle() end,
+  { description = "Toggle pyradio"}),
 
 {{- if eq .chezmoi.hostname "DESKRATS-2020MNT21" }}
 -- Toggle live captions, using Bling's scratchpad feature. Defined in utilities.lua

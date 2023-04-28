@@ -113,7 +113,7 @@ theme.notification_border_width = theme.border_width
 theme.menu_border_color = theme.accent_alt
 theme.menu_border_width = theme.border_width
 
-theme.notification_width  = 600
+theme.notification_width  = notificationWidth
 -- theme.notification_height = 140
 ----- [ Other Stuff ] ----------------------------------------------------------
 -- ran out of spoons lol

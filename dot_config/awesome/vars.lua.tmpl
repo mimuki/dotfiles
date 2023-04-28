@@ -18,15 +18,23 @@ awful.layout.layouts = {
   awful.layout.suit.tile.top,
   awful.layout.suit.max.fullscreen,
 }
------ [ Widgets ] --------------------------------------------------------------
+----- [ Device Config ] -------------------------------------------------------
 -- This is generated automatically by Chezmoi
 {{- if eq .chezmoi.hostname "DESKRATS-2020MNT21" }}
 -- This machine should be DESKRATS-2020MNT21
 frontTimeout = 300
+pyradioGeometry = {x=0, y=40, height=62, width=1352} -- todo figure out good vals
+notificationWidth = 600
 {{- else if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
 -- This machine should be LAPRATS-2023MNT21
 frontTimeout = 5
+pyradioGeometry = {x=0, y=40, height=62, width=1352}
+notificationWidth = 685
+
 {{ else }}
 -- This machine wasn't recognized by Chezmoi
 frontTimeout = 600
+pyradioGeometry = {x=0, y=40, height=62, width=1352}
+notificationWidth = 600
+
 {{ end }}
