@@ -146,6 +146,9 @@ awful.key({ modkey,           }, "Return", function () awful.screen.focused().qu
 awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn(terminal) end,
           { description = "Terminal", group = "programs" }),
 
+awful.key({ modkey, }, "u", function()
+  pyradio:toggle() end,
+  { description = "Toggle pyradio"}),
 ------- [ Rofi ]
 -- TODO: maybe make it so that repeating these toggles rofi open/closed?
 awful.key({ modkey            }, "p",
@@ -359,10 +362,6 @@ awful.key({ modkey, "Mod1", "Shift" }, "i", function (c) -- move up
             c:relative_move(   0,-100,   0,   0) end),
 awful.key({ modkey, "Mod1", "Shift" }, "o", function (c) -- move right
             c:relative_move( 100,   0,   0,   0) end),
-
-awful.key({ modkey, }, "u", function()
-  pyradio:toggle() end,
-  { description = "Toggle pyradio"}),
 
 {{- if eq .chezmoi.hostname "DESKRATS-2020MNT21" }}
 -- Toggle live captions, using Bling's scratchpad feature. Defined in utilities.lua

@@ -69,6 +69,14 @@ awful.rules.rules = {
       border_width = 0,
       placement = awful.placement.bottom
     }
+},
+
+{ rule = { class = "pyradio" },
+    properties = { 
+      floating = true,
+      ontop = true,
+      placement = awful.placement.top
+    }
 }
 -- Set Firefox to always map on the tag named "2" on screen 1.
 -- { rule = { class = "Firefox" },
