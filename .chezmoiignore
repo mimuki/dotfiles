@@ -1,3 +1,5 @@
 README.md
 LICENSE
 examples/
+.config/pyradio/pyradio-titles.log
+.config/pyradio/data/last-sync

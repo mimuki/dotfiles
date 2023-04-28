@@ -13,6 +13,7 @@ All the things you need if you're me. Works by using [Chezmoi](https://github.co
 - [kitty, a terminal](https://github.com/kovidgoyal/kitty)
 - [lxappearance, a GTK theme switcher](https://github.com/lxde/lxappearance)
 - [picom, a compositor](https://github.com/yshui/picom)
+- [pyradio, a terminal radio](https://github.com/coderholic/pyradio)
 - [qutebrowser, a browser](https://github.com/qutebrowser/qutebrowser)
 - [rofi, a window switcher, application launcher, and more](https://github.com/davatorium/rofi)
 - [vim, a text editor](https://github.com/vim/vim)
