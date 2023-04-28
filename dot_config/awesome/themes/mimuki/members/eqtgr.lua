@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                 eqtgr.lua                                  --
 --------------------------------------------------------------------------------
--- v1.4
+-- v1.5
 ----- [ Dependencies ] ---------------------------------------------------------
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -117,6 +117,7 @@ theme.notification_width  = 600
 -- theme.notification_height = 140
 ----- [ Other Stuff ] ----------------------------------------------------------
 -- ran out of spoons lol
+theme.notification_icon_size = 80
 theme.menu_submenu_icon = theme.dir .."mimuki/icons/point-right.png"
 theme.menu_height = dpi(35)
 theme.menu_width  = dpi(250)
