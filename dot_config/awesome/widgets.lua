@@ -258,24 +258,28 @@ gears.timer {
     awful.spawn.easy_async("cat /sys/class/power_supply/BAT0/status",
       function(result)
         if string.match(result, "Discharging") then
+          batInIcon.visible = true
           batInIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_icon, "#ff5555")))
         end
         if string.match(result, "Not charging") then 
           batInIcon.visible = false
         end
         if string.match(result, "Charging") then 
+          batInIcon.visible = true
           batInIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_charging_icon, "#8be9fd")))
         end
       end)
     awful.spawn.easy_async("cat /sys/class/power_supply/BAT1/status",
       function(result)
         if string.match(result, "Discharging") then
+          batExIcon.visible = true
           batExIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_icon, "#f1fa8c")))
         end
         if string.match(result, "Not charging") then 
           batExIcon.visible = false
         end
         if string.match(result, "Charging") then 
+          batExIcon.visible = true
           batExIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_charging_icon, "#50fa7b")))
         end
       end)
