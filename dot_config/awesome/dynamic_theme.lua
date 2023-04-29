@@ -11,7 +11,6 @@ function markupColour(widget, fg, bg, text)
 end
 
 function refreshWibox()
-
   formatColour(localDate, beautiful.date_fg, beautiful.date_bg, dateFormat)
   formatColour(localTime, beautiful.time_fg, beautiful.time_bg, timeFormat)
   awful.screen.focused().mywibox.bg = beautiful.bg -- Update wibox
@@ -39,5 +38,56 @@ function getImage(url, dir)
   if not body then error(code) end 
   local f = assert(io.open(dir, 'wb')) -- open in "binary" mode 
   f:write(body) 
+  f:close()
+end
+function kittyTheme()
+  -- TODO: make it refresh when it changes
+  kitTheme = "# Generated automatically, will be overwritten\n" .. 
+  "foreground          " .. beautiful.fg .. "\n"..
+  "background          " .. beautiful.bg .. "\n"
+  local f =  assert(io.open("/home/mimuki/.config/kitty/themes/dynamic.conf", 'w'))
+  f:write(kitTheme)
+  f:close()
+end
+function pyradioTheme()
+  pyTheme = "# Generated automatically, will be overwritten\n" ..
+  "# Main foreground and background\n" ..
+  "Stations            " .. beautiful.fg .. " " .. beautiful.bg .. "\n\n" ..
+  "# Playing station text color\n" ..
+  "# (background color will come from Stations)\n" ..
+  "Active Station      " .. beautiful.accent .. "\n\n" ..
+  "# Status bar foreground and background\n" ..
+  "Status Bar          " .. beautiful.accent_alt .. " " .. beautiful.bg .. "\n\n" ..
+  "# Normal cursor foreground and background\n" ..
+  "Normal Cursor       " .. beautiful.bg .. " " .. beautiful.accent .. "\n\n" ..
+  "# Cursor foreground and background\n" ..
+  "# when cursor on playing station\n" ..
+  "Active Cursor       " .. beautiful.bg .. " " .. beautiful.accent_alt .."\n\n" ..
+  "# Cursor foreground and background\n" ..
+  "# This is the Line Editor cursor\n" ..
+  "Edit Cursor         " .. beautiful.bg .. " " .. beautiful.fg .. "\n\n" ..
+  "# Text color for extra function indication\n" ..
+  "# and jump numbers within the status bar\n" ..
+  "# (background color will come from Stations)\n" ..
+  "Extra Func          " .. beautiful.red .. "\n\n" ..
+  "# Text color for URL\n" ..
+  "# (background color will come from Stations)\n" ..
+  "PyRadio URL         " .. beautiful.l_black .. "\n\n" ..
+  "# Message window border foreground and background.\n" ..
+  "# The background color can be left unset.\n" ..
+  "# Please refer to the following link for more info\n" ..
+  "# https://github.com/coderholic/pyradio#secondary-windows-background\n" ..
+  "Messages Border     " .. beautiful.accent_alt .. "\n\n" ..
+  "# Border color for the Main Window\n" ..
+  "# (background color will come from Stations)\n" ..
+  "Border              " .. beautiful.grey .. "\n\n" ..
+  "# Theme Transparency\n" ..
+  "# Values are:\n" ..
+  "#   0: No transparency (default)\n" ..
+  "#   1: Theme is transparent\n" ..
+  "#   2: Obey config setting\n" ..
+  "transparency        0\n"
+  local f =  assert(io.open("/home/mimuki/.config/pyradio/themes/dynamic.pyradio-theme", 'w'))
+  f:write(pyTheme)
   f:close()
 end

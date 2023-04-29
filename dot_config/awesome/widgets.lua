@@ -187,6 +187,9 @@ gears.timer {
           gears.wallpaper.maximized(beautiful.wallpaper, awful.screen.focused())
 
           refreshWibox()
+
+          pyradioTheme()
+          kittyTheme()
         else -- if front didn't change
         --   naughty.notify(
         --     {

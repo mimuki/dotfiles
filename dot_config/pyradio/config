@@ -109,7 +109,7 @@ force_http = False
 # with an asterisk (i.e. '*my_theme')
 # This is applicable for user themes only!
 # Default value = 'dark'
-theme = dracula
+theme = dynamic
 
 # Transparency setting
 # If False, theme colors will be used.
