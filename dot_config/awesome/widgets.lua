@@ -133,7 +133,7 @@ localDate = wibox.widget.textclock(
 ----- [ Front info ] -----------------------------------------------------------
 frontInfo = wibox.widget.textbox(markup.color(beautiful.bg, beautiful.pink, ""))
 
-gears.timer {
+frontTimer = gears.timer {
   timeout   = frontTimeout,
   call_now  = true,
   autostart = true,
