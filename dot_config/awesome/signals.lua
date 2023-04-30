@@ -38,6 +38,10 @@ client.connect_signal("unfocus", function(c)
   c.border_color = beautiful.border_normal 
 end)
 
+client.connect_signal("property::floating", function(c)
+  c.border_color = beautiful.accent_alt
+end)
+
 -- if a client is minimized, no you don't
 -- (solves bug of games disappearing when unfocused)
 client.connect_signal("property::minimized", function(c)
