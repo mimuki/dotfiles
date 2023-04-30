@@ -40,14 +40,18 @@ function getImage(url, dir)
   f:write(body) 
   f:close()
 end
+
 function kittyTheme()
-  -- TODO: make it refresh when it changes
   kitTheme = "# Generated automatically, will be overwritten\n" .. 
   "foreground          " .. beautiful.fg .. "\n"..
   "background          " .. beautiful.bg .. "\n"
   local f =  assert(io.open("/home/mimuki/.config/kitty/themes/dynamic.conf", 'w'))
   f:write(kitTheme)
   f:close()
+  awful.spawn.easy_async("kitty +kitten themes --reload-in=all Dynamic", 
+    function(result)
+      -- might be worth catching errors here some day
+    end)
 end
 function pyradioTheme()
   pyTheme = "# Generated automatically, will be overwritten\n" ..

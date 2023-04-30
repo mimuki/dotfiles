@@ -254,7 +254,7 @@ gears.timer {
   timeout = 5, -- seconds
   call_now = true,
   autostart = true,
-  callback = function()
+  callback = function() --reload-in=all Dynamic
     awful.spawn.easy_async("cat /sys/class/power_supply/BAT0/status",
       function(result)
         if string.match(result, "Discharging") then
