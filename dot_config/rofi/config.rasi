@@ -1,17 +1,5 @@
 ////////////////////////////////////////////////////////////////////////////////
 //                                config.rasi                                 //
-//                                                                            //
-// Last edit: 25/02/23                        made with love by kulupu Mimuki //
-////////////////////////////////////////////////////////////////////////////////
-// TODO: Make the config all pretty looking                                   //
-//                                                                            //
-////////////////////////////////////////////////////////////////////////////////
-//                                                                            //
-// Project page:                                                              //
-//  https://github.com/davatorium/rofi                                        //
-// Theme originally from:                                                     //
-//  https://github.com/LRDPRDX/rofi                                           //
-//                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 // ---[Globals]-------------------------------------------------------------- //
 // NOTE : these properties are inherited for all "named" elements below
@@ -90,7 +78,7 @@
     width:              50%;
     x-offset:           0;
     y-offset:           0;
-    font: 		"Bad Comic 18";
+    font: 		"Andika Rats 18";
 
 }
 
@@ -115,7 +103,7 @@
 #textbox {
     text-color: @fg;
     background-color: @selection;
-    padding: 10px 15px;
+    padding: 5px 17px;
     border: 8px;
     border-color: @comment;
 
@@ -129,8 +117,8 @@
     dynamic:            true;
     scrollbar:          false;
     cycle:              true;
-    spacing:            1px;
-    padding:            2px 0px 0px;
+    spacing:            0px;
+    padding:            -5px;
     lines:              8;
     orientation:        vertical;
 }
@@ -207,8 +195,7 @@
 
 #inputbar {
     children:           [prompt, textbox-prompt-colon, entry, case-indicator];
-    padding:            20px;
-
+    padding:            15px;
 }
 
 #textbox-prompt-colon {
