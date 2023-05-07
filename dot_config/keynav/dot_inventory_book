@@ -19,6 +19,9 @@ ctrl+alt+m loadconfig ~/.config/keynav/.keynavrc, end
 ctrl+t start, cut-left 1436, cut-right 490, cut-down 542, cut-up 164
 Escape end
 
+# Toggle help book mode
+F5 windowzoom, cut-right 678, cut-down 606, cut-left 54, cut-up 54, warp, click 1, loadconfig ~/.config/keynav/.inventory, clear, end, start, cut-left 1205, cut-right 490, cut-down 542, cut-up 164
+
 # Assumes the following layout:
 # qwfpb   jluy;
 # arstg   mneio
@@ -104,9 +107,6 @@ shift+F1 windowzoom, cut-right 972, cut-down 768, cut-left 54, cut-up 54, warp, 
 shift+F2 windowzoom, cut-right 972, cut-down 714, cut-left 54, cut-up 54, warp, click 1
 shift+F3 windowzoom, cut-right 972, cut-down 660, cut-left 54, cut-up 54, warp, click 1
 shift+F4 windowzoom, cut-right 972, cut-down 606, cut-left 54, cut-up 54, warp, click 1
-
-# Help Book
-F5 windowzoom, cut-right 678, cut-down 606, cut-left 54, cut-up 54, warp, click 1, loadconfig ~/.config/keynav/.inventory, end
 
 # Crafting Table
 shift+F7 windowzoom, cut-right 702, cut-down 738, cut-left 54, cut-up 54, warp, click 1

@@ -19,6 +19,9 @@ ctrl+alt+m loadconfig ~/.config/keynav/.keynavrc, end
 ctrl+t start, cut-left 1205, cut-right 490, cut-down 542, cut-up 164
 Escape end
 
+# Toggle help book mode
+F5 windowzoom, cut-right 909, cut-down 606, cut-left 54, cut-up 54, warp, click 1, loadconfig ~/.config/keynav/.inventory_book, clear, end, start, cut-left 1436, cut-right 490, cut-down 542, cut-up 164
+
 # Assumes the following layout:
 # qwfpb   jluy;
 # arstg   mneio
@@ -95,45 +98,6 @@ slash windowzoom, cut-right 771, cut-down 432, cut-left 54, cut-up 54, warp
 8 windowzoom, cut-right 879, cut-down 366, cut-left 54, cut-up 54, warp
 9 windowzoom, cut-right 825, cut-down 366, cut-left 54, cut-up 54, warp
 0 windowzoom, cut-right 771, cut-down 366, cut-left 54, cut-up 54, warp
-# ---[ Single Chest ]--------------------------------------------------------- #
-# ---[ Top Row ]--- #
-alt+q windowzoom, cut-right 1203, cut-down 741, cut-left 54, cut-up 54, warp
-alt+w windowzoom, cut-right 1149, cut-down 741, cut-left 54, cut-up 54, warp
-alt+f windowzoom, cut-right 1095, cut-down 741, cut-left 54, cut-up 54, warp
-alt+p windowzoom, cut-right 1041, cut-down 741, cut-left 54, cut-up 54, warp
-alt+b windowzoom, cut-right 987, cut-down 741, cut-left 54, cut-up 54, warp
-
-alt+j windowzoom, cut-right 987, cut-down 741, cut-left 54, cut-up 54, warp
-alt+l windowzoom, cut-right 933, cut-down 741, cut-left 54, cut-up 54, warp
-alt+u windowzoom, cut-right 879, cut-down 741, cut-left 54, cut-up 54, warp
-alt+y windowzoom, cut-right 825, cut-down 741, cut-left 54, cut-up 54, warp
-alt+semicolon windowzoom, cut-right 771, cut-down 741, cut-left 54, cut-up 54, warp
-
-# ---[ Middle Row ]--- #
-alt+a windowzoom, cut-right 1203, cut-down 687, cut-left 54, cut-up 54, warp
-alt+r windowzoom, cut-right 1149, cut-down 687, cut-left 54, cut-up 54, warp
-alt+s windowzoom, cut-right 1095, cut-down 687, cut-left 54, cut-up 54, warp
-alt+t windowzoom, cut-right 1041, cut-down 687, cut-left 54, cut-up 54, warp
-alt+g windowzoom, cut-right 987, cut-down 687, cut-left 54, cut-up 54, warp
-
-alt+m windowzoom, cut-right 987, cut-down 687, cut-left 54, cut-up 54, warp
-alt+n windowzoom, cut-right 933, cut-down 687, cut-left 54, cut-up 54, warp
-alt+e windowzoom, cut-right 879, cut-down 687, cut-left 54, cut-up 54, warp
-alt+i windowzoom, cut-right 825, cut-down 687, cut-left 54, cut-up 54, warp
-alt+o windowzoom, cut-right 771, cut-down 687, cut-left 54, cut-up 54, warp
-
-# ---[ Bottom Row ]--- #
-alt+z windowzoom, cut-right 1203, cut-down 633, cut-left 54, cut-up 54, warp
-alt+x windowzoom, cut-right 1149, cut-down 633, cut-left 54, cut-up 54, warp
-alt+c windowzoom, cut-right 1095, cut-down 633, cut-left 54, cut-up 54, warp
-alt+d windowzoom, cut-right 1041, cut-down 633, cut-left 54, cut-up 54, warp
-alt+v windowzoom, cut-right 987, cut-down 633, cut-left 54, cut-up 54, warp
-
-alt+k windowzoom, cut-right 987, cut-down 633, cut-left 54, cut-up 54, warp
-alt+h windowzoom, cut-right 933, cut-down 633, cut-left 54, cut-up 54, warp
-alt+comma windowzoom, cut-right 879, cut-down 633, cut-left 54, cut-up 54, warp
-alt+period windowzoom, cut-right 825, cut-down 633, cut-left 54, cut-up 54, warp
-alt+slash windowzoom, cut-right 771, cut-down 633, cut-left 54, cut-up 54, warp
 
 # ---[ Click ]---------------------------------------------------------------- #
 # Armour
@@ -141,9 +105,6 @@ shift+F1 windowzoom, cut-right 1203, cut-down 768, cut-left 54, cut-up 54, warp,
 shift+F2 windowzoom, cut-right 1203, cut-down 714, cut-left 54, cut-up 54, warp, click 1
 shift+F3 windowzoom, cut-right 1203, cut-down 660, cut-left 54, cut-up 54, warp, click 1
 shift+F4 windowzoom, cut-right 1203, cut-down 606, cut-left 54, cut-up 54, warp, click 1
-
-# Help Book
-F5 windowzoom, cut-right 909, cut-down 606, cut-left 54, cut-up 54, warp, click 1, loadconfig ~/.config/keynav/.inventory_book, end
 
 # Crafting Table
 shift+F7 windowzoom, cut-right 933, cut-down 738, cut-left 54, cut-up 54, warp, click 1
@@ -206,6 +167,45 @@ shift+7 windowzoom, cut-right 933, cut-down 366, cut-left 54, cut-up 54, warp, c
 shift+8 windowzoom, cut-right 879, cut-down 366, cut-left 54, cut-up 54, warp, click 1
 shift+9 windowzoom, cut-right 825, cut-down 366, cut-left 54, cut-up 54, warp, click 1
 shift+0 windowzoom, cut-right 771, cut-down 366, cut-left 54, cut-up 54, warp, click 1
+# ---[ Single Chest ]--------------------------------------------------------- #
+# ---[ Top Row ]--- #
+alt+q windowzoom, cut-right 1203, cut-down 741, cut-left 54, cut-up 54, warp
+alt+w windowzoom, cut-right 1149, cut-down 741, cut-left 54, cut-up 54, warp
+alt+f windowzoom, cut-right 1095, cut-down 741, cut-left 54, cut-up 54, warp
+alt+p windowzoom, cut-right 1041, cut-down 741, cut-left 54, cut-up 54, warp
+alt+b windowzoom, cut-right 987, cut-down 741, cut-left 54, cut-up 54, warp
+
+alt+j windowzoom, cut-right 987, cut-down 741, cut-left 54, cut-up 54, warp
+alt+l windowzoom, cut-right 933, cut-down 741, cut-left 54, cut-up 54, warp
+alt+u windowzoom, cut-right 879, cut-down 741, cut-left 54, cut-up 54, warp
+alt+y windowzoom, cut-right 825, cut-down 741, cut-left 54, cut-up 54, warp
+alt+semicolon windowzoom, cut-right 771, cut-down 741, cut-left 54, cut-up 54, warp
+
+# ---[ Middle Row ]--- #
+alt+a windowzoom, cut-right 1203, cut-down 687, cut-left 54, cut-up 54, warp
+alt+r windowzoom, cut-right 1149, cut-down 687, cut-left 54, cut-up 54, warp
+alt+s windowzoom, cut-right 1095, cut-down 687, cut-left 54, cut-up 54, warp
+alt+t windowzoom, cut-right 1041, cut-down 687, cut-left 54, cut-up 54, warp
+alt+g windowzoom, cut-right 987, cut-down 687, cut-left 54, cut-up 54, warp
+
+alt+m windowzoom, cut-right 987, cut-down 687, cut-left 54, cut-up 54, warp
+alt+n windowzoom, cut-right 933, cut-down 687, cut-left 54, cut-up 54, warp
+alt+e windowzoom, cut-right 879, cut-down 687, cut-left 54, cut-up 54, warp
+alt+i windowzoom, cut-right 825, cut-down 687, cut-left 54, cut-up 54, warp
+alt+o windowzoom, cut-right 771, cut-down 687, cut-left 54, cut-up 54, warp
+
+# ---[ Bottom Row ]--- #
+alt+z windowzoom, cut-right 1203, cut-down 633, cut-left 54, cut-up 54, warp
+alt+x windowzoom, cut-right 1149, cut-down 633, cut-left 54, cut-up 54, warp
+alt+c windowzoom, cut-right 1095, cut-down 633, cut-left 54, cut-up 54, warp
+alt+d windowzoom, cut-right 1041, cut-down 633, cut-left 54, cut-up 54, warp
+alt+v windowzoom, cut-right 987, cut-down 633, cut-left 54, cut-up 54, warp
+
+alt+k windowzoom, cut-right 987, cut-down 633, cut-left 54, cut-up 54, warp
+alt+h windowzoom, cut-right 933, cut-down 633, cut-left 54, cut-up 54, warp
+alt+comma windowzoom, cut-right 879, cut-down 633, cut-left 54, cut-up 54, warp
+alt+period windowzoom, cut-right 825, cut-down 633, cut-left 54, cut-up 54, warp
+alt+slash windowzoom, cut-right 771, cut-down 633, cut-left 54, cut-up 54, warp
 
 # ---[ Single Chest ]--------------------------------------------------------- #
 # ---[ Top Row ]--- #
