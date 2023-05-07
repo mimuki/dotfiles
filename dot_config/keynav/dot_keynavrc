@@ -22,7 +22,7 @@ daemonize                # Background keynav
 
 ctrl+alt+r restart       # Should these fail, run `killall keynav` in a terminal
 ctrl+alt+q quit
-ctrl+alt+m loadconfig ~/.config/keynav/.minecraft, end
+ctrl+alt+m loadconfig ~/.config/keynav/.inventory, end
 ctrl+t start             # This is global, ctrl+t in other programs won't work
 Escape end
 
