@@ -22,13 +22,12 @@ daemonize                # Background keynav
 
 ctrl+alt+r restart       # Should these fail, run `killall keynav` in a terminal
 ctrl+alt+q quit
+ctrl+alt+m loadconfig ~/.config/keynav/.minecraft, end
 ctrl+t start             # This is global, ctrl+t in other programs won't work
 Escape end
 
 j record
 k playback
-# testy thing ignore me
-#w cut-left 0.67, cut-right 0.508, cut-down 0.5, cut-up 0.4, grid 9x3, grid-nav on
 
 # ---[ Warp and zoom ]-------------------------------------------------------- #
 space        warp, click 1,       end # Left click

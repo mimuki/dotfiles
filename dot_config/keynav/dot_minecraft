@@ -1,0 +1,134 @@
+################################################################################
+#                                 .minecraft                                   #
+################################################################################
+# Assumes the following grid
+#     1203 1149 1095 1041  987  933  879  825  771 
+# 540
+# 486
+# 432
+#
+# 666
+
+# ---[ Basic ]---------------------------------------------------------------- #
+clear                    # Clear all default bindings
+daemonize                # Background keynav
+
+ctrl+alt+r restart       # Should these fail, run `killall keynav` in a terminal
+ctrl+alt+q quit
+ctrl+alt+m loadconfig ~/.config/keynav/.keynavrc, end
+ctrl+t start, cut-left 1205, cut-right 490, cut-down 542, cut-up 164
+Escape end
+
+# Assumes the following layout:
+# qwfpb   jluy;
+# arstg   mneio
+# zxcdv   kh,./
+
+# ---[ Hover ]---------------------------------------------------------------- #
+ctrl+d drag 1
+# ---[ Top Row ]--- #
+# top left corner: cut-right 1203, cut-down 540
+q windowzoom, cut-right 1203, cut-down 540, cut-left 54, cut-up 54, warp
+w windowzoom, cut-right 1149, cut-down 540, cut-left 54, cut-up 54, warp
+f windowzoom, cut-right 1095, cut-down 540, cut-left 54, cut-up 54, warp
+p windowzoom, cut-right 1041, cut-down 540, cut-left 54, cut-up 54, warp
+b windowzoom, cut-right 987, cut-down 540, cut-left 54, cut-up 54, warp
+
+j windowzoom, cut-right 987, cut-down 540, cut-left 54, cut-up 54, warp
+l windowzoom, cut-right 933, cut-down 540, cut-left 54, cut-up 54, warp
+u windowzoom, cut-right 879, cut-down 540, cut-left 54, cut-up 54, warp
+y windowzoom, cut-right 825, cut-down 540, cut-left 54, cut-up 54, warp
+semicolon windowzoom, cut-right 771, cut-down 540, cut-left 54, cut-up 54, warp
+
+# ---[ Middle Row ]--- #
+a windowzoom, cut-right 1203, cut-down 486, cut-left 54, cut-up 54, warp
+r windowzoom, cut-right 1149, cut-down 486, cut-left 54, cut-up 54, warp
+s windowzoom, cut-right 1095, cut-down 486, cut-left 54, cut-up 54, warp
+t windowzoom, cut-right 1041, cut-down 486, cut-left 54, cut-up 54, warp
+g windowzoom, cut-right 987, cut-down 486, cut-left 54, cut-up 54, warp
+
+m windowzoom, cut-right 987, cut-down 486, cut-left 54, cut-up 54, warp
+n windowzoom, cut-right 933, cut-down 486, cut-left 54, cut-up 54, warp
+e windowzoom, cut-right 879, cut-down 486, cut-left 54, cut-up 54, warp
+i windowzoom, cut-right 825, cut-down 486, cut-left 54, cut-up 54, warp
+o windowzoom, cut-right 771, cut-down 486, cut-left 54, cut-up 54, warp
+
+# ---[ Bottom Row ]--- #
+z windowzoom, cut-right 1203, cut-down 432, cut-left 54, cut-up 54, warp
+x windowzoom, cut-right 1149, cut-down 432, cut-left 54, cut-up 54, warp
+c windowzoom, cut-right 1095, cut-down 432, cut-left 54, cut-up 54, warp
+d windowzoom, cut-right 1041, cut-down 432, cut-left 54, cut-up 54, warp
+v windowzoom, cut-right 987, cut-down 432, cut-left 54, cut-up 54, warp
+
+k windowzoom, cut-right 987, cut-down 432, cut-left 54, cut-up 54, warp
+h windowzoom, cut-right 933, cut-down 432, cut-left 54, cut-up 54, warp
+comma windowzoom, cut-right 879, cut-down 432, cut-left 54, cut-up 54, warp
+period windowzoom, cut-right 825, cut-down 432, cut-left 54, cut-up 54, warp
+slash windowzoom, cut-right 771, cut-down 432, cut-left 54, cut-up 54, warp
+
+# ---[ Hotbar ]--- #
+1 windowzoom, cut-right 1203, cut-down 366, cut-left 54, cut-up 54, warp
+2 windowzoom, cut-right 1149, cut-down 366, cut-left 54, cut-up 54, warp
+3 windowzoom, cut-right 1095, cut-down 366, cut-left 54, cut-up 54, warp
+4 windowzoom, cut-right 1041, cut-down 366, cut-left 54, cut-up 54, warp
+5 windowzoom, cut-right 987, cut-down 366, cut-left 54, cut-up 54, warp
+
+6 windowzoom, cut-right 987, cut-down 366, cut-left 54, cut-up 54, warp
+7 windowzoom, cut-right 933, cut-down 366, cut-left 54, cut-up 54, warp
+8 windowzoom, cut-right 879, cut-down 366, cut-left 54, cut-up 54, warp
+9 windowzoom, cut-right 825, cut-down 366, cut-left 54, cut-up 54, warp
+0 windowzoom, cut-right 771, cut-down 366, cut-left 54, cut-up 54, warp
+
+# ---[ Click ]---------------------------------------------------------------- #
+# ---[ Top Row ]--- #
+# top left corner: cut-right 1203, cut-down 540
+shift+q windowzoom, cut-right 1203, cut-down 540, cut-left 54, cut-up 54, warp, click 1
+shift+w windowzoom, cut-right 1149, cut-down 540, cut-left 54, cut-up 54, warp, click 1
+shift+f windowzoom, cut-right 1095, cut-down 540, cut-left 54, cut-up 54, warp, click 1
+shift+p windowzoom, cut-right 1041, cut-down 540, cut-left 54, cut-up 54, warp, click 1
+shift+b windowzoom, cut-right 987, cut-down 540, cut-left 54, cut-up 54, warp, click 1
+
+shift+j windowzoom, cut-right 987, cut-down 540, cut-left 54, cut-up 54, warp, click 1
+shift+l windowzoom, cut-right 933, cut-down 540, cut-left 54, cut-up 54, warp, click 1
+shift+u windowzoom, cut-right 879, cut-down 540, cut-left 54, cut-up 54, warp, click 1
+shift+y windowzoom, cut-right 825, cut-down 540, cut-left 54, cut-up 54, warp, click 1
+shift+semicolon windowzoom, cut-right 771, cut-down 540, cut-left 54, cut-up 54, warp, click 1
+
+# ---[ Middle Row ]--- #
+shift+a windowzoom, cut-right 1203, cut-down 486, cut-left 54, cut-up 54, warp, click 1
+shift+r windowzoom, cut-right 1149, cut-down 486, cut-left 54, cut-up 54, warp, click 1
+shift+s windowzoom, cut-right 1095, cut-down 486, cut-left 54, cut-up 54, warp, click 1
+shift+t windowzoom, cut-right 1041, cut-down 486, cut-left 54, cut-up 54, warp, click 1
+shift+g windowzoom, cut-right 987, cut-down 486, cut-left 54, cut-up 54, warp, click 1
+
+shift+m windowzoom, cut-right 987, cut-down 486, cut-left 54, cut-up 54, warp, click 1
+shift+n windowzoom, cut-right 933, cut-down 486, cut-left 54, cut-up 54, warp, click 1
+shift+e windowzoom, cut-right 879, cut-down 486, cut-left 54, cut-up 54, warp, click 1
+shift+i windowzoom, cut-right 825, cut-down 486, cut-left 54, cut-up 54, warp, click 1
+shift+o windowzoom, cut-right 771, cut-down 486, cut-left 54, cut-up 54, warp, click 1
+
+# ---[ Bottom Row ]--- #
+shift+z windowzoom, cut-right 1203, cut-down 432, cut-left 54, cut-up 54, warp, click 1
+shift+x windowzoom, cut-right 1149, cut-down 432, cut-left 54, cut-up 54, warp, click 1
+shift+c windowzoom, cut-right 1095, cut-down 432, cut-left 54, cut-up 54, warp, click 1
+shift+d windowzoom, cut-right 1041, cut-down 432, cut-left 54, cut-up 54, warp, click 1
+shift+v windowzoom, cut-right 987, cut-down 432, cut-left 54, cut-up 54, warp, click 1
+
+shift+k windowzoom, cut-right 987, cut-down 432, cut-left 54, cut-up 54, warp, click 1
+shift+h windowzoom, cut-right 933, cut-down 432, cut-left 54, cut-up 54, warp, click 1
+shift+comma windowzoom, cut-right 879, cut-down 432, cut-left 54, cut-up 54, warp, click 1
+shift+period windowzoom, cut-right 825, cut-down 432, cut-left 54, cut-up 54, warp, click 1
+shift+slash windowzoom, cut-right 771, cut-down 432, cut-left 54, cut-up 54, warp, click 1
+
+# ---[ Hotbar ]--- #
+shift+1 windowzoom, cut-right 1203, cut-down 366, cut-left 54, cut-up 54, warp, click 1
+shift+2 windowzoom, cut-right 1149, cut-down 366, cut-left 54, cut-up 54, warp, click 1
+shift+3 windowzoom, cut-right 1095, cut-down 366, cut-left 54, cut-up 54, warp, click 1
+shift+4 windowzoom, cut-right 1041, cut-down 366, cut-left 54, cut-up 54, warp, click 1
+shift+5 windowzoom, cut-right 987, cut-down 366, cut-left 54, cut-up 54, warp, click 1
+
+shift+6 windowzoom, cut-right 987, cut-down 366, cut-left 54, cut-up 54, warp, click 1
+shift+7 windowzoom, cut-right 933, cut-down 366, cut-left 54, cut-up 54, warp, click 1
+shift+8 windowzoom, cut-right 879, cut-down 366, cut-left 54, cut-up 54, warp, click 1
+shift+9 windowzoom, cut-right 825, cut-down 366, cut-left 54, cut-up 54, warp, click 1
+shift+0 windowzoom, cut-right 771, cut-down 366, cut-left 54, cut-up 54, warp, click 1
