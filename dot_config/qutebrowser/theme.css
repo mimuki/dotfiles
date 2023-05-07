@@ -366,3 +366,25 @@ div.listItem-3SmSlK:nth-child(6),
 div.listItem-3SmSlK:nth-child(7) {
   display: none;
 }
+
+/* --- [ Blocked Messages ] --- */
+/* Aesthetic tweaks to the blocked message indicator */
+.blockedSystemMessage-3FmE9n {
+   display: flex;
+   justify-content: center;
+}
+
+.blockedMessageText-3Zeg3y:before {
+    content:  "— ";
+}
+
+/* Remove the X next to a blocked message */
+.iconContainer-2rPbqG {
+    display: none;
+}
+
+/* Remove the "show blocked message" button, because mental health good */
+
+span.blockedAction-2cPk2G {
+    display: none
+}
