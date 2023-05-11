@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  content.user_stylesheets:
-    global: ~/.config/qutebrowser/theme.css
+  downloads.location.suggestion:
+    global: both

@@ -195,6 +195,14 @@ c.completion.scrollbar.width = 15
 # Type: Int
 c.completion.scrollbar.padding = 2
 
+# What to display in the download filename input.
+# Type: String
+# Valid values:
+#   - path: Show only the download path.
+#   - filename: Show only download filename.
+#   - both: Show download path and filename.
+c.downloads.location.suggestion = 'both'
+
 # CSS border value for hints.
 # Type: String
 c.hints.border = '0px solid #282a36'
