@@ -6,5 +6,5 @@
 
 config_version: 2
 settings:
-  downloads.location.suggestion:
-    global: both
+  content.user_stylesheets:
+    global: null
