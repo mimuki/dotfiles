@@ -46,7 +46,32 @@ function getImage(url, dir)
   f:write(body) 
   f:close()
 end
-
+function qutebrowserTheme()
+quteTheme = "palette = {\n" ..
+"    \'background\': \'" .. beautiful.bg .. "\',\n" ..
+"    \'selection\': \'" .. beautiful.l_black .. "\',\n" ..
+"    \'foreground\': \'" .. beautiful.fg .. "\',\n" ..
+"    \'accent\': \'" .. beautiful.accent .. "\',\n" ..
+"    \'accent-alt\': \'" .. beautiful.accent_alt .. "\',\n" ..
+"    \'error\': \'" .. beautiful.error .. "\',\n" ..
+"    \'warn\': \'" .. beautiful.warn .. "\',\n" ..
+"    \'grey\': \'" .. beautiful.grey .. "\',\n" ..
+"    \'red\': \'" .. beautiful.red .. "\',\n" ..
+"    \'orange\': \'" .. beautiful.orange .. "\',\n" ..
+"    \'yellow\': \'" .. beautiful.yellow .. "\',\n" ..
+"    \'green\': \'" .. beautiful.green .. "\',\n" ..
+"    \'blue\': \'" .. beautiful.blue .. "\',\n" ..
+"    \'purple\': \'" .. beautiful.purple .. "\',\n" ..
+"    \'pink\': \'" .. beautiful.pink .. "\',\n" ..
+"}\n"
+  local f = assert(io.open("/home/mimuki/.config/qutebrowser/dynamic/theme.py", 'w'))
+  f:write(quteTheme)
+  f:close()
+  awful.spawn.easy_async("qutebrowser ':config-source'",
+    function(result)
+      -- might be worth catching errors here some day
+    end)
+end
 function kittyTheme()
   kitTheme = "# Generated automatically, will be overwritten\n" .. 
   "foreground          " .. beautiful.fg .. "\n"..

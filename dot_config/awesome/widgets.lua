@@ -187,7 +187,7 @@ frontTimer = gears.timer {
           gears.wallpaper.maximized(beautiful.wallpaper, awful.screen.focused())
 
           refreshWibox()
-
+          qutebrowserTheme()
           pyradioTheme()
           kittyTheme()
         else -- if front didn't change

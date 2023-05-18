@@ -12,6 +12,7 @@
 
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
+import dynamic.theme
 
 # Aliases for commands. The keys of the given dictionary are the
 # aliases, while the values are the commands they map to.
@@ -321,67 +322,67 @@ c.window.title_format = '{perc}{current_title}{title_sep}qutebrowser'
 # Text color of the completion widget. May be a single color to use for
 # all columns or a list of three colors, one for each column.
 # Type: List of QtColor, or QtColor
-c.colors.completion.fg = '#f8f8f2'
+c.colors.completion.fg = dynamic.theme.palette['foreground']
 
 # Background color of the completion widget for odd rows.
 # Type: QssColor
-c.colors.completion.odd.bg = '#282a36'
+c.colors.completion.odd.bg = dynamic.theme.palette['background']
 
 # Background color of the completion widget for even rows.
 # Type: QssColor
-c.colors.completion.even.bg = '#282a36'
+c.colors.completion.even.bg = dynamic.theme.palette['background']
 
 # Foreground color of completion widget category headers.
 # Type: QtColor
-c.colors.completion.category.fg = '#f8f8f2'
+c.colors.completion.category.fg = dynamic.theme.palette['foreground']
 
 # Background color of the completion widget category headers.
 # Type: QssColor
-c.colors.completion.category.bg = '#282a36'
+c.colors.completion.category.bg = dynamic.theme.palette['background']
 
 # Top border color of the completion widget category headers.
 # Type: QssColor
-c.colors.completion.category.border.top = '#282a36'
+c.colors.completion.category.border.top = dynamic.theme.palette['background']
 
 # Bottom border color of the completion widget category headers.
 # Type: QssColor
-c.colors.completion.category.border.bottom = '#282a36'
+c.colors.completion.category.border.bottom = dynamic.theme.palette['background']
 
 # Foreground color of the selected completion item.
 # Type: QtColor
-c.colors.completion.item.selected.fg = '#f8f8f2'
+c.colors.completion.item.selected.fg = dynamic.theme.palette['foreground']
 
 # Background color of the selected completion item.
 # Type: QssColor
-c.colors.completion.item.selected.bg = '#44475a'
+c.colors.completion.item.selected.bg = dynamic.theme.palette['selection']
 
 # Top border color of the selected completion item.
 # Type: QssColor
-c.colors.completion.item.selected.border.top = '#44475a'
+c.colors.completion.item.selected.border.top = dynamic.theme.palette['selection']
 
 # Bottom border color of the selected completion item.
 # Type: QssColor
-c.colors.completion.item.selected.border.bottom = '#44475a'
+c.colors.completion.item.selected.border.bottom = dynamic.theme.palette['selection']
 
 # Foreground color of the matched text in the completion.
 # Type: QtColor
-c.colors.completion.match.fg = '#ffb86c'
+c.colors.completion.match.fg = dynamic.theme.palette['orange']
 
 # Color of the scrollbar handle in the completion view.
 # Type: QssColor
-c.colors.completion.scrollbar.fg = '#f8f8f2'
+c.colors.completion.scrollbar.fg = dynamic.theme.palette['foreground']
 
 # Color of the scrollbar in the completion view.
 # Type: QssColor
-c.colors.completion.scrollbar.bg = '#282a36'
+c.colors.completion.scrollbar.bg = dynamic.theme.palette['background']
 
 # Background color for the download bar.
 # Type: QssColor
-c.colors.downloads.bar.bg = '#282a36'
+c.colors.downloads.bar.bg = dynamic.theme.palette['background']
 
 # Color gradient stop for download backgrounds.
 # Type: QtColor
-c.colors.downloads.stop.bg = '#282a36'
+c.colors.downloads.stop.bg = dynamic.theme.palette['background']
 
 # Color gradient interpolation system for download backgrounds.
 # Type: ColorSystem
@@ -394,76 +395,76 @@ c.colors.downloads.system.bg = 'none'
 
 # Foreground color for downloads with errors.
 # Type: QtColor
-c.colors.downloads.error.fg = '#ff5555'
+c.colors.downloads.error.fg = dynamic.theme.palette['error']
 
 # Background color for downloads with errors.
 # Type: QtColor
-c.colors.downloads.error.bg = '#282a36'
+c.colors.downloads.error.bg = dynamic.theme.palette['background']
 
 # Font color for hints.
 # Type: QssColor
-c.colors.hints.fg = '#282a36'
+c.colors.hints.fg = dynamic.theme.palette['background']
 
 # Background color for hints. Note that you can use a `rgba(...)` value
 # for transparency.
 # Type: QssColor
-c.colors.hints.bg = '#bd93f9'
+c.colors.hints.bg = dynamic.theme.palette['accent']
 
 # Font color for the matched part of hints.
 # Type: QtColor
-c.colors.hints.match.fg = '#282a36'
+c.colors.hints.match.fg = dynamic.theme.palette['background']
 
 # Text color for the keyhint widget.
 # Type: QssColor
-c.colors.keyhint.fg = '#bd93f9'
+c.colors.keyhint.fg = dynamic.theme.palette['accent']
 
 # Highlight color for keys to complete the current keychain.
 # Type: QssColor
-c.colors.keyhint.suffix.fg = '#44475a'
+c.colors.keyhint.suffix.fg = dynamic.theme.palette['selection']
 
 # Background color of the keyhint widget.
 # Type: QssColor
-c.colors.keyhint.bg = '#282a36'
+c.colors.keyhint.bg = dynamic.theme.palette['background']
 
 # Foreground color of an error message.
 # Type: QssColor
-c.colors.messages.error.fg = '#ff5555'
+c.colors.messages.error.fg = dynamic.theme.palette['error']
 
 # Background color of an error message.
 # Type: QssColor
-c.colors.messages.error.bg = '#282a36'
+c.colors.messages.error.bg = dynamic.theme.palette['background']
 
 # Border color of an error message.
 # Type: QssColor
-c.colors.messages.error.border = '#282a36'
+c.colors.messages.error.border = dynamic.theme.palette['background']
 
 # Foreground color of a warning message.
 # Type: QssColor
-c.colors.messages.warning.fg = '#ff5555'
+c.colors.messages.warning.fg = dynamic.theme.palette['error']
 
 # Background color of a warning message.
 # Type: QssColor
-c.colors.messages.warning.bg = '#282a36'
+c.colors.messages.warning.bg = dynamic.theme.palette['background']
 
 # Border color of a warning message.
 # Type: QssColor
-c.colors.messages.warning.border = '#282a36'
+c.colors.messages.warning.border = dynamic.theme.palette['background']
 
 # Foreground color of an info message.
 # Type: QssColor
-c.colors.messages.info.fg = '#6272a4'
+c.colors.messages.info.fg = dynamic.theme.palette['grey']
 
 # Background color of an info message.
 # Type: QssColor
-c.colors.messages.info.bg = '#282a36'
+c.colors.messages.info.bg = dynamic.theme.palette['background']
 
 # Border color of an info message.
 # Type: QssColor
-c.colors.messages.info.border = '#282a36'
+c.colors.messages.info.border = dynamic.theme.palette['background']
 
 # Foreground color for prompts.
 # Type: QssColor
-c.colors.prompts.fg = '#8be9fd'
+c.colors.prompts.fg = dynamic.theme.palette['blue']
 
 # Border used around UI elements in prompts.
 # Type: String
@@ -471,35 +472,35 @@ c.colors.prompts.border = '1px solid #282a36'
 
 # Background color for prompts.
 # Type: QssColor
-c.colors.prompts.bg = '#282a36'
+c.colors.prompts.bg = dynamic.theme.palette['background']
 
 # Background color for the selected item in filename prompts.
 # Type: QssColor
-c.colors.prompts.selected.bg = '#44475a'
+c.colors.prompts.selected.bg = dynamic.theme.palette['selection']
 
 # Foreground color of the statusbar.
 # Type: QssColor
-c.colors.statusbar.normal.fg = '#f8f8f2'
+c.colors.statusbar.normal.fg = dynamic.theme.palette['foreground']
 
 # Background color of the statusbar.
 # Type: QssColor
-c.colors.statusbar.normal.bg = '#282a36'
+c.colors.statusbar.normal.bg = dynamic.theme.palette['background']
 
 # Foreground color of the statusbar in insert mode.
 # Type: QssColor
-c.colors.statusbar.insert.fg = '#f8f8f2'
+c.colors.statusbar.insert.fg = dynamic.theme.palette['foreground']
 
 # Background color of the statusbar in insert mode.
 # Type: QssColor
-c.colors.statusbar.insert.bg = '#6272a4'
+c.colors.statusbar.insert.bg = dynamic.theme.palette['grey']
 
 # Foreground color of the statusbar in passthrough mode.
 # Type: QssColor
-c.colors.statusbar.passthrough.fg = '#282a36'
+c.colors.statusbar.passthrough.fg = dynamic.theme.palette['background']
 
 # Background color of the statusbar in passthrough mode.
 # Type: QssColor
-c.colors.statusbar.passthrough.bg = '#ffb86c'
+c.colors.statusbar.passthrough.bg = dynamic.theme.palette['orange']
 
 # Foreground color of the statusbar in private browsing mode.
 # Type: QssColor
@@ -507,15 +508,15 @@ c.colors.statusbar.private.fg = '#e0e0e0'
 
 # Background color of the statusbar in private browsing mode.
 # Type: QssColor
-c.colors.statusbar.private.bg = '#282a36'
+c.colors.statusbar.private.bg = dynamic.theme.palette['background']
 
 # Foreground color of the statusbar in command mode.
 # Type: QssColor
-c.colors.statusbar.command.fg = '#ff79c6'
+c.colors.statusbar.command.fg = dynamic.theme.palette['pink']
 
 # Background color of the statusbar in command mode.
 # Type: QssColor
-c.colors.statusbar.command.bg = '#282a36'
+c.colors.statusbar.command.bg = dynamic.theme.palette['background']
 
 # Foreground color of the statusbar in private browsing + command mode.
 # Type: QssColor
@@ -523,69 +524,69 @@ c.colors.statusbar.command.private.fg = '#e0e0e0'
 
 # Background color of the statusbar in private browsing + command mode.
 # Type: QssColor
-c.colors.statusbar.command.private.bg = '#282a36'
+c.colors.statusbar.command.private.bg = dynamic.theme.palette['background']
 
 # Foreground color of the statusbar in caret mode.
 # Type: QssColor
-c.colors.statusbar.caret.fg = '#ffb86c'
+c.colors.statusbar.caret.fg = dynamic.theme.palette['orange']
 
 # Background color of the statusbar in caret mode.
 # Type: QssColor
-c.colors.statusbar.caret.bg = '#282a36'
+c.colors.statusbar.caret.bg = dynamic.theme.palette['background']
 
 # Foreground color of the statusbar in caret mode with a selection.
 # Type: QssColor
-c.colors.statusbar.caret.selection.fg = '#ffb86c'
+c.colors.statusbar.caret.selection.fg = dynamic.theme.palette['orange']
 
 # Background color of the statusbar in caret mode with a selection.
 # Type: QssColor
-c.colors.statusbar.caret.selection.bg = '#282a36'
+c.colors.statusbar.caret.selection.bg = dynamic.theme.palette['background']
 
 # Background color of the progress bar.
 # Type: QssColor
-c.colors.statusbar.progress.bg = '#282a36'
+c.colors.statusbar.progress.bg = dynamic.theme.palette['background']
 
 # Default foreground color of the URL in the statusbar.
 # Type: QssColor
-c.colors.statusbar.url.fg = '#6272a4'
+c.colors.statusbar.url.fg = dynamic.theme.palette['grey']
 
 # Foreground color of the URL in the statusbar on error.
 # Type: QssColor
-c.colors.statusbar.url.error.fg = '#ff5555'
+c.colors.statusbar.url.error.fg = dynamic.theme.palette['error']
 
 # Foreground color of the URL in the statusbar for hovered links.
 # Type: QssColor
-c.colors.statusbar.url.hover.fg = '#8be9fd'
+c.colors.statusbar.url.hover.fg = dynamic.theme.palette['blue']
 
 # Foreground color of the URL in the statusbar on successful load
 # (http).
 # Type: QssColor
-c.colors.statusbar.url.success.http.fg = '#6272a4'
+c.colors.statusbar.url.success.http.fg = dynamic.theme.palette['grey']
 
 # Foreground color of the URL in the statusbar on successful load
 # (https).
 # Type: QssColor
-c.colors.statusbar.url.success.https.fg = '#6272a4'
+c.colors.statusbar.url.success.https.fg = dynamic.theme.palette['grey']
 
 # Foreground color of the URL in the statusbar when there's a warning.
 # Type: QssColor
-c.colors.statusbar.url.warn.fg = '#f1fa8c'
+c.colors.statusbar.url.warn.fg = dynamic.theme.palette['warn']
 
 # Background color of the tab bar.
 # Type: QssColor
-c.colors.tabs.bar.bg = '#44475a'
+c.colors.tabs.bar.bg = dynamic.theme.palette['selection']
 
 # Color gradient start for the tab indicator.
 # Type: QtColor
-c.colors.tabs.indicator.start = '#ffb86c'
+c.colors.tabs.indicator.start = dynamic.theme.palette['orange']
 
 # Color gradient end for the tab indicator.
 # Type: QtColor
-c.colors.tabs.indicator.stop = '#50fa7b'
+c.colors.tabs.indicator.stop = dynamic.theme.palette['green']
 
 # Color for the tab indicator on errors.
 # Type: QtColor
-c.colors.tabs.indicator.error = '#ff5555'
+c.colors.tabs.indicator.error = dynamic.theme.palette['error']
 
 # Color gradient interpolation system for the tab indicator.
 # Type: ColorSystem
@@ -598,67 +599,67 @@ c.colors.tabs.indicator.system = 'none'
 
 # Foreground color of unselected odd tabs.
 # Type: QtColor
-c.colors.tabs.odd.fg = '#f8f8f2'
+c.colors.tabs.odd.fg = dynamic.theme.palette['foreground']
 
 # Background color of unselected odd tabs.
 # Type: QtColor
-c.colors.tabs.odd.bg = '#44475a'
+c.colors.tabs.odd.bg = dynamic.theme.palette['selection']
 
 # Foreground color of unselected even tabs.
 # Type: QtColor
-c.colors.tabs.even.fg = '#f8f8f2'
+c.colors.tabs.even.fg = dynamic.theme.palette['foreground']
 
 # Background color of unselected even tabs.
 # Type: QtColor
-c.colors.tabs.even.bg = '#44475a'
+c.colors.tabs.even.bg = dynamic.theme.palette['selection']
 
 # Foreground color of selected odd tabs.
 # Type: QtColor
-c.colors.tabs.selected.odd.fg = '#282a36'
+c.colors.tabs.selected.odd.fg = dynamic.theme.palette['background']
 
 # Background color of selected odd tabs.
 # Type: QtColor
-c.colors.tabs.selected.odd.bg = '#bd93f9'
+c.colors.tabs.selected.odd.bg = dynamic.theme.palette['accent']
 
 # Foreground color of selected even tabs.
 # Type: QtColor
-c.colors.tabs.selected.even.fg = '#282a36'
+c.colors.tabs.selected.even.fg = dynamic.theme.palette['background']
 
 # Background color of selected even tabs.
 # Type: QtColor
-c.colors.tabs.selected.even.bg = '#bd93f9'
+c.colors.tabs.selected.even.bg = dynamic.theme.palette['accent']
 
 # Foreground color of pinned unselected odd tabs.
 # Type: QtColor
-c.colors.tabs.pinned.odd.fg = '#282a36'
+c.colors.tabs.pinned.odd.fg = dynamic.theme.palette['background']
 
 # Background color of pinned unselected odd tabs.
 # Type: QtColor
-c.colors.tabs.pinned.odd.bg = '#ff79c6'
+c.colors.tabs.pinned.odd.bg = dynamic.theme.palette['accent-alt']
 
 # Foreground color of pinned unselected even tabs.
 # Type: QtColor
-c.colors.tabs.pinned.even.fg = '#282a36'
+c.colors.tabs.pinned.even.fg = dynamic.theme.palette['background']
 
 # Background color of pinned unselected even tabs.
 # Type: QtColor
-c.colors.tabs.pinned.even.bg = '#ff79c6'
+c.colors.tabs.pinned.even.bg = dynamic.theme.palette['accent-alt']
 
 # Foreground color of pinned selected odd tabs.
 # Type: QtColor
-c.colors.tabs.pinned.selected.odd.fg = '#282a36'
+c.colors.tabs.pinned.selected.odd.fg = dynamic.theme.palette['background']
 
 # Background color of pinned selected odd tabs.
 # Type: QtColor
-c.colors.tabs.pinned.selected.odd.bg = '#bd93f9'
+c.colors.tabs.pinned.selected.odd.bg = dynamic.theme.palette['accent']
 
 # Foreground color of pinned selected even tabs.
 # Type: QtColor
-c.colors.tabs.pinned.selected.even.fg = '#282a36'
+c.colors.tabs.pinned.selected.even.fg = dynamic.theme.palette['background']
 
 # Background color of pinned selected even tabs.
 # Type: QtColor
-c.colors.tabs.pinned.selected.even.bg = '#bd93f9'
+c.colors.tabs.pinned.selected.even.bg = dynamic.theme.palette['accent']
 
 # Default font families to use. Whenever "default_family" is used in a
 # font setting, it's replaced with the fonts listed here. If set to an
