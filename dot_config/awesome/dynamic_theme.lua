@@ -46,24 +46,52 @@ function getImage(url, dir)
   f:write(body) 
   f:close()
 end
+
+function rofiTheme()
+  rfTheme = "* {\n" ..
+  "  bg:         " .. beautiful.bg .. ";\n" ..
+  "  bgdark:     " .. beautiful.bg:sub(1,7) .. ";\n" ..
+  "  selection:  " .. beautiful.l_black:sub(1,7) .. ";\n" ..
+  "  fg:         " .. beautiful.fg:sub(1,7) .. ";\n" ..
+  "\n" ..
+  "  accent:     " .. beautiful.accent:sub(1,7) .. ";\n" ..
+  "  accent-alt: " .. beautiful.accent_alt:sub(1,7) .. ";\n" ..
+  "\n" ..
+  "  error:      " .. beautiful.error:sub(1,7) .. ";\n" ..
+  "  warn:       " .. beautiful.warn:sub(1,7) .. ";\n" ..
+  "\n" ..
+  "  comment:    " .. beautiful.grey:sub(1,7) .. ";\n" ..
+  "\n" ..
+  "  red:        " .. beautiful.red:sub(1,7) .. ";\n" ..
+  "  orange:     " .. beautiful.orange:sub(1,7) .. ";\n" ..
+  "  yellow:     " .. beautiful.yellow:sub(1,7) .. ";\n" ..
+  "  green:      " .. beautiful.green:sub(1,7) .. ";\n" ..
+  "  blue:       " .. beautiful.blue:sub(1,7) .. ";\n" ..
+  "  purple:     " .. beautiful.purple:sub(1,7) .. ";\n" ..
+  "  pink:       " .. beautiful.pink:sub(1,7) .. ";\n" ..
+  "}\n"
+  local f = assert(io.open("/home/mimuki/.config/rofi/dynamic.rasi", 'w'))
+  f:write(rfTheme)
+  f:close()
+  end
 function qutebrowserTheme()
-quteTheme = "palette = {\n" ..
-"    \'background\': \'" .. beautiful.bg .. "\',\n" ..
-"    \'selection\': \'" .. beautiful.l_black .. "\',\n" ..
-"    \'foreground\': \'" .. beautiful.fg .. "\',\n" ..
-"    \'accent\': \'" .. beautiful.accent .. "\',\n" ..
-"    \'accent-alt\': \'" .. beautiful.accent_alt .. "\',\n" ..
-"    \'error\': \'" .. beautiful.error .. "\',\n" ..
-"    \'warn\': \'" .. beautiful.warn .. "\',\n" ..
-"    \'grey\': \'" .. beautiful.grey .. "\',\n" ..
-"    \'red\': \'" .. beautiful.red .. "\',\n" ..
-"    \'orange\': \'" .. beautiful.orange .. "\',\n" ..
-"    \'yellow\': \'" .. beautiful.yellow .. "\',\n" ..
-"    \'green\': \'" .. beautiful.green .. "\',\n" ..
-"    \'blue\': \'" .. beautiful.blue .. "\',\n" ..
-"    \'purple\': \'" .. beautiful.purple .. "\',\n" ..
-"    \'pink\': \'" .. beautiful.pink .. "\',\n" ..
-"}\n"
+  quteTheme = "palette = {\n" ..
+  "    \'background\': \'" .. beautiful.bg .. "\',\n" ..
+  "    \'selection\': \'" .. beautiful.l_black .. "\',\n" ..
+  "    \'foreground\': \'" .. beautiful.fg .. "\',\n" ..
+  "    \'accent\': \'" .. beautiful.accent .. "\',\n" ..
+  "    \'accent-alt\': \'" .. beautiful.accent_alt .. "\',\n" ..
+  "    \'error\': \'" .. beautiful.error .. "\',\n" ..
+  "    \'warn\': \'" .. beautiful.warn .. "\',\n" ..
+  "    \'grey\': \'" .. beautiful.grey .. "\',\n" ..
+  "    \'red\': \'" .. beautiful.red .. "\',\n" ..
+  "    \'orange\': \'" .. beautiful.orange .. "\',\n" ..
+  "    \'yellow\': \'" .. beautiful.yellow .. "\',\n" ..
+  "    \'green\': \'" .. beautiful.green .. "\',\n" ..
+  "    \'blue\': \'" .. beautiful.blue .. "\',\n" ..
+  "    \'purple\': \'" .. beautiful.purple .. "\',\n" ..
+  "    \'pink\': \'" .. beautiful.pink .. "\',\n" ..
+  "}\n"
   local f = assert(io.open("/home/mimuki/.config/qutebrowser/dynamic/theme.py", 'w'))
   f:write(quteTheme)
   f:close()

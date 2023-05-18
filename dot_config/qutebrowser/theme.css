@@ -7,80 +7,57 @@
  * @source https://github.com/Dracula/BetterDiscord
 **/
 
+:root {
+  /* Dracula Base Colors */
+  --background: #282a36 !important;
+  --current-line: #44475a !important;
+  --selection: #44475a !important;
+  --foreground: #f8f8f2 !important;
+  --comment: #6272a4 !important;
+  --blue: #8be9fd !important;
+  --green: #50fa7b !important;
+  --orange: #ffb86c !important;
+  --pink: #ff79c6 !important;
+  --purple: #bd93f9 !important;
+  --red: #ff5555 !important;
+  --yellow: #f1fa8c !important;
+  /* Dracula Other Colors */
+  --background-alt: #343746 !important;
+
+  /* Discord Root Colors */
+  --header-primary: var(--foreground) !important;
+  --background-primary: var(--background) !important;
+  --background-secondary: var(--background) !important;
+  --background-mobile-primary: var(--background) !important;
+  --background-mobile-secondary: var(--background) !important;
+  --background-secondary-alt: var(--background) !important;
+  --background-tertiary: var(--background-alt) !important;
+  --background-accent: var(--current-line) !important;
+  --background-floating: var(--background) !important;
+  --background-modifier-selected: var(--current-line) !important;
+  --activity-card-background: var(--background) !important;
+  --interactive-normal: var(--foreground) !important;
+  --channeltextarea-background: var(--selection) !important;
+  --rs-online-color: var(--green) !important;
+  --rs-idle-color: var(--orange) !important;
+  --rs-dnd-color: var(--red) !important;
+  --rs-offline-color: var(--selection) !important;
+  --rs-streaming-color: var(--purple) !important;
+  --rs-invisible-color: var(--comment) !important;
+  --interactive-muted: var(--comment) !important;
+  --scrollbar-auto-thumb: var(--comment) !important;
+  --scrollbar-auto-track: var(--background-alt) !important;
+  --scrollbar-thin-thumb: var(--comment) !important;
+  --scrollbar-auto-scrollbar-color-thumb: var(--comment) !important;
+  --scrollbar-auto-scrollbar-color-track: var(
+    --background-alt
+  ) !important;
+}
+
 * {
   font-family: "Andika Rats" !important;
   box-shadow: none !important;
   -webkit-box-shadow: none !important;
-}
-
-
-:root {
-  /* Dracula Base Colors */
-  --dracula-background: #282a36 !important;
-  --dracula-current-line: #44475a !important;
-  --dracula-selection: #44475a !important;
-  --dracula-foreground: #f8f8f2 !important;
-  --dracula-comment: #6272a4 !important;
-  --dracula-cyan: #8be9fd !important;
-  --dracula-green: #50fa7b !important;
-  --dracula-orange: #ffb86c !important;
-  --dracula-pink: #ff79c6 !important;
-  --dracula-purple: #bd93f9 !important;
-  --dracula-red: #ff5555 !important;
-  --dracula-yellow: #f1fa8c !important;
-  /* Dracula ANSI Colors */
-  --dracula-color0: #21222c !important;
-  --dracula-color1: #ff5555 !important;
-  --dracula-color2: #50fa7b !important;
-  --dracula-color3: #f1fa8c !important;
-  --dracula-color4: #f1fa8c !important;
-  --dracula-color5: #ff79c6 !important;
-  --dracula-color6: #8be9fd !important;
-  --dracula-color7: #f8f8f2 !important;
-  --dracula-color8: #6272a4 !important;
-  --dracula-color9: #ff6e6e !important;
-  --dracula-color10: #69ff94 !important;
-  --dracula-color11: #ffffa5 !important;
-  --dracula-color12: #d6acff !important;
-  --dracula-color13: #ff92df !important;
-  --dracula-color14: #a4ffff !important;
-  --dracula-color15: #ffffff !important;
-  /* Dracula Other Colors */
-  --dracula-line-highlight: #44475a75 !important;
-  --dracula-non-text: #ffffff1a !important;
-  --dracula-white: #ffffff !important;
-  --dracula-tab-drop-background: #44475a70 !important;
-  --dracula-background-lighter: #424450;
-  --dracula-background-alt: #343746 !important;
-
-  /* Discord Root Colors */
-  --header-primary: var(--dracula-foreground) !important;
-  --background-primary: var(--dracula-background) !important;
-  --background-secondary: var(--dracula-background) !important;
-  --background-mobile-primary: var(--dracula-background) !important;
-  --background-mobile-secondary: var(--dracula-background) !important;
-  --background-secondary-alt: var(--dracula-background) !important;
-  --background-tertiary: var(--dracula-background-alt) !important;
-  --background-accent: var(--dracula-current-line) !important;
-  --background-floating: var(--dracula-background) !important;
-  --background-modifier-selected: var(--dracula-current-line) !important;
-  --activity-card-background: var(--dracula-background) !important;
-  --interactive-normal: var(--dracula-foreground) !important;
-  --channeltextarea-background: var(--dracula-selection) !important;
-  --rs-online-color: var(--dracula-green) !important;
-  --rs-idle-color: var(--dracula-orange) !important;
-  --rs-dnd-color: var(--dracula-red) !important;
-  --rs-offline-color: var(--dracula-selection) !important;
-  --rs-streaming-color: var(--dracula-purple) !important;
-  --rs-invisible-color: var(--dracula-comment) !important;
-  --interactive-muted: var(--dracula-comment) !important;
-  --scrollbar-auto-thumb: var(--dracula-comment) !important;
-  --scrollbar-auto-track: var(--dracula-background-alt) !important;
-  --scrollbar-thin-thumb: var(--dracula-comment) !important;
-  --scrollbar-auto-scrollbar-color-thumb: var(--dracula-comment) !important;
-  --scrollbar-auto-scrollbar-color-track: var(
-    --dracula-background-alt
-  ) !important;
 }
 
 .rem-3kT9wc.botTag-7aX5WZ {
@@ -89,31 +66,31 @@
 
 .wrapper-1BJsBx.selected-bZ3Lue .childWrapper-anI2G9,
 .wrapper-1BJsBx:hover .childWrapper-anI2G9 {
-  background-color: var(--dracula-comment) !important;
+  background-color: var(--comment) !important;
 }
 
 /* Home */
 .container-2cd8Mz {
-  background-color: var(--dracula-background) !important;
+  background-color: var(--background) !important;
 }
 
 /* Autocomplete popup */
 .autocomplete-3NRXG8 {
-  background-color: var(--dracula-background) !important;
+  background-color: var(--background) !important;
 }
 
 .autocomplete-3jLKbj {
-  background-color: var(--dracula-background) !important;
+  background-color: var(--background) !important;
 }
 
 /* Autocomplete popup selection */
 .selected-3H3-RC {
-  background-color: var(--dracula-selection) !important;
+  background-color: var(--selection) !important;
 }
 
 /* Friends Menu Header */
 .container-ZMc96U.themed-Hp1KC_{
-  background-color: var(--dracula-background) !important;
+  background-color: var(--background) !important;
 }
 
 /* Emoji/Gif Selector Box*/
@@ -127,18 +104,18 @@
 .categoryItem-1sHzUv,
 .guildIcon-2SUGiq,
 .header-11eigE{
-  background-color: var(--dracula-background) !important;
+  background-color: var(--background) !important;
 }
 .container-1SX9VC,
 .container-2oNtJn{
-  background-color: var(--dracula-selection) !important;
+  background-color: var(--selection) !important;
 }
 
 /* Scroll Bar */
 .theme-dark
   .scrollerThemed-2oenus.themedWithTrack-q8E3vB
   .scroller-2FKFPG::-webkit-scrollbar-track-piece {
-  background-color: var(--dracula-selection) !important;
+  background-color: var(--selection) !important;
 }
 
 /* Settings Content Pane */
@@ -165,7 +142,7 @@
 /*.container-ZMc96U.themed-Hp1KC_,*/
 /* Guild header */
 /*.header-3OsQeK  {*/
-  border: var(--dracula-selection) solid;
+  border: var(--selection) solid;
   border-width: 4px !important;
 }
 /*.chatContent-3KubbW:focus-within,*/
@@ -177,7 +154,7 @@
 .tree-3agP2X:focus-within,
 .container-ZMc96U.themed-Hp1KC_:focus-within,
 .header-3OsQeK:focus-within {
-  border-color: var(--dracula-purple) !important;
+  border-color: var(--purple) !important;
 }
 
 
@@ -221,111 +198,111 @@
   }
 
 /* make channel name similar size to server name */
-.title-31SJ6t { 
+.title-31SJ6t {
   padding: 24px 0
 }
 /* other stuff------------ */
 
 /* Pinned Message Box*/
 .header-1w9Q93{
-  background-color: var(--dracula-background);
+  background-color: var(--background);
 }
 .messagesPopout-eVzQcI{
-  background-color: var(--dracula-background-alt);
+  background-color: var(--background-alt);
 }
 .messageGroupWrapper-1jf_7C{
-  background-color: var(--dracula-background);
+  background-color: var(--background);
 }
 
 /* Create DM Popout */
 .popout-3gby1q {
-    background-color: var(--dracula-background);
+    background-color: var(--background);
 }
 /* Search field */
 .searchBarComponent-18D6hD {
-    background-color: var(--dracula-background-alt);
+    background-color: var(--background-alt);
 }
 /* Selected friend */
 .friendSelected-3cwmD7 {
-    background-color: var(--dracula-selection);
+    background-color: var(--selection);
 }
 /* Added to the list */
 .anchor-1MIwyf {
-    background-color: var(--dracula-background);
+    background-color: var(--background);
 }
 
 /* Inbox Popout */
 .header-145e10, .header-1w9Q93 {
-    background-color: var(--dracula-background);
+    background-color: var(--background);
 }
 /* Active Tab selected text */
 .active-1grPyy {
-    background-color: var(--dracula-background-alt);
+    background-color: var(--background-alt);
 }
 /* Popout container */
 .messagesPopout-eVzQcI {
-    background-color: var(--dracula-background-alt);
+    background-color: var(--background-alt);
 }
 /* Channel Header */
 .channelHeader-DFRX8q{
-    background-color: var(--dracula-background-alt);
+    background-color: var(--background-alt);
 }
 /* List element */
 .container-iA3Qrz {
-    background-color: var(--dracula-background-alt);
+    background-color: var(--background-alt);
 }
 /* Message Content */
 .messageContainer-3VTXBC {
-    background-color: var(--dracula-background);
+    background-color: var(--background);
 }
 
 /* Unread list */
 .scroller-145h9c {
-    background-color: var(--dracula-background-alt);
+    background-color: var(--background-alt);
 }
 /* Unread messages */
 .messages-23can0 {
-    background-color: var(--dracula-background);
+    background-color: var(--background);
 }
 
 /* For you tab */
 .container-1A0qQO {
-    background-color: var(--dracula-background-alt);
+    background-color: var(--background-alt);
 }
 
 /* Syntax Highlighing in Code Blocks*/
 code {
-  color: var(--dracula-foreground) !important;
+  color: var(--foreground) !important;
 }
 span.hljs-built_in {
-  color: var(--dracula-purple) !important;
+  color: var(--purple) !important;
 }
 span.hljs-keyword {
-  color: var(--dracula-pink) !important;
+  color: var(--pink) !important;
 }
 span.hljs-title {
-  color: var(--dracula-cyan) !important;
+  color: var(--blue) !important;
 }
 span.hljs-attr {
-  color: var(--dracula-foreground) !important;
+  color: var(--foreground) !important;
 }
 span.hljs-string {
-  color: var(--dracula-yellow) !important;
+  color: var(--yellow) !important;
 }
 span.hljs-number {
-  color: var(--dracula-purple) !important;
+  color: var(--purple) !important;
 }
 span.hljs-symbol {
-  color: var(--dracula-orange) !important;
+  color: var(--orange) !important;
 }
 span.hljs-meta {
-  color: var(--dracula-foreground) !important;
+  color: var(--foreground) !important;
 }
 span.hljs-meta-keyword {
-  color: var(--dracula-pink) !important;
+  color: var(--pink) !important;
 }
 span.hljs-meta-string {
-  color: var(--dracula-orange) !important;
+  color: var(--orange) !important;
 }
 /* --[ Fuck Off Discord ]---------------------------------------------------- */
 
@@ -361,8 +338,8 @@ span.hljs-meta-string {
   display: none;
 }
 /* discover servers, etc */
-div.listItem-3SmSlK:nth-child(5), 
-div.listItem-3SmSlK:nth-child(6), 
+div.listItem-3SmSlK:nth-child(5),
+div.listItem-3SmSlK:nth-child(6),
 div.listItem-3SmSlK:nth-child(7) {
   display: none;
 }
@@ -373,18 +350,14 @@ div.listItem-3SmSlK:nth-child(7) {
    display: flex;
    justify-content: center;
 }
-
 .blockedMessageText-3Zeg3y:before {
     content:  "— ";
 }
-
 /* Remove the X next to a blocked message */
 .iconContainer-2rPbqG {
     display: none;
 }
-
 /* Remove the "show blocked message" button, because mental health good */
-
 span.blockedAction-2cPk2G {
     display: none
 }

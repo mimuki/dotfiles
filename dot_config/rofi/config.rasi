@@ -4,70 +4,78 @@
 // ---[Globals]-------------------------------------------------------------- //
 // NOTE : these properties are inherited for all "named" elements below
 * {
-    // Dracula palette
-        red:                            #FF5555;
-        purple:                         #BD93F9;
-        green:                          #50FA7B;
-        blue:                           #6272A4;
-        orange:                         #FFB86C;
-        pink:                           #FF79C6;
-        yellow:                         #F1FA8C;
-        cyan:                           #8BE9FD;
+  bg:         #282A36;
+  bgdark:     #21222C;
+  selection:  #44475A;
+  fg:         #F8F8F2;
 
-        fg:                             #F8F8F2;
-        bg:                             #282A36;
-        bglight:                        #343746;
-        bgdark:                         #21222C;
+  accent:     #bd93f9;
+  accent-alt: #ff79c6;
 
-        selection:                      #44475A;
-        comment:                        #6272a4;
+  error:      #ff5555;
+  warn:       #ffb86c;
 
-    // Rofi
+  comment:    #6272a4;
 
-        background-color:               @bg;
-        text-color:                     @fg;
 
-    // Normal state
+  red:        #FF5555;
+  orange:     #FFB86C;
+  yellow:     #F1FA8C;
+  green:      #50FA7B;
+  blue:       #8BE9FD;
+  purple:     #BD93F9;
+  pink:       #FF79C6;
 
-        normal-foreground:              @fg;
-        normal-background:              @bg;
 
-        alternate-normal-background:    @bg;
-        alternate-normal-foreground:    @fg;
 
-        selected-normal-foreground:     @fg;
-        selected-normal-background:     @selection;
+// Rofi
 
-    // Active state
+  background-color:               @bg;
+  text-color:                     @fg;
 
-        active-foreground:              @purple;
-        active-background:              @bgdark;
+// Normal state
 
-        alternate-active-foreground:    @active-foreground;
-        alternate-active-background:    @active-background;
+  normal-foreground:              @fg;
+  normal-background:              @bg;
 
-        selected-active-foreground:     @bg;
-        selected-active-background:     @purple;
+  alternate-normal-background:    @bg;
+  alternate-normal-foreground:    @fg;
 
-    // Urgent state
+  selected-normal-foreground:     @fg;
+  selected-normal-background:     @selection;
 
-        urgent-foreground:              @red;
-        urgent-background:              @bgdark;
+// Active state
 
-        alternate-urgent-foreground:    @urgent-foreground;
-        alternate-urgent-background:    @urgent-background;
+  active-foreground:              @accent;
+  active-background:              @bgdark;
 
-        selected-urgent-foreground:     @fg;
-        selected-urgent-background:     @red;
+  alternate-active-foreground:    @active-foreground;
+  alternate-active-background:    @active-background;
 
-    // Misc
+  selected-active-foreground:     @bg;
+  selected-active-background:     @accent;
 
-        border-color:                   @pink;
-        border:                         0;
-        padding:                        0;
-        spacing:                        0;
-        margin:                         0;
+// Urgent state
+
+  urgent-foreground:              @red;
+  urgent-background:              @bgdark;
+
+  alternate-urgent-foreground:    @urgent-foreground;
+  alternate-urgent-background:    @urgent-background;
+
+  selected-urgent-foreground:     @fg;
+  selected-urgent-background:     @red;
+
+// Misc
+
+  border-color:                   @accent-alt;
+  border:                         0;
+  padding:                        0;
+  spacing:                        0;
+  margin:                         0;
 }
+
+@import "dynamic.rasi"
 
 #window {
     border:             7px;
@@ -113,7 +121,7 @@
     columns:            1;
     fixed-height:       true;
     border:             0px solid 0px 0px;
-    border-color:       @pink;
+    border-color:       @accent-alt;
     dynamic:            true;
     scrollbar:          false;
     cycle:              true;
@@ -142,7 +150,7 @@
 }
 
 #element.selected.normal {
-    background-color:   @pink;
+    background-color:   @accent-alt;
     text-color:         @bg;
 }
 
@@ -190,7 +198,7 @@
 }
 
 #prompt {
-    text-color:         @purple;
+    text-color:         @accent;
 }
 
 #inputbar {
@@ -201,5 +209,5 @@
 #textbox-prompt-colon {
     expand:             false;
     str:                " ";
-    text-color:         @purple;
+    text-color:         @accent;
 }

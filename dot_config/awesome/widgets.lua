@@ -190,6 +190,7 @@ frontTimer = gears.timer {
           qutebrowserTheme()
           pyradioTheme()
           kittyTheme()
+          rofiTheme()
         else -- if front didn't change
         --   naughty.notify(
         --     {
