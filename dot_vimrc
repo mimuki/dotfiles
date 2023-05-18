@@ -41,10 +41,8 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'ap/vim-css-color'
 call plug#end()
 " --- [ Theme ] -------------------------------------------------------------- "
+let g:dracula_colorterm = 0 " Unset terminal background colour
 colorscheme dracula
-if (has("termguicolors")) " Fix terminal background colour
-  set termguicolors
-endif
 " --- [ Goyo ] --------------------------------------------------------------- "
 " On window resize, if goyo is active, do <c-w>= to resize the window
 autocmd VimResized * if exists('#goyo') | exe "normal \<c-w>=" | endif
