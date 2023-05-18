@@ -29,7 +29,7 @@ theme.blue    = "#40a4b9"
 theme.purple  = "#b154cf"
 theme.pink    = "#da5bd6"
 
-theme.accent     = theme.green
+theme.accent     = theme.yellow
 theme.accent_alt = theme.blue
 
 theme.error = theme.red 
@@ -39,7 +39,7 @@ theme.bg = theme.black
 theme.fg = theme.white
 ----- [ Widgets ] --------------------------------------------------------------
 theme.front_fg = theme.bg
-theme.front_bg = theme.accent 
+theme.front_bg = theme.green
 theme.date_fg  = theme.bg
 theme.date_bg  = theme.accent_alt
 theme.time_fg  = theme.yellow
