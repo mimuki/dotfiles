@@ -143,12 +143,10 @@ frontTimer = gears.timer {
       function(out)
         if out ~= lastFront then -- front changed
           lastFront = out
-          front = json.decode(out)
-          -- naughty.notify(
-          -- {
-          --   title = "Front was different",
-          --   text = "This should do a thing"
-          -- })
+          if out ~= "" then -- don't error if it can't connect
+            front = json.decode(out)
+          end
+
           if front.colour == nil then -- Fronter has no colour
             front.colour = "#ff79c6"
           else -- Fix formatting so we can use their colour

@@ -173,14 +173,14 @@ awful.key({ }, "Print",
 
 awful.key({ modkey }, "Print",
             function ()
-              awful.util.spawn([[scrot 'Pictures/Screenshots/%Y%m%d_%H%M%S.png' -s -l width=4,color="#ff79c6",opacity=100,mode=edge -e 'xclip -selection clipboard -t image/png -i $f']])
+              awful.util.spawn([[scrot 'Pictures/Screenshots/%Y%m%d_%H%M%S.png' -s -l width=4,color="]] .. beautiful.accent_alt .. [[",opacity=100,mode=edge -e 'xclip -selection clipboard -t image/png -i $f']])
             end,
             { description = "Screenshot selection", group = "awesome"}),
 
 
 awful.key({ modkey }, "h",
             function ()
-              awful.util.spawn([[scrot -s -l width=8,color="#ff79c6",opacity=100,mode=edge -e 'xclip -selection clipboard -t image/png -i $f']])
+              awful.util.spawn([[scrot 'Pictures/Screenshots/%Y%m%d_%H%M%S.png' -s -l width=4,color="]] .. beautiful.accent_alt .. [[",opacity=100,mode=edge -e 'xclip -selection clipboard -t image/png -i $f']])
             end,
             { description = "Screenshot selection", group = "awesome"}),
 
