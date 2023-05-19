@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                 theme.lua                                  --
 --------------------------------------------------------------------------------
--- v1.7
+-- v1.8
 ----- [ Dependencies ] ---------------------------------------------------------
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -30,8 +30,10 @@ theme.purple  = "#724d7c"
 theme.pink    = "#d33061"
 theme.special = "#555555"
 
-theme.accent     = theme.purple
-theme.accent_alt = theme.pink
+theme.accent        = theme.pink
+theme.accent_fg     = theme.white
+theme.accent_alt    = theme.blue
+theme.accent_alt_fg = theme.black
 
 theme.error = theme.red 
 theme.warn  = theme.yellow
@@ -39,8 +41,8 @@ theme.warn  = theme.yellow
 theme.bg = theme.black 
 theme.fg = theme.white
 ----- [ Widgets ] --------------------------------------------------------------
-theme.front_fg = theme.fg
-theme.front_bg = theme.accent_alt
+theme.front_fg = theme.accent_fg
+theme.front_bg = theme.accent
 theme.date_fg  = theme.fg
 theme.date_bg  = theme.bg
 theme.time_fg  = theme.yellow

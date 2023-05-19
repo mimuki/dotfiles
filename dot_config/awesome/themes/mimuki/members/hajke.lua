@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                 hajke.lua                                  --
 --------------------------------------------------------------------------------
--- v1.7
+-- v1.8
 ----- [ Dependencies ] ---------------------------------------------------------
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -30,8 +30,10 @@ theme.purple  = "#bd93f9"
 theme.pink    = "#ff79c6"
 theme.special = "#6272a4"
 
-theme.accent     = theme.purple
-theme.accent_alt = theme.pink
+theme.accent        = theme.purple
+theme.accent_fg     = theme.black
+theme.accent_alt    = theme.pink
+theme.accent_alt_fg = theme.black
 
 theme.error = theme.red 
 theme.warn  = theme.orange
@@ -39,9 +41,9 @@ theme.warn  = theme.orange
 theme.bg = theme.black 
 theme.fg = theme.white
 ----- [ Widgets ] --------------------------------------------------------------
-theme.front_fg = theme.bg
+theme.front_fg = theme.accent_alt_fg
 theme.front_bg = theme.accent_alt
-theme.date_fg  = theme.bg
+theme.date_fg  = theme.accent_fg 
 theme.date_bg  = theme.accent
 theme.time_fg  = theme.blue
 theme.time_bg  = theme.bg

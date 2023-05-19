@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                 hfsdt.lua                                  --
 --------------------------------------------------------------------------------
--- v1.7
+-- v1.8
 ----- [ Dependencies ] ---------------------------------------------------------
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -30,8 +30,10 @@ theme.purple  = "#b154cf"
 theme.pink    = "#da5bd6"
 theme.special = "#b1c9c3"
 
-theme.accent     = theme.yellow
-theme.accent_alt = theme.blue
+theme.accent        = theme.yellow
+theme.accent_fg     = theme.black
+theme.accent_alt    = theme.blue
+theme.accent_alt_fg = theme.black
 
 theme.error = theme.red 
 theme.warn  = theme.orange
@@ -41,7 +43,7 @@ theme.fg = theme.white
 ----- [ Widgets ] --------------------------------------------------------------
 theme.front_fg = theme.bg
 theme.front_bg = theme.green
-theme.date_fg  = theme.bg
+theme.date_fg  = theme.accent_alt_fg
 theme.date_bg  = theme.accent_alt
 theme.time_fg  = theme.yellow
 theme.time_bg  = theme.bg
