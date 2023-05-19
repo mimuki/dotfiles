@@ -17,33 +17,33 @@ theme.wallpaper = theme.dir .. "dracula/goop_2.png"
 theme.hotkeys_font             = "Fantasque Sans Mono 20"
 theme.hotkeys_description_font = "Fantasque Sans Mono 20"
 ----- [ Colours ] --------------------------------------------------------------
-theme.black   = "#29283b"
-theme.hilight = "#535178"
-theme.lolight = "#21222C"
-theme.white   = "#f8f8f2"
-theme.red     = "#ef6487"
-theme.orange  = "#E46630"
-theme.yellow  = "#fdd877"
-theme.green   = "#5eca89"
-theme.blue    = "#65aef7"
-theme.purple  = "#aa7ff0"
-theme.pink    = "#43c1be"
-theme.special = "#53517844"
+theme.black   = "#191c27"
+theme.hilight = "#30333e"
+theme.lolight = "#181818"
+theme.white   = "#f4f4f4"
+theme.red     = "#810009"
+theme.orange  = "#cc7b3f"
+theme.yellow  = "#dcdf7c"
+theme.green   = "#48513b"
+theme.blue    = "#3097c6"
+theme.purple  = "#724d7c"
+theme.pink    = "#d33061"
+theme.special = "#555555"
 
 theme.accent     = theme.purple
 theme.accent_alt = theme.pink
 
 theme.error = theme.red 
-theme.warn  = theme.orange
+theme.warn  = theme.yellow
 
 theme.bg = theme.black 
 theme.fg = theme.white
 ----- [ Widgets ] --------------------------------------------------------------
-theme.front_fg = theme.purple
-theme.front_bg = "#b8bff222"
-theme.date_fg  = theme.pink
+theme.front_fg = theme.fg
+theme.front_bg = theme.accent_alt
+theme.date_fg  = theme.fg
 theme.date_bg  = theme.bg
-theme.time_fg  = theme.blue
+theme.time_fg  = theme.yellow
 theme.time_bg  = theme.bg
 ----- [ Background ] -----------------------------------------------------------
 theme.bg_normal     = theme.bg
@@ -81,10 +81,10 @@ theme.titlebar_fg_urgent = theme.black
 
 theme.hotkeys_modifiers_fg = theme.white
 
-theme.taglist_fg_focus    = theme.accent
-theme.taglist_fg_occupied = theme.hilight
+theme.taglist_fg_focus    = theme.accent_alt
+theme.taglist_fg_occupied = theme.special
 theme.taglist_fg_urgent   = theme.red
-theme.taglist_fg_empty    = theme.special
+theme.taglist_fg_empty    = theme.hilight
 
 theme.tooltip_fg = theme.white
 
