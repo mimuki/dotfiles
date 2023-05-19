@@ -46,10 +46,10 @@ theme.date_bg  = theme.accent_alt
 theme.time_fg  = theme.yellow
 theme.time_bg  = theme.bg
 ----- [ Background ] -----------------------------------------------------------
-theme.bg_normal     = theme.black
+theme.bg_normal     = theme.bg
 theme.bg_focus      = theme.hilight
 theme.bg_urgent     = theme.red
-theme.bg_systray    = theme.black
+theme.bg_systray    = theme.bg
 theme.bg_minimize   = theme.hilight
 
 theme.titlebar_bg_normal = theme.hilight
@@ -58,16 +58,16 @@ theme.titlebar_bg_urgent = theme.red
 
 theme.hotkeys_label_bg = theme.special
 
-theme.taglist_bg_focus    = theme.black
-theme.taglist_bg_occupied = theme.black
-theme.taglist_bg_urgent   = theme.black
-theme.taglist_bg_empty    = theme.black
+theme.taglist_bg_focus    = theme.bg
+theme.taglist_bg_occupied = theme.bg
+theme.taglist_bg_urgent   = theme.bg
+theme.taglist_bg_empty    = theme.bg
 
-theme.tooltip_bg = theme.black
+theme.tooltip_bg = theme.bg
 
-theme.notifcation_bg = theme.black
+theme.notifcation_bg = theme.bg
 
-theme.menu_bg_normal = theme.black
+theme.menu_bg_normal = theme.bg
 theme.menu_bg_focus  = theme.hilight
 ----- [ Foreground ] -----------------------------------------------------------
 theme.fg_normal     = theme.white

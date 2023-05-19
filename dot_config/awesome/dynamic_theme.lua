@@ -48,28 +48,29 @@ function getImage(url, dir)
 end
 
 function rofiTheme()
-  rfTheme = "* {\n" ..
-  "  bg:         " .. beautiful.bg .. ";\n" ..
-  "  bgdark:     " .. beautiful.lolight:sub(1,7) .. ";\n" ..
-  "  selection:  " .. beautiful.hilight:sub(1,7) .. ";\n" ..
-  "  fg:         " .. beautiful.fg:sub(1,7) .. ";\n" ..
-  "\n" ..
-  "  accent:     " .. beautiful.accent:sub(1,7) .. ";\n" ..
-  "  accent-alt: " .. beautiful.accent_alt:sub(1,7) .. ";\n" ..
-  "\n" ..
-  "  error:      " .. beautiful.error:sub(1,7) .. ";\n" ..
-  "  warn:       " .. beautiful.warn:sub(1,7) .. ";\n" ..
-  "\n" ..
-  "  comment:    " .. beautiful.special:sub(1,7) .. ";\n" ..
-  "\n" ..
-  "  red:        " .. beautiful.red:sub(1,7) .. ";\n" ..
-  "  orange:     " .. beautiful.orange:sub(1,7) .. ";\n" ..
-  "  yellow:     " .. beautiful.yellow:sub(1,7) .. ";\n" ..
-  "  green:      " .. beautiful.green:sub(1,7) .. ";\n" ..
-  "  blue:       " .. beautiful.blue:sub(1,7) .. ";\n" ..
-  "  purple:     " .. beautiful.purple:sub(1,7) .. ";\n" ..
-  "  pink:       " .. beautiful.pink:sub(1,7) .. ";\n" ..
-  "}\n"
+
+  rfTheme = "* { \n  black:      " .. beautiful.black:sub(1,7)
+  .. ";\n  lolight:    " .. beautiful.lolight:sub(1,7) 
+  .. ";\n  hilight:    " .. beautiful.hilight:sub(1,7)
+  .. ";\n  white:      " .. beautiful.white:sub(1,7)
+  .. ";\n  red:        " .. beautiful.red:sub(1,7)
+  .. ";\n  orange:     " .. beautiful.orange:sub(1,7)
+  .. ";\n  yellow:     " .. beautiful.yellow:sub(1,7)
+  .. ";\n  green:      " .. beautiful.green:sub(1,7)
+  .. ";\n  blue:       " .. beautiful.blue:sub(1,7)
+  .. ";\n  purple:     " .. beautiful.purple:sub(1,7)
+  .. ";\n  pink:       " .. beautiful.pink:sub(1,7)
+  .. ";\n  special:    " .. beautiful.special:sub(1,7)
+  .. "\n\n"
+  .. ";\n  accent:     " .. beautiful.accent:sub(1,7)
+  .. ";\n  accent-alt: " .. beautiful.accent_alt:sub(1,7)
+  .. "\n\n"
+  .. ";\n  error:      " .. beautiful.error:sub(1,7)
+  .. ";\n  warn:       " .. beautiful.warn:sub(1,7)
+  .. "\n\n"
+  .. ";\n  bg:         " .. beautiful.bg:sub(1,7)
+  .. ";\n  fg:         " .. beautiful.fg:sub(1,7) 
+  .. ";\n}\n"
   local f = assert(io.open("/home/mimuki/.config/rofi/dynamic.rasi", 'w'))
   f:write(rfTheme)
   f:close()

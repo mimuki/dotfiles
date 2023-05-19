@@ -1,23 +1,13 @@
-////////////////////////////////////////////////////////////////////////////////
+ ////////////////////////////////////////////////////////////////////////////////
 //                                config.rasi                                 //
 ////////////////////////////////////////////////////////////////////////////////
 // ---[Globals]-------------------------------------------------------------- //
 // NOTE : these properties are inherited for all "named" elements below
 * {
-  bg:         #282A36;
-  bgdark:     #21222C;
-  selection:  #44475A;
-  fg:         #F8F8F2;
-
-  accent:     #bd93f9;
-  accent-alt: #ff79c6;
-
-  error:      #ff5555;
-  warn:       #ffb86c;
-
-  comment:    #6272a4;
-
-
+  black:      #282A36;
+  lolight:    #21222C;
+  hilight:    #44475A;
+  white:      #F8F8F2;
   red:        #FF5555;
   orange:     #FFB86C;
   yellow:     #F1FA8C;
@@ -25,8 +15,16 @@
   blue:       #8BE9FD;
   purple:     #BD93F9;
   pink:       #FF79C6;
+  special:    #6272a4;
 
+  accent:     #bd93f9;
+  accent-alt: #ff79c6;
 
+  error:      @red;
+  warn:       @orange;
+
+  bg:         @black;
+  fg:         @white;
 
 // Rofi
 
@@ -42,12 +40,12 @@
   alternate-normal-foreground:    @fg;
 
   selected-normal-foreground:     @fg;
-  selected-normal-background:     @selection;
+  selected-normal-background:     @hilight;
 
 // Active state
 
   active-foreground:              @accent;
-  active-background:              @bgdark;
+  active-background:              @lolight;
 
   alternate-active-foreground:    @active-foreground;
   alternate-active-background:    @active-background;
@@ -58,7 +56,7 @@
 // Urgent state
 
   urgent-foreground:              @red;
-  urgent-background:              @bgdark;
+  urgent-background:              @lolight;
 
   alternate-urgent-foreground:    @urgent-foreground;
   alternate-urgent-background:    @urgent-background;
@@ -92,7 +90,7 @@
 
 #scrollbar {
     handle-width:       6px;
-    handle-color:       @selection;
+    handle-color:       @hilight;
     padding:            1px;
 }
 
@@ -110,10 +108,10 @@
 
 #textbox {
     text-color: @fg;
-    background-color: @selection;
+    background-color: @hilight;
     padding: 5px 17px;
     border: 8px;
-    border-color: @comment;
+    border-color: @special;
 
 }
 
@@ -190,7 +188,7 @@
 }
 
 #case-indicator {
-    background-color:   @bgdark;
+    background-color:   @lolight;
 }
 
 #entry {
