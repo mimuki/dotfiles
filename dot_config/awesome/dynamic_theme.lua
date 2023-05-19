@@ -50,8 +50,8 @@ end
 function rofiTheme()
   rfTheme = "* {\n" ..
   "  bg:         " .. beautiful.bg .. ";\n" ..
-  "  bgdark:     " .. beautiful.bg:sub(1,7) .. ";\n" ..
-  "  selection:  " .. beautiful.l_black:sub(1,7) .. ";\n" ..
+  "  bgdark:     " .. beautiful.lolight:sub(1,7) .. ";\n" ..
+  "  selection:  " .. beautiful.hilight:sub(1,7) .. ";\n" ..
   "  fg:         " .. beautiful.fg:sub(1,7) .. ";\n" ..
   "\n" ..
   "  accent:     " .. beautiful.accent:sub(1,7) .. ";\n" ..
@@ -60,7 +60,7 @@ function rofiTheme()
   "  error:      " .. beautiful.error:sub(1,7) .. ";\n" ..
   "  warn:       " .. beautiful.warn:sub(1,7) .. ";\n" ..
   "\n" ..
-  "  comment:    " .. beautiful.grey:sub(1,7) .. ";\n" ..
+  "  comment:    " .. beautiful.special:sub(1,7) .. ";\n" ..
   "\n" ..
   "  red:        " .. beautiful.red:sub(1,7) .. ";\n" ..
   "  orange:     " .. beautiful.orange:sub(1,7) .. ";\n" ..
@@ -77,13 +77,13 @@ function rofiTheme()
 function qutebrowserTheme()
   quteTheme = "palette = {\n" ..
   "    \'background\': \'" .. beautiful.bg .. "\',\n" ..
-  "    \'selection\': \'" .. beautiful.l_black .. "\',\n" ..
+  "    \'selection\': \'" .. beautiful.hilight .. "\',\n" ..
   "    \'foreground\': \'" .. beautiful.fg .. "\',\n" ..
   "    \'accent\': \'" .. beautiful.accent .. "\',\n" ..
   "    \'accent-alt\': \'" .. beautiful.accent_alt .. "\',\n" ..
   "    \'error\': \'" .. beautiful.error .. "\',\n" ..
   "    \'warn\': \'" .. beautiful.warn .. "\',\n" ..
-  "    \'grey\': \'" .. beautiful.grey .. "\',\n" ..
+  "    \'grey\': \'" .. beautiful.special .. "\',\n" ..
   "    \'red\': \'" .. beautiful.red .. "\',\n" ..
   "    \'orange\': \'" .. beautiful.orange .. "\',\n" ..
   "    \'yellow\': \'" .. beautiful.yellow .. "\',\n" ..
@@ -136,7 +136,7 @@ function pyradioTheme()
   "Extra Func          " .. beautiful.red:sub(1, 7) .. "\n\n" ..
   "# Text color for URL\n" ..
   "# (background color will come from Stations)\n" ..
-  "PyRadio URL         " .. beautiful.l_black:sub(1, 7) .. "\n\n" ..
+  "PyRadio URL         " .. beautiful.hilight:sub(1, 7) .. "\n\n" ..
   "# Message window border foreground and background.\n" ..
   "# The background color can be left unset.\n" ..
   "# Please refer to the following link for more info\n" ..
@@ -144,7 +144,7 @@ function pyradioTheme()
   "Messages Border     " .. beautiful.accent_alt:sub(1, 7) .. "\n\n" ..
   "# Border color for the Main Window\n" ..
   "# (background color will come from Stations)\n" ..
-  "Border              " .. beautiful.grey:sub(1, 7) .. "\n\n" ..
+  "Border              " .. beautiful.special:sub(1, 7) .. "\n\n" ..
   "# Theme Transparency\n" ..
   "# Values are:\n" ..
   "#   0: No transparency (default)\n" ..

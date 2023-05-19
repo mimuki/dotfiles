@@ -206,7 +206,7 @@ volIcon = wibox.widget.imagebox("/home/mimuki/.local/share/chezmoi/dot_config/aw
 volume = lain.widget.pulse( {
   settings = function()
     vlevel = volume_now.left .. "% "
-    -- markupColour(volIcon, beautiful.fg, beautiful.l_black, "  ")
+    -- markupColour(volIcon, beautiful.fg, beautiful.hilight, "  ")
     if volume_now.muted == "yes" then
       vlevel = volume_now.left .. "% "
       beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume_mute.png"

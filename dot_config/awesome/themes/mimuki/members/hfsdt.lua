@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                 hfsdt.lua                                  --
 --------------------------------------------------------------------------------
--- v1.5
+-- v1.7
 ----- [ Dependencies ] ---------------------------------------------------------
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
@@ -18,8 +18,8 @@ theme.hotkeys_font             = "Fantasque Sans Mono 20"
 theme.hotkeys_description_font = "Fantasque Sans Mono 20"
 ----- [ Colours ] --------------------------------------------------------------
 theme.black   = "#0f3b3a"
-theme.l_black = "#155352"
-theme.grey    = "#b1c9c3"
+theme.hilight = "#155352"
+theme.lolight = "#21222C"
 theme.white   = "#ffffff"
 theme.red     = "#d74200"
 theme.orange  = "#e99f10"
@@ -28,6 +28,7 @@ theme.green   = "#00c420"
 theme.blue    = "#40a4b9"
 theme.purple  = "#b154cf"
 theme.pink    = "#da5bd6"
+theme.special = "#b1c9c3"
 
 theme.accent     = theme.yellow
 theme.accent_alt = theme.blue
@@ -46,16 +47,16 @@ theme.time_fg  = theme.yellow
 theme.time_bg  = theme.bg
 ----- [ Background ] -----------------------------------------------------------
 theme.bg_normal     = theme.black
-theme.bg_focus      = theme.l_black
+theme.bg_focus      = theme.hilight
 theme.bg_urgent     = theme.red
 theme.bg_systray    = theme.black
-theme.bg_minimize   = theme.l_black
+theme.bg_minimize   = theme.hilight
 
-theme.titlebar_bg_normal = theme.l_black
+theme.titlebar_bg_normal = theme.hilight
 theme.titlebar_bg_focus  = theme.accent
 theme.titlebar_bg_urgent = theme.red
 
-theme.hotkeys_label_bg = theme.grey
+theme.hotkeys_label_bg = theme.special
 
 theme.taglist_bg_focus    = theme.black
 theme.taglist_bg_occupied = theme.black
@@ -67,7 +68,7 @@ theme.tooltip_bg = theme.black
 theme.notifcation_bg = theme.black
 
 theme.menu_bg_normal = theme.black
-theme.menu_bg_focus  = theme.l_black
+theme.menu_bg_focus  = theme.hilight
 ----- [ Foreground ] -----------------------------------------------------------
 theme.fg_normal     = theme.white
 theme.fg_focus      = theme.white
@@ -81,9 +82,9 @@ theme.titlebar_fg_urgent = theme.black
 theme.hotkeys_modifiers_fg = theme.white
 
 theme.taglist_fg_focus    = theme.accent
-theme.taglist_fg_occupied = theme.grey
+theme.taglist_fg_occupied = theme.special
 theme.taglist_fg_urgent   = theme.red
-theme.taglist_fg_empty    = theme.l_black
+theme.taglist_fg_empty    = theme.hilight
 
 theme.tooltip_fg = theme.white
 
@@ -96,9 +97,9 @@ theme.useless_gap       = dpi(0)
 theme.gap_single_client = false
 
 theme.border_width  = dpi(7)
-theme.border_normal = theme.l_black
+theme.border_normal = theme.hilight
 theme.border_focus  = theme.accent
-theme.border_marked = theme.grey
+theme.border_marked = theme.special
 
 theme.hotkeys_border_width = theme.border_width
 theme.hotkeys_border_color = theme.accent_alt
