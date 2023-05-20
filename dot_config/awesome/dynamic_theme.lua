@@ -95,7 +95,7 @@ end
 function qutebrowserTheme()
   local path = beautiful.dir.."mimuki/members/"..front.id.."/qutebrowser.py"
   if fileExists(path) == true then
-    quteTheme = readFile(path)
+    quteTheme = readFile(path) -- todo: make it do the cat thing here too
   else
     quteTheme = "palette = {\n" ..
     "    \'background\': \'" .. beautiful.bg .. "\',\n" ..
@@ -120,7 +120,12 @@ function qutebrowserTheme()
   local file = assert(io.open("/home/mimuki/.config/qutebrowser/dynamic/theme.py", 'w'))
   file:write(quteTheme)
   file:close()
-  awful.spawn.easy_async("qutebrowser ':config-source'",
+  quteDir = "/home/mimuki/.config/qutebrowser"
+  awful.spawn.easy_async(
+    "bash /home/mimuki/.config/awesome/scripts/qutebrowser.sh",
+    function(result)
+    end)
+  awful.spawn.easy_async("qutebrowser ':config-source  /home/mimuki/.config/qutebrowser/dynamic/config.py'",
   function(result)
       -- might be worth catching errors here some day
   end)

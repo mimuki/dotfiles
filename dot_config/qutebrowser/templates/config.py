@@ -1,23 +1,3 @@
-palette = {
-    'background': '#282a36',
-    'selection': '#44475a',
-    'foreground': '#f8f8f2',
-    'accent': '#bd93f9',
-    'accent-fg': '#282a36',
-    'accent-alt': '#ff79c6',
-    'accent-alt-fg': '#282a36',
-    'error': '#ff5555',
-    'warn': '#ffb86c',
-    'grey': '#6272a4',
-    'red': '#ff5555',
-    'orange': '#ffb86c',
-    'yellow': '#f1fa8c',
-    'green': '#50fa7b',
-    'blue': '#8be9fd',
-    'purple': '#bd93f9',
-    'pink': '#ff79c6',
-}
-
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
 
