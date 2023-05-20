@@ -23,13 +23,15 @@ function refreshWibox()
   batInInfoTimer:emit_signal("timeout")
   batExInfoTimer:emit_signal("timeout")
   wattsTimer:emit_signal("timeout")
+
   volume.update() -- Volume widget colours
-  client.focus.border_color = beautiful.border_focus
   awful.screen.focused().mytaglist._do_taglist_update()
-  if client.focus.floating then
-    client.focus.border_color = beautiful.accent_alt
-  else
-    client.focus.border_color = beautiful.border_focus
+  if client.focus then -- if there's a focused client
+    if client.focus.floating then 
+      client.focus.border_color = beautiful.accent_alt
+    else
+      client.focus.border_color = beautiful.border_focus
+    end
   end
 end
 

@@ -1,4 +1,4 @@
- --------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 --                                widgets.lua                                 --
 --------------------------------------------------------------------------------
 
@@ -97,8 +97,7 @@ mainMenu = awful.menu(
       { "search programs", function () awful.util.spawn("rofi -show drun") end, beautiful.list_icon },
       { "search windows",  function () awful.util.spawn("rofi -show window") end, beautiful.window_icon },
       { "search files",    function () awful.util.spawn("rofi -show filebrowser -theme-str '#listview {lines:6;}'") end, beautiful.folder_icon },
-      { "awesome", awesomeMenu, beautiful.awesome_icon },
-
+      { "awesome", awesomeMenu, beautiful.awesome_icon }
     }
   })
 

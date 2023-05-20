@@ -505,27 +505,27 @@ c.colors.statusbar.passthrough.bg = dynamic.theme.palette['orange']
 
 # Foreground color of the statusbar in private browsing mode.
 # Type: QssColor
-c.colors.statusbar.private.fg = '#e0e0e0'
+c.colors.statusbar.private.fg = dynamic.theme.palette['accent-fg']
 
 # Background color of the statusbar in private browsing mode.
 # Type: QssColor
-c.colors.statusbar.private.bg = dynamic.theme.palette['background']
+c.colors.statusbar.private.bg = dynamic.theme.palette['accent']
 
 # Foreground color of the statusbar in command mode.
 # Type: QssColor
-c.colors.statusbar.command.fg = dynamic.theme.palette['pink']
+c.colors.statusbar.command.fg = dynamic.theme.palette['accent-alt']
 
 # Background color of the statusbar in command mode.
 # Type: QssColor
-c.colors.statusbar.command.bg = dynamic.theme.palette['background']
+c.colors.statusbar.command.bg = dynamic.theme.palette['accent-alt-fg']
 
 # Foreground color of the statusbar in private browsing + command mode.
 # Type: QssColor
-c.colors.statusbar.command.private.fg = '#e0e0e0'
+c.colors.statusbar.command.private.fg = dynamic.theme.palette['accent-alt']
 
 # Background color of the statusbar in private browsing + command mode.
 # Type: QssColor
-c.colors.statusbar.command.private.bg = dynamic.theme.palette['background']
+c.colors.statusbar.command.private.bg = dynamic.theme.palette['accent-alt-fg']
 
 # Foreground color of the statusbar in caret mode.
 # Type: QssColor
