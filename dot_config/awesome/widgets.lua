@@ -256,46 +256,57 @@ gears.timer {
     awful.spawn.easy_async("cat /sys/class/power_supply/BAT0/status",
       function(result)
         if string.match(result, "Discharging") then
+          currentBattery = "internal"
           batInIcon.visible = true
-          batInIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_icon, "#ff5555")))
+          batInIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_icon, beautiful.red)))
         end
         if string.match(result, "Not charging") then 
+          currentBattery = "external"
           batInIcon.visible = false
         end
-        if string.match(result, "Charging") then 
+        if string.match(result, "Charging") then
+          currentBattery = "internal"
           batInIcon.visible = true
-          batInIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_charging_icon, "#8be9fd")))
+          batInIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_charging_icon, beautiful.blue)))
         end
       end)
     awful.spawn.easy_async("cat /sys/class/power_supply/BAT1/status",
       function(result)
         if string.match(result, "Discharging") then
+          currentBattery = "external"
           batExIcon.visible = true
-          batExIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_icon, "#f1fa8c")))
+          batExIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_icon, beautiful.yellow)))
         end
         if string.match(result, "Not charging") then 
-          batExIcon.visible = false
+          if currentBattery == "internal" then
+            batExIcon.visible = false
+          else
+            batExIcon.visible = true
+          end
         end
         if string.match(result, "Charging") then 
+          currentBattery = "external"
           batExIcon.visible = true
-          batExIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_charging_icon, "#50fa7b")))
+          batExIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_charging_icon, beautiful.green)))
         end
       end)
     end
 }
 -- TODO: pad these to two digits, like the RAM and CPU widgets are
-batInInfo, batInInfoTimer = awful.widget.watch([[
-  awk '$0 > 5 && $0 <= 85 { printf( $0  "% ") }' /sys/class/power_supply/BAT0/capacity
-  ]], 5, function(widget, out)
-    batInInfo.markup = markup.fg.color(beautiful.fg, out)
+batInInfo, batInInfoTimer = awful.widget.watch([[awk '$0 { printf( $0 "% ") }' /sys/class/power_supply/BAT0/capacity]], 5, function(widget, out)
+    if currentBattery == "internal" then
+      batInInfo.markup = markup.fg.color(beautiful.fg, out .. "% ")
+    else
+      batIninfo.markup = markup.fg.color(beautiful.fg, "")
+    end
   end)
-batExInfo, batExInfoTimer = awful.widget.watch([[
-  awk '$0 > 5 && $0 <= 80 { printf( $0  "% ") }' /sys/class/power_supply/BAT1/capacity
-  ]], 5, function(widget, out)
-    batExInfo.markup = markup.fg.color(beautiful.fg, out)
-
-  end
-)
+batExInfo, batExInfoTimer = awful.widget.watch([[awk '$0 { printf( $0 "% ") }' /sys/class/power_supply/BAT1/capacity]], 5, function(widget, out)
+    if currentBattery == "external" then
+      batExInfo.markup = markup.fg.color(beautiful.fg, out .. "%" )
+    else
+      batExInfo.markup = markup.fg.color(beautiful.fg, "")
+    end
+  end)
 
 -- Current wattage
 watts, wattsTimer = awful.widget.watch([[
