@@ -1,0 +1,336 @@
+  /* Discord Root Colors */
+  --background-alt: #343746 !important;
+  --header-primary: var(--fg) !important;
+  --background-primary: var(--bg) !important;
+  --background-secondary: var(--bg) !important;
+  --background-mobile-primary: var(--bg) !important;
+  --background-mobile-secondary: var(--bg) !important;
+  --background-secondary-alt: var(--bg) !important;
+  --background-tertiary: var(--lolight) !important;
+  --background-accent: var(--hilight) !important;
+  --background-floating: var(--bg) !important;
+  --background-modifier-selected: var(--hilight) !important;
+  --activity-card-background: var(--bg) !important;
+  --interactive-normal: var(--fg) !important;
+  --channeltextarea-background: var(--hilight) !important;
+  --rs-online-color: var(--green) !important;
+  --rs-idle-color: var(--orange) !important;
+  --rs-dnd-color: var(--red) !important;
+  --rs-offline-color: var(--hilight) !important;
+  --rs-streaming-color: var(--purple) !important;
+  --rs-invisible-color: var(--comment) !important;
+  --interactive-muted: var(--comment) !important;
+  --scrollbar-auto-thumb: var(--comment) !important;
+  --scrollbar-auto-track: var(--lolight) !important;
+  --scrollbar-thin-thumb: var(--comment) !important;
+  --scrollbar-auto-scrollbar-color-thumb: var(--comment) !important;
+  --scrollbar-auto-scrollbar-color-track: var(--lolight) !important;
+}
+
+* {
+  font-family: "Andika Rats" !important;
+  box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+}
+
+.rem-3kT9wc.botTag-7aX5WZ {
+  display: none !important;
+}
+
+.wrapper-1BJsBx.selected-bZ3Lue .childWrapper-anI2G9,
+.wrapper-1BJsBx:hover .childWrapper-anI2G9 {
+  background-color: var(--comment) !important;
+}
+
+/* Home */
+.container-2cd8Mz {
+  background-color: var(--bg) !important;
+}
+
+/* Autocomplete popup */
+.autocomplete-3NRXG8 {
+  background-color: var(--bg) !important;
+}
+
+.autocomplete-3jLKbj {
+  background-color: var(--bg) !important;
+}
+
+/* Autocomplete popup selection */
+.selected-3H3-RC {
+  background-color: var(--hilight) !important;
+}
+
+/* Friends Menu Header */
+.container-ZMc96U.themed-Hp1KC_{
+  background-color: var(--bg) !important;
+}
+
+/* Emoji/Gif Selector Box*/
+.contentWrapper-3vHNP2,
+.container-3u7RcY,
+.wrapper-1NNaWG,
+.wrapper-1NNaWG,
+.inspector-DFKXwB,
+.wrapper-22rqw6,
+.listWrapper-2nHLP8,
+.categoryItem-1sHzUv,
+.guildIcon-2SUGiq,
+.header-11eigE{
+  background-color: var(--bg) !important;
+}
+.container-1SX9VC,
+.container-2oNtJn{
+  background-color: var(--hilight) !important;
+}
+
+/* Scroll Bar */
+.theme-dark
+  .scrollerThemed-2oenus.themedWithTrack-q8E3vB
+  .scroller-2FKFPG::-webkit-scrollbar-track-piece {
+  background-color: var(--hilight) !important;
+}
+
+/* Settings Content Pane */
+.contentRegion-3HkfJJ {
+  border-width: 0px !important;
+}
+
+
+/* --[ Borders and Focus ]--------------------------------------------------- */
+
+/* Chat window */
+/*.messagesWrapper-RpOMA3,*/
+/* The text entry part*/
+.form-3gdLxP
+/* Members list */
+/*.members-3WRCEx,*/
+/* Channel List */
+/*.scroller-1ox3I2,*/
+/* User Area */
+/*.panels-3wFtMD*/ {
+/* Guilds list*/
+/*.tree-3agP2X,*/
+/* Channel Header */
+/*.container-ZMc96U.themed-Hp1KC_,*/
+/* Guild header */
+/*.header-3OsQeK  {*/
+  border: var(--hilight) solid;
+  border-width: 4px !important;
+}
+/*.chatContent-3KubbW:focus-within,*/
+.messagesWrapper-RpOMA3:focus-within,
+.form-3gdLxP:focus-within,
+.members-3WRCEx:focus-within,
+.scroller-1ox3I2:focus-within,
+.panels-3wFtMD:focus-within,
+.tree-3agP2X:focus-within,
+.container-ZMc96U.themed-Hp1KC_:focus-within,
+.header-3OsQeK:focus-within {
+  border-color: var(--accent) !important;
+}
+
+
+/* Search Bar */
+.searchBar-zdmu7v {
+  border-color: red !important;
+  border-width: 10px !important;
+}
+.searchBar-3TnChZ {
+  border-width: 0px !important;
+}
+/* People, Game Library, Nitro */
+.peopleColumn-1wMU14,
+.container-3u6dG-,
+.scroller-9moviB {
+  border-width: 4px !important;
+}
+/* Now Playing Column */
+.nowPlayingColumn-1eCBCN {
+  border-width: 4px 4px 4px 0 !important;
+}
+/* -- [ Aesthetic Tweaks ] -------------------------------------------------- */
+/* Message input's spacing is weird by default */
+.form-3gdLxP {
+  padding: 0px !important;
+  margin: 0px !important;
+}
+/* slightly taller so theres no scrollbar when its empty */
+.textArea-2CLwUE {
+  min-height: 50px !important;
+}
+/* Message input has a bubble, i don't like that */
+.scrollableContainer-15eg7h {
+  background-color: transparent !important;
+}
+
+/* no shadow under the channel name
+    why the fuck did i need to add this */
+.content-1jQy2l::before {
+  box-shadow: none !important;
+  }
+
+/* make channel name similar size to server name */
+.title-31SJ6t {
+  padding: 24px 0
+}
+/* other stuff------------ */
+
+/* Pinned Message Box*/
+.header-1w9Q93{
+  background-color: var(--bg);
+}
+.messagesPopout-eVzQcI{
+  background-color: var(--lolight);
+}
+.messageGroupWrapper-1jf_7C{
+  background-color: var(--bg);
+}
+
+/* Create DM Popout */
+.popout-3gby1q {
+    background-color: var(--bg);
+}
+/* Search field */
+.searchBarComponent-18D6hD {
+    background-color: var(--lolight);
+}
+/* Selected friend */
+.friendSelected-3cwmD7 {
+    background-color: var(--hilight);
+}
+/* Added to the list */
+.anchor-1MIwyf {
+    background-color: var(--bg);
+}
+
+/* Inbox Popout */
+.header-145e10, .header-1w9Q93 {
+    background-color: var(--bg);
+}
+/* Active Tab selected text */
+.active-1grPyy {
+    background-color: var(--lolight);
+}
+/* Popout container */
+.messagesPopout-eVzQcI {
+    background-color: var(--lolight);
+}
+/* Channel Header */
+.channelHeader-DFRX8q{
+    background-color: var(--lolight);
+}
+/* List element */
+.container-iA3Qrz {
+    background-color: var(--lolight);
+}
+/* Message Content */
+.messageContainer-3VTXBC {
+    background-color: var(--bg);
+}
+
+/* Unread list */
+.scroller-145h9c {
+    background-color: var(--lolight);
+}
+/* Unread messages */
+.messages-23can0 {
+    background-color: var(--bg);
+}
+
+/* For you tab */
+.container-1A0qQO {
+    background-color: var(--lolight);
+}
+
+/* Syntax Highlighing in Code Blocks*/
+code {
+  color: var(--fg) !important;
+}
+span.hljs-built_in {
+  color: var(--purple) !important;
+}
+span.hljs-keyword {
+  color: var(--pink) !important;
+}
+span.hljs-title {
+  color: var(--blue) !important;
+}
+span.hljs-attr {
+  color: var(--fg) !important;
+}
+span.hljs-string {
+  color: var(--yellow) !important;
+}
+span.hljs-number {
+  color: var(--purple) !important;
+}
+span.hljs-symbol {
+  color: var(--orange) !important;
+}
+span.hljs-meta {
+  color: var(--fg) !important;
+}
+span.hljs-meta-keyword {
+  color: var(--pink) !important;
+}
+span.hljs-meta-string {
+  color: var(--orange) !important;
+}
+/* --[ Fuck Off Discord ]---------------------------------------------------- */
+
+/* Get rid of sticker/gift nitro/etc buttons */
+.buttons-uaqb-5 > div:not(:last-child),
+.buttons-uaqb-5 > button {
+  display: none;
+}
+
+
+/* this emoji is popular */
+.badgeLabel-2Eo2Mq {
+  display: none;
+}
+
+/* Emojis per guild */
+.guildEmojiSectionItems-3l3n3N {
+  display: none;
+}
+
+/* this server is partnered */
+.guildIconContainer-3QvE6w {
+  display: none;
+}
+
+/* that folder of servers i want to leave */
+.wrapper-38slSD {
+  display: none;
+}
+
+/* add new servers */
+.tutorialContainer-2jwoiB {
+  display: none;
+}
+/* discover servers, etc */
+div.listItem-3SmSlK:nth-child(5),
+div.listItem-3SmSlK:nth-child(6),
+div.listItem-3SmSlK:nth-child(7) {
+  display: none;
+}
+
+/* --- [ Blocked Messages ] --- */
+/* Aesthetic tweaks to the blocked message indicator */
+.blockedSystemMessage-3FmE9n {
+   display: flex;
+   justify-content: center;
+}
+.blockedMessageText-3Zeg3y:before {
+    content:  "— ";
+}
+/* Remove the X next to a blocked message */
+.iconContainer-2rPbqG {
+    display: none;
+}
+/* Remove the "show blocked message" button, because mental health good */
+span.blockedAction-2cPk2G {
+    display: none
+}
