@@ -483,6 +483,10 @@ span.blockedAction-2cPk2G {
 .bar-2eAyLE {
   height: 34px !important;
 }
+
+.bar-wDIGjg {
+  padding-left: 14px !important;
+}
 /* stops the channel list being slightly too narrow */
 #channels {
   overflow: overlay !important;
