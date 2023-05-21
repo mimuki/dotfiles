@@ -1,5 +1,5 @@
   /* Discord Root Colors */
-  --background-alt: #343746 !important;
+  --brand-experiment: var(--accent) !important;
   --header-primary: var(--fg) !important;
   --background-primary: var(--bg) !important;
   --background-secondary: var(--bg) !important;
@@ -12,19 +12,24 @@
   --background-modifier-selected: var(--hilight) !important;
   --activity-card-background: var(--bg) !important;
   --interactive-normal: var(--fg) !important;
+  --interactive-active: var(--accent) !important;
   --channeltextarea-background: var(--hilight) !important;
+  --channels-default: var(--fg) !important;
   --rs-online-color: var(--green) !important;
   --rs-idle-color: var(--orange) !important;
   --rs-dnd-color: var(--red) !important;
   --rs-offline-color: var(--hilight) !important;
   --rs-streaming-color: var(--purple) !important;
   --rs-invisible-color: var(--comment) !important;
-  --interactive-muted: var(--comment) !important;
+  --interactive-muted: var(--hilight) !important;
   --scrollbar-auto-thumb: var(--comment) !important;
   --scrollbar-auto-track: var(--lolight) !important;
   --scrollbar-thin-thumb: var(--comment) !important;
   --scrollbar-auto-scrollbar-color-thumb: var(--comment) !important;
   --scrollbar-auto-scrollbar-color-track: var(--lolight) !important;
+  --bg-overlay-selected: var(--accent-fg) !important;
+  --bg-overlay-hover: var(--hilight) !important;
+  --radius-xs: 0 !important;
 }
 
 * {
@@ -333,4 +338,108 @@ div.listItem-3SmSlK:nth-child(7) {
 /* Remove the "show blocked message" button, because mental health good */
 span.blockedAction-2cPk2G {
     display: none
+}
+
+/* Fixing stuff like accent colours */
+
+/* x unread messags bar thingie */
+.barButtonBase-Sk2mdB {
+  color: var(--accent-fg) !important;
+}
+
+/* -- Channel List -- */
+
+/* Channel defaults  */
+.spine-29OFwR {
+  color: var(--special) !important;
+  z-index: 1 !important; 
+}
+.spineBorder-1-F4s1 {
+  background: var(--special) !important;
+  z-index: 1 !important;
+}
+
+.icon-2W8DHg {
+  color: var(--accent) !important;
+}
+  /* Channel hover */
+.wrapper-NhbLHG:hover {
+  background: var(--hilight) !important;
+}
+.wrapper-NhbLHG:hover .name-28HaxV {
+  color: var(--fg) !important;
+}
+/* Selected channel hover*/
+.wrapper-NhbLHG.modeSelected-3DmyhH:hover {
+  background: var(--accent-alt) !important;
+}
+.modeSelected-3DmyhH:hover .name-28HaxV
+{
+  color: var(--accent-alt-fg) !important;
+}
+
+/* Unread channel hover*/
+.wrapper-NhbLHG.modeUnread-3Cxepe:hover {
+  background: var(--hilight) !important;
+}
+
+.modeUnread-3Cxepe:hover .unread-36eUEm {
+  background-color: var(--accent-alt) !important;
+}
+
+.modeUnread-3Cxepe:hover .icon-2W8DHg {
+  color: var(--accent-alt) !important
+}
+
+/* Current channel */
+.modeSelected-3DmyhH {
+  color: var(--accent-fg) !important;
+  background: var(--accent) !important;
+}
+
+.modeSelected-3DmyhH .name-28HaxV {
+  color: var(--accent-fg) !important;
+}
+.modeSelected-3DmyhH .icon-2W8DHg {
+  color: var(--accent-fg) !important
+}
+
+
+.modeSelected-3DmyhH .icon-2W8DHg,
+.selected-2TbFuo > div > div > div > div > svg {
+  color: var(--accent-fg) !important;
+}
+
+
+/* unread channel*/
+.modeUnread-3Cxepe {
+  background: var(--hilight) !important;
+}
+.modeUnread-3Cxepe .name-28HaxV {
+   color: var(--fg) !important
+}
+.modeUnread-3Cxepe:hover,
+.wrapper-NhbLHG:hover .modeUnread-3Cxepe {
+  background: var(--accent-fg) !important;
+}
+/* Removes extra highlight on current channel*/
+.modeSelected-3DmyhH .content-1gYQeQ, 
+.modeSelected-3DmyhH:hover .content-1gYQeQ,
+.wrapper-NhbLHG:hover .content-1gYQeQ {
+  background: none !important
+}
+/* Unread indicator dot */
+.unread-36eUEm {
+  height: 34px !important;
+  margin-top: -17px !important
+}
+/* muted channel */
+.modeMuted-2T4MDZ .icon-2W8DHg {
+  color: var(--interactive-muted) !important;
+}
+
+/* Bot tags */
+.botTagVerified-2KCPMa,
+.botText-1fD6Qk {
+  color: var(--accent-fg) !important;
 }
