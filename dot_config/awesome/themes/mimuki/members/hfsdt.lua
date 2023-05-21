@@ -19,7 +19,7 @@ theme.hotkeys_description_font = "Fantasque Sans Mono 20"
 ----- [ Colours ] --------------------------------------------------------------
 theme.black   = "#0f3b3a"
 theme.hilight = "#155352"
-theme.lolight = "#21222C"
+theme.lolight = "#092d24"
 theme.white   = "#ffffff"
 theme.red     = "#d74200"
 theme.orange  = "#e99f10"
@@ -28,11 +28,11 @@ theme.green   = "#00c420"
 theme.blue    = "#40a4b9"
 theme.purple  = "#b154cf"
 theme.pink    = "#da5bd6"
-theme.special = "#b1c9c3"
+theme.special = "#4b9683"
 
-theme.accent        = theme.yellow
+theme.accent        = theme.blue
 theme.accent_fg     = theme.black
-theme.accent_alt    = theme.blue
+theme.accent_alt    = theme.yellow
 theme.accent_alt_fg = theme.black
 
 theme.error = theme.red 
@@ -43,8 +43,8 @@ theme.fg = theme.white
 ----- [ Widgets ] --------------------------------------------------------------
 theme.front_fg = theme.bg
 theme.front_bg = theme.green
-theme.date_fg  = theme.accent_alt_fg
-theme.date_bg  = theme.accent_alt
+theme.date_fg  = theme.accent_fg
+theme.date_bg  = theme.accent
 theme.time_fg  = theme.yellow
 theme.time_bg  = theme.bg
 ----- [ Background ] -----------------------------------------------------------
