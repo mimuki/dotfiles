@@ -30,6 +30,8 @@
   --bg-overlay-selected: var(--accent-fg) !important;
   --bg-overlay-hover: var(--hilight) !important;
   --radius-xs: 0 !important;
+  --text-positive: var(--green) !important;
+  --primary-700: var(--lolight) !important;
 }
 
 * {
@@ -442,4 +444,62 @@ span.blockedAction-2cPk2G {
 .botTagVerified-2KCPMa,
 .botText-1fD6Qk {
   color: var(--accent-fg) !important;
+}
+
+/* x in voice popup at the bottom of channel list */
+.containerPadding-Mt19ap {
+  padding: 2% 10% !important;
+  margin: 0 !important;
+  background: var(--hilight) !important;
+  width: 83% !important;
+}
+.bar-wDIGjg {
+  background-color: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+/* speaker icon */
+/*.container-24rGVp.bottom-29W7pW > div > div > svg > path {*/
+.voiceChannelsIcon-2smmeE > path {
+  fill: var(--green) !important;
+}
+.voiceChannelsIcon-2smmeE {
+  padding-left: 28px !important;
+}
+/* preview of users*/
+.voiceChannelsUsers-17lGHe {
+  display: none !important;
+}
+
+/* new unreads */
+.container-1qIct8 {
+  padding: 0 !important;
+}
+.unread-2wipsx {
+  opacity: 1 !important;
+  border-radius: 0 !important;
+}
+.container-1qIct8,
+.bar-2eAyLE {
+  height: 34px !important;
+}
+/* stops the channel list being slightly too narrow */
+#channels {
+  overflow: overlay !important;
+}
+
+
+/* chat window */
+/* spoilers */
+.theme-dark .spoilerText-2G40u0.hidden-2lQZ5q {
+  border-radius: 0 !important; 
+  border: 3px solid var(--bg) !important;
+}
+.theme-dark .spoilerText-2G40u0.hidden-2lQZ5q:hover {
+  border: 3px solid var(--accent) !important;
+  background-color: var(--lolight) !important; 
+}
+.theme-dark .spoilerText-2G40u0 {
+  border: 3px solid var(--bg) !important;
+  background-color: var(--lolight) !important;
 }
