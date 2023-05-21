@@ -93,6 +93,7 @@ function rofiTheme()
 end
   
 function qutebrowserTheme()
+  quteDir = "/home/mimuki/.config/qutebrowser"
   local path = beautiful.dir.."mimuki/members/"..front.id.."/qutebrowser.py"
   if fileExists(path) == true then
     quteTheme = readFile(path) -- todo: make it do the cat thing here too
@@ -120,12 +121,50 @@ function qutebrowserTheme()
   local file = assert(io.open("/home/mimuki/.config/qutebrowser/dynamic/theme.py", 'w'))
   file:write(quteTheme)
   file:close()
-  quteDir = "/home/mimuki/.config/qutebrowser"
+
   awful.spawn.easy_async(
     "bash /home/mimuki/.config/awesome/scripts/qutebrowser.sh",
     function(result)
     end)
-  awful.spawn.easy_async("qutebrowser ':config-source  /home/mimuki/.config/qutebrowser/dynamic/config.py'",
+  
+  local path = beautiful.dir.."mimuki/members/"..front.id.."/qutebrowser_discord.css"
+  if fileExists(path) == true then
+    quteTheme = readFile(path) -- todo: make it do the cat thing here too
+  else
+    discCss = ":root {\n"
+    .. "  --black: " .. beautiful.black
+    .. ";\n  --lolight: " .. beautiful.lolight
+    .. ";\n  --hilight: " .. beautiful.hilight
+    .. ";\n  --white: " .. beautiful.white
+    .. ";\n  --red: " .. beautiful.red
+    .. ";\n  --orange: " .. beautiful.orange
+    .. ";\n  --yellow: " .. beautiful.yellow
+    .. ";\n  --green: " .. beautiful.green
+    .. ";\n  --blue: " .. beautiful.blue
+    .. ";\n  --purple: " .. beautiful.purple
+    .. ";\n  --pink: " .. beautiful.pink
+    .. ";\n  --special: " .. beautiful.special
+    .. ";\n  --accent: " .. beautiful.accent
+    .. ";\n  --accent-fg: " .. beautiful.accent_fg
+    .. ";\n  --accent-alt: " .. beautiful.accent_alt
+    .. ";\n  --accent-alt-fg: " ..beautiful.accent_alt_fg
+    .. ";\n  --error: " .. beautiful.error
+    .. ";\n  --warn: " .. beautiful.warn
+    .. ";\n  --bg: " .. beautiful.bg
+    .. ";\n  --fg: " .. beautiful.fg
+    .. ";\n\n"
+  end
+
+  local file = assert(io.open("/home/mimuki/.config/qutebrowser/dynamic/discord.css", 'w'))
+  file:write(discCss)
+  file:close()
+  
+  awful.spawn.easy_async(
+    "bash /home/mimuki/.config/awesome/scripts/qutebrowser_discord.sh",
+    function(result)
+    end)
+
+  awful.spawn.easy_async("qutebrowser ':config-source'",
   function(result)
       -- might be worth catching errors here some day
   end)
