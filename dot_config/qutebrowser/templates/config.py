@@ -6,6 +6,48 @@ config.load_autoconfig(False)
 # Type: Dict
 c.aliases = {'q': 'close', 'qa': 'quit', 'w': 'session-save', 'wq': 'quit --save', 'wqa': 'quit --save'}
 
+
+# Customize what gets hinted by default
+# This is designed to replace the default :hint
+
+# Discord
+config.set('hints.selectors', 
+  {
+    'all':[
+      '.wrapper-3kah-n', # Servers
+      '.folder-241Joy', # Folders
+      '.content-1gYQeQ', # Channels
+      '.circleIconButton-1VxDrg', # Add a server, Discover, etc 
+      '.app-2CXKsg button:not(.addButton-2mlqCW)', # Various UI buttons (mute self, add channel...)
+      '.unread-2wipsx', # New unreads popup
+      '.barText-1eIsLx', # New unreads popup but at the top
+
+      '.messageContent-2t3eCI', # Messages
+      '.button-3bklZh', # Message hover menu
+      '.item-5ApiZt', # Options in the ... hover menu
+      '.button-1zW0-r', # Emoji above ... hover menu
+      # Emoji picker
+      '.emojiItem-277VFM', # Emoji in the emoji picker
+      '.input-2FSSDe', # Search for an emoji in the emoji picker
+      '.categoryItemDefaultCategory-3haEDq', # Default emoji
+      '.categoryItemGuildCategory-3mvXlo', # Server specific emoji
+      '.editor-H2NA06', # text box
+      '.mentionButton-3C5YMI', # toggle pinging in reply
+      '.closeButton-3IEry2', # cancel reply
+
+      '.item-2GWPIy', # settings menu
+      '.radioBar-1XgZqD', # Radio menus like cozy/compact mode, show role colours etc
+      '.control-10qYax', # on/off toggles 
+      '.closeButton-PCZcma', # Close settings menu 
+      ],
+  }, 
+  pattern='*://*.discord.com/*'
+)
+
+
+
+
+
 # Force a Qt platformtheme to use. This sets the `QT_QPA_PLATFORMTHEME`
 # environment variable which controls dialogs like the filepicker. By
 # default, Qt determines the platform theme based on the desktop
@@ -696,7 +738,7 @@ config.unbind('L')
 config.bind('T', 'set-cmd-text --space :open --tab')
 config.bind('a', 'repeat-command')
 config.bind('e', 'scroll down')
-config.bind('f', 'hint')
+config.bind('f', 'hint all')
 config.unbind('h')
 config.bind('i', 'scroll up')
 config.unbind('j')
