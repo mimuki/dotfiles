@@ -432,12 +432,12 @@ c.colors.downloads.error.bg = palette['background']
 
 # Font color for hints.
 # Type: QssColor
-c.colors.hints.fg = palette['accent-fg']
+c.colors.hints.fg = palette['accent-alt-fg']
 
 # Background color for hints. Note that you can use a `rgba(...)` value
 # for transparency.
 # Type: QssColor
-c.colors.hints.bg = palette['accent']
+c.colors.hints.bg = palette['accent-alt']
 
 # Font color for the matched part of hints.
 # Type: QtColor
