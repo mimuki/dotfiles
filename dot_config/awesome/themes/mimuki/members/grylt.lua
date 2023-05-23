@@ -17,22 +17,22 @@ theme.wallpaper = theme.dir .. "dracula/goop_2.png"
 theme.hotkeys_font             = "Fantasque Sans Mono 20"
 theme.hotkeys_description_font = "Fantasque Sans Mono 20"
 ----- [ Colours ] --------------------------------------------------------------
-theme.black   = "#2a211c"
-theme.hilight = "#555753"
-theme.lolight = "#21222C"
-theme.white   = "#EEEEEC"
-theme.red     = "#EF2929"
-theme.orange  = "#F2854A"
-theme.yellow  = "#FFB5C"
-theme.green   = "#9AFF87"
-theme.blue    = "#34E2E2"
-theme.purple  = "#43A8ED"
-theme.pink    = "#FF818A"
-theme.special = "#D3D7Cf"
+theme.black   = "#222222"
+theme.hilight = "#363537"
+theme.lolight = "#111111"
+theme.white   = "#f6f1fe"
+theme.red     = "#ea6c8d"
+theme.orange  = "#ef9760"
+theme.yellow  = "#f9e47a"
+theme.green   = "#91d595"
+theme.blue    = "#7bd2e3"
+theme.purple  = "#918cdd"
+theme.pink    = "#ea6cb7"
+theme.special = "#7f96c3"
 
-theme.accent        = theme.pink
+theme.accent        = theme.yellow
 theme.accent_fg     = theme.black
-theme.accent_alt    = theme.blue
+theme.accent_alt    = theme.green
 theme.accent_alt_fg = theme.black
 
 theme.error = theme.red 
@@ -44,9 +44,9 @@ theme.fg = theme.white
 theme.front_fg = theme.accent_fg
 theme.front_bg = theme.accent
 theme.date_fg  = theme.bg
-theme.date_bg  = theme.blue
+theme.date_bg  = theme.green
 theme.time_fg  = theme.bg
-theme.time_bg  = theme.pink
+theme.time_bg  = theme.blue
 ----- [ Background ] -----------------------------------------------------------
 theme.bg_normal     = theme.bg
 theme.bg_focus      = theme.hilight
@@ -84,7 +84,7 @@ theme.titlebar_fg_urgent = theme.black
 theme.hotkeys_modifiers_fg = theme.white
 
 theme.taglist_fg_focus    = theme.accent
-theme.taglist_fg_occupied = theme.special
+theme.taglist_fg_occupied = "#6b6b6e"
 theme.taglist_fg_urgent   = theme.red
 theme.taglist_fg_empty    = theme.hilight
 
