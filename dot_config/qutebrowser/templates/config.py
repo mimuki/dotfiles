@@ -395,7 +395,7 @@ c.colors.completion.item.selected.border.bottom = palette['selection']
 
 # Foreground color of the matched text in the completion.
 # Type: QtColor
-c.colors.completion.match.fg = palette['orange']
+c.colors.completion.match.fg = palette['accent']
 
 # Color of the scrollbar handle in the completion view.
 # Type: QssColor
@@ -445,7 +445,7 @@ c.colors.hints.match.fg = palette['background']
 
 # Text color for the keyhint widget.
 # Type: QssColor
-c.colors.keyhint.fg = palette['accent']
+c.colors.keyhint.fg = palette['foreground']
 
 # Highlight color for keys to complete the current keychain.
 # Type: QssColor
@@ -453,7 +453,7 @@ c.colors.keyhint.suffix.fg = palette['selection']
 
 # Background color of the keyhint widget.
 # Type: QssColor
-c.colors.keyhint.bg = palette['accent-fg']
+c.colors.keyhint.bg = palette['background']
 
 # Foreground color of an error message.
 # Type: QssColor
@@ -541,11 +541,11 @@ c.colors.statusbar.private.bg = palette['accent']
 
 # Foreground color of the statusbar in command mode.
 # Type: QssColor
-c.colors.statusbar.command.fg = palette['accent-alt']
+c.colors.statusbar.command.fg = palette['foreground']
 
 # Background color of the statusbar in command mode.
 # Type: QssColor
-c.colors.statusbar.command.bg = palette['accent-alt-fg']
+c.colors.statusbar.command.bg = palette['background']
 
 # Foreground color of the statusbar in private browsing + command mode.
 # Type: QssColor
@@ -748,3 +748,11 @@ config.bind('n', 'back')
 config.bind('o', 'forward')
 config.bind('s', 'spawn --userscript qute-bitwarden')
 config.bind('t', 'set-cmd-text --space :open')
+config.unbind('r')
+config.unbind('R')
+config.bind('rr', 'reload')
+config.bind('RR', 'reload -f')
+config.unbind('d')
+config.unbind('D')
+config.bind('dd', 'tab-close')
+config.bind('DD', 'tab-close -o')
