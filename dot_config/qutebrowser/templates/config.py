@@ -245,6 +245,13 @@ c.hints.padding = {'bottom': 0, 'left': 6, 'right': 6, 'top': 0}
 # Type: Int
 c.hints.radius = 0
 
+# '' but for keyhint dialog
+# (the thing in the bottom left
+c.keyhint.radius = 0
+
+# "" for prompts
+c.prompt.radius = 0
+
 # Characters used for hint strings.
 # Type: UniqueCharString
 c.hints.chars = 'ntesiroahdlpjbmgkvufcyw'

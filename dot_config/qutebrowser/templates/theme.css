@@ -32,6 +32,7 @@
   --radius-xs: 0 !important;
   --text-positive: var(--green) !important;
   --primary-700: var(--lolight) !important;
+  --text-link: var(--blue) !important;
 }
 
 * {
