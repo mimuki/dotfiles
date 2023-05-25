@@ -15,6 +15,7 @@ All the things you need if you're me. Works by using [Chezmoi](https://github.co
 - [picom, a compositor](https://github.com/yshui/picom)
 - [pyradio, a terminal radio](https://github.com/coderholic/pyradio)
 - [qutebrowser, a browser](https://github.com/qutebrowser/qutebrowser)
+- [redshift, a colour temperature adjuster](https://github.com/jonls/redshift)
 - [rofi, a window switcher, application launcher, and more](https://github.com/davatorium/rofi)
 - [vim, a text editor](https://github.com/vim/vim)
 
