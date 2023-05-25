@@ -175,9 +175,17 @@ function kittyTheme()
   if fileExists(path) == true then
     kitTheme = readFile(path)
   else
-    kitTheme = "# Generated automatically, will be overwritten\n" .. 
-    "foreground          " .. beautiful.fg .. "\n"..
-    "background          " .. beautiful.bg .. "\n"
+    kitTheme = "# Generated automatically, will be overwritten"
+    .."\nforeground          " .. beautiful.fg 
+    .."\nbackground          " .. beautiful.bg 
+    .."\ncolor0              " .. beautiful.black
+    .."\ncolor1              " .. beautiful.red
+    .."\ncolor2              " .. beautiful.green
+    .."\ncolor3              " .. beautiful.yellow
+    .."\ncolor4              " .. beautiful.purple
+    .."\ncolor5              " .. beautiful.pink
+    .."\ncolor6              " .. beautiful.blue
+    .."\ncolor7              " .. beautiful.white
   end
   local file =  assert(io.open("/home/mimuki/.config/kitty/themes/dynamic.conf", 'w'))
   file:write(kitTheme)
