@@ -31,7 +31,7 @@ theme.pink    = "#e951c5"
 theme.special = "#4c428c"
 
 theme.accent        = theme.red
-theme.accent_fg     = theme.white
+theme.accent_fg     = theme.black
 theme.accent_alt    = theme.blue
 theme.accent_alt_fg = theme.white
 
