@@ -285,225 +285,8 @@ span.hljs-meta-keyword {
 span.hljs-meta-string {
   color: var(--orange) !important;
 }
-/* --[ Fuck Off Discord ]---------------------------------------------------- */
-
-/* Get rid of sticker/gift nitro/etc buttons */
-.buttons-uaqb-5 > div:not(:last-child),
-.buttons-uaqb-5 > button {
-  display: none;
-}
 
 
-/* this emoji is popular */
-.badgeLabel-2Eo2Mq {
-  display: none;
-}
-
-
-/* this server is partnered */
-.guildIconContainer-3QvE6w {
-  display: none;
-}
-
-/* that folder of servers i want to leave */
-.wrapper-38slSD {
-  display: none;
-}
-
-/* add new servers */
-.tutorialContainer-2jwoiB {
-  display: none;
-}
-/* discover servers, etc */
-div.listItem-3SmSlK:nth-child(5),
-div.listItem-3SmSlK:nth-child(6),
-div.listItem-3SmSlK:nth-child(7) {
-  display: none;
-}
-
-/* --- [ Blocked Messages ] --- */
-/* Aesthetic tweaks to the blocked message indicator */
-.blockedSystemMessage-3FmE9n {
-   display: flex;
-   justify-content: center;
-}
-.blockedMessageText-3Zeg3y:before {
-    content:  "— ";
-}
-/* Remove the X next to a blocked message */
-.iconContainer-2rPbqG {
-    display: none;
-}
-/* Remove the "show blocked message" button, because mental health good */
-span.blockedAction-2cPk2G {
-    display: none
-}
-
-/* Fixing stuff like accent colours */
-
-/* x unread messags bar thingie */
-.barButtonBase-Sk2mdB {
-  color: var(--accent-fg) !important;
-}
-
-/* -- Channel List -- */
-
-/* Channel defaults  */
-.spine-29OFwR {
-  color: var(--special) !important;
-  z-index: 1 !important; 
-}
-.spineBorder-1-F4s1 {
-  background: var(--special) !important;
-  z-index: 1 !important;
-}
-
-.icon-2W8DHg {
-  color: var(--accent) !important;
-}
-  /* Channel hover */
-.wrapper-NhbLHG:hover {
-  background: var(--hilight) !important;
-}
-.wrapper-NhbLHG:hover .name-28HaxV {
-  color: var(--fg) !important;
-}
-/* Selected channel hover*/
-.wrapper-NhbLHG.modeSelected-3DmyhH:hover {
-  background: var(--accent-alt) !important;
-}
-.modeSelected-3DmyhH:hover .name-28HaxV
-{
-  color: var(--accent-alt-fg) !important;
-}
-
-/* Unread channel hover*/
-.wrapper-NhbLHG.modeUnread-3Cxepe:hover {
-  background: var(--hilight) !important;
-}
-
-.modeUnread-3Cxepe:hover .unread-36eUEm {
-  background-color: var(--accent-alt) !important;
-}
-
-.modeUnread-3Cxepe:hover .icon-2W8DHg {
-  color: var(--accent-alt) !important
-}
-
-/* Current channel */
-.modeSelected-3DmyhH {
-  color: var(--accent-fg) !important;
-  background: var(--accent) !important;
-}
-
-.modeSelected-3DmyhH .name-28HaxV {
-  color: var(--accent-fg) !important;
-}
-.modeSelected-3DmyhH .icon-2W8DHg {
-  color: var(--accent-fg) !important
-}
-
-
-.modeSelected-3DmyhH .icon-2W8DHg,
-.selected-2TbFuo > div > div > div > div > svg {
-  color: var(--accent-fg) !important;
-}
-
-
-/* unread channel*/
-.modeUnread-3Cxepe {
-  background: var(--hilight) !important;
-}
-.modeUnread-3Cxepe .name-28HaxV {
-   color: var(--fg) !important
-}
-.modeUnread-3Cxepe:hover,
-.wrapper-NhbLHG:hover .modeUnread-3Cxepe {
-  background: var(--accent-fg) !important;
-}
-/* Removes extra highlight on current channel*/
-.modeSelected-3DmyhH .content-1gYQeQ, 
-.modeSelected-3DmyhH:hover .content-1gYQeQ,
-.wrapper-NhbLHG:hover .content-1gYQeQ {
-  background: none !important
-}
-/* Unread indicator dot */
-.unread-36eUEm {
-  height: 34px !important;
-  margin-top: -17px !important
-}
-/* muted channel */
-.modeMuted-2T4MDZ .icon-2W8DHg {
-  color: var(--interactive-muted) !important;
-}
-
-/* Bot tags */
-.botTagVerified-2KCPMa,
-.botText-1fD6Qk {
-  color: var(--accent-fg) !important;
-}
-
-/* x in voice popup at the bottom of channel list */
-.containerPadding-Mt19ap {
-  padding: 2% 10% !important;
-  margin: 0 !important;
-  background: var(--hilight) !important;
-  width: 83% !important;
-}
-.bar-wDIGjg {
-  background-color: transparent !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
-}
-/* speaker icon */
-/*.container-24rGVp.bottom-29W7pW > div > div > svg > path {*/
-.voiceChannelsIcon-2smmeE > path {
-  fill: var(--green) !important;
-}
-.voiceChannelsIcon-2smmeE {
-  padding-left: 28px !important;
-}
-/* preview of users*/
-.voiceChannelsUsers-17lGHe {
-  display: none !important;
-}
-
-/* new unreads */
-.container-1qIct8 {
-  padding: 0 !important;
-}
-.unread-2wipsx {
-  opacity: 1 !important;
-  border-radius: 0 !important;
-}
-.container-1qIct8,
-.bar-2eAyLE {
-  height: 34px !important;
-}
-
-.bar-wDIGjg {
-  padding-left: 14px !important;
-}
-/* stops the channel list being slightly too narrow */
-#channels {
-  overflow: overlay !important;
-}
-
-
-/* chat window */
-/* spoilers */
-.theme-dark .spoilerText-2G40u0.hidden-2lQZ5q {
-  border-radius: 0 !important; 
-  border: 3px solid var(--bg) !important;
-}
-.theme-dark .spoilerText-2G40u0.hidden-2lQZ5q:hover {
-  border: 3px solid var(--accent) !important;
-  background-color: var(--lolight) !important; 
-}
-.theme-dark .spoilerText-2G40u0 {
-  border: 3px solid var(--bg) !important;
-  background-color: var(--lolight) !important;
-}
 /*==================*/
 
 @import url(https://maendisease.github.io/BetterDiscordStuff/css/bearableInbox.css);
@@ -522,7 +305,7 @@ span.blockedAction-2cPk2G {
     --sidebar-transition-duration: 0s;
     --sidebar-window-gap: 8px;
     --sidebar-border-radius: 8px;
-    --sidebar-usersettings-width: 66px;
+    --sidebar-usersettings-width: 240px;
 
     --float-members-width: 65px;
     --members-hover-width: 240px;
@@ -1570,4 +1353,225 @@ bd-body .floating-window {
         --topic-opacity: 0;
         --toolbar-visibility: none;
     }
+}
+
+/* --[ Fuck Off Discord ]---------------------------------------------------- */
+
+/* Get rid of sticker/gift nitro/etc buttons */
+.buttons-uaqb-5 > div:not(:last-child),
+.buttons-uaqb-5 > button {
+  display: none;
+}
+
+
+/* this emoji is popular */
+.badgeLabel-2Eo2Mq {
+  display: none;
+}
+
+
+/* this server is partnered */
+.guildIconContainer-3QvE6w {
+  display: none;
+}
+
+/* that folder of servers i want to leave */
+.wrapper-38slSD {
+  display: none;
+}
+
+/* add new servers */
+.tutorialContainer-2jwoiB {
+  display: none;
+}
+/* discover servers, etc */
+div.listItem-3SmSlK:nth-child(5),
+div.listItem-3SmSlK:nth-child(6),
+div.listItem-3SmSlK:nth-child(7) {
+  display: none;
+}
+
+/* --- [ Blocked Messages ] --- */
+/* Aesthetic tweaks to the blocked message indicator */
+.blockedSystemMessage-3FmE9n {
+   display: flex;
+   justify-content: center;
+}
+.blockedMessageText-3Zeg3y:before {
+    content:  "— ";
+}
+/* Remove the X next to a blocked message */
+.iconContainer-2rPbqG {
+    display: none;
+}
+/* Remove the "show blocked message" button, because mental health good */
+span.blockedAction-2cPk2G {
+    display: none
+}
+
+/* Fixing stuff like accent colours */
+
+/* x unread messags bar thingie */
+.barButtonBase-Sk2mdB {
+  color: var(--accent-fg) !important;
+}
+
+/* -- Channel List -- */
+
+/* Channel defaults  */
+.spine-29OFwR {
+  color: var(--special) !important;
+  z-index: 1 !important; 
+}
+.spineBorder-1-F4s1 {
+  background: var(--special) !important;
+  z-index: 1 !important;
+}
+
+.icon-2W8DHg {
+  color: var(--accent) !important;
+}
+  /* Channel hover */
+.wrapper-NhbLHG:hover {
+  background: var(--hilight) !important;
+}
+.wrapper-NhbLHG:hover .name-28HaxV {
+  color: var(--fg) !important;
+}
+/* Selected channel hover*/
+.wrapper-NhbLHG.modeSelected-3DmyhH:hover {
+  background: var(--accent-alt) !important;
+}
+.modeSelected-3DmyhH:hover .name-28HaxV
+{
+  color: var(--accent-alt-fg) !important;
+}
+
+/* Unread channel hover*/
+.wrapper-NhbLHG.modeUnread-3Cxepe:hover {
+  background: var(--hilight) !important;
+}
+
+.modeUnread-3Cxepe:hover .unread-36eUEm {
+  background-color: var(--accent-alt) !important;
+}
+
+.modeUnread-3Cxepe:hover .icon-2W8DHg {
+  color: var(--accent-alt) !important
+}
+
+/* Current channel */
+.modeSelected-3DmyhH {
+  color: var(--accent-fg) !important;
+  background: var(--accent) !important;
+}
+
+.modeSelected-3DmyhH .name-28HaxV {
+  color: var(--accent-fg) !important;
+}
+.modeSelected-3DmyhH .icon-2W8DHg {
+  color: var(--accent-fg) !important
+}
+
+
+.modeSelected-3DmyhH .icon-2W8DHg,
+.selected-2TbFuo > div > div > div > div > svg {
+  color: var(--accent-fg) !important;
+}
+
+
+/* unread channel*/
+.modeUnread-3Cxepe {
+  background: var(--hilight) !important;
+}
+.modeUnread-3Cxepe .name-28HaxV {
+   color: var(--fg) !important
+}
+.modeUnread-3Cxepe:hover,
+.wrapper-NhbLHG:hover .modeUnread-3Cxepe {
+  background: var(--accent-fg) !important;
+}
+/* Removes extra highlight on current channel*/
+.modeSelected-3DmyhH .content-1gYQeQ, 
+.modeSelected-3DmyhH:hover .content-1gYQeQ,
+.wrapper-NhbLHG:hover .content-1gYQeQ {
+  background: none !important
+}
+/* Unread indicator dot */
+.unread-36eUEm {
+  height: 34px !important;
+  margin-top: -17px !important
+}
+/* muted channel */
+.modeMuted-2T4MDZ .icon-2W8DHg {
+  color: var(--interactive-muted) !important;
+}
+
+/* Bot tags */
+.botTagVerified-2KCPMa,
+.botText-1fD6Qk {
+  color: var(--accent-fg) !important;
+}
+
+/* x in voice popup at the bottom of channel list */
+.containerPadding-Mt19ap {
+  padding: 2% 10% !important;
+  margin: 0 !important;
+  background: var(--hilight) !important;
+  width: 83% !important;
+}
+.bar-wDIGjg {
+  background-color: transparent !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+/* speaker icon */
+/*.container-24rGVp.bottom-29W7pW > div > div > svg > path {*/
+.voiceChannelsIcon-2smmeE > path {
+  fill: var(--green) !important;
+}
+.voiceChannelsIcon-2smmeE {
+  padding-left: 28px !important;
+}
+/* preview of users*/
+.voiceChannelsUsers-17lGHe {
+  display: none !important;
+}
+
+/* new unreads */
+.container-1qIct8 {
+  padding: 0 !important;
+}
+.unread-2wipsx {
+  opacity: 1 !important;
+  border-radius: 0 !important;
+}
+.container-1qIct8,
+.bar-2eAyLE {
+  height: 34px !important;
+}
+
+.bar-wDIGjg {
+  padding-left: 14px !important;
+}
+/* stops the channel list being slightly too narrow */
+#channels {
+  overflow: overlay !important;
+  overflow-x: hidden !important;
+}
+
+
+/* chat window */
+/* spoilers */
+.theme-dark .spoilerText-2G40u0.hidden-2lQZ5q {
+  border-radius: 0 !important; 
+  border: 3px solid var(--bg) !important;
+}
+.theme-dark .spoilerText-2G40u0.hidden-2lQZ5q:hover {
+  border: 3px solid var(--accent) !important;
+  background-color: var(--lolight) !important; 
+}
+.theme-dark .spoilerText-2G40u0 {
+  border: 3px solid var(--bg) !important;
+  background-color: var(--lolight) !important;
 }
