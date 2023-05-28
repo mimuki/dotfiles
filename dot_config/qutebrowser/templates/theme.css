@@ -515,10 +515,10 @@ span.blockedAction-2cPk2G {
     --enable-if-using-favorites-experiment: 0;
     --guildlist-collapse: 1;
 
-    --slide-window-on-hover: 1;
+    --slide-window-on-hover: 0;
     --float-sidebar-width: 48;
     --sidebar-hover-width: 240px;
-    --sidebar-hover-delay: 0.s;
+    --sidebar-hover-delay: 0s;
     --sidebar-transition-duration: 0s;
     --sidebar-window-gap: 8px;
     --sidebar-border-radius: 8px;
@@ -1561,4 +1561,13 @@ span:not(.spinner-item) {
 /* 16. BDsupport */
 bd-body .floating-window {
     z-index: 9999;
+}
+
+/* Hide extra stuff when small */
+@media (max-width:1366px) {
+    :root {
+        --float-sidebar-width: 0;
+        --topic-opacity: 0;
+        --toolbar-visibility: none;
+    }
 }
