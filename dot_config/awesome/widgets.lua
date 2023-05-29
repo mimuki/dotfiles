@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                widgets.lua                                 --
 --------------------------------------------------------------------------------
-
+testing = false
 ----- [ Dependencies ] ---------------------------------------------------------
 lain = require("lain")
 json = require("lunajson")
@@ -24,6 +24,16 @@ end
 
 wifiIcon  = faIcon("")
 blueIcon  = faIcon("")
+
+function testNotify(message)
+  if testing == true then
+    naughty.notify(
+      {
+        title = "Debug notification",
+        text = message
+      })
+  end
+end
 ----- [ Per-screen widgets ] ---------------------------------------------------
 function quake(s) -- Drop down terminal
   s.quake = lain.util.quake({
@@ -140,12 +150,10 @@ frontTimer = gears.timer {
     awful.spawn.easy_async_with_shell(
       "bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/front.sh",
       function(out)
-        if out ~= lastFront then -- front changed
+        if out ~= lastFront and out ~= "" then -- front changed
+          testNotify("front changed")
+          front = json.decode(out)
           lastFront = out
-          if out ~= "" then -- don't error if it can't connect
-            front = json.decode(out)
-          end
-
           if front.colour == nil then -- Fronter has no colour
             front.colour = "#ff79c6"
           else -- Fix formatting so we can use their colour
