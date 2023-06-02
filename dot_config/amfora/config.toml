@@ -59,7 +59,7 @@ bullets = true
 show_link = false
 
 # A number from 0 to 1, indicating what percentage of the terminal width the left margin should take up.
-left_margin = 0.15
+left_margin = 0.05
 
 # The max number of columns to wrap a page's text to. Preformatted blocks are not wrapped.
 max_width = 100
@@ -363,10 +363,10 @@ hdg_2 = "#bd93f9"
 hdg_3 = "#8be9fd"
 amfora_link = "#8be9fd"
 foreign_link = "#ffb86c"
-# link_number: The silver number that appears to the left of a link
-# regular_text: Normal gemini text, and plaintext documents
-quote_text = "#6272a4"
-# preformatted_text
+link_number = "#6272a4"
+regular_text = "#dadada"
+quote_text = "#50fa7b"
+preformatted_text = "#dadada"
 # list_text
 btn_bg = "#282a36"
 btn_text = "#ff79c6"
