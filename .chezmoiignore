@@ -5,3 +5,4 @@ examples/
 .config/pyradio/data/last-sync
 .config/pyradio/data/empty*
 .config/pyradio/themes/dynamic.pyradio-theme
+.config/tut/accounts.toml

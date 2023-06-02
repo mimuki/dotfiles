@@ -19,6 +19,7 @@ All the things you need if you're me. Works by using [Chezmoi](https://github.co
 - [qutebrowser, a browser](https://github.com/qutebrowser/qutebrowser)
 - [redshift, a colour temperature adjuster](https://github.com/jonls/redshift)
 - [rofi, a window switcher, application launcher, and more](https://github.com/davatorium/rofi)
+- [tut, a terminal fedi browser](https://github.com/RasmusLindroth/tut)
 - [vim, a text editor](https://github.com/vim/vim)
 
 - [Autostarting programs on login](https://github.com/mimuki/dotfiles/blob/main/dot_xprofile.tmpl)
