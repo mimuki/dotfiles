@@ -1380,17 +1380,11 @@ bd-body .floating-window {
 .wrapper-38slSD {
   display: none;
 }
-
 /* add new servers */
 .tutorialContainer-2jwoiB {
   display: none;
 }
-/* discover servers, etc */
-div.listItem-3SmSlK:nth-child(5),
-div.listItem-3SmSlK:nth-child(6),
-div.listItem-3SmSlK:nth-child(7) {
-  display: none;
-}
+
 
 /* --- [ Blocked Messages ] --- */
 /* Aesthetic tweaks to the blocked message indicator */

@@ -63,7 +63,7 @@ content-proportion=5
 # Hide notifications of this type in your notification timelines.
 # valid: mention, status, boost, follow, follow_request, favorite, poll, edit
 # default=[]
-notifications-to-hide=["mention", "status", "boost", "follow", "favorite"]
+notifications-to-hide=["status", "boost", "follow", "favorite"]
 
 # Always include a quote of the message you're replying to.
 # default=false
