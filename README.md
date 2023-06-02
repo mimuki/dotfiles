@@ -6,8 +6,10 @@ All the things you need if you're me. Works by using [Chezmoi](https://github.co
 
 ## Currently included:
 - [awesomeWM, a tiling window manager](https://github.com/awesomeWM/awesome)
+- [amfora, a terminal Gemini browser](https://github.com/makew0rld/amfora)
 - [discordo, a terminal discord client](https://github.com/ayn2op/discordo)
 - [Dracula, a GTK theme](https://github.com/dracula/gtk)
+- [feh, an image viewer](https://github.com/derf/feh)
 - [git, a version control system](https://github.com/git/git)
 - [keynav, a mouse replacement](https://github.com/jordansissel/keynav)
 - [kitty, a terminal](https://github.com/kovidgoyal/kitty)
@@ -23,6 +25,7 @@ All the things you need if you're me. Works by using [Chezmoi](https://github.co
 - [Custom fonts](https://github.com/mimuki/dotfiles/tree/main/dot_fonts)
 
 ## Examples
+(note: somewhat outdated)
 ![screenshot_1](./examples/screenshot_1.png)
 
 ## Attribution
