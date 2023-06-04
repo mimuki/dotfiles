@@ -53,7 +53,7 @@ color = true
 ansi = true
 
 # Whether to replace list asterisks with unicode bullets
-bullets = true
+bullets = false
 
 # Whether to show link after link text
 show_link = false
@@ -92,12 +92,14 @@ underline = true
 # Client certificates
 # Set domain name equal to path to client cert
 # "example.com" = 'mycert.crt'
-
+"bbs.geminispace.org" = '~/.local/share/amfora/bbs.geminispace.org-cert.pem'
+"cities.yesterweb.org" = '~/.local/share/amfora/cities.yesterweb.org-cert.pem'
 [auth.keys]
 # Client certificate keys
 # Set domain name equal to path to key for the client cert above
 # "example.com" = 'mycert.key'
-
+"bbs.geminispace.org" = '~/.local/share/amfora/bbs.geminispace.org-key.pem'
+"cities.yesterweb.org" = '~/.local/share/amfora/cities.yesterweb.org-key.pem'
 
 [keybindings]
 # If you have a non-US keyboard, use bind_tab1 through bind_tab0 to
