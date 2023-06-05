@@ -109,7 +109,7 @@ force_http = False
 # with an asterisk (i.e. '*my_theme')
 # This is applicable for user themes only!
 # Default value = 'dark'
-theme = *dynamic
+theme = +dynamic
 
 # Transparency setting
 # If False, theme colors will be used.
@@ -118,7 +118,7 @@ theme = *dynamic
 # not running, the terminal's background color will be used.
 # Valid values: True, true, False, false
 # Default value: False
-use_transparency = True
+use_transparency = False
 
 # Calculated color factor
 # This is to produce Secondary Windows background color
