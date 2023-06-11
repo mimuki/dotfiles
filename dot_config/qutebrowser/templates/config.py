@@ -647,7 +647,7 @@ c.colors.tabs.even.fg = palette['foreground']
 
 # Background color of unselected even tabs.
 # Type: QtColor
-c.colors.tabs.even.bg = palette['selection']
+c.colors.tabs.even.bg = palette['background']
 
 # Foreground color of selected odd tabs.
 # Type: QtColor
@@ -667,19 +667,19 @@ c.colors.tabs.selected.even.bg = palette['accent']
 
 # Foreground color of pinned unselected odd tabs.
 # Type: QtColor
-c.colors.tabs.pinned.odd.fg = palette['accent-alt-fg']
+c.colors.tabs.pinned.odd.fg = palette['foreground']
 
 # Background color of pinned unselected odd tabs.
 # Type: QtColor
-c.colors.tabs.pinned.odd.bg = palette['accent-alt']
+c.colors.tabs.pinned.odd.bg = palette['selection']
 
 # Foreground color of pinned unselected even tabs.
 # Type: QtColor
-c.colors.tabs.pinned.even.fg = palette['accent-alt-fg']
+c.colors.tabs.pinned.even.fg = palette['foreground']
 
 # Background color of pinned unselected even tabs.
 # Type: QtColor
-c.colors.tabs.pinned.even.bg = palette['accent-alt']
+c.colors.tabs.pinned.even.bg = palette['background']
 
 # Foreground color of pinned selected odd tabs.
 # Type: QtColor

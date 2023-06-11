@@ -1,0 +1,48 @@
+/* oc donut steel */
+/* Server list background */
+.wrapper-1_HaEi {
+  background: var(--hilight) !important;
+}
+
+/* Makes the server icons closer together */
+.listItem-3SmSlK {
+  height: 30px !important;
+}
+
+
+/* Spacer thingy between dm button and servers */
+.scrollerBase-1Pkza4 > div:nth-child(2),
+.tutorialContainer-1pL9QS + .listItem-3SmSlK,
+.tutorialContainer-2jwoiB + .listItem-3SmSlK, 
+.tutorialContainer-2jwoiB + .listItem-3SmSlK + .listItem-3SmSlK, 
+.tutorialContainer-2jwoiB + .listItem-3SmSlK + .listItem-3SmSlK + .listItem-3SmSlK {
+  display: none
+}
+
+
+/* Make the icons square, and have room for a background */
+.listItem-3SmSlK .wrapper-2PSQCG, 
+.listItem-3SmSlK .wrapper-2PSQCG .svg-2ifYOU {
+  border-radius: 0; 
+  padding: 5px;
+}
+/* dont cut off the icons */
+.scroller-3X7KbA.none-1rXy4P.scrollerBase-1Pkza4 {
+  overflow: visible;
+}
+/* Manually fix some wonky spacing */
+#app-mount .guilds-2JjMmN {
+  top: 44px;
+}
+#app-mount .app-3xd6d0 .base-2jDfDU {
+  top: 38px !important;
+}
+/* alternate colours*/
+.listItem-3SmSlK:nth-of-type(odd) .wrapper-2PSQCG .svg-2ifYOU {
+  background: var(--hilight)
+}
+.listItem-3SmSlK:nth-of-type(even) .wrapper-2PSQCG .svg-2ifYOU,
+.listItemWrapper-3d87LP > div > svg {
+  background: var(--bg) !important;
+}
+

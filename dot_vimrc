@@ -23,9 +23,11 @@ set backspace=indent,eol,start	" Backspace behaviour
 
 set cursorline cursorlineopt=screenline " Cursorline doesn't wrap on long lines
 
+set cul
+
 " Highlight current row, but only in insert mode
-au InsertEnter * set cul 
-au InsertLeave * set nocul 
+" au InsertEnter * set cul 
+" au InsertLeave * set nocul 
 
 " Keep cursor centered on screen
 augroup VCenterCursor

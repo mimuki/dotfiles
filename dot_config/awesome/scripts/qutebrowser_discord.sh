@@ -1,2 +1,5 @@
 #!/bin/bash
-cat /home/mimuki/.config/qutebrowser/dynamic/discord.css /home/mimuki/.config/qutebrowser/templates/theme.css > /home/mimuki/.config/qutebrowser/theme.css
+ROOTPATH='/home/mimuki/.config/qutebrowser/'
+
+cat $ROOTPATH/dynamic/discord.css $ROOTPATH/templates/theme.css $ROOTPATH/templates/discord/horizontal_server_list.css $ROOTPATH/templates/discord/float.css $ROOTPATH/templates/discord/server_list.css > $ROOTPATH/theme.css
+
