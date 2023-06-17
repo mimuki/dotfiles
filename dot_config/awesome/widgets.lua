@@ -264,15 +264,18 @@ gears.timer {
         if string.match(result, "Discharging") then
           currentBattery = "internal"
           batInIcon.visible = true
+          batExIcon.visible = false
           batInIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_icon, beautiful.red)))
         end
         if string.match(result, "Not charging") then 
           currentBattery = "external"
-          batInIcon.visible = false
+          batInIcon.visible = false 
+          batExIcon.visible = true
         end
         if string.match(result, "Charging") then
           currentBattery = "internal"
           batInIcon.visible = true
+          batExIcon.visible = false
           batInIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_charging_icon, beautiful.blue)))
         end
       end)
@@ -280,18 +283,22 @@ gears.timer {
       function(result)
         if string.match(result, "Discharging") then
           currentBattery = "external"
+          batInIcon.visible = false
           batExIcon.visible = true
           batExIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_icon, beautiful.yellow)))
         end
         if string.match(result, "Not charging") then 
           if currentBattery == "internal" then
+            batInIcon.visible = true
             batExIcon.visible = false
           else
+            batInIcon.visible = false
             batExIcon.visible = true
           end
         end
         if string.match(result, "Charging") then 
           currentBattery = "external"
+          batInIcon.visible = false
           batExIcon.visible = true
           batExIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.bat_charging_icon, beautiful.green)))
         end
