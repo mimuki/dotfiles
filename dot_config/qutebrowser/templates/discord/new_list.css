@@ -1,0 +1,27 @@
+[aria-label=Servers] {
+  background: var(--bg);
+}
+
+[aria-label=Servers] > div:nth-of-type(odd) {
+  background: var(--hilight);
+}
+/* Unread mentions indicator*/
+.unreadMentionsIndicatorBottom-3RJMnQ, .unreadMentionsIndicatorTop-2bTgUU {
+  width: 40px;
+}
+
+/* Padding at the top of the server list */
+.scroller-3X7KbA {
+  padding: 0;
+}
+
+/* Each thing in the server list */
+.listItem-3SmSlK {
+  margin: 0 !important;
+  padding: 1.5px 0;
+}
+
+/* maybe this is the decorative seperators? */
+.tutorialContainer-1pL9QS+.listItem-3SmSlK, .tutorialContainer-1pL9QS~[style]+.listItem-3SmSlK {
+  display: none;
+}

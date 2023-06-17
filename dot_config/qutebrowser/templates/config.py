@@ -44,10 +44,6 @@ config.set('hints.selectors',
   pattern='*://*.discord.com/*'
 )
 
-
-
-
-
 # Force a Qt platformtheme to use. This sets the `QT_QPA_PLATFORMTHEME`
 # environment variable which controls dialogs like the filepicker. By
 # default, Qt determines the platform theme based on the desktop
@@ -280,6 +276,12 @@ c.statusbar.padding = {'bottom': 0, 'left': 4, 'right': 4, 'top': 0}
 #   - progress: Progress bar for the current page loading.
 #   - text:foo: Display the static text after the colon, `foo` in the example.
 c.statusbar.widgets = ['keypress', 'url']
+
+# Where should the tab bar go?
+# Options: 'top', 'bottom', 'left', 'right'
+c.tabs.position = 'left'
+
+c.tabs.width = '3%'
 
 # Scaling factor for favicons in the tab bar. The tab size is unchanged,
 # so big favicons also require extra `tabs.padding`.
@@ -736,9 +738,9 @@ c.fonts.web.size.minimum = 18
 
 # Bindings for normal mode
 config.bind(',d', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/theme.css ""')
-config.bind('E', 'tab-prev')
+config.bind('I', 'tab-prev')
 config.unbind('H')
-config.bind('I', 'tab-next')
+config.bind('E', 'tab-next')
 config.unbind('J')
 config.unbind('K')
 config.unbind('L')

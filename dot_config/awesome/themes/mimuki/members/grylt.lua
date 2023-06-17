@@ -41,10 +41,10 @@ theme.warn  = theme.orange
 theme.bg = theme.black 
 theme.fg = theme.white
 ----- [ Widgets ] --------------------------------------------------------------
-theme.front_fg = theme.accent_fg
-theme.front_bg = theme.accent
-theme.date_fg  = theme.bg
-theme.date_bg  = theme.green
+theme.front_fg = theme.accent_alt_fg
+theme.front_bg = theme.accent_alt
+theme.date_fg  = theme.accent_fg
+theme.date_bg  = theme.accent
 theme.time_fg  = theme.bg
 theme.time_bg  = theme.blue
 ----- [ Background ] -----------------------------------------------------------
@@ -60,10 +60,10 @@ theme.titlebar_bg_urgent = theme.red
 
 theme.hotkeys_label_bg = theme.special
 
-theme.taglist_bg_focus    = theme.bg
-theme.taglist_bg_occupied = theme.bg
-theme.taglist_bg_urgent   = theme.bg
-theme.taglist_bg_empty    = theme.bg
+theme.taglist_bg_focus    = theme.accent
+theme.taglist_bg_occupied = "#6b6b6e"
+theme.taglist_bg_urgent   = theme.red
+theme.taglist_bg_empty    = theme.hilight
 
 theme.tooltip_bg = theme.bg
 
