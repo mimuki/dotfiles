@@ -16,7 +16,8 @@ function buildWibar(s)
 
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
-      wibox.container.background(mainLauncher, "#b8bff222"),
+      wibox.container.background(mainLauncher, "#b8bff222"), 
+      s.mytaglist,
       frontInfo,
       localDate,
       weather,
@@ -34,7 +35,7 @@ function buildWibar(s)
 
     },
     -- Center widgets
-      s.mytaglist,
+      dummyWidget,
     { -- Right widgets
       layout = wibox.layout.fixed.horizontal,
       

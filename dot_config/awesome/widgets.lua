@@ -45,14 +45,12 @@ function quake(s) -- Drop down terminal
 end
 
 function tagList(s) -- Current tags
-  awful.tag({ "•", "•", "•", "•", "•" }, s, awful.layout.layouts[1])
+  awful.tag(tagIcons, s, awful.layout.layouts[1])
   s.mytaglist = awful.widget.taglist {
     screen  = s,
     filter  = awful.widget.taglist.filter.all,
     buttons = taglist_buttons,
-    style   = {
-      font = "linja lipamanka 18"
-    } 
+    layout  = wibox.layout.flex.vertical() 
   }
 end
 
