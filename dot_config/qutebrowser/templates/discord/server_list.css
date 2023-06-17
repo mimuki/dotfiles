@@ -11,7 +11,7 @@
 
 
 /* Spacer thingy between dm button and servers */
-.scrollerBase-1Pkza4 > div:nth-child(2),
+/*.scrollerBase-1Pkza4 > div:nth-child(2), too general oops */
 .tutorialContainer-1pL9QS + .listItem-3SmSlK,
 .tutorialContainer-2jwoiB + .listItem-3SmSlK, 
 .tutorialContainer-2jwoiB + .listItem-3SmSlK + .listItem-3SmSlK, 
@@ -45,4 +45,9 @@
 .listItemWrapper-3d87LP > div > svg {
   background: var(--bg) !important;
 }
-
+/* unread pill be good */
+#app-mount .guilds-2JjMmN [class*=pill] {
+  transform: rotate(90deg) translateY(-40%);
+  width: 10px;
+  top: -13px !important;
+}
