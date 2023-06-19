@@ -264,122 +264,233 @@ awful.key({ modkey, "Control" }, "r", awesome.restart,
           { description = "reload awesome", group = "awesome" })
 )
 ----- [ Client Keys ] ----------------------------------------------------------
--- TODO: learn why this is seperate from globalkeys
-
 clientkeys = gears.table.join(
     awful.key({ modkey,       }, "d", function (c) c:kill() end,
               { description = "close window", group = "window" }),
+awful.key(
+  { modkey,           }, "b", function (c)
+    awful.titlebar.toggle(c, "top") end,
+  { description = "toggle titlebar on focused client", group = "client" }),
 
---    awful.key({ modkey,       }, "F11", function (c) awful.titlebar.toggle(c) end,
---              { description = "show/hide titlebars", group="client" }),
-
-------- [ Layout Settings ]
+  ------- [ Layout Settings ]
 -- Floating window: shrinks the focused window horizontally
 --   Tiling window: shrinks the main window horizontally
-awful.key({ modkey, "Control" }, "n", function (c)
-            if c.floating then
-              c:relative_move(10, 0, -20, 0)
-            else
-              awful.tag.incmwfact (-0.025) end
-            end,
-          { description = "Shrink window horizontally",
-            group = "layout" }),
+awful.key(
+  { modkey, "Control" }, "n", function (c)
+    if c.floating then
+      c:relative_move(10, 0, -20, 0)
+    else
+      awful.tag.incmwfact (-0.025) end
+    end,
+  { description = "Shrink window horizontally", group = "layout" }),
 -- Floating window: grows the focused window vertically
 --   Tiling window: grows the focused window if it's:
 --                    - Not a main window
 --                    - Has other secondary windows
-awful.key({ modkey, "Control" }, "e", function (c)
-            if c.floating then
-              c:relative_move(0, -10, 0, 20)
-            else
-              awful.client.incwfact ( 0.025) end
-            end,
-          { description = "Grow window vertically",
-            group = "layout" }),
+awful.key(
+  { modkey, "Control" }, "e", function (c)
+    if c.floating then
+      c:relative_move(0, -10, 0, 20)
+    else
+      awful.client.incwfact ( 0.025) end
+    end,
+  { description = "Grow window vertically", group = "layout" }),
 
 -- Floating window: shrinks the focused window vertically
 --   Tiling window: shrinks the focused window if it's:
 --                    - Not a main window
 --                    - Not the only secondary window
-awful.key({ modkey, "Control" }, "i", function (c)
-            if c.floating then
-              c:relative_move(0, 10, 0, -20)
-            else
-              awful.client.incwfact (-0.025) end
-            end,
-          { description = "Shrink window vertically",
-            group = "layout" }),
+awful.key(
+  { modkey, "Control" }, "i", function (c)
+    if c.floating then
+      c:relative_move(0, 10, 0, -20)
+    else
+      awful.client.incwfact (-0.025) end
+    end,
+  { description = "Shrink window vertically", group = "layout" }),
 
 -- Floating window: grows the focused window horizontally
 -- Tiling window: grows the main window
-awful.key({ modkey, "Control" }, "o", function (c)
-            if c.floating then
-              c:relative_move(-10, 0, 20, 0)
-            else
-              awful.tag.incmwfact ( 0.025) end
-            end,
-          { description = "Grow horizontally to the right",
-            group = "layout" }),
+awful.key(
+  { modkey, "Control" }, "o", function (c)
+    if c.floating then
+      c:relative_move(-10, 0, 20, 0)
+    else
+      awful.tag.incmwfact ( 0.025) end
+    end,
+  { description = "Grow horizontally to the right", group = "layout" }),
 
--- Shifted, faster variant
-
-awful.key({ modkey, "Control", "Shift" }, "n", function (c) -- move left
-            if c.floating then
-              c:relative_move(40, 0, -80, 0)
-            else
-              awful.tag.incmwfact (-0.05) end
-            end),
-awful.key({ modkey, "Control", "Shift" }, "e", function (c) -- move down
-            if c.floating then
-              c:relative_move(0, -40, 0, 80)
-            else
-              awful.client.incwfact ( 0.1) end
-            end),
-awful.key({ modkey, "Control", "Shift" }, "i", function (c) -- move up
-            if c.floating then
-              c:relative_move(0, 40, 0, -80)
-            else
-              awful.client.incwfact (-0.1) end
-            end),
-awful.key({ modkey, "Control", "Shift" }, "o", function (c) -- move right
-            if c.floating then
-              c:relative_move(-40, 0, 80, 0)
-            else
-              awful.tag.incmwfact ( 0.05) end
-            end),
+-- Shifted, slower variant
+awful.key(
+  { modkey, "Control", "Shift" }, "n", function (c) -- move left
+    if c.floating then
+      c:relative_move(2, 0, -5, 0)
+    else
+      awful.tag.incmwfact (-0.002) end
+    end),
+awful.key(
+  { modkey, "Control", "Shift" }, "e", function (c) -- move down
+    if c.floating then
+      c:relative_move(0, -2, 0, 5)
+    else
+      awful.client.incwfact ( 0.002) end
+    end),
+awful.key(
+  { modkey, "Control", "Shift" }, "i", function (c) -- move up
+    if c.floating then
+      c:relative_move(0, 2, 0, -5)
+    else
+      awful.client.incwfact (-0.002) end
+    end),
+awful.key(
+  { modkey, "Control", "Shift" }, "o", function (c) -- move right
+    if c.floating then
+      c:relative_move(-2, 0, 5, 0)
+    else
+      awful.tag.incmwfact ( 0.002) end
+    end),
 
 -- Move floating window
+awful.key(
+  { modkey, "Mod1"   }, "n",  function (c) c:relative_move(-25,  0,  0,  0) end,
+  { description = "Move floating window left",  group = "layout" }),
 
-awful.key({ modkey, "Mod1"   }, "n", function (c)
-            c:relative_move(-25, 0, 0, 0) end,
-          { description = "Move floating window left",
-            group = "layout" }),
+awful.key(
+  { modkey, "Mod1"   }, "e",  function (c) c:relative_move(  0, 25,  0,  0) end,
+  { description = "Move floating window down",  group = "layout" }),
 
-awful.key({ modkey, "Mod1"   }, "e", function (c)
-            c:relative_move(  0, 25,  0,  0) end,
-          { description = "Move floating window down",
-            group = "layout" }),
+awful.key(
+  { modkey, "Mod1"   }, "i",    function (c) c:relative_move(  0,-25,  0,  0) end,
+  { description = "Move floating window up",    group = "layout" }),
 
-awful.key({ modkey, "Mod1"   }, "i", function (c)
-            c:relative_move(  0,-25,  0,  0) end,
-          { description = "Move floating window up",
-            group = "layout" }),
+awful.key(
+  { modkey, "Mod1"   }, "o", function (c) c:relative_move( 25,  0,  0,  0) end,
+  { description = "Move floating window right", group = "layout" }),
 
-awful.key({ modkey, "Mod1"   }, "o", function (c)
-            c:relative_move(25, 0, 0, 0) end,
-          { description = "Move floating window right",
-            group = "layout" }),
+-- Shifted, slower variants
+awful.key(
+  { modkey, "Mod1", "Shift" }, "n",  function (c)
+    c:relative_move(-5, 0, 0, 0) end),
+awful.key(
+  { modkey, "Mod1", "Shift" }, "e",  function (c)
+    c:relative_move( 0, 5, 0, 0) end),
+awful.key(
+  { modkey, "Mod1", "Shift" }, "i",    function (c)
+    c:relative_move( 0,-5, 0, 0) end),
+awful.key(
+  { modkey, "Mod1", "Shift" }, "o", function (c)
+    c:relative_move( 5, 0, 0, 0) end),
 
--- Shifted, faster variants
+-- As above, but with arrow keys
+-- Floating window: shrinks the focused window horizontally
+--   Tiling window: shrinks the main window horizontally
+awful.key(
+  { modkey, "Control" }, "Left", function (c)
+    if c.floating then
+      c:relative_move(10, 0, -20, 0)
+    else
+      awful.tag.incmwfact (-0.025) end
+    end,
+  { description = "Shrink window horizontally", group = "layout" }),
+-- Floating window: grows the focused window vertically
+--   Tiling window: grows the focused window if it's:
+--                    - Not a main window
+--                    - Has other secondary windows
+awful.key(
+  { modkey, "Control" }, "Down", function (c)
+    if c.floating then
+      c:relative_move(0, -10, 0, 20)
+    else
+      awful.client.incwfact ( 0.025) end
+    end,
+  { description = "Grow window vertically", group = "layout" }),
 
-awful.key({ modkey, "Mod1", "Shift" }, "n", function (c) -- move left
-            c:relative_move(-100,   0,   0,   0) end),
-awful.key({ modkey, "Mod1", "Shift" }, "e", function (c) -- move down
-            c:relative_move(   0, 100,   0,   0) end),
-awful.key({ modkey, "Mod1", "Shift" }, "i", function (c) -- move up
-            c:relative_move(   0,-100,   0,   0) end),
-awful.key({ modkey, "Mod1", "Shift" }, "o", function (c) -- move right
-            c:relative_move( 100,   0,   0,   0) end),
+-- Floating window: shrinks the focused window vertically
+--   Tiling window: shrinks the focused window if it's:
+--                    - Not a main window
+--                    - Not the only secondary window
+awful.key(
+  { modkey, "Control" }, "Up", function (c)
+    if c.floating then
+      c:relative_move(0, 10, 0, -20)
+    else
+      awful.client.incwfact (-0.025) end
+    end,
+  { description = "Shrink window vertically", group = "layout" }),
+
+-- Floating window: grows the focused window horizontally
+-- Tiling window: grows the main window
+awful.key(
+  { modkey, "Control" }, "Right", function (c)
+    if c.floating then
+      c:relative_move(-10, 0, 20, 0)
+    else
+      awful.tag.incmwfact ( 0.025) end
+    end,
+  { description = "Grow horizontally to the right", group = "layout" }),
+
+-- Shifted, slower variant
+awful.key(
+  { modkey, "Control", "Shift" }, "Left", function (c) -- move left
+    if c.floating then
+      c:relative_move(2, 0, -5, 0)
+    else
+      awful.tag.incmwfact (-0.002) end
+    end),
+awful.key(
+  { modkey, "Control", "Shift" }, "Down", function (c) -- move down
+    if c.floating then
+      c:relative_move(0, -2, 0, 5)
+    else
+      awful.client.incwfact ( 0.002) end
+    end),
+awful.key(
+  { modkey, "Control", "Shift" }, "Up", function (c) -- move up
+    if c.floating then
+      c:relative_move(0, 2, 0, -5)
+    else
+      awful.client.incwfact (-0.002) end
+    end),
+awful.key(
+  { modkey, "Control", "Shift" }, "Right", function (c) -- move right
+    if c.floating then
+      c:relative_move(-2, 0, 5, 0)
+    else
+      awful.tag.incmwfact ( 0.002) end
+    end),
+
+-- Move floating window
+awful.key(
+  { modkey, "Mod1"   }, "Left",  function (c) c:relative_move(-25,  0,  0,  0) end,
+  { description = "Move floating window left",  group = "layout" }),
+
+awful.key(
+  { modkey, "Mod1"   }, "Down",  function (c) c:relative_move(  0, 25,  0,  0) end,
+  { description = "Move floating window down",  group = "layout" }),
+
+awful.key(
+  { modkey, "Mod1"   }, "Up",    function (c) c:relative_move(  0,-25,  0,  0) end,
+  { description = "Move floating window up",    group = "layout" }),
+
+awful.key(
+  { modkey, "Mod1"   }, "Right", function (c) c:relative_move( 25,  0,  0,  0) end,
+  { description = "Move floating window right", group = "layout" }),
+
+-- Shifted, slower variants
+awful.key(
+  { modkey, "Mod1", "Shift" }, "Left",  function (c)
+    c:relative_move(-5, 0, 0, 0) end),
+awful.key(
+  { modkey, "Mod1", "Shift" }, "Down",  function (c)
+    c:relative_move( 0, 5, 0, 0) end),
+awful.key(
+  { modkey, "Mod1", "Shift" }, "Up",    function (c)
+    c:relative_move( 0,-5, 0, 0) end),
+awful.key(
+  { modkey, "Mod1", "Shift" }, "Right", function (c)
+    c:relative_move( 5, 0, 0, 0) end),
+
+
 
 {{- if eq .chezmoi.hostname "DESKRATS-2020MNT21" }}
 -- Toggle live captions, using Bling's scratchpad feature. Defined in utilities.lua
