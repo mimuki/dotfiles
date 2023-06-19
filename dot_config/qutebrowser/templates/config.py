@@ -281,7 +281,7 @@ c.statusbar.widgets = ['keypress', 'url']
 # Options: 'top', 'bottom', 'left', 'right'
 c.tabs.position = 'left'
 
-c.tabs.width = '3%'
+c.tabs.width = 40
 
 # Scaling factor for favicons in the tab bar. The tab size is unchanged,
 # so big favicons also require extra `tabs.padding`.
@@ -290,7 +290,7 @@ c.tabs.favicons.scale = 0.8
 
 # Padding (in pixels) around text for tabs.
 # Type: Padding
-c.tabs.padding = {'bottom': 0, 'left': 6, 'right': 0, 'top': 0}
+c.tabs.padding = {'bottom': 1, 'left': 6, 'right': 4, 'top': 1}
 
 # Which tab to select when the focused tab is removed.
 # Type: SelectOnRemove
