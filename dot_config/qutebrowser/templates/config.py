@@ -209,6 +209,8 @@ config.set('content.notifications.enabled', False, 'https://ko-fi.com')
 #   - ask
 config.set('content.notifications.enabled', True, 'https://myfriendsare.gay')
 
+c.input.spatial_navigation = True
+
 # List of user stylesheet filenames to use.
 # Type: List of File, or File
 c.content.user_stylesheets = '~/.config/qutebrowser/theme.css'
@@ -737,7 +739,7 @@ c.fonts.web.size.default_fixed = 18
 c.fonts.web.size.minimum = 18
 
 # Bindings for normal mode
-config.bind(',d', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/theme.css ""')
+config.bind(',d', 'config-cycle content.user_stylesheets ~/.config/qutebrowser/theme.css ~/.config/qutebrowser/templates/theme2.css')
 config.bind('I', 'tab-prev')
 config.unbind('H')
 config.bind('E', 'tab-next')

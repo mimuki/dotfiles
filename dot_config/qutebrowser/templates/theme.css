@@ -35,6 +35,11 @@
   --text-link: var(--blue) !important;
 }
 
+:focus {
+  outline: 3px solid var(--accent-alt) !important;
+  outline-offset: -3px;
+}
+
 * {
   font-family: "Andika Rats" !important;
   box-shadow: none !important;
@@ -107,24 +112,15 @@
 
 /* --[ Borders and Focus ]--------------------------------------------------- */
 
-/* Chat window */
-/*.messagesWrapper-RpOMA3,*/
 /* The text entry part*/
-.form-3gdLxP
-/* Members list */
-/*.members-3WRCEx,*/
-/* Channel List */
-/*.scroller-1ox3I2,*/
-/* User Area */
-/*.panels-3wFtMD*/ {
-/* Guilds list*/
-/*.tree-3agP2X,*/
-/* Channel Header */
-/*.container-ZMc96U.themed-Hp1KC_,*/
-/* Guild header */
-/*.header-3OsQeK  {*/
+.form-3gdLxP {
   border: var(--hilight) solid;
   border-width: 4px !important;
+}
+/* Avoid a double outline */
+.markup-eYLPri.editor-H2NA06.slateTextArea-27tjG0.fontSize20Padding-1vWJeR:focus {
+  box-shadow: none !important;
+  outline: none !important;
 }
 /*.chatContent-3KubbW:focus-within,*/
 .messagesWrapper-RpOMA3:focus-within,
@@ -290,7 +286,10 @@ span.hljs-meta-string {
 /**/
 
 /* --[ Fuck Off Discord ]---------------------------------------------------- */
-
+/* .buttons-3dF5Kd { opacity: 1 !important; }*/
+/* no super reacts */
+[aria-label="Add Super Reaction"] { display: none }
+.button-3bklZh { padding: 4px 4px 4px 40px }
 /* Get rid of sticker/gift nitro/etc buttons */
 .buttons-uaqb-5 > div:not(:last-child),
 .buttons-uaqb-5 > button {
@@ -360,31 +359,44 @@ span.blockedAction-2cPk2G {
   color: var(--accent) !important;
 }
   /* Channel hover */
-.wrapper-NhbLHG:hover {
+.wrapper-NhbLHG:hover,
+.wrapper-NhbLHG:focus-within {
   background: var(--hilight) !important;
 }
-.wrapper-NhbLHG:hover .name-28HaxV {
-  color: var(--fg) !important;
+.wrapper-NhbLHG:hover .name-28HaxV,
+.wrapper-NhbLHG:focus-within .name-28HaxV{
+  color: var(--fg);
 }
+.wrapper-NhbLHG:focus-within .mainContent-20q_Hp {
+  outline: none !important;
+}
+
+
+
 /* Selected channel hover*/
-.wrapper-NhbLHG.modeSelected-3DmyhH:hover {
+.wrapper-NhbLHG.modeSelected-3DmyhH:hover,
+.wrapper-NhbLHG.modeSelected-3DmyhH:focus-within {
   background: var(--accent-alt) !important;
 }
-.modeSelected-3DmyhH:hover .name-28HaxV
+.modeSelected-3DmyhH:hover .name-28HaxV,
+.modeSelected-3DmyhH:focus-within .name-28HaxV,
 {
   color: var(--accent-alt-fg) !important;
 }
 
 /* Unread channel hover*/
-.wrapper-NhbLHG.modeUnread-3Cxepe:hover {
+.wrapper-NhbLHG.modeUnread-3Cxepe:hover,
+.wrapper-NhbLHG.modeUnread-3Cxepe:focus-within {
   background: var(--hilight) !important;
 }
 
-.modeUnread-3Cxepe:hover .unread-36eUEm {
+.modeUnread-3Cxepe:hover .unread-36eUEm,
+.modeUnread-3Cxepe:focus-within .unread-36eUEm {
   background-color: var(--accent-alt) !important;
 }
 
-.modeUnread-3Cxepe:hover .icon-2W8DHg {
+.modeUnread-3Cxepe:hover .icon-2W8DHg,
+.modeUnread-3Cxepe:focus-within .icon-2W8DHg {
   color: var(--accent-alt) !important
 }
 
@@ -428,7 +440,7 @@ span.blockedAction-2cPk2G {
 /* Unread indicator dot */
 .unread-36eUEm {
   height: 34px !important;
-  margin-top: -17px !important
+  margin-top: -4px !important
 }
 /* muted channel */
 .modeMuted-2T4MDZ .icon-2W8DHg {
