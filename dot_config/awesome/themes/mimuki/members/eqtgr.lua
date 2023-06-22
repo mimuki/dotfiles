@@ -60,10 +60,10 @@ theme.titlebar_bg_urgent = theme.red
 
 theme.hotkeys_label_bg = theme.special
 
-theme.taglist_bg_focus    = theme.bg
-theme.taglist_bg_occupied = theme.bg
-theme.taglist_bg_urgent   = theme.bg
-theme.taglist_bg_empty    = theme.bg
+theme.taglist_bg_focus    = theme.accent
+theme.taglist_bg_occupied = theme.special
+theme.taglist_bg_urgent   = theme.red
+theme.taglist_bg_empty    = theme.highlight
 
 theme.tooltip_bg = theme.bg
 
