@@ -1,6 +1,6 @@
 /* Keyboard Focus */
 :focus {
-  outline: 3px solid var(--accent-alt) !important;
+  outline: 3px solid #ff8888 !important;
 }
 /* Manual exceptions */
 
