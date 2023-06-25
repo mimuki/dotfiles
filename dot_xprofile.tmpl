@@ -14,7 +14,9 @@ redshift &
 # -- [ Machine Specific ] ---------------------------------------------------- #
 {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
 # This device should be: LAPRATS-2023MNT21
-
+# Switch between screens with a keybind
+# todo: make screen change script work
+barrierc --disable-crypto
 # Disable bluetooth by default
 bluetooth off
 # Set track point speed
@@ -24,13 +26,18 @@ xinput --set-prop "12" "libinput Accel Speed" -0.3
 
 {{- if eq .chezmoi.hostname "DESKRATS-2020MNT21" }}
 # This device should be: DESKRATS-2020MNT21
-
+# Switch between screens with a keybind
+# todo: look into ssl stuff
+barriers --screen-change-script ~/.config/awesome/scripts/screen_switch.sh --disable-crypto
 # Reduce screen tearing
 xrandr --output HDMI-0 --mode 1920x1080 --rate 74.99
 
 # compositor (allows for transparency)
 # literally only use it for live captions
+# is a bit funny with keynav, should try and use a different one some day
 picom --experimental-backends &
+
+
 {{- end }}
 
 
