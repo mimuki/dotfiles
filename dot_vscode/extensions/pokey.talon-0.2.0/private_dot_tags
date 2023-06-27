@@ -1,0 +1,23 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/ee1d15d/
+0	package.json	/^        "Extension Packs"$/;"	s	language:JSON	array:categories
+0	package.json	/^        "pokey.command-server",$/;"	s	language:JSON	array:extensionPack
+1	package.json	/^        "sleistner.vscode-fileutils"$/;"	s	language:JSON	array:extensionPack
+categories	package.json	/^    "categories": [$/;"	a	language:JSON
+description	package.json	/^    "description": "Extensions useful for talon",$/;"	s	language:JSON
+displayName	package.json	/^    "displayName": "Talon",$/;"	s	language:JSON
+engines	package.json	/^    "engines": {$/;"	o	language:JSON
+extensionPack	package.json	/^    "extensionPack": [$/;"	a	language:JSON
+license	package.json	/^    "license": "MIT",$/;"	s	language:JSON
+name	package.json	/^    "name": "talon",$/;"	s	language:JSON
+publisher	package.json	/^    "publisher": "pokey",$/;"	s	language:JSON
+repository	package.json	/^    "repository": {$/;"	o	language:JSON
+type	package.json	/^        "type": "git",$/;"	s	language:JSON	object:repository
+url	package.json	/^        "url": "https:\/\/github.com\/pokey\/vscode-talon.git"$/;"	s	language:JSON	object:repository
+version	package.json	/^    "version": "0.2.0",$/;"	s	language:JSON
+vscode	package.json	/^        "vscode": "^1.46.0"$/;"	s	language:JSON	object:engines
