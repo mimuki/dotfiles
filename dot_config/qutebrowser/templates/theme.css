@@ -371,8 +371,13 @@ span.blockedAction-2cPk2G {
   outline: none !important;
 }
 
+.modeSelected-3DmyhH .link-1_kTxV {
+  background: var(--accent) !important;
+}
 
-
+.modeSelected-3DmyhH:hover .link-1_kTxV {
+  background: var(--accent-alt) !important;
+}
 /* Selected channel hover*/
 .wrapper-NhbLHG.modeSelected-3DmyhH:hover,
 .wrapper-NhbLHG.modeSelected-3DmyhH:focus-within {
