@@ -30,7 +30,7 @@ theme.purple  = "#bd93f9"
 theme.pink    = "#ff79c6"
 theme.special = "#6272a4"
 
-theme.accent        = theme.purple
+theme.accent        = theme.blue
 theme.accent_fg     = theme.black 
 theme.accent_alt    = theme.pink
 theme.accent_alt_fg = theme.black
@@ -41,12 +41,12 @@ theme.warn  = theme.orange
 theme.bg = theme.black 
 theme.fg = theme.white
 ----- [ Widgets ] --------------------------------------------------------------
-theme.front_fg = theme.accent_alt_fg
-theme.front_bg = theme.accent_alt 
-theme.date_fg  = theme.accent_fg
-theme.date_bg  = theme.accent
-theme.time_fg  = theme.blue
-theme.time_bg  = theme.bg
+theme.front_fg = theme.bg
+theme.front_bg = theme.orange
+theme.date_fg  = theme.fg
+theme.date_bg  = theme.hilight
+theme.time_fg  = theme.bg
+theme.time_bg  = theme.blue
 ----- [ Background ] -----------------------------------------------------------
 theme.bg_normal     = theme.bg
 theme.bg_focus      = theme.hilight

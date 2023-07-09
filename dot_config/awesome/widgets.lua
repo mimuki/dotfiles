@@ -132,10 +132,10 @@ timeFormat = " %I:%M %P "  -- 01:42 pm
 dateFormat = " %A, %b %e " -- Tuesday, Apr 18
 
 localTime = wibox.widget.textclock(
-   markup.color(beautiful.bg, beautiful.blue, timeFormat))
+   markup.color(beautiful.time_fg, beautiful.time_bg, timeFormat))
 
 localDate = wibox.widget.textclock(
-  markup.color(beautiful.bg, beautiful.purple, dateFormat))
+  markup.color(beautiful.date_fg, beautiful.date_bg, dateFormat))
 ----- [ Front info ] -----------------------------------------------------------
 -- This has a memory leak I haven't figured out yet
 -- So it's disabled for the OCC
@@ -209,7 +209,7 @@ if oldComputerChallenge == false then
  }
  else
    -- During the challenge, just show static text :)
-  frontInfo = wibox.widget.textbox(markup.color(beautiful.bg, beautiful.accent_alt, " ilo Mimuki "))
+  frontInfo = wibox.widget.textbox(markup.color(beautiful.front_fg, beautiful.front_bg, " ilo Mimuki "))
  end
 ----- [ Volume indicator ] -----------------------------------------------------------
 volIcon = wibox.widget.imagebox("/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume.png"  )
