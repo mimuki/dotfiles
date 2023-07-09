@@ -332,7 +332,8 @@ batExInfo, batExInfoTimer = awful.widget.watch([[awk '$0 { printf( $0 "% ") }' /
 watts, wattsTimer = awful.widget.watch([[
   bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh
   ]], 5, function(widget, out)
-    wattNumber = out:match("(%d.%d)")
+    wattNumber = out:match("(%d+.%d)")
+
     -- If high usage, be very noticable
     if tonumber(wattNumber) >= 7 then
       markupColour(watts, beautiful.bg, beautiful.warn, out)
