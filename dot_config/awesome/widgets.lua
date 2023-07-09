@@ -1,7 +1,6 @@
 --------------------------------------------------------------------------------
 --                                widgets.lua                                 --
 --------------------------------------------------------------------------------
-
 ----- [ Dependencies ] ---------------------------------------------------------
 lain = require("lain")
 json = require("lunajson")
@@ -138,6 +137,8 @@ localTime = wibox.widget.textclock(
 localDate = wibox.widget.textclock(
   markup.color(beautiful.bg, beautiful.purple, dateFormat))
 ----- [ Front info ] -----------------------------------------------------------
+-- This has a memory leak I haven't figured out yet
+-- So it's disabled for the OCC
 if oldComputerChallenge == false then
   frontInfo = wibox.widget.textbox(markup.color(beautiful.bg, beautiful.pink, ""))
 
@@ -206,6 +207,9 @@ if oldComputerChallenge == false then
     )
   end
  }
+ else
+   -- During the challenge, just show static text :)
+  frontInfo = wibox.widget.textbox(markup.color(beautiful.bg, beautiful.accent_alt, " ilo Mimuki "))
  end
 ----- [ Volume indicator ] -----------------------------------------------------------
 volIcon = wibox.widget.imagebox("/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume.png"  )
@@ -328,7 +332,13 @@ batExInfo, batExInfoTimer = awful.widget.watch([[awk '$0 { printf( $0 "% ") }' /
 watts, wattsTimer = awful.widget.watch([[
   bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh
   ]], 5, function(widget, out)
-    markupColour(watts, beautiful.fg, "#b8bff222", out)
+    wattNumber = out:match("(%d.%d)")
+    -- If high usage, be very noticable
+    if tonumber(wattNumber) >= 7 then
+      markupColour(watts, beautiful.bg, beautiful.warn, out)
+    else
+      markupColour(watts, beautiful.fg, "#b8bff222", out)
+    end
   end)
 ----- [ Networking ] -----------------------------------------------------------
  gears.timer {
@@ -363,7 +373,15 @@ ramIcon = wibox.widget.imagebox(gears.color.recolor_image(beautiful.ram_icon, be
 cpuInfo, cpuInfoTimer = awful.widget.watch(
   [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/cpu.sh]], 2,
   function(widget, out)
-    cpuInfo.markup = markup.fg.color(beautiful.fg, out)
+    cpuNumber = out:match("(%d+)")
+    -- If high usage, be kinda noticable
+    if tonumber(cpuNumber) >= 50 then
+      cpuInfo.markup = markup.fg.color(beautiful.warn, out)
+      cpuIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.cpu_icon, beautiful.warn)))
+    else
+      cpuInfo.markup = markup.fg.color(beautiful.fg, out)
+      cpuIcon:set_image(gears.surface.load_uncached(gears.color.recolor_image(beautiful.cpu_icon, beautiful.fg)))
+    end
   end)
 ramInfo, ramInfoTimer = awful.widget.watch(
   [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/ram.sh]], 2,
