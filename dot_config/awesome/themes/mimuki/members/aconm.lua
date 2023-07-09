@@ -60,10 +60,10 @@ theme.titlebar_bg_urgent = theme.red
 
 theme.hotkeys_label_bg = theme.special
 
-theme.taglist_bg_focus    = theme.bg
-theme.taglist_bg_occupied = theme.bg
-theme.taglist_bg_urgent   = theme.bg
-theme.taglist_bg_empty    = theme.bg
+theme.taglist_bg_focus    = theme.accent
+theme.taglist_bg_occupied = theme.special
+theme.taglist_bg_urgent   = theme.red
+theme.taglist_bg_empty    = theme.hilight
 
 theme.tooltip_bg = theme.bg
 
@@ -83,7 +83,7 @@ theme.titlebar_fg_urgent = theme.black
 
 theme.hotkeys_modifiers_fg = theme.white
 
-theme.taglist_fg_focus    = theme.accent_alt
+theme.taglist_fg_focus    = theme.accent
 theme.taglist_fg_occupied = theme.special
 theme.taglist_fg_urgent   = theme.red
 theme.taglist_fg_empty    = theme.hilight

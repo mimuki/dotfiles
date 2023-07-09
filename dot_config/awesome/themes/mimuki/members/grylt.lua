@@ -19,7 +19,7 @@ theme.hotkeys_description_font = "Fantasque Sans Mono 20"
 ----- [ Colours ] --------------------------------------------------------------
 theme.black   = "#222222"
 theme.hilight = "#363537"
-theme.lolight = "#111111"
+theme.lolight = "#1c1c1c"
 theme.white   = "#f6f1fe"
 theme.red     = "#ea6c8d"
 theme.orange  = "#ef9760"
