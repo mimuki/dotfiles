@@ -1,7 +1,7 @@
 --------------------------------------------------------------------------------
 --                                widgets.lua                                 --
 --------------------------------------------------------------------------------
-testing = false
+
 ----- [ Dependencies ] ---------------------------------------------------------
 lain = require("lain")
 json = require("lunajson")
@@ -138,73 +138,75 @@ localTime = wibox.widget.textclock(
 localDate = wibox.widget.textclock(
   markup.color(beautiful.bg, beautiful.purple, dateFormat))
 ----- [ Front info ] -----------------------------------------------------------
-frontInfo = wibox.widget.textbox(markup.color(beautiful.bg, beautiful.pink, ""))
+if oldComputerChallenge == false then
+  frontInfo = wibox.widget.textbox(markup.color(beautiful.bg, beautiful.pink, ""))
 
-frontTimer = gears.timer {
-  timeout   = frontTimeout,
-  call_now  = true,
-  autostart = true,
-  callback  = function()
-    awful.spawn.easy_async_with_shell(
-      "bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/front.sh",
-      function(out)
-        if out ~= lastFront and out ~= "" then -- front changed
-          testNotify("front changed")
-          front = json.decode(out)
-          lastFront = out
-          if front.colour == nil then -- Fronter has no colour
-            front.colour = "#ff79c6"
-          else -- Fix formatting so we can use their colour
-            front.colour = "#" .. front.colour
-          end
+  frontTimer = gears.timer {
+    timeout   = frontTimeout,
+    call_now  = true,
+    autostart = true,
+    callback  = function()
+      awful.spawn.easy_async_with_shell(
+        "bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/front.sh",
+        function(out)
+          if out ~= lastFront and out ~= "" then -- front changed
+            testNotify("front changed")
+            front = json.decode(out)
+            lastFront = out
+            if front.colour == nil then -- Fronter has no colour
+              front.colour = "#ff79c6"
+            else -- Fix formatting so we can use their colour
+              front.colour = "#" .. front.colour
+            end
 
           -- use member's theme, or default if not
-          if fileExists(beautiful.dir .. "mimuki/members/".. front.id ..".lua") == true then 
-            beautiful.init(beautiful.dir .. "mimuki/members/".. front.id ..".lua")
-          else
-            beautiful.init("~/.config/awesome/theme.lua")
-          end
-          
-          markupColour(frontInfo, beautiful.front_fg, beautiful.front_bg, " " .. front.name .. " ")
-
-          if front.avatar ~= nil then -- use members avatar for menu icon
-          -- Only download it once
-          -- TODO: some way of checking if the web version is a different image
-            if fileExists(beautiful.dir .. "mimuki/icons/".. front.id ..".png") == false then 
-              getImage(front.avatar, beautiful.dir .. "mimuki/icons/" .. front.id .. ".png")
+            if fileExists(beautiful.dir .. "mimuki/members/".. front.id ..".lua") == true then 
+              beautiful.init(beautiful.dir .. "mimuki/members/".. front.id ..".lua")
+            else
+              beautiful.init("~/.config/awesome/theme.lua")
             end
-            beautiful.awesome_icon = beautiful.dir .. "mimuki/icons/" .. front.id .. ".png"
-          end
-
-          mainLauncher:set_image(beautiful.awesome_icon)
-
-          if front.wallpaper ~= nil then --- Use member's wallpaper
-          -- Only download it once
-          -- TODO: some way of checking if the web version is a different image
-            if fileExists(beautiful.dir .. "mimuki/wallpapers/".. front.id ..".png") == false then 
-              getImage(front.wallpaper, beautiful.dir .. "mimuki/wallpapers/" .. front.id .. ".png")
-            end
-            beautiful.wallpaper = beautiful.dir .. "mimuki/wallpapers/" .. front.id .. ".png"
-          end
           
-          gears.wallpaper.maximized(beautiful.wallpaper, awful.screen.focused())
+            markupColour(frontInfo, beautiful.front_fg, beautiful.front_bg, " " .. front.name .. " ")
 
-          refreshWibox()
-          qutebrowserTheme()
-          pyradioTheme()
-          kittyTheme()
-          rofiTheme()
-        else -- if front didn't change
+            if front.avatar ~= nil then -- use members avatar for menu icon
+            -- Only download it once
+            -- TODO: some way of checking if the web version is a different image
+              if fileExists(beautiful.dir .. "mimuki/icons/".. front.id ..".png") == false then 
+                getImage(front.avatar, beautiful.dir .. "mimuki/icons/" .. front.id .. ".png")
+              end
+              beautiful.awesome_icon = beautiful.dir .. "mimuki/icons/" .. front.id .. ".png"
+            end
+
+            mainLauncher:set_image(beautiful.awesome_icon)
+
+            if front.wallpaper ~= nil then --- Use member's wallpaper
+            -- Only download it once
+            -- TODO: some way of checking if the web version is a different image
+              if fileExists(beautiful.dir .. "mimuki/wallpapers/".. front.id ..".png") == false then 
+                getImage(front.wallpaper, beautiful.dir .. "mimuki/wallpapers/" .. front.id .. ".png")
+              end
+              beautiful.wallpaper = beautiful.dir .. "mimuki/wallpapers/" .. front.id .. ".png"
+            end
+          
+            gears.wallpaper.maximized(beautiful.wallpaper, awful.screen.focused())
+
+            refreshWibox()
+            qutebrowserTheme()
+            pyradioTheme()
+            kittyTheme()
+            rofiTheme()
+          else -- if front didn't change
         --   naughty.notify(
         --     {
         --       title = "Front was the same",
         --       text = "This should do a thing"
         --     })
-        end
+          end
     end
     )
   end
-}
+ }
+ end
 ----- [ Volume indicator ] -----------------------------------------------------------
 volIcon = wibox.widget.imagebox("/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume.png"  )
 
@@ -239,17 +241,18 @@ volume = lain.widget.pulse( {
 volInfo = volume.widget -- needed because lain is weird and different
 
 ----- [ Current Weather ] -----------------------------------------------------------
-weather, weatherTimer = awful.widget.watch(
-  [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/weather.sh]], 3600, 
-  function(widget, out)
-    markupColour(weather, beautiful.fg, "#b8bff222", out)
-  end)
--- moon    = awful.widget.watch([[
---   bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/moon.sh]], 3600,
---   function(widget, out)
---     markupColour(moon, beautiful.fg, beautiful.bg, out)
---   end)
-
+if oldComputerChallenge == false then
+  weather, weatherTimer = awful.widget.watch(
+    [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/weather.sh]], 3600, 
+    function(widget, out)
+      markupColour(weather, beautiful.fg, "#b8bff222", out)
+    end)
+  moon    = awful.widget.watch([[
+    bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/moon.sh]], 3600,
+    function(widget, out)
+      markupColour(moon, beautiful.fg, beautiful.bg, out)
+    end)
+end
 ----- [ Battery indicator ] ---------------------------------------------------------
 batInIcon = wibox.widget.imagebox(gears.color.recolor_image(beautiful.bat_icon, beautiful.red))
 batExIcon = wibox.widget.imagebox(gears.color.recolor_image(beautiful.bat_icon, beautiful.yellow))
@@ -328,7 +331,7 @@ watts, wattsTimer = awful.widget.watch([[
     markupColour(watts, beautiful.fg, "#b8bff222", out)
   end)
 ----- [ Networking ] -----------------------------------------------------------
-gears.timer {
+ gears.timer {
   timeout = 5, -- seconds
   call_now = true,
   autostart = true,
