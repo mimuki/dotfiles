@@ -22,7 +22,6 @@ local function faIcon( code )
 end
 
 wifiIcon  = faIcon("")
-blueIcon  = faIcon("")
 
 function testNotify(message)
   if testing == true then
@@ -333,9 +332,14 @@ watts, wattsTimer = awful.widget.watch([[
   bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh
   ]], 5, function(widget, out)
     wattNumber = out:match("(%d+.%d)")
-
+    -- Avoid an error if that fails
+    if wattNumber == nil then
+      wattNumber = 0
+    end
     -- If high usage, be very noticable
-    if tonumber(wattNumber) >= 7 then
+    if tonumber(wattNumber) >= 15 then
+      markupColour(watts, beautiful.bg, beautiful.red, out)
+    elseif tonumber(wattNumber) >= 7 then
       markupColour(watts, beautiful.bg, beautiful.warn, out)
     else
       markupColour(watts, beautiful.fg, "#b8bff222", out)
@@ -354,15 +358,6 @@ watts, wattsTimer = awful.widget.watch([[
         end
         if string.match(result, "off") then
             markupColour(wifiIcon, beautiful.red, beautiful.bg, "  ")
-        end
-      end)
-    awful.spawn.easy_async("bluetooth",
-      function(result)
-        if string.match(result, "on") then
-            markupColour(blueIcon, beautiful.fg, beautiful.bg, "  ")
-        end
-        if string.match(result, "off") then 
-            markupColour(blueIcon, beautiful.fg, beautiful.fg, "")
         end
       end)
     end
