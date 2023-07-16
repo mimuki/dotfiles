@@ -128,3 +128,5 @@ if [ -n "$SSH_CLIENT" ]; then
 fi
 
 export PATH=$PATH:/home/mimuki/.local/bin
+export PATH=$PATH:/home/mimuki/.cargo/bin
+
