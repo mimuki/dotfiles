@@ -35,11 +35,17 @@ augroup VCenterCursor
   au BufEnter,WinEnter,WinNew,VimResized *,*.*
         \ let &scrolloff=winheight(win_getid())/2
 augroup END
+" Vimwiki wants these
+set nocompatible
+filetype plugin on
+syntax on
+
 " --- [ Plugins ] ------------------------------------------------------------ "
 call plug#begin() " Plugins
-Plug 'mimuki/goyo.vim' " 
+Plug 'mimuki/goyo.vim' " I forked it to suck less
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'ap/vim-css-color'
+Plug 'ap/vim-css-color' " show colours highlighted as that colour
+Plug 'vimwiki/vimwiki' " personal wiki
 call plug#end()
 " --- [ Theme ] -------------------------------------------------------------- "
 let g:dracula_colorterm = 0 " Unset terminal background colour
