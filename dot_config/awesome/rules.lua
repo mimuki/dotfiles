@@ -79,6 +79,11 @@ awful.rules.rules = {
     }
 },
 
+{ rule = { class = "URxvt" },
+    properties = { size_hints_honor = false }
+},
+
+
 
 { rule = { class = "feh" },
     properties = { 

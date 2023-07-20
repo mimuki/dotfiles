@@ -170,32 +170,6 @@ function qutebrowserTheme()
   end)
 end
 
-function kittyTheme()
-  local path = beautiful.dir.."mimuki/members/"..front.id.."/kitty.conf"
-  if fileExists(path) == true then
-    kitTheme = readFile(path)
-  else
-    kitTheme = "# Generated automatically, will be overwritten"
-    .."\nforeground          " .. beautiful.fg 
-    .."\nbackground          " .. beautiful.bg 
-    .."\ncolor0              " .. beautiful.black
-    .."\ncolor1              " .. beautiful.red
-    .."\ncolor2              " .. beautiful.green
-    .."\ncolor3              " .. beautiful.yellow
-    .."\ncolor4              " .. beautiful.purple
-    .."\ncolor5              " .. beautiful.pink
-    .."\ncolor6              " .. beautiful.blue
-    .."\ncolor7              " .. beautiful.white
-  end
-  local file =  assert(io.open("/home/mimuki/.config/kitty/themes/dynamic.conf", 'w'))
-  file:write(kitTheme)
-  file:close()
-  awful.spawn.easy_async("kitty +kitten themes --reload-in=all Dynamic", 
-    function(result)
-      -- might be worth catching errors here some day
-    end)
-end
-
 function pyradioTheme() 
   local path = beautiful.dir.."mimuki/members/"..front.id.."/pyradio.pyradio-theme"
   if fileExists(path) == true then

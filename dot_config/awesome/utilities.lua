@@ -14,7 +14,7 @@ livecaptions = bling.module.scratchpad {
 }
 
 pyradio = bling.module.scratchpad {
-    command = "kitty --class pyradio -e pyradio",
+    command = "urxvt -name pyradio -e pyradio",
     rule = { instance = "pyradio" }, 
     sticky = true, -- Stick to every tag
     autoclose = true, -- Don't hide when focus lost

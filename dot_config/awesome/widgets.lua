@@ -35,9 +35,9 @@ end
 ----- [ Per-screen widgets ] ---------------------------------------------------
 function quake(s) -- Drop down terminal
   s.quake = lain.util.quake({
-    app = "kitty",
+    app = "urxvt",
     name = "Quake",
-    argname = "--name Quake",
+    --argname = "-name Quake",
     border = beautiful.border_width
   })
 end
@@ -191,9 +191,8 @@ if oldComputerChallenge == false then
             gears.wallpaper.maximized(beautiful.wallpaper, awful.screen.focused())
 
             refreshWibox()
-            qutebrowserTheme()
+            -- qutebrowserTheme()
             pyradioTheme()
-            kittyTheme()
             rofiTheme()
           else -- if front didn't change
         --   naughty.notify(
