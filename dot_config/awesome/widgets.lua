@@ -38,7 +38,7 @@ function tagList(s) -- Current tags
       filter  = awful.widget.taglist.filter.all,
       buttons = taglist_buttons,
       style = {
-        font = "Monospace 1"
+        font = "Monospace 9"
       },
       --layout  = wibox.layout.flex.vertical(),
     forced_height = 500,
@@ -134,7 +134,7 @@ function()
 end)
 ))
 ----- [ Time and date ] --------------------------------------------------------
-timeFormat = " %I:%M %P "  -- 01:42 pm
+timeFormat = "%I:%M %P"  -- 01:42 pm
 dateFormat = " %A, %b %e " -- Tuesday, Apr 18
 
 localTime = wibox.widget.textclock(
