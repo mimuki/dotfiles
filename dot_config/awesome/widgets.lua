@@ -299,7 +299,7 @@ bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh
   elseif tonumber(wattNumber) >= 7 then
       watts.markup = "<span foreground='"..beautiful.bg.."' background='"..beautiful.warn.."'>"..out.."</span>"
   else
-      watts.markup = "<span foreground='"..beautiful.fg.."' background='#b8bff201'>"..out.."</span>"
+      watts.markup = "<span foreground='"..beautiful.fg.."'>"..out.."</span>"
   end
 end)
 ----- [ Networking ] -----------------------------------------------------------
