@@ -32,12 +32,14 @@ awful.layout.layouts = {
 {{- if eq .chezmoi.hostname "DESKRATS-2020MNT21" }}
 -- This machine should be DESKRATS-2020MNT21
 frontTimeout = 300
-pyradioGeometry = {x=0, y=36, height=62, width=1906} 
+pyradioGeometry = {x=0, y=31, height=62, width=1906} 
+urxvtGeometry = {x=0, y=31, height=292, width=1906}
 notificationWidth = 600
 {{- else if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
 -- This machine should be LAPRATS-2023MNT21
 frontTimeout = 5
 pyradioGeometry = {x=0, y=40, height=62, width=1352}
+urxvtGeometry = {x=0, y=31, height=292, width=1352}
 notificationWidth = 685
 
 {{ else }}

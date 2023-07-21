@@ -23,3 +23,14 @@ pyradio = bling.module.scratchpad {
     reapply = true, -- "Remember" manual position changes
     dont_focus_before_close  = true,                 
 }
+
+urxvt = bling.module.scratchpad {
+    command = "urxvt -name quake",
+    rule = { name = "quake" }, 
+    sticky = false, -- Stick to every tag
+    autoclose = false, -- Don't hide when focus lost
+    floating = true, 
+    geometry = urxvtGeometry,
+    reapply = true, -- "Remember" manual position changes
+    dont_focus_before_close  = true,                 
+}

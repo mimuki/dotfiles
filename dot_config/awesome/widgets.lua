@@ -2,10 +2,7 @@
 --                                widgets.lua                                 --
 --------------------------------------------------------------------------------
 ----- [ Dependencies ] ---------------------------------------------------------
-lain = require("lain")
 json = require("lunajson")
-markup = lain.util.markup
-separators = lain.util.separators
 require("vars")
 require("dynamic_theme")
 
@@ -21,16 +18,6 @@ end
 
 spacer = wibox.widget.textbox(" ")
 ----- [ Per-screen widgets ] ---------------------------------------------------
-function quake(s) -- Drop down terminal
-  s.quake = lain.util.quake({
-    app = "urxvt",
-    name = "Quake",
-    height = 0.358,
-    --argname = "-name Quake",
-    border = beautiful.border_width
-  })
-end
-
 function tagList(s) -- Current tags
   awful.tag(tagIcons, s, awful.layout.layouts[1])
   s.mytaglist = awful.widget.taglist {
@@ -137,16 +124,16 @@ end)
 timeFormat = "%I:%M %P"  -- 01:42 pm
 dateFormat = " %A, %b %e " -- Tuesday, Apr 18
 
-localTime = wibox.widget.textclock(
-markup.color(beautiful.time_fg, beautiful.time_bg, timeFormat))
+--localTime = wibox.widget.textclock(
+--markup.color(beautiful.time_fg, beautiful.time_bg, timeFormat))
 
-localDate = wibox.widget.textclock(
-markup.color(beautiful.date_fg, beautiful.date_bg, dateFormat))
+--localDate = wibox.widget.textclock(
+--markup.color(beautiful.date_fg, beautiful.date_bg, dateFormat))
 ----- [ Front info ] -----------------------------------------------------------
 -- This has a memory leak I haven't figured out yet
 -- So it's disabled for the OCC
 if oldComputerChallenge == false then
-  frontInfo = wibox.widget.textbox(markup.color(beautiful.bg, beautiful.pink, ""))
+  --frontInfo = wibox.widget.textbox(markup.color(beautiful.bg, beautiful.pink, ""))
 
   frontTimer = gears.timer {
     timeout   = frontTimeout,
@@ -173,7 +160,7 @@ if oldComputerChallenge == false then
             beautiful.init("~/.config/awesome/theme.lua")
           end
 
-          markupColour(frontInfo, beautiful.front_fg, beautiful.front_bg, " " .. front.name .. " ")
+          --markupColour(frontInfo, beautiful.front_fg, beautiful.front_bg, " " .. front.name .. " ")
 
           if front.avatar ~= nil then -- use members avatar for menu icon
             -- Only download it once
@@ -214,49 +201,49 @@ if oldComputerChallenge == false then
   }
 else
   -- During the challenge, just show static text :)
-  frontInfo = wibox.widget.textbox(markup.color(beautiful.front_fg, beautiful.front_bg, " ilo Mimuki "))
+  --frontInfo = wibox.widget.textbox(markup.color(beautiful.front_fg, beautiful.front_bg, " ilo Mimuki "))
 end
 ----- [ Volume indicator ] -----------------------------------------------------------
 --volIcon = wibox.widget.imagebox("/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume.png"  )
 volIcon = wibox.widget.textbox("V:")
 
-volume = lain.widget.pulse( {
-  settings = function()
-    vlevel = volume_now.left .. "%"
-    -- markupColour(volIcon, beautiful.fg, beautiful.hilight, "  ")
-    if volume_now.muted == "yes" then
-      vlevel = volume_now.left .. "%"
-      beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume_mute.png"
+-- volume = lain.widget.pulse( {
+--   settings = function()
+--     vlevel = volume_now.left .. "%"
+--     -- markupColour(volIcon, beautiful.fg, beautiful.hilight, "  ")
+--     if volume_now.muted == "yes" then
+--       vlevel = volume_now.left .. "%"
+--       beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume_mute.png"
 
-      markupColour(volInfo, beautiful.orange, "#b8bff222", vlevel)
-    end
+--       markupColour(volInfo, beautiful.orange, "#b8bff222", vlevel)
+--     end
 
-    if volume_now.muted == "no" then
-      widget:set_markup(lain.util.markup(beautiful.fg, vlevel))
-      markupColour(volInfo, beautiful.fg, "#b8bff222", vlevel)
+--     if volume_now.muted == "no" then
+--       widget:set_markup(lain.util.markup(beautiful.fg, vlevel))
+--       markupColour(volInfo, beautiful.fg, "#b8bff222", vlevel)
 
-      if volume_now.left <= "30" then 
-        beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume_low.png"
-      else
-        beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume.png"
-      end
-    end
-  end
-})
+--       if volume_now.left <= "30" then 
+--         beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume_low.png"
+--       else
+--         beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume.png"
+--       end
+--     end
+--   end
+-- })
 
-volInfo = volume.widget -- needed because lain is weird and different
+-- volInfo = volume.widget -- needed because lain is weird and different
 
 ----- [ Current Weather ] -----------------------------------------------------------
 if oldComputerChallenge == false then
   weather, weatherTimer = awful.widget.watch(
   [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/weather.sh]], 3600, 
   function(widget, out)
-    markupColour(weather, beautiful.fg, "#b8bff222", out)
+    --markupColour(weather, beautiful.fg, "#b8bff222", out)
   end)
   moon    = awful.widget.watch([[
   bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/moon.sh]], 3600,
   function(widget, out)
-    markupColour(moon, beautiful.fg, beautiful.bg, out)
+    --markupColour(moon, beautiful.fg, beautiful.bg, out)
   end)
 end
 ----- [ Battery indicator ] ---------------------------------------------------------
@@ -307,11 +294,11 @@ bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh
   end
   -- If high usage, be very noticable
   if tonumber(wattNumber) >= 15 then
-    markupColour(watts, beautiful.bg, beautiful.red, out)
+    --markupColour(watts, beautiful.bg, beautiful.red, out)
   elseif tonumber(wattNumber) >= 7 then
-    markupColour(watts, beautiful.bg, beautiful.warn, out)
+    --markupColour(watts, beautiful.bg, beautiful.warn, out)
   else
-    markupColour(watts, beautiful.fg, "#b8bff201", out)
+    --markupColour(watts, beautiful.fg, "#b8bff201", out)
   end
 end)
 ----- [ Networking ] -----------------------------------------------------------

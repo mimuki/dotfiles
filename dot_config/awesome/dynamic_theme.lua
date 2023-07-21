@@ -4,11 +4,6 @@
 function formatColour(widget, fg, bg, text)
   widget.format = "<span foreground='" .. fg .. "' background='" .. bg .. "'>" .. text .. "</span>"
 end
--- Change the foreground and background colour of a widget
--- For widgets with custom markup (i.e. text boxes)
-function markupColour(widget, fg, bg, text)
-  widget.markup = markup.color(fg, bg, text)
-end
 
 function refreshWibox()
   formatColour(localDate, beautiful.date_fg, beautiful.date_bg, dateFormat)
@@ -24,7 +19,6 @@ function refreshWibox()
   batExInfoTimer:emit_signal("timeout")
   wattsTimer:emit_signal("timeout")
 
-  volume.update() -- Volume widget colours
   awful.screen.focused().mytaglist._do_taglist_update()
   if client.focus then -- if there's a focused client
     if client.focus.floating then 
