@@ -121,19 +121,17 @@ function()
 end)
 ))
 ----- [ Time and date ] --------------------------------------------------------
-timeFormat = "%I:%M %P"  -- 01:42 pm
-dateFormat = " %A, %b %e " -- Tuesday, Apr 18
-
---localTime = wibox.widget.textclock(
---markup.color(beautiful.time_fg, beautiful.time_bg, timeFormat))
-
---localDate = wibox.widget.textclock(
---markup.color(beautiful.date_fg, beautiful.date_bg, dateFormat))
+-- Make the widgets
+localTime = wibox.widget.textclock()
+localDate = wibox.widget.textclock()
+-- Set their colours
+formatColour(localTime, beautiful.time_fg, beautiful.time_bg, "%I:%M %P")
+formatColour(localDate, beautiful.date_fg, beautiful.date_bg, " %A, %b %e ")
 ----- [ Front info ] -----------------------------------------------------------
 -- This has a memory leak I haven't figured out yet
 -- So it's disabled for the OCC
 if oldComputerChallenge == false then
-  --frontInfo = wibox.widget.textbox(markup.color(beautiful.bg, beautiful.pink, ""))
+  frontInfo = wibox.widget.textbox("")
 
   frontTimer = gears.timer {
     timeout   = frontTimeout,
@@ -144,8 +142,8 @@ if oldComputerChallenge == false then
       "bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/front.sh",
       function(out)
         if out ~= lastFront and out ~= "" then -- front changed
-          testNotify("front changed")
           front = json.decode(out)
+          testNotify("front changed, hi "..front.name)
           lastFront = out
           if front.colour == nil then -- Fronter has no colour
             front.colour = "#ff79c6"
@@ -159,8 +157,8 @@ if oldComputerChallenge == false then
           else
             beautiful.init("~/.config/awesome/theme.lua")
           end
-
-          --markupColour(frontInfo, beautiful.front_fg, beautiful.front_bg, " " .. front.name .. " ")
+          -- Update name (with pretty formatting)
+          frontInfo.markup = "<span foreground='"..beautiful.front_fg.."' background='"..beautiful.front_bg.."'> "..front.name.." </span>"
 
           if front.avatar ~= nil then -- use members avatar for menu icon
             -- Only download it once
@@ -201,7 +199,8 @@ if oldComputerChallenge == false then
   }
 else
   -- During the challenge, just show static text :)
-  --frontInfo = wibox.widget.textbox(markup.color(beautiful.front_fg, beautiful.front_bg, " ilo Mimuki "))
+  frontInfo = wibox.widget.textbox()
+  formatColour(frontInfo, beautiful.front_fg, beautiful.front_bg, " ilo Mimuki ")
 end
 ----- [ Volume indicator ] -----------------------------------------------------------
 --volIcon = wibox.widget.imagebox("/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume.png"  )
@@ -292,13 +291,15 @@ bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh
   if wattNumber == nil then
     wattNumber = 0
   end
-  -- If high usage, be very noticable
-  if tonumber(wattNumber) >= 15 then
-    --markupColour(watts, beautiful.bg, beautiful.red, out)
+  -- you're probably charging
+  if tonumber(wattNumber) >= 20 then
+    watts.markup = ""
+  elseif tonumber(wattNumber) >= 15 then
+      watts.markup = "<span foreground='"..beautiful.bg.."' background='"..beautiful.red.."'>"..out.."</span>"
   elseif tonumber(wattNumber) >= 7 then
-    --markupColour(watts, beautiful.bg, beautiful.warn, out)
+      watts.markup = "<span foreground='"..beautiful.bg.."' background='"..beautiful.warn.."'>"..out.."</span>"
   else
-    --markupColour(watts, beautiful.fg, "#b8bff201", out)
+      watts.markup = "<span foreground='"..beautiful.fg.."' background='#b8bff201'>"..out.."</span>"
   end
 end)
 ----- [ Networking ] -----------------------------------------------------------

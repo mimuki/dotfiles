@@ -45,8 +45,8 @@ theme.front_fg = theme.bg
 theme.front_bg = theme.orange
 theme.date_fg  = theme.fg
 theme.date_bg  = theme.hilight
-theme.time_fg  = theme.bg
-theme.time_bg  = theme.blue
+theme.time_fg  = theme.blue
+theme.time_bg  = theme.bg
 ----- [ Background ] -----------------------------------------------------------
 theme.bg_normal     = theme.bg
 theme.bg_focus      = theme.hilight
