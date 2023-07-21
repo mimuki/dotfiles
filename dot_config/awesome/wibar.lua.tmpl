@@ -6,7 +6,7 @@ function buildWibar(s)
     screen = s, 
     -- Only as tall as the main font
     -- Avoids funny colour & scaling issues
-    height = beautiful.get_font_height(beautiful.font) 
+    height = beautiful.get_font_height(beautiful.font)
 
 
   })
@@ -14,11 +14,12 @@ function buildWibar(s)
   -- Add widgets to the wibox
   s.mywibox:setup {
     layout = wibox.layout.align.horizontal,
-    expand = "none",
+    expand = "inside",
 
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
-      wibox.container.background(mainLauncher, "#b8bff222"), 
+      s.mylayoutbox,
+      --wibox.container.background(mainLauncher, "#b8bff222"), 
       s.mytaglist,
       frontInfo,
       localDate,
@@ -42,20 +43,21 @@ function buildWibar(s)
       layout = wibox.layout.fixed.horizontal,
       
       wibox.container.background(ramIcon, "#b8bff222"),
-      ramInfo,
-      cpuIcon,
-      cpuInfo,
+
+      cpuStack,
+      ramStack,
+      spacer,
       wibox.container.background(volIcon, "#b8bff222"),
-      volInfo, 
+      volInfo,
+      spacer, 
 
       {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
       -- Display battery information
       -- This section was added automatically by chezmoi
-      batInIcon,
-      batExIcon,
-      batInInfo,
-      batExInfo,
+      batStack,
+      spacer,
       watts,
+      spacer,
       {{- end }}
 
       wibox.container.background(localTime, beautiful.blue)
