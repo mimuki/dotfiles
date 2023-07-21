@@ -7,15 +7,15 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local theme = {}
 ----- [ Settings ] -------------------------------------------------------------
-theme.font              = "Andika Rats 18" 
+theme.font              = "Greybeard 16px 23" 
 theme.notification_font = theme.font
 
 theme.dir = "~/.config/awesome/themes/"
 
 theme.wallpaper = theme.dir .. "dracula/goop_2.png"
 
-theme.hotkeys_font             = "Fantasque Sans Mono 20"
-theme.hotkeys_description_font = "Fantasque Sans Mono 20"
+theme.hotkeys_font             = "Greybeard 16px 23"
+theme.hotkeys_description_font = "Greybeard 16px 23"
 ----- [ Colours ] --------------------------------------------------------------
 theme.black   = "#222222"
 theme.hilight = "#363537"
@@ -151,31 +151,27 @@ theme.titlebar_maximized_button_focus_inactive  = theme.dir .."default/titlebar/
 theme.titlebar_maximized_button_normal_active = theme.dir .."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = theme.dir .."default/titlebar/maximized_focus_active.png"
 ----- [ Layout Icons ] ---------------------------------------------------------
-theme.layout_fairh       = theme.dir .."default/layouts/fairhw.png"
-theme.layout_fairv       = theme.dir .."default/layouts/fairvw.png"
-theme.layout_floating    = theme.dir .."default/layouts/floatingw.png"
-theme.layout_magnifier   = theme.dir .."default/layouts/magnifierw.png"
-theme.layout_max         = theme.dir .."mimuki/icons/maximize.png"
-theme.layout_fullscreen  = theme.dir .."mimuki/icons/maximize.png"
-theme.layout_tilebottom  = theme.dir .."default/layouts/tilebottomw.png"
-theme.layout_tileleft    = theme.dir .."default/layouts/tileleftw.png"
-theme.layout_tile        = theme.dir .."mimuki/icons/left-right.png"
-theme.layout_tiletop     = theme.dir .."mimuki/icons/up-down.png"
-theme.layout_spiral      = theme.dir .."default/layouts/spiralw.png"
-theme.layout_dwindle     = theme.dir .."default/layouts/dwindlew.png"
-theme.layout_cornernw    = theme.dir .."default/layouts/cornernww.png"
-theme.layout_cornerne    = theme.dir .."default/layouts/cornernew.png"
-theme.layout_cornersw    = theme.dir .."default/layouts/cornersww.png"
-theme.layout_cornerse    = theme.dir .."default/layouts/cornersew.png"
+theme.layout_fairv       = theme.dir .."mimuki/layouts/fair_v.png"
+theme.layout_fairh       = theme.dir .."mimuki/layouts/fair_h.png"
 
-theme.lain_icons         = os.getenv("HOME") ..
-                           "/.config/awesome/lain/icons/layout/default/"
-theme.layout_termfair    = theme.lain_icons .. "termfair.png"
-theme.layout_centerfair  = theme.lain_icons .. "centerfair.png"  -- termfair.center
-theme.layout_cascade     = theme.lain_icons .. "cascade.png"
-theme.layout_cascadetile = theme.lain_icons .. "cascadetile.png" -- cascade.tile
-theme.layout_centerwork  = theme.lain_icons .. "centerwork.png"
-theme.layout_centerworkh = theme.lain_icons .. "centerworkh.png" -- centerwork.horizontal
+theme.layout_floating    = theme.dir .."mimuki/layouts/floating.png"
+
+theme.layout_tile        = theme.dir .."mimuki/layouts/tile.png"
+theme.layout_tileleft    = theme.dir .."mimuki/layouts/tile_left.png"
+theme.layout_tilebottom  = theme.dir .."mimuki/layouts/tilebottom.png"
+theme.layout_tiletop     = theme.dir .."mimuki/layouts/tiletop.png"
+
+theme.layout_spiral      = theme.dir .."mimuki/layouts/spiral.png"
+theme.layout_dwindle     = theme.dir .."mimuki/layouts/dwindle.png"
+theme.layout_max         = theme.dir .."mimuki/layouts/max.png"
+theme.layout_fullscreen  = theme.dir .."mimuki/layouts/max.png"
+
+theme.layout_magnifier   = theme.dir .."mimuki/layouts/magnifier.png"
+
+theme.layout_cornernw    = theme.dir .."mimuki/layouts/corner_nw.png"
+theme.layout_cornerne    = theme.dir .."mimuki/layouts/corner_ne.png"
+theme.layout_cornersw    = theme.dir .."mimuki/layouts/corner_sw.png"
+theme.layout_cornerse    = theme.dir .."mimuki/layouts/corner_se.png"
 ----- [ Wibar Icons ] ----------------------------------------------------------
 theme.awesome_icon  = theme.dir .."mimuki/icons/logo.png"
 theme.terminal_icon = theme.dir .."mimuki/icons/terminal.png"
