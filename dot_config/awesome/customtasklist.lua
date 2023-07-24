@@ -1,6 +1,10 @@
 -- this only exist so that I can show the currently focused window by its 
 -- class, and not by its title. the title is usually too long to be helpful
 -- and I don't know a better way of doing this
+function firstToUpper(str)
+    return (str:gsub("^%l", string.upper))
+end
+
 ---------------------------------------------------------------------------
 --- Tasklist widget module for awful.
 --
@@ -458,10 +462,10 @@ local function tasklist_label(c, args, tb)
 
     if not disable_task_name then
         if c.minimized then
-            name = name .. (gstring.xml_escape(c.icon_name) or gstring.xml_escape(c.class) or
+            name = name .. (gstring.xml_escape(c.icon_name) or gstring.xml_escape(firstToUpper(c.class)) or
                             gstring.xml_escape("<untitled>"))
         else
-            name = name .. " " .. (gstring.xml_escape(c.class) .. " " or gstring.xml_escape(" <untitled> "))
+            name = name .. " " .. (gstring.xml_escape(firstToUpper(c.class)) .. " " or gstring.xml_escape(" <untitled> "))
         end
     end
 
