@@ -65,6 +65,8 @@ theme.taglist_bg_occupied = theme.special
 theme.taglist_bg_urgent   = theme.red
 theme.taglist_bg_empty    = theme.hilight
 
+theme.tasklist_bg_focus = theme.accent
+
 theme.tooltip_bg = theme.bg
 
 theme.notifcation_bg = theme.bg
@@ -87,6 +89,8 @@ theme.taglist_fg_focus    = theme.accent
 theme.taglist_fg_occupied = theme.special
 theme.taglist_fg_urgent   = theme.red
 theme.taglist_fg_empty    = theme.hilight
+
+theme.tasklist_fg_focus = theme.accent_fg
 
 theme.tooltip_fg = theme.white
 
@@ -117,7 +121,9 @@ theme.menu_border_color = theme.accent_alt
 theme.menu_border_width = theme.border_width
 
 theme.notification_width  = notificationWidth
--- theme.notification_height = 140
+-- task list
+theme.tasklist_plain_task_name = true
+theme.tasklist_disable_icon = true
 ----- [ Other Stuff ] ----------------------------------------------------------
 -- ran out of spoons lol
 theme.notification_icon_size = 80

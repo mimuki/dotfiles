@@ -61,6 +61,7 @@ require("mouse")       -- Mouse specific features like right click menu
 awful.screen.connect_for_each_screen(function(s)
   setWallpaper(s) -- ...wallpaper
   tagList(s)      -- ...taglist
+  taskList(s)      -- ...taglist
   layoutBox(s)    -- ...layout box
   buildWibar(s)   -- ...wibar
 end)

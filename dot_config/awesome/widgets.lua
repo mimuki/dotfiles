@@ -36,6 +36,13 @@ function tagList(s) -- Current tags
   }
 end
 
+function taskList(s) 
+  mytasklist = require("customtasklist")
+  s.mytasklist = mytasklist {
+    screen  = s,
+    filter  = awful.widget.tasklist.filter.focused
+  }
+end
 taglist_buttons = gears.table.join(
 awful.button({ }, 1, function(t) t:view_only() end),
 awful.button({ modkey }, 1, function(t)
@@ -127,6 +134,8 @@ localDate = wibox.widget.textclock()
 -- Set their colours
 formatColour(localTime, beautiful.time_fg, beautiful.time_bg, "%I:%M %P")
 formatColour(localDate, beautiful.date_fg, beautiful.date_bg, " %A, %b %e ")
+----- [ program info ] -----------------------------------------------------------
+
 ----- [ Front info ] -----------------------------------------------------------
 -- This has a memory leak I haven't figured out yet
 -- So it's disabled for the OCC

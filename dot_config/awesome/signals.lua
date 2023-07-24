@@ -67,3 +67,11 @@ end)
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", setWallpaper)
+-- make titles short a, usually
+client.connect_signal("property::name", function(c)
+  if c.class == "Firefox" then
+    if c.name ~= "Mozilla Firefox" then
+      c.name = "Mozilla Firefox"
+    end
+  end
+end)
