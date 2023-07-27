@@ -27,12 +27,8 @@ function tagList(s) -- Current tags
       style = {
         font = "Monospace 9"
       },
-      --layout  = wibox.layout.flex.vertical(),
     forced_height = 500,
     layout = wibox.layout.flex.vertical
-  --  layout  = wibox.layout.flex.vertical({
---      forced_height = 200
---    }) 
   }
 end
 
@@ -134,128 +130,23 @@ localDate = wibox.widget.textclock()
 -- Set their colours
 formatColour(localTime, beautiful.time_fg, beautiful.time_bg, "%I:%M %P")
 formatColour(localDate, beautiful.date_fg, beautiful.date_bg, " %A, %b %e ")
------ [ program info ] -----------------------------------------------------------
-
------ [ Front info ] -----------------------------------------------------------
--- This has a memory leak I haven't figured out yet
--- So it's disabled for the OCC
-if oldComputerChallenge == false then
-  frontInfo = wibox.widget.textbox("")
-
-  frontTimer = gears.timer {
-    timeout   = frontTimeout,
-    call_now  = true,
-    autostart = true,
-    callback  = function()
-      awful.spawn.easy_async_with_shell(
-      "bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/front.sh",
-      function(out)
-        if out ~= lastFront and out ~= "" then -- front changed
-          front = json.decode(out)
-          testNotify("front changed, hi "..front.name)
-          lastFront = out
-          if front.colour == nil then -- Fronter has no colour
-            front.colour = "#ff79c6"
-          else -- Fix formatting so we can use their colour
-            front.colour = "#" .. front.colour
-          end
-
-          -- use member's theme, or default if not
-          if fileExists(beautiful.dir .. "mimuki/members/".. front.id ..".lua") == true then 
-            beautiful.init(beautiful.dir .. "mimuki/members/".. front.id ..".lua")
-          else
-            beautiful.init("~/.config/awesome/theme.lua")
-          end
-          -- Update name (with pretty formatting)
-          frontInfo.markup = "<span foreground='"..beautiful.front_fg.."' background='"..beautiful.front_bg.."'> "..front.name.." </span>"
-
-          if front.avatar ~= nil then -- use members avatar for menu icon
-            -- Only download it once
-            -- TODO: some way of checking if the web version is a different image
-            if fileExists(beautiful.dir .. "mimuki/icons/".. front.id ..".png") == false then 
-              getImage(front.avatar, beautiful.dir .. "mimuki/icons/" .. front.id .. ".png")
-            end
-            beautiful.awesome_icon = beautiful.dir .. "mimuki/icons/" .. front.id .. ".png"
-          end
-
-          mainLauncher:set_image(beautiful.awesome_icon)
-
-          if front.wallpaper ~= nil then --- Use member's wallpaper
-            -- Only download it once
-            -- TODO: some way of checking if the web version is a different image
-            if fileExists(beautiful.dir .. "mimuki/wallpapers/".. front.id ..".png") == false then 
-              getImage(front.wallpaper, beautiful.dir .. "mimuki/wallpapers/" .. front.id .. ".png")
-            end
-            beautiful.wallpaper = beautiful.dir .. "mimuki/wallpapers/" .. front.id .. ".png"
-          end
-
-          gears.wallpaper.maximized(beautiful.wallpaper, awful.screen.focused())
-
-          refreshWibox()
-          -- qutebrowserTheme()
-          pyradioTheme()
-          rofiTheme()
-        else -- if front didn't change
-          --   naughty.notify(
-          --     {
-          --       title = "Front was the same",
-          --       text = "This should do a thing"
-          --     })
-        end
-      end
-      )
-    end
-  }
-else
-  -- During the challenge, just show static text :)
-  frontInfo = wibox.widget.textbox()
-  formatColour(frontInfo, beautiful.front_fg, beautiful.front_bg, " ilo Mimuki ")
-end
 ----- [ Volume indicator ] -----------------------------------------------------------
---volIcon = wibox.widget.imagebox("/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume.png"  )
-volIcon = wibox.widget.textbox("V:")
-
--- volume = lain.widget.pulse( {
---   settings = function()
---     vlevel = volume_now.left .. "%"
---     -- markupColour(volIcon, beautiful.fg, beautiful.hilight, "  ")
---     if volume_now.muted == "yes" then
---       vlevel = volume_now.left .. "%"
---       beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume_mute.png"
-
---       markupColour(volInfo, beautiful.orange, "#b8bff222", vlevel)
---     end
-
---     if volume_now.muted == "no" then
---       widget:set_markup(lain.util.markup(beautiful.fg, vlevel))
---       markupColour(volInfo, beautiful.fg, "#b8bff222", vlevel)
-
---       if volume_now.left <= "30" then 
---         beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume_low.png"
---       else
---         beautiful.vol_icon = "/home/mimuki/.local/share/chezmoi/dot_config/awesome/themes/mimuki/icons/volume.png"
---       end
---     end
---   end
--- })
-
--- volInfo = volume.widget -- needed because lain is weird and different
-
+--todo
 ----- [ Current Weather ] -----------------------------------------------------------
-if oldComputerChallenge == false then
-  weather, weatherTimer = awful.widget.watch(
-  [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/weather.sh]], 3600, 
-  function(widget, out)
-    --markupColour(weather, beautiful.fg, "#b8bff222", out)
-  end)
-  moon    = awful.widget.watch([[
-  bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/moon.sh]], 3600,
-  function(widget, out)
-    --markupColour(moon, beautiful.fg, beautiful.bg, out)
-  end)
-end
+--todo
+-- if oldComputerChallenge == false then
+--   weather, weatherTimer = awful.widget.watch(
+--   [[bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/weather.sh]], 3600, 
+--   function(widget, out)
+--     --markupColour(weather, beautiful.fg, "#b8bff222", out)
+--   end)
+--   moon    = awful.widget.watch([[
+--   bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/moon.sh]], 3600,
+--   function(widget, out)
+--     --markupColour(moon, beautiful.fg, beautiful.bg, out)
+--   end)
+-- end
 ----- [ Battery indicator ] ---------------------------------------------------------
-
 batInfo = awful.widget.watch([[bash /home/mimuki/.config/awesome/scripts/bat.sh]], 5, function(widget, out)
       batBarInfo.value = tonumber(out)
       batNumber = math.floor((out/2))
@@ -312,26 +203,8 @@ bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh
   end
 end)
 ----- [ Networking ] -----------------------------------------------------------
---gears.timer {
---  timeout = 5, -- seconds
---  call_now = true,
---  autostart = true,
---  callback = function()
---    awful.spawn.easy_async("wifi",
---    function(result)
---      if string.match(result, "on") then
---        markupColour(wifiIcon, beautiful.fg, beautiful.bg, "") -- 
---      end
---      if string.match(result, "off") then
---        markupColour(wifiIcon, beautiful.red, beautiful.bg, "  ")
---      end
---    end)
---  end
---}
+--todo
 ----- [ Stats ] -----------------------------------------------------------
---cpuIcon = wibox.widget.imagebox(gears.color.recolor_image(beautiful.cpu_icon, beautiful.fg))
---ramIcon = wibox.widget.imagebox(gears.color.recolor_image(beautiful.ram_icon, beautiful.fg))
-
 -- The actual progress bar
 cpuBarInfo =  wibox.widget{
   max_value     = 100,
