@@ -77,8 +77,6 @@ configuration {
   margin:                         0;
 }
 
-@import "dynamic.rasi"
-
 #window {
     border:             7px;
     padding:            0px;

@@ -10,6 +10,9 @@ keynav "loadconfig ~/.config/keynav/.keynavrc"
 keyctl link @u @s
 # this makes the graphical "enter your password" thing work
 mate-polkit
+# needed for talon, i hate it here
+snixembed &
+talon &
 redshift & 
 # -- [ Machine Specific ] ---------------------------------------------------- #
 {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
