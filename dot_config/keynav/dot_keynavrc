@@ -17,13 +17,13 @@
 ################################################################################
 
 # ---[ Basic ]---------------------------------------------------------------- #
-clear                    # Clear all default bindings
-daemonize                # Background keynav
+clear               # Clear all default bindings
+daemonize           # Background keynav
 
-ctrl+alt+r restart       # Should these fail, run `killall keynav` in a terminal
+ctrl+alt+r restart  # Should these fail, run `killall keynav` in a terminal
 ctrl+alt+q quit
 ctrl+alt+m loadconfig ~/.config/keynav/.inventory, end
-ctrl+t start             # This is global, ctrl+t in other programs won't work
+ctrl+t start 		# This is global, ctrl+t in other programs won't work
 Escape end
 
 j record
@@ -44,6 +44,10 @@ r cursorzoom 150 150
 a history-back
 ctrl+a history-back, warp
 
+u grid-nav on, grid 4x4
+y grid-nav off, grid 3x3, grid-nav on
+w grid-nav off, grid 2x2, grid-nav on
+q warp
 # ---[ Cut stuff ]------------------------------------------------------------ #
 n cut-left
 e cut-down
