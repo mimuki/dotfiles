@@ -134,7 +134,7 @@ awful.key({ modkey, "Control" }, "space",
 
 ----- [ Program Launchers ] ----------------------------------------------------
 
-awful.key({ modkey, }, "Return", function() urxvt:toggle() end,
+awful.key({ modkey, }, "Return", function() quakeTerminal:toggle() end,
           { description = "Toggle terminal"}),
 awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn(terminal) end,
           { description = "Terminal", group = "programs" }),

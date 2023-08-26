@@ -14,7 +14,7 @@ livecaptions = bling.module.scratchpad {
 }
 
 pyradio = bling.module.scratchpad {
-    command = "urxvt -name pyradio -e pyradio",
+    command = "xterm -name pyradio -e pyradio",
     rule = { instance = "pyradio" }, 
     sticky = true, -- Stick to every tag
     autoclose = true, -- Don't hide when focus lost
@@ -24,13 +24,13 @@ pyradio = bling.module.scratchpad {
     dont_focus_before_close  = true,                 
 }
 
-urxvt = bling.module.scratchpad {
-    command = "urxvt -name quake",
+quakeTerminal = bling.module.scratchpad {
+    command = "xterm -name quake",
     rule = { name = "quake" }, 
     sticky = false, -- Stick to every tag
     autoclose = false, -- Don't hide when focus lost
     floating = true, 
-    geometry = urxvtGeometry,
+    geometry = terminalGeometry,
     reapply = true, -- "Remember" manual position changes
     dont_focus_before_close  = true,                 
 }

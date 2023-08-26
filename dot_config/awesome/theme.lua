@@ -7,14 +7,14 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local theme = {}
 ----- [ Settings ] -------------------------------------------------------------
-theme.font              = "Greybeard 16px 23"-- "Andika Rats 18" 
+theme.font              =  "Cozette HiDpi 32"
 theme.notification_font = theme.font
 
 theme.dir = "~/.config/awesome/themes/"
 
 theme.wallpaper = theme.dir .. "dracula/goop_2.png"
 
-theme.hotkeys_font             = "Greybeard 16px 23"
+theme.hotkeys_font             = theme.font
 theme.hotkeys_description_font = theme.hotkeys_font
 ----- [ Colours ] --------------------------------------------------------------
 theme.black   = "#282a36"

@@ -7,7 +7,7 @@ local dpi = xresources.apply_dpi
 testing = false
 
 modkey = "Mod4" -- GUI/Super/Meta/Windows etc
-terminal = "urxvt"
+terminal = "xterm"
 editor = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -32,19 +32,19 @@ awful.layout.layouts = {
 -- This machine should be DESKRATS-2020MNT21
 frontTimeout = 300
 pyradioGeometry = {x=0, y=31, height=62, width=1906} 
-urxvtGeometry = {x=0, y=31, height=292, width=1906}
+terminalGeometry = {x=0, y=31, height=292, width=1906}
 notificationWidth = 600
 {{- else if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
 -- This machine should be LAPRATS-2023MNT21
 frontTimeout = 5
-pyradioGeometry = {x=0, y=40, height=62, width=1352}
-urxvtGeometry = {x=0, y=31, height=292, width=1352}
+pyradioGeometry = {x=0, y=27, height=62, width=1352}
+terminalGeometry = {x=0, y=27, height=292, width=1352}
 notificationWidth = 685
 
 {{ else }}
 -- This machine wasn't recognized by Chezmoi
 frontTimeout = 600
-pyradioGeometry = {x=0, y=40, height=62, width=1352}
+pyradioGeometry = {x=0, y=27, height=62, width=1352}
+terminalGeometry = {x=0, y=27, height=292, width=1352}
 notificationWidth = 600
-
 {{ end }}
