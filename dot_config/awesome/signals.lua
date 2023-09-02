@@ -26,10 +26,14 @@ end)
 
 -- Different focus colours for floating & tiled windows
 client.connect_signal("focus", function(c) 
-  if c.floating then
-    c.border_color = beautiful.accent_alt
+  if c.border_width == 1 then
+    c.border_color = beautiful.border_normal
   else
-    c.border_color = beautiful.border_focus
+    if c.floating then
+      c.border_color = beautiful.accent_alt
+    else
+      c.border_color = beautiful.border_focus
+    end
   end
 end)
 
@@ -47,12 +51,14 @@ client.connect_signal("property::minimized", function(c)
     c.minimized = false
 end)
 
--- No borders when rearranging only 1 non-floating or maximized client
+-- Extra thin borders when rearranging only 1 non-floating or maximized client
+-- Eventually i could update this to change colours based on...stuff
 screen.connect_signal("arrange", function (s)
     local only_one = #s.tiled_clients == 1
     for _, c in pairs(s.clients) do
         if only_one and not c.floating or c.maximized then
-            c.border_width = 0
+            c.border_width = 1
+            c.border_color = beautiful.border_normal
         else -- Thin borders for live captions
           if c.class == "livecaptions" then
             c.border_width = 1
