@@ -12,7 +12,6 @@ All the things you need if you're me. Works by using [Chezmoi](https://github.co
 - [feh, an image viewer](https://github.com/derf/feh)
 - [git, a version control system](https://github.com/git/git)
 - [keynav, a mouse replacement](https://github.com/jordansissel/keynav)
-- [kitty, a terminal](https://github.com/kovidgoyal/kitty)
 - [lxappearance, a GTK theme switcher](https://github.com/lxde/lxappearance)
 - [picom, a compositor](https://github.com/yshui/picom)
 - [pyradio, a terminal radio](https://github.com/coderholic/pyradio)
@@ -26,7 +25,7 @@ All the things you need if you're me. Works by using [Chezmoi](https://github.co
 - [Custom fonts](https://github.com/mimuki/dotfiles/tree/main/dot_fonts)
 
 ## Examples
-(note: somewhat outdated)
+(note: pretty outdated)
 ![screenshot_1](./examples/screenshot_1.png)
 
 ## Attribution
