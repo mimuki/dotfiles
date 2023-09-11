@@ -19,14 +19,26 @@ end
 spacer = wibox.widget.textbox(" ")
 ----- [ Per-screen widgets ] ---------------------------------------------------
 function tagList(s) -- Current tags
-  awful.tag(tagIcons, s, awful.layout.layouts[1])
+  layouts = awful.layout.layouts
+
+  tags = {
+    settings = {
+      { 
+        names  = { "1", "2", "3" },
+        -- Start at layout[n] on each tag
+        layout = { layouts[3], layouts[1], layouts[2] }
+  }}}
+
+  tags[s] = awful.tag(tags.settings[s.index].names, s, tags.settings[s.index].layout)
+
+  -- awful.tag(tagIcons, s, awful.layout.layouts[1])
   s.mytaglist = awful.widget.taglist {
-      screen  = s,
-      filter  = awful.widget.taglist.filter.all,
-      buttons = taglist_buttons,
-      style = {
-        font = "Monospace 9"
-      },
+    screen  = s,
+    filter  = awful.widget.taglist.filter.all,
+    buttons = taglist_buttons,
+    style = {
+      font = "Monospace 9"
+    },
     forced_height = 500,
     layout = wibox.layout.flex.vertical
   }
@@ -58,15 +70,15 @@ function layoutBox(s) -- Current tiling layout
   s.mylayoutbox = awful.widget.layoutbox(s)
   s.mylayoutbox:buttons(gears.table.join(
   --awful.button({ }, 1, function () awful.layout.inc( 1) end), 
-awful.button({}, 1, function() 
-  mainMenu:toggle(
-  {
-    coords = {
-      x = 0, 
-      y = 0 
-    }
-  })
-end),
+  awful.button({}, 1, function() 
+    mainMenu:toggle(
+    {
+      coords = {
+        x = 0, 
+        y = 0 
+      }
+    })
+  end),
 
   awful.button({ }, 3, function () awful.layout.inc(-1) end),
   awful.button({ }, 4, function () awful.layout.inc( 1) end),
@@ -148,20 +160,20 @@ formatColour(localDate, beautiful.date_fg, beautiful.date_bg, " %A, %b %e ")
 -- end
 ----- [ Battery indicator ] ---------------------------------------------------------
 batInfo = awful.widget.watch([[bash /home/mimuki/.config/awesome/scripts/bat.sh]], 5, function(widget, out)
-      batBarInfo.value = tonumber(out)
-      batNumber = math.floor((out/2))
-      if batNumber >=100 then
-        batText.text = "MAX"
-      else
-        batText.text = batNumber.."%"
-      end
-      -- If high usage, be kinda noticable
-      if tonumber(out) <= 50 then
-        batBarInfo.color = beautiful.warn
-      else
-        batBarInfo.color = beautiful.special
-      end
-    end)
+  batBarInfo.value = tonumber(out)
+  batNumber = math.floor((out/2))
+  if batNumber >=100 then
+    batText.text = "MAX"
+  else
+    batText.text = batNumber.."%"
+  end
+  -- If high usage, be kinda noticable
+  if tonumber(out) <= 50 then
+    batBarInfo.color = beautiful.warn
+  else
+    batBarInfo.color = beautiful.special
+  end
+end)
 
 batBarInfo =  wibox.widget{
   max_value     = 160,
@@ -195,11 +207,11 @@ bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh
   if tonumber(wattNumber) >= 20 then
     watts.markup = ""
   elseif tonumber(wattNumber) >= 15 then
-      watts.markup = "<span foreground='"..beautiful.bg.."' background='"..beautiful.red.."'>"..out.."</span>"
+    watts.markup = "<span foreground='"..beautiful.bg.."' background='"..beautiful.red.."'>"..out.."</span>"
   elseif tonumber(wattNumber) >= 7 then
-      watts.markup = "<span foreground='"..beautiful.bg.."' background='"..beautiful.warn.."'>"..out.."</span>"
+    watts.markup = "<span foreground='"..beautiful.bg.."' background='"..beautiful.warn.."'>"..out.."</span>"
   else
-      watts.markup = "<span foreground='"..beautiful.fg.."'>"..out.."</span>"
+    watts.markup = "<span foreground='"..beautiful.fg.."'>"..out.."</span>"
   end
 end)
 ----- [ Networking ] -----------------------------------------------------------

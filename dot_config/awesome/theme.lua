@@ -102,7 +102,7 @@ theme.menu_fg_focus  = theme.white
 theme.useless_gap       = dpi(0)
 theme.gap_single_client = false
 
-theme.border_width  = dpi(7)
+theme.border_width  = dpi(4)
 theme.border_normal = theme.hilight
 theme.border_focus  = theme.accent
 theme.border_marked = theme.special

@@ -21,7 +21,7 @@ function buildWibar(s)
       s.mytasklist,
       localDate,
       wibox.widget.systray(),
-      {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
+      {{- if eq .chezmoi.hostname "mango-L2123L" }}
       -- Display wifi and bluetooth information
       -- This section was added automatically by chezmoi
       blueIcon,
@@ -36,7 +36,7 @@ function buildWibar(s)
       cpuStack,
       ramStack,
       spacer,
-      {{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
+      {{- if eq .chezmoi.hostname "mango-L2123L" }}
       -- Display battery information
       -- This section was added automatically by chezmoi
       batStack,

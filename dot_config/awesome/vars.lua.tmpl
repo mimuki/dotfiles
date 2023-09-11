@@ -1,24 +1,16 @@
---------------------------------------------------------------------------------
---                                  vars.lua                                  --
---------------------------------------------------------------------------------
+-- This config was generated for {{ .chezmoi.hostname }}
+
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi 
 ----- [ General ] --------------------------------------------------------------
 testing = false
 
-modkey = "Mod4" -- GUI/Super/Meta/Windows etc
-terminal = "xterm"
-editor = os.getenv("EDITOR") or "vim"
+modkey     = "Mod4" -- GUI/Super/Meta/Windows etc
+terminal   = "xterm"
+editor     = os.getenv("EDITOR") or "vim"
 editor_cmd = terminal .. " -e " .. editor
-
 homeRow = {"a", "r", "s", "t", "g", "m", "n", "e", "i", "o", "semicolon" }
-{{- if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
-totalTags = 3 -- Change to increase or decrease number of tags generated
-tagIcons = { " ", " ", " " }
-{{- else -}}
-totalTags = 5 
-tagIcons = { "•", "•", "•", "•", "•" }
-{{ end }}
+totalTags = 3 -- todo: get rid of this
 
 -- Enabled layouts
 awful.layout.layouts = {
@@ -27,24 +19,21 @@ awful.layout.layouts = {
   awful.layout.suit.max.fullscreen,
 }
 ----- [ Device Config ] -------------------------------------------------------
--- This is generated automatically by Chezmoi
 {{- if eq .chezmoi.hostname "DESKRATS-2020MNT21" }}
--- This machine should be DESKRATS-2020MNT21
 frontTimeout = 300
 pyradioGeometry = {x=0, y=31, height=62, width=1906} 
 terminalGeometry = {x=0, y=31, height=292, width=1906}
 notificationWidth = 600
-{{- else if eq .chezmoi.hostname "LAPRATS-2023MNT21" }}
--- This machine should be LAPRATS-2023MNT21
+{{- else if eq .chezmoi.hostname "mango-L2123L" }}
 frontTimeout = 5
-pyradioGeometry = {x=0, y=27, height=62, width=1352}
-terminalGeometry = {x=0, y=27, height=292, width=1352}
+pyradioGeometry = {x=0, y=27, height=62, width=1358}
+terminalGeometry = {x=0, y=27, height=292, width=1358}
 notificationWidth = 685
 
 {{ else }}
 -- This machine wasn't recognized by Chezmoi
 frontTimeout = 600
-pyradioGeometry = {x=0, y=27, height=62, width=1352}
-terminalGeometry = {x=0, y=27, height=292, width=1352}
+pyradioGeometry = {x=0, y=27, height=62, width=1358}
+terminalGeometry = {x=0, y=27, height=292, width=1358}
 notificationWidth = 600
 {{ end }}

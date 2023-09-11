@@ -26,7 +26,7 @@ end)
 
 -- Different focus colours for floating & tiled windows
 client.connect_signal("focus", function(c) 
-  if c.border_width == 1 then
+  if c.border_width == 2 then
     c.border_color = beautiful.border_normal
   else
     if c.floating then
@@ -57,8 +57,8 @@ screen.connect_signal("arrange", function (s)
     local only_one = #s.tiled_clients == 1
     for _, c in pairs(s.clients) do
         if only_one and not c.floating or c.maximized then
-            c.border_width = 1
-            c.border_color = beautiful.border_normal
+            c.border_width = 2
+            c.border_color = "#282a36"
         else -- Thin borders for live captions
           if c.class == "livecaptions" then
             c.border_width = 1
