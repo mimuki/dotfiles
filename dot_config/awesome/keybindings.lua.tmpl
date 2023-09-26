@@ -174,7 +174,16 @@ awful.key({ modkey, "Control" }, "space",
 
 awful.key({ modkey, }, "Return", function() quakeTerminal:toggle() end,
           { description = "Toggle terminal"}),
-awful.key({ modkey, "Shift"   }, "Return", function () awful.spawn(terminal) end,
+
+awful.key({ modkey, "Shift"   }, "Return", 
+  function ()
+    local t = awful.screen.focused().selected_tag
+    if t.name == "1" then
+      awful.spawn(terminal .. " -e tmux a") 
+      -- The actual normal behaviour
+      else awful.spawn(terminal) end
+
+  end,
           { description = "Terminal", group = "programs" }),
 
 awful.key({ modkey, }, "u", function()
