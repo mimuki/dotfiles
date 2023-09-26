@@ -1,0 +1,29 @@
+*.foreground: #F8F8F2
+*.background: #282A36
+! Black
+*.color0:     #44475a
+*.color8:     #6272a4
+! Red
+*.color1:     #FF5555
+*.color9:     #FF6E67
+! Green
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+! Yellow
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+! Purple
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+! Pink
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+! Blue
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+! White
+*.color7:     #f8f8f2
+*.color15:    #ffffff
+
+XTerm.vt100.faceName:CozetteHiDpi:size=26:antialias=false
+XTerm*metaSendsEscape: true
