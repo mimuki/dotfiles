@@ -23,15 +23,7 @@ awful.key({ modkey,           }, "Up", awful.tag.viewprev),
 awful.key({ modkey,           }, "n",
             function ()
               local t = awful.screen.focused().selected_tag
-              if t.name == "1" then
-                -- Doesn't seem to work without this
-                -- don't even think about releasing Super_L as well, though
-                -- you have been warned, it will make it switch faster
-                -- something something monkey's paw
-                root.fake_input('key_release', 'n' )
-                root.fake_input('key_press'  , 'F9')
-                root.fake_input('key_release', 'F9')
-                -- The actual normal behaviour
+              if t.name == "1" then os.execute("tmux previous-window") 
               else awful.client.focus.byidx(-1) end
             end,
           { description = "focus previous window", group = "window" }),
@@ -39,24 +31,14 @@ awful.key({ modkey,           }, "n",
 awful.key({ modkey,           }, "Left",
             function ()
               local t = awful.screen.focused().selected_tag
-              if t.name == "1" then
-                -- Doesn't seem to work without this
-                root.fake_input('key_release', 'Left')
-                root.fake_input('key_press'  , 'F9'  )
-                root.fake_input('key_release', 'F9'  )
-                -- The actual normal behaviour
+              if t.name == "1" then os.execute("tmux previous-window") 
               else awful.client.focus.byidx(-1) end
             end),
 
 awful.key({ modkey,           }, "o",
             function()
               local t = awful.screen.focused().selected_tag
-              if t.name == "1" then
-                -- Doesn't seem to work without this
-                root.fake_input('key_release', 'o'  )
-                root.fake_input('key_press'  , 'F10')
-                root.fake_input('key_release', 'F10')
-                -- The actual normal behaviour
+              if t.name == "1" then os.execute("tmux next-window") 
               else awful.client.focus.byidx( 1) end
             end,
           { description = "focus next window", group = "window" }),
@@ -65,12 +47,7 @@ awful.key({ modkey,           }, "o",
 awful.key({ modkey,           }, "Right",
             function()
               local t = awful.screen.focused().selected_tag
-              if t.name == "1" then
-                -- Doesn't seem to work without this
-                root.fake_input('key_release', 'Right')
-                root.fake_input('key_press'  , 'F10'  )
-                root.fake_input('key_release', 'F10'  )
-                -- The actual normal behaviour
+              if t.name == "1" then os.execute("tmux next-window") 
               else awful.client.focus.byidx( 1) end
             end),
 
