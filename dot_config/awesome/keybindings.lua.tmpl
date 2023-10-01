@@ -149,7 +149,12 @@ awful.key({ modkey, "Control" }, "space",
 
 ----- [ Program Launchers ] ----------------------------------------------------
 
-awful.key({ modkey, }, "Return", function() quakeTerminal:toggle() end,
+awful.key({ modkey, }, "Return", 
+            function ()
+              local t = awful.screen.focused().selected_tag
+              if t.name == "1" then os.execute("bash ~/.config/awesome/scripts/tmux_quake.sh") 
+              else quakeTerminal:toggle() end
+            end,
           { description = "Toggle terminal"}),
 
 awful.key({ modkey, "Shift"   }, "Return", 
