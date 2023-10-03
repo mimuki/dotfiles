@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-# Open current to do list
-exec vim "$HOME/Documents/Years/$(date "+%Y/%m %B/")To Do.md"
-

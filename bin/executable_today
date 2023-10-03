@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-# Open today's journal file (thanks jan Deni)
-exec vim "$HOME/Documents/Years/$(date "+%Y/%m %B/%A, %b %-d").md" -c "norm G$"
