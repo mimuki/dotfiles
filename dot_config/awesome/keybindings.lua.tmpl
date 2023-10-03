@@ -23,7 +23,9 @@ awful.key({ modkey,           }, "Up", awful.tag.viewprev),
 awful.key({ modkey,           }, "n",
             function ()
               local t = awful.screen.focused().selected_tag
-              if t.name == "1" then os.execute("tmux previous-window") 
+              if t.name == "1" then 
+                os.execute("tmux previous-window") 
+                os.execute("sh ~/.tmux/plugins/rat_scripts/statusbar.sh")
               else awful.client.focus.byidx(-1) end
             end,
           { description = "focus previous window", group = "window" }),
@@ -31,14 +33,18 @@ awful.key({ modkey,           }, "n",
 awful.key({ modkey,           }, "Left",
             function ()
               local t = awful.screen.focused().selected_tag
-              if t.name == "1" then os.execute("tmux previous-window") 
+              if t.name == "1" then 
+                os.execute("tmux previous-window") 
+                os.execute("sh ~/.tmux/plugins/rat_scripts/statusbar.sh")
               else awful.client.focus.byidx(-1) end
             end),
 
 awful.key({ modkey,           }, "o",
             function()
               local t = awful.screen.focused().selected_tag
-              if t.name == "1" then os.execute("tmux next-window") 
+              if t.name == "1" then 
+                os.execute("tmux next-window") 
+                os.execute("sh ~/.tmux/plugins/rat_scripts/statusbar.sh")
               else awful.client.focus.byidx( 1) end
             end,
           { description = "focus next window", group = "window" }),
@@ -47,7 +53,9 @@ awful.key({ modkey,           }, "o",
 awful.key({ modkey,           }, "Right",
             function()
               local t = awful.screen.focused().selected_tag
-              if t.name == "1" then os.execute("tmux next-window") 
+              if t.name == "1" then 
+                os.execute("tmux next-window") 
+                os.execute("sh ~/.tmux/plugins/rat_scripts/statusbar.sh")
               else awful.client.focus.byidx( 1) end
             end),
 

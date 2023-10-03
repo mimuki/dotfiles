@@ -171,7 +171,7 @@ batInfo = awful.widget.watch([[bash /home/mimuki/.config/awesome/scripts/bat.sh]
   if tonumber(out) <= 50 then
     batBarInfo.color = beautiful.warn
   else
-    batBarInfo.color = beautiful.special
+    batBarInfo.color = beautiful.hilight
   end
 end)
 
@@ -180,7 +180,7 @@ batBarInfo =  wibox.widget{
   value = batNumber,
   forced_height = 10,
   direction = 'east',
-  color = beautiful.special,
+  color = beautiful.fg,
   background_color = gears.color.transparent,
   widget        = wibox.widget.progressbar,
 }
@@ -223,7 +223,7 @@ cpuBarInfo =  wibox.widget{
   value = cpuNumber,
   forced_height = 10,
   direction = 'east',
-  color = beautiful.special,
+  color = beautiful.bg,
   background_color = gears.color.transparent,
   widget        = wibox.widget.progressbar,
 }
@@ -257,7 +257,7 @@ ramBarInfo =  wibox.widget{
   value = ramNumber,
   forced_height = 10,
   direction = 'east',
-  color = beautiful.special,
+  color = beautiful.bg,
   background_color = gears.color.transparent,
   widget        = wibox.widget.progressbar,
 }

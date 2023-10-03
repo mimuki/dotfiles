@@ -17,36 +17,36 @@ theme.wallpaper = theme.dir .. "dracula/goop_2.png"
 theme.hotkeys_font             = theme.font
 theme.hotkeys_description_font = theme.hotkeys_font
 ----- [ Colours ] --------------------------------------------------------------
-theme.black   = "#282a36"
-theme.hilight = "#44475a"
-theme.lolight = "#21222C"
-theme.white   = "#f8f8f2" 
-theme.red     = "#ff5555"
-theme.orange  = "#ffb86c"
-theme.yellow  = "#f1fa8c"
-theme.green   = "#50fa7b"
-theme.blue    = "#8be9fd"
-theme.purple  = "#bd93f9"
-theme.pink    = "#ff79c6"
-theme.special = "#6272a4"
+theme.black   = "#1a2b22"
+theme.hilight = "#ffbc56"
+theme.lolight = "#ff9f00"
+theme.white   = "#ffd477" 
+theme.red     = "#d90000"
+theme.orange  = "#ff9f00"
+theme.yellow  = "#ff9f00"
+theme.green   = "#009a5f"
+theme.blue    = "#8b4d98"
+theme.purple  = "#bd004c"
+theme.pink    = "#bd004c"
+theme.special = "#af0000"
 
-theme.accent        = theme.blue
+theme.accent        = theme.red
 theme.accent_fg     = theme.black 
-theme.accent_alt    = theme.pink
-theme.accent_alt_fg = theme.black
+theme.accent_alt    = theme.purple
+theme.accent_alt_fg = theme.white
 
 theme.error = theme.red 
 theme.warn  = theme.orange
 
-theme.bg = theme.black 
-theme.fg = theme.white
+theme.bg = theme.yellow
+theme.fg = theme.black
 ----- [ Widgets ] --------------------------------------------------------------
 theme.front_fg = theme.bg
 theme.front_bg = theme.orange
 theme.date_fg  = theme.fg
 theme.date_bg  = theme.hilight
-theme.time_fg  = theme.blue
-theme.time_bg  = theme.bg
+theme.time_fg  = theme.fg
+theme.time_bg  = theme.lolight
 ----- [ Background ] -----------------------------------------------------------
 theme.bg_normal     = theme.bg
 theme.bg_focus      = theme.hilight
@@ -55,17 +55,17 @@ theme.bg_systray    = theme.bg
 theme.bg_minimize   = theme.hilight
 
 theme.titlebar_bg_normal = theme.hilight
-theme.titlebar_bg_focus  = theme.accent
+theme.titlebar_bg_focus  = theme.black
 theme.titlebar_bg_urgent = theme.red
 
 theme.hotkeys_label_bg = theme.special
 
-theme.taglist_bg_focus    = theme.accent
-theme.taglist_bg_occupied = theme.special
+theme.taglist_bg_focus    = theme.black
+theme.taglist_bg_occupied = theme.yellow
 theme.taglist_bg_urgent   = theme.red
-theme.taglist_bg_empty    = theme.hilight
+theme.taglist_bg_empty    = theme.white
 
-theme.tasklist_bg_focus = theme.accent
+theme.tasklist_bg_focus = theme.yellow
 
 theme.tooltip_bg = theme.bg
 
@@ -74,37 +74,37 @@ theme.notifcation_bg = theme.bg
 theme.menu_bg_normal = theme.bg
 theme.menu_bg_focus  = theme.hilight
 ----- [ Foreground ] -----------------------------------------------------------
-theme.fg_normal     = theme.white
-theme.fg_focus      = theme.white
-theme.fg_urgent     = theme.white
-theme.fg_minimize   = theme.white
+theme.fg_normal     = theme.fg
+theme.fg_focus      = theme.fg
+theme.fg_urgent     = theme.fg
+theme.fg_minimize   = theme.fg
 
-theme.titlebar_fg_normal = theme.black
-theme.titlebar_fg_focus  = theme.black
-theme.titlebar_fg_urgent = theme.black
+theme.titlebar_fg_normal = theme.fg
+theme.titlebar_fg_focus  = theme.fg
+theme.titlebar_fg_urgent = theme.fg
 
-theme.hotkeys_modifiers_fg = theme.white
+theme.hotkeys_modifiers_fg = theme.fg
 
-theme.taglist_fg_focus    = theme.accent
-theme.taglist_fg_occupied = theme.special
+theme.taglist_fg_focus    = theme.black
+theme.taglist_fg_occupied = theme.yellow
 theme.taglist_fg_urgent   = theme.red
-theme.taglist_fg_empty    = theme.hilight
+theme.taglist_fg_empty    = theme.white
 
-theme.tasklist_fg_focus = theme.accent_fg
+theme.tasklist_fg_focus = theme.black
 
-theme.tooltip_fg = theme.white
+theme.tooltip_fg = theme.black
 
-theme.notifcation_fg = theme.white
+theme.notifcation_fg = theme.fg
 
-theme.menu_fg_normal = theme.white
-theme.menu_fg_focus  = theme.white
+theme.menu_fg_normal = theme.fg
+theme.menu_fg_focus  = theme.fg
 ----- [ Borders & Gaps ] -------------------------------------------------------
 theme.useless_gap       = dpi(0)
 theme.gap_single_client = false
 
 theme.border_width  = dpi(4)
 theme.border_normal = theme.hilight
-theme.border_focus  = theme.accent
+theme.border_focus  = theme.black
 theme.border_marked = theme.special
 
 theme.hotkeys_border_width = theme.border_width
@@ -184,9 +184,6 @@ theme.terminal_icon = theme.dir .."mimuki/icons/terminal.png"
 theme.folder_icon   = theme.dir .."mimuki/icons/folder.png"
 theme.window_icon   = theme.dir .."mimuki/icons/windows.png"
 theme.list_icon     = theme.dir .."mimuki/icons/list.png"
-
-theme.bat_icon          = theme.dir .."mimuki/icons/battery.png"
-theme.bat_charging_icon = theme.dir .."mimuki/icons/battery_charging.png"
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
