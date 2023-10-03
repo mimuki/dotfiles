@@ -7,7 +7,7 @@ echo "deb [signed-by=/usr/share/keyrings/syncthing-archive-keyring.gpg] https://
 # (if a program has additional install stpes, consider putting it's install
 # further down)
 sudo apt-get update
-sudo apt install awesome keynav rofi qutebrowser mate-polkit-bin jq tlp lxappearance git gh kdeconnect vim sublime-text picom mpv scrot xclip
+sudo apt install awesome keynav rofi mate-polkit-bin jq tlp lxappearance git gh kdeconnect vim picom mpv scrot xclip
 # --- [ Curl ] ------------------------------------------------------- #
 # Some stuff needs special installation
 # nvm
