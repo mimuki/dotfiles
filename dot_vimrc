@@ -15,9 +15,9 @@ set shiftwidth=2    " Number of auto-indent spaces
 set smartindent	    " Enable smart-indent
 set smarttab        " Enable smart-tabs
 set softtabstop=2   " Number of spaces per Tab
- 
+
 set ruler           " Show row and column ruler information
- 
+
 set undolevels=1000 " Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
 
@@ -48,9 +48,13 @@ Plug 'ap/vim-css-color' " show colours highlighted as that colour
 Plug 'vimwiki/vimwiki' " personal wiki
 call plug#end()
 " --- [ Theme ] -------------------------------------------------------------- "
+" Support all of the colours if you can
+if (has("termguicolors"))
+  set termguicolors
+endif
 "let g:dracula_colorterm = 0 " Unset terminal background colour
-"colorscheme dracula
-highlight CursorLine ctermbg=black cterm=none
+"colorscheme sunshine
+highlight CursorLine ctermbg=yellow cterm=none
 " --- [ Goyo ] --------------------------------------------------------------- "
 " On window resize, if goyo is active, do <c-w>= to resize the window
 autocmd VimResized * if exists('#goyo') | exe "normal \<c-w>=" | endif

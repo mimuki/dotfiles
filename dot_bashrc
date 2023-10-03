@@ -8,9 +8,22 @@ case $- in
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See bash(1) for more options
-HISTCONTROL=ignoreboth
+# Aliases
+function find_largest() { 
+  du -h -x -s -- * | sort -r -h | head -5 | tac 
+}
+alias scrc='scrcpy --shortcut-mod=ralt,lalt --hid-keyboard --turn-screen-off'
+alias la='ls -A --color=auto --group-directories-first'
+alias cim='chezmoi edit'
+alias capply='chezmoi apply'
+alias cappy='chezmoi apply'
+
+# History related stuff
+# don't put duplicate lines  in the history.
+HISTCONTROL=ignoredups
+
+# customize the timestamps in the history command
+HISTTIMEFORMAT='%d/%m %I:%M %p '
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -23,10 +36,6 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# If set, the pattern "**" used in a pathname expansion context will
-# match all files and zero or more directories and subdirectories.
-#shopt -s globstar
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -35,47 +44,10 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
-esac
-
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
-
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+    alias ls='ls --color=auto --group-directories-first'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
 
@@ -87,11 +59,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-alias scrc='scrcpy --shortcut-mod=ralt,lalt --hid-keyboard --turn-screen-off'
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -116,10 +83,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 # Default custom prompt
 #PS1='\[\e[0;35m\]\u\[\e[0m\]@\[\e[0;34m\]\h\[\e[0m\][\[\e[0;96m\]\w\[\e[0m\]] \[\e[0m\]'
 PS1='\[\e[35m\]$(hostname|head -c 5)\[\e[0m\][\[\e[96m\]\w\[\e[0m\]] '
@@ -128,11 +91,11 @@ if { [ "$TERM" = "xterm-256color" ] && [ -n "$TMUX" ]; } then
   PS1='$(bash /home/mimuki/.tmux/plugins/rat_scripts/colours.sh)'
 fi
 
-
 # Invert colours when ssh'd
 if [ -n "$SSH_CLIENT" ]; then 
   export PS1='\[\e[0;7;35m\]\u\[\e[0;7m\]@\[\e[0;7;34m\]\h\[\e[0;7m\][\[\e[0;7;96m\]\w\[\e[0;7m\]]\[\e[0m\] \[\e[0m\]'
 fi
+
 # pretty colours when using the TTY
 if [ "$TERM" = "linux" ]; then
 	printf %b '\e[40m' '\e[8]' # set default background to color 0 'dracula-bg'
