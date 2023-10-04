@@ -81,6 +81,7 @@ STICKY 37;44;01 # dir with the sticky bit set (+t) and not other-writable
 .rar 01;37;41
 .7z 01;37;41
 # Temp files
+.TODO 01;37;41
 .swp 35;38;5;173;01;05
 .bak 35;38;5;173;01;05
 .backup 32
