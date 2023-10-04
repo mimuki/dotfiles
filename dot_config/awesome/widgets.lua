@@ -32,15 +32,12 @@ function tagList(s) -- Current tags
   tags[s] = awful.tag(tags.settings[s.index].names, s, tags.settings[s.index].layout)
 
   -- awful.tag(tagIcons, s, awful.layout.layouts[1])
+  
   s.mytaglist = awful.widget.taglist {
     screen  = s,
-    filter  = awful.widget.taglist.filter.all,
-    buttons = taglist_buttons,
-    style = {
-      font = "Monospace 9"
-    },
-    forced_height = 500,
-    layout = wibox.layout.flex.vertical
+    -- Only show the current tag name
+    filter  = awful.widget.taglist.filter.selected,
+    buttons = taglist_buttons
   }
 end
 
@@ -140,7 +137,7 @@ end)
 localTime = wibox.widget.textclock()
 localDate = wibox.widget.textclock()
 -- Set their colours
-formatColour(localTime, beautiful.time_fg, beautiful.time_bg, "%I:%M %P")
+formatColour(localTime, beautiful.time_fg, beautiful.time_bg, " %I:%M %P ")
 formatColour(localDate, beautiful.date_fg, beautiful.date_bg, " %A, %b %e ")
 ----- [ Volume indicator ] -----------------------------------------------------------
 --todo
@@ -165,13 +162,13 @@ batInfo = awful.widget.watch([[bash /home/mimuki/.config/awesome/scripts/bat.sh]
   if batNumber >=100 then
     batText.text = "MAX"
   else
-    batText.text = batNumber.."%"
+    batText.text = " "..batNumber.."% " 
   end
   -- If high usage, be kinda noticable
   if tonumber(out) <= 50 then
     batBarInfo.color = beautiful.warn
   else
-    batBarInfo.color = beautiful.hilight
+    batBarInfo.color = beautiful.yellowLighter
   end
 end)
 
@@ -181,7 +178,7 @@ batBarInfo =  wibox.widget{
   forced_height = 10,
   direction = 'east',
   color = beautiful.fg,
-  background_color = gears.color.transparent,
+  background_color = beautiful.yellowLighter, -- gears.color.transparent,
   widget        = wibox.widget.progressbar,
 }
 -- but its rotatified, to be vertical
@@ -207,11 +204,11 @@ bash /home/mimuki/.local/share/chezmoi/dot_config/awesome/scripts/watts.sh
   if tonumber(wattNumber) >= 20 then
     watts.markup = ""
   elseif tonumber(wattNumber) >= 15 then
-    watts.markup = "<span foreground='"..beautiful.bg.."' background='"..beautiful.red.."'>"..out.."</span>"
+    watts.markup = "<span foreground='"..beautiful.fg.."' background='"..beautiful.red.."'> "..out.." </span>"
   elseif tonumber(wattNumber) >= 7 then
-    watts.markup = "<span foreground='"..beautiful.bg.."' background='"..beautiful.warn.."'>"..out.."</span>"
+    watts.markup = "<span foreground='"..beautiful.fg.."' background='"..beautiful.warn.."'> "..out.." </span>"
   else
-    watts.markup = "<span foreground='"..beautiful.fg.."'>"..out.."</span>"
+    watts.markup = "<span foreground='"..beautiful.fg.."'>"..out.." </span>"
   end
 end)
 ----- [ Networking ] -----------------------------------------------------------

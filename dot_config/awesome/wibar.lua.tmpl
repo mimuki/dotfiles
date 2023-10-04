@@ -14,9 +14,9 @@ function buildWibar(s)
     layout = wibox.layout.align.horizontal,
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
-      s.mylayoutbox,
-      s.mytaglist,
+      --s.mylayoutbox,
       s.mytasklist,
+      s.mytaglist,
       localDate,
       wibox.widget.systray(),
       {{- if eq .chezmoi.hostname "mango-L2123L" }}
@@ -42,8 +42,7 @@ function buildWibar(s)
       watts,
       spacer,
       {{- end }}
-      wibox.container.background(localTime, beautiful.blue),
-      spacer
+      wibox.container.background(localTime, beautiful.blue)
     }
   }
 end

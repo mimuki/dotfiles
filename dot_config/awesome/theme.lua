@@ -7,7 +7,7 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local theme = {}
 ----- [ Settings ] -------------------------------------------------------------
-theme.font              =  "Cozette HiDpi 32"
+theme.font              =  "Cozette 32"
 theme.notification_font = theme.font
 
 theme.dir = "~/.config/awesome/themes/"
@@ -17,18 +17,21 @@ theme.wallpaper = theme.dir .. "dracula/goop_2.png"
 theme.hotkeys_font             = theme.font
 theme.hotkeys_description_font = theme.hotkeys_font
 ----- [ Colours ] --------------------------------------------------------------
-theme.black   = "#1a2b22"
+theme.black   = "#1c1c1c"
 theme.hilight = "#ffbc56"
-theme.lolight = "#ff9f00"
+theme.lolight = "#ffaf00"
 theme.white   = "#ffd477" 
 theme.red     = "#d90000"
 theme.orange  = "#ff9f00"
-theme.yellow  = "#ff9f00"
+theme.yellow  = "#ffaf00"
 theme.green   = "#009a5f"
 theme.blue    = "#8b4d98"
 theme.purple  = "#bd004c"
 theme.pink    = "#bd004c"
 theme.special = "#af0000"
+
+
+theme.yellowLighter = "#ffbc56"
 
 theme.accent        = theme.red
 theme.accent_fg     = theme.black 
@@ -46,7 +49,7 @@ theme.front_bg = theme.orange
 theme.date_fg  = theme.fg
 theme.date_bg  = theme.hilight
 theme.time_fg  = theme.fg
-theme.time_bg  = theme.lolight
+theme.time_bg  = theme.yellowLighter
 ----- [ Background ] -----------------------------------------------------------
 theme.bg_normal     = theme.bg
 theme.bg_focus      = theme.hilight
@@ -60,12 +63,12 @@ theme.titlebar_bg_urgent = theme.red
 
 theme.hotkeys_label_bg = theme.special
 
-theme.taglist_bg_focus    = theme.black
+theme.taglist_bg_focus    = theme.yellow
 theme.taglist_bg_occupied = theme.yellow
 theme.taglist_bg_urgent   = theme.red
 theme.taglist_bg_empty    = theme.white
 
-theme.tasklist_bg_focus = theme.yellow
+theme.tasklist_bg_focus = theme.yellowLighter
 
 theme.tooltip_bg = theme.bg
 
@@ -85,7 +88,7 @@ theme.titlebar_fg_urgent = theme.fg
 
 theme.hotkeys_modifiers_fg = theme.fg
 
-theme.taglist_fg_focus    = theme.black
+theme.taglist_fg_focus    = theme.fg
 theme.taglist_fg_occupied = theme.yellow
 theme.taglist_fg_urgent   = theme.red
 theme.taglist_fg_empty    = theme.white
@@ -119,6 +122,9 @@ theme.notification_border_width = theme.border_width
 
 theme.menu_border_color = theme.accent_alt
 theme.menu_border_width = theme.border_width
+
+theme.wibar_border_width = dpi(4)
+theme.wibar_border_color = "#ffd477"
 
 theme.notification_width  = notificationWidth
 -- task list
