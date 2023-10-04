@@ -47,14 +47,14 @@ theme.fg = theme.black
 theme.front_fg = theme.bg
 theme.front_bg = theme.orange
 theme.date_fg  = theme.fg
-theme.date_bg  = theme.hilight
+theme.date_bg  = theme.bg
 theme.time_fg  = theme.fg
 theme.time_bg  = theme.yellowLighter
 ----- [ Background ] -----------------------------------------------------------
 theme.bg_normal     = theme.bg
 theme.bg_focus      = theme.hilight
 theme.bg_urgent     = theme.red
-theme.bg_systray    = theme.bg
+theme.bg_systray    = theme.yellowLighter
 theme.bg_minimize   = theme.hilight
 
 theme.titlebar_bg_normal = theme.hilight

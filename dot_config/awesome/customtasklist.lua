@@ -462,10 +462,9 @@ local function tasklist_label(c, args, tb)
 
     if not disable_task_name then
         if c.minimized then
-            name = name .. (gstring.xml_escape(c.icon_name) or gstring.xml_escape(firstToUpper(c.class)) or
-                            gstring.xml_escape("<untitled>"))
+            name = name .. (gstring.xml_escape(c.icon_name) or gstring.xml_escape(firstToUpper(c.class)))
         else
-            name = name .. " " .. (gstring.xml_escape(firstToUpper(c.class)) .. " " or gstring.xml_escape(" <untitled> "))
+            name = name .. gstring.xml_escape(firstToUpper(c.class))
         end
     end
 

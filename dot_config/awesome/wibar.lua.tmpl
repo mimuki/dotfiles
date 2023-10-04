@@ -14,9 +14,7 @@ function buildWibar(s)
     layout = wibox.layout.align.horizontal,
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
-      --s.mylayoutbox,
       s.mytasklist,
-      s.mytaglist,
       localDate,
       wibox.widget.systray(),
       {{- if eq .chezmoi.hostname "mango-L2123L" }}
@@ -34,6 +32,7 @@ function buildWibar(s)
       cpuStack,
       ramStack,
       spacer,
+      s.mytaglist,
       {{- if eq .chezmoi.hostname "mango-L2123L" }}
       -- Display battery information
       -- This section was added automatically by chezmoi
