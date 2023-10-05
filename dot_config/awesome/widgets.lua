@@ -4,6 +4,8 @@
 ----- [ Dependencies ] ---------------------------------------------------------
 json = require("lunajson")
 require("vars")
+-- i really need to find out why removing this breaks things
+-- i thought i stopped using this
 require("dynamic_theme")
 
 function testNotify(message)
@@ -289,3 +291,6 @@ end)
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
+
+desktopText = wibox.widget.textbox("") 
+desktop = wibox.container.background(desktopText, beautiful.yellowLighter)

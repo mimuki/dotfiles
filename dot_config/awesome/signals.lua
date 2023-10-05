@@ -39,6 +39,12 @@ end)
 
 client.connect_signal("unfocus", function(c) 
   c.border_color = beautiful.border_normal 
+  -- I'm surprised this works, tbh
+  awful.spawn.easy_async_with_shell("sleep 0.00005", function()
+        if client.focus == nil then 
+          desktopText.text = " Desktop " 
+        end
+    end)
 end)
 
 client.connect_signal("property::floating", function(c)
@@ -55,6 +61,7 @@ end)
 -- Eventually i could update this to change colours based on...stuff
 screen.connect_signal("arrange", function (s)
     local only_one = #s.tiled_clients == 1
+    if #s.tiled_clients >= 1 then desktopText.text = "" end
     for _, c in pairs(s.clients) do
         if only_one and not c.floating or c.maximized then
             c.border_width = 2
@@ -68,7 +75,7 @@ screen.connect_signal("arrange", function (s)
             c.border_width = beautiful.border_width 
           end
         end
-    end
+      end
 end)
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)

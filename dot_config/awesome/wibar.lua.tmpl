@@ -14,6 +14,7 @@ function buildWibar(s)
     layout = wibox.layout.align.horizontal,
     { -- Left widgets
       layout = wibox.layout.fixed.horizontal,
+      desktop,
       s.mytasklist,
       localDate,
       wibox.widget.systray(),
