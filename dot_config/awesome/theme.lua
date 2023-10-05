@@ -11,8 +11,7 @@ theme.font              =  "Cozette 32"
 theme.notification_font = theme.font
 
 theme.dir = "~/.config/awesome/themes/"
-
-theme.wallpaper = theme.dir .. "dracula/goop_2.png"
+theme.wallpaper = "~/Pictures/Wallpapers/Observe3.png"
 
 theme.hotkeys_font             = theme.font
 theme.hotkeys_description_font = theme.hotkeys_font

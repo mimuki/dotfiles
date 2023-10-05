@@ -50,7 +50,7 @@ function taskList(s)
   -- For reasons I don't understand, the margins are slightly off
   -- even though just using spaces is fine for the other widgets
   -- so... idk
-  s.mytasklist = wibox.container.margin(mytasklist, 10, 10, 0, 0, beautiful.yellowLighter)
+  s.mytasklist = wibox.container.margin(mytasklist, 10, 10, 0, 0, beautiful.yellowLighter, false)
 end
 taglist_buttons = gears.table.join(
 awful.button({ }, 1, function(t) t:view_only() end),
