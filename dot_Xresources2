@@ -1,0 +1,41 @@
+*.foreground: #1a1b22
+*.background: #ffd477
+! Black
+*.color0:     #1c1c1c
+*.color8:     #585858
+! Red
+*.color1:     #af0000
+*.color9:     #d70000 
+! Green
+*.color2:     #005f5f 
+*.color10:    #00875f 
+! Yellow
+*.color3:     #b67200
+*.color11:    #ffaf00 
+! Purple
+*.color4:     #5f005f
+*.color12:    #875f87
+! Pink 
+*.color5:     #af005f
+*.color13:    #d7005f
+! Cyan
+*.color6:     #005f87
+*.color14:    #0087d7
+! White
+*.color7:     #d7afaf
+*.color15:    #f8f8f2
+
+uRxvt.font:xft:Greybeard:pixelsize=32
+URxvt.italicFont: xft:Greybeard 16px:style=Italic
+URxvt.scrollBar: false
+
+! reasonable autoscroll
+URxvt.scrollTtyOutput:      false
+URxvt.scrollWithBuffer:     true
+URxvt.scrollTtyKeypress:    true
+! padding between edge of terminal and text
+URxvt.internalBorder: 2
+
+URxvt.letterSpace: 0
+
+XTerm.vt100.faceName:CozetteHiDpi:size=26:antialias=false
