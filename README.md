@@ -4,7 +4,10 @@ All the things you need if you're me. Works by using [Chezmoi](https://github.co
 this is the shitty testing debian version so ignore these docs they are wrong and bad
 
 # How to use
-` sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply mimuki` installs chezmoi + my config onto a new machine. `chezmoi update` to get the latest changes from github. `chezmoi apply` to apply any local changes to your actual dotfiles. Anything else you need to know should be in the [chezmoi documentation](https://www.chezmoi.io/quick-start/#next-steps).
+`sudo sh -c "$(wget -qO get.chezmoi.io)" -- -b /bin`
+`chezmoi init mimuki --branch debian`
+
+installs chezmoi + my config onto a new machine. `chezmoi update` to get the latest changes from github. `chezmoi apply` to apply any local changes to your actual dotfiles. Anything else you need to know should be in the [chezmoi documentation](https://www.chezmoi.io/quick-start/#next-steps).
 
 ## Currently included:
 - [awesomeWM, a tiling window manager](https://github.com/awesomeWM/awesome)

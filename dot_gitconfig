@@ -1,14 +1,11 @@
 [user]
 	email = 60542090+mimuki@users.noreply.github.com
 	name = mimuki
-	signingkey = 359768CF3EC6F6C0
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
-[commit]
-	gpgsign = true
 [init]
 	defaultBranch = main
