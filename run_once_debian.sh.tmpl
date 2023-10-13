@@ -1,0 +1,5 @@
+{{ if eq .chezmoi.osRelease.id "debian" -}}
+#!/bin/sh
+# Enable bitmap fonts
+sudo dpkg-reconfigure fontconfig-config
+{{ end -}}
