@@ -2,8 +2,10 @@
 #TODO: learn how arrays work
 sudo apt-get update
 # Makes installing programs less verbose
-sudo apt-get install -qq -o=Dpkg::Use-Pty=0 awesome keynav rofi gammastep tlp git gh kdeconnect vim mpv scrot xclip xterm tmux curl rc gawk brightnessctl
-
+sudo apt-get install -qq -o=Dpkg::Use-Pty=0 awesome keynav rofi gammastep tlp git gh kdeconnect vim mpv scrot xclip xterm tmux curl rc gawk brightnessctl dex
+# literally need all of this for talon (because snixembed)
+# todo: in a fresh install see what you really need just in case
+sudo apt-get install -qq -o=Dpkg::Use-Pty=0 make valac libdbusmenu-gtk-dev libdbusmenu-glib-dev libdbusmenu-gtk3-dev
 # All the weird non-apt stuff
 if ! [ -x "$(command -v msync)" ]
 then
@@ -22,7 +24,17 @@ then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install --all
 fi
+# Talon
+if ! [ -x "$(command -v snixembed)" ]
+then
+  #TEMP_FILE="$(mktemp)" &&
+  #wget -O "$TEMP_FILE" 'https://talonvoice.com/dl/latest/talon-linux.tar.xz' &&
+  #tar -xf "$TEMP_FILE" --directory ~/.talon
+  git clone https://git.sr.ht/~steef/snixembed 
+  cd snixembed
+  sudo make install --quiet
+  rm ../snixembed -rf
+fi
 
 echo All done!
 #printf '%s\n' "${ALERTS[@]}"
-
