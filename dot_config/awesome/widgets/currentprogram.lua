@@ -29,8 +29,7 @@ function taskList(s)
         id     = "background_role",
         widget = wibox.container.background,
       },
-      left = 4,
-      right = 4,
+      left = 3,
       widget = wibox.container.margin
     }
   }
