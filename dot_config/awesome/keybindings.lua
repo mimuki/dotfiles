@@ -34,12 +34,18 @@ awful.key(
   { modkey,           }, "Down",  awful.tag.viewnext,
   { description = "view next tag", group = "tag management" }),
 
+awful.key({ modkey,           }, "i",   awful.tag.viewprev),
+awful.key({ modkey,           }, "e",  awful.tag.viewnext),
+
 awful.key(
   { modkey,           }, "Right", function () awful.client.focus.byidx( 1) end,
   { description = "focus next by index", group = "client" }),
 awful.key(
   { modkey,           }, "Left", function () awful.client.focus.byidx(-1) end,
   { description = "focus previous by index", group = "client" }),
+
+awful.key({ modkey, }, "o", function () awful.client.focus.byidx( 1) end),
+awful.key({ modkey, }, "n",  function () awful.client.focus.byidx(-1) end),
 
 -- Layout manipulation
 awful.key(
@@ -48,6 +54,10 @@ awful.key(
 awful.key(
   { modkey, "Shift"   }, "Left", function () awful.client.swap.byidx( -1) end,
   { description = "swap with previous client by index", group = "client" }),
+
+
+awful.key({ modkey, "Shift" }, "o", function () awful.client.swap.byidx(  1) end),
+awful.key({ modkey, "Shift" }, "n", function () awful.client.swap.byidx( -1) end),
 
 awful.key(
   { modkey,           }, "u", awful.client.urgent.jumpto,

@@ -59,6 +59,9 @@ endif
 
 colorscheme sunshine
 set t_Co=256
+
+" no background
+hi Normal guibg=NONE ctermbg=NONE
 " }}}
 " Goyo {{{ 
 " On window resize, if goyo is active, do <c-w>= to resize the window
