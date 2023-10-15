@@ -25,7 +25,7 @@ awful.layout.layouts = {
 -- Change the names (and amount of) tags you have.
 tagNames = { "", "", "" }
 
-terminal = "kitty"
+terminal = "xterm"
 editor = os.getenv("EDITOR") or "vim"
 -- Used in the main menu- you can edit your config however you like,
 -- but a fallback is nice for when you've accidentally broken stuff
