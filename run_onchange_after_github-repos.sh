@@ -14,11 +14,11 @@ fi
 
 if [ ! -d "~/.talon/user/rango" ]
 then
-  git clone https://github.com/david-tejada/rango-talon ~/.talon/user/rango
+  git clone https://github.com/david-tejada/rango-talon ~/.talon/user/rango-talon
 fi
 if [ ! -d "~/.talon/user/cursorless" ]
 then
-  git clone https://github.com/cursorless-dev/cursorless-talon ~/.talon/user/cursorless
+  git clone https://github.com/cursorless-dev/cursorless-talon ~/.talon/user/cursorless-talon
 fi
 if [ ! -d "~/.talon/user/personal" ]
 then
