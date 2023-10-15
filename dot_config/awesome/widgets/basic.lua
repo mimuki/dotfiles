@@ -22,38 +22,3 @@ taglist_buttons = gears.table.join(
 	awful.button({ }, 5, function(t) awful.tag.viewprev(t.screen) end)
 )
 
-tasklist_buttons = gears.table.join(
-	awful.button({ }, 1, function (c)
-	  if c == client.focus then
-	    c.minimized = true
-	  else
-	    c:emit_signal(
-	    "request::activate",
-	    "tasklist",
-	    {raise = true}
-	    )
-	  end
-	end),
-	awful.button({ }, 3, function()
-	  awful.menu.client_list({ theme = { width = 250 } })
-	end),
-	awful.button({ }, 4, function ()
-	  awful.client.focus.byidx(1)
-	end),
-	awful.button({ }, 5, function ()
-	  awful.client.focus.byidx(-1)
-	end)
-)
-
--- TODO PUT THIS IN ITS OWN FILE FUCKER
-function taskList(s) 
-  mytasklist = require("widgets/customtasklist")
-  mytasklist = mytasklist {
-    screen  = s,
-    filter  = awful.widget.tasklist.filter.focused
-  }
-  -- For reasons I don't understand, the margins are slightly off
-  -- even though just using spaces is fine for the other widgets
-  -- so... idk
-  s.mytasklist = wibox.container.margin(mytasklist, 10, 10, 0, 0, beautiful.bg, false)
-end

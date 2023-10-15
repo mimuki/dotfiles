@@ -96,11 +96,7 @@ local function tasklist_label(c, args, tb)
     end
 
     if not disable_task_name then
-        if c.minimized then
-            name = name .. (gstring.xml_escape(c.icon_name) or gstring.xml_escape(firstToUpper(c.class)))
-        else
-            name = name .. gstring.xml_escape(firstToUpper(c.class))
-        end
+        name = name .. gstring.xml_escape(c.class)
     end
 
     local focused = capi.client.focus == c
@@ -147,29 +143,7 @@ local function tasklist_label(c, args, tb)
         if args.shape_border_color_urgent or theme.tasklist_shape_border_color_urgent then
             shape_border_color = args.shape_border_color_urgent or theme.tasklist_shape_border_color_urgent
         end
-    elseif c.minimized then
-        bg = bg_minimize
-        text = text .. "<span color='"..fg_minimize.."'>"..name.."</span>"
-        bg_image = bg_image_minimize
-        font = font_minimized
-
-        if args.shape_minimized or theme.tasklist_shape_minimized then
-            shape = args.shape_minimized or theme.tasklist_shape_minimized
-        end
-
-        if args.shape_border_width_minimized or theme.tasklist_shape_border_width_minimized then
-            shape_border_width = args.shape_border_width_minimized or theme.tasklist_shape_border_width_minimized
-        end
-
-        if args.shape_border_color_minimized or theme.tasklist_shape_border_color_minimized then
-            shape_border_color = args.shape_border_color_minimized or theme.tasklist_shape_border_color_minimized
-        end
-    else
-        bg = bg_normal
-        text = text .. "<span color='"..fg_normal.."'>"..name.."</span>"
-        bg_image = bg_image_normal
-    end
-
+    end 
     if tb then
         tb:set_font(font)
     end
@@ -210,56 +184,6 @@ end
 -- and pass it as update_function here. Also change the layout if the
 -- default is not what you want.
 --
--- @tparam table args
--- @tparam screen args.screen The screen to draw tasklist for.
--- @tparam function args.filter Filter function to define what clients will be listed.
--- @tparam table args.buttons A table with buttons binding to set.
--- @tparam[opt] function args.update_function Function to create a tag widget on each
---   update. See `awful.widget.common.list_update`.
--- @tparam[opt] table args.layout Container widget for tag widgets. Default
---   is `wibox.layout.flex.horizontal`.
--- @tparam[opt=awful.tasklist.source.all_clients] function args.source The
---  function used to generate the list of client.
--- @tparam[opt] table args.widget_template A custom widget to be used for each client
--- @tparam[opt={}] table args.style The style overrides default theme.
--- @tparam[opt=nil] string|pattern args.style.fg_normal
--- @tparam[opt=nil] string|pattern args.style.bg_normal
--- @tparam[opt=nil] string|pattern args.style.fg_focus
--- @tparam[opt=nil] string|pattern args.style.bg_focus
--- @tparam[opt=nil] string|pattern args.style.fg_urgent
--- @tparam[opt=nil] string|pattern args.style.bg_urgent
--- @tparam[opt=nil] string|pattern args.style.fg_minimize
--- @tparam[opt=nil] string|pattern args.style.bg_minimize
--- @tparam[opt=nil] string args.style.bg_image_normal
--- @tparam[opt=nil] string args.style.bg_image_focus
--- @tparam[opt=nil] string args.style.bg_image_urgent
--- @tparam[opt=nil] string args.style.bg_image_minimize
--- @tparam[opt=nil] boolean args.style.tasklist_disable_icon
--- @tparam[opt=false] boolean args.style.disable_task_name
--- @tparam[opt=nil] string args.style.font
--- @tparam[opt=left] string args.style.align *left*, *right* or *center*
--- @tparam[opt=nil] string args.style.font_focus
--- @tparam[opt=nil] string args.style.font_minimized
--- @tparam[opt=nil] string args.style.font_urgent
--- @tparam[opt=nil] number args.style.spacing The spacing between tags.
--- @tparam[opt=nil] gears.shape args.style.shape
--- @tparam[opt=nil] number args.style.shape_border_width
--- @tparam[opt=nil] string|color args.style.shape_border_color
--- @tparam[opt=nil] gears.shape args.style.shape_focus
--- @tparam[opt=nil] number args.style.shape_border_width_focus
--- @tparam[opt=nil] string|color args.style.shape_border_color_focus
--- @tparam[opt=nil] gears.shape args.style.shape_minimized
--- @tparam[opt=nil] number args.style.shape_border_width_minimized
--- @tparam[opt=nil] string|color args.style.shape_border_color_minimized
--- @tparam[opt=nil] gears.shape args.style.shape_urgent
--- @tparam[opt=nil] number args.style.shape_border_width_urgent
--- @tparam[opt=nil] string|color args.style.shape_border_color_urgent
--- @param filter **DEPRECATED** use args.filter
--- @param buttons **DEPRECATED** use args.buttons
--- @param style **DEPRECATED** use args.style
--- @param update_function **DEPRECATED** use args.update_function
--- @param base_widget **DEPRECATED** use args.base_widget
--- @function awful.tasklist
 function tasklist.new(args, filter, buttons, style, update_function, base_widget)
     local screen = nil
 
@@ -372,7 +296,9 @@ function tasklist.new(args, filter, buttons, style, update_function, base_widget
         end)
         capi.client.connect_signal("list", u)
         capi.client.connect_signal("focus", u)
-        capi.client.connect_signal("unfocus", u)
+        -- Commenting this out stops the "flicker" from switching tags
+        -- but i'm sure there's an edge case that needs it
+        -- capi.client.connect_signal("unfocus", u)
         capi.screen.connect_signal("removed", function(s)
             instances[get_screen(s)] = nil
         end)
@@ -385,76 +311,6 @@ function tasklist.new(args, filter, buttons, style, update_function, base_widget
     end
     table.insert(list, w)
     return w
-end
-
---- Filtering function to include all clients.
--- @return true
--- @filterfunction awful.tasklist.filter.allscreen
-function tasklist.filter.allscreen()
-    return true
-end
-
---- Filtering function to include the clients from all tags on the screen.
--- @param c The client.
--- @param screen The screen we are drawing on.
--- @return true if c is on screen, false otherwise
--- @filterfunction awful.tasklist.filter.alltags
-function tasklist.filter.alltags(c, screen)
-    -- Only print client on the same screen as this widget
-    return get_screen(c.screen) == get_screen(screen)
-end
-
---- Filtering function to include only the clients from currently selected tags.
--- @param c The client.
--- @param screen The screen we are drawing on.
--- @return true if c is in a selected tag on screen, false otherwise
--- @filterfunction awful.tasklist.filter.currenttags
-function tasklist.filter.currenttags(c, screen)
-    screen = get_screen(screen)
-    -- Only print client on the same screen as this widget
-    if get_screen(c.screen) ~= screen then return false end
-    -- Include sticky client too
-    if c.sticky then return true end
-    local tags = screen.tags
-    for _, t in ipairs(tags) do
-        if t.selected then
-            local ctags = c:tags()
-            for _, v in ipairs(ctags) do
-                if v == t then
-                    return true
-                end
-            end
-        end
-    end
-    return false
-end
-
---- Filtering function to include only the minimized clients from currently selected tags.
--- @param c The client.
--- @param screen The screen we are drawing on.
--- @return true if c is in a selected tag on screen and is minimized, false otherwise
--- @filterfunction awful.tasklist.filter.minimizedcurrenttags
-function tasklist.filter.minimizedcurrenttags(c, screen)
-    screen = get_screen(screen)
-    -- Only print client on the same screen as this widget
-    if get_screen(c.screen) ~= screen then return false end
-    -- Check client is minimized
-    if not c.minimized then return false end
-    -- Include sticky client
-    if c.sticky then return true end
-    local tags = screen.tags
-    for _, t in ipairs(tags) do
-        -- Select only minimized clients
-        if t.selected then
-            local ctags = c:tags()
-            for _, v in ipairs(ctags) do
-                if v == t then
-                    return true
-                end
-            end
-        end
-    end
-    return false
 end
 
 --- Filtering function to include only the currently focused client.
