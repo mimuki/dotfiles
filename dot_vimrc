@@ -58,6 +58,7 @@ if (has("termguicolors"))
 endif
 
 colorscheme sunshine
+set t_Co=256
 " }}}
 " Goyo {{{ 
 " On window resize, if goyo is active, do <c-w>= to resize the window
