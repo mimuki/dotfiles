@@ -1,10 +1,3 @@
--- this only exist so that I can show the currently focused window by its 
--- class, and not by its title. the title is usually too long to be helpful
--- and I don't know a better way of doing this
-function firstToUpper(str)
-    return (str:gsub("^%l", string.upper))
-end
-
 -- Grab environment we need
 local capi = { screen = screen,
                client = client }
@@ -43,27 +36,16 @@ local function tasklist_label(c, args, tb)
     local fg_urgent = gcolor.ensure_pango_color(args.fg_urgent or theme.tasklist_fg_urgent or theme.fg_urgent,
                                                 fg_normal)
     local bg_urgent = args.bg_urgent or theme.tasklist_bg_urgent or theme.bg_urgent or bg_normal
-    local fg_minimize = gcolor.ensure_pango_color(args.fg_minimize or theme.tasklist_fg_minimize or theme.fg_minimize,
-                                                  fg_normal)
-    local bg_minimize = args.bg_minimize or theme.tasklist_bg_minimize or theme.bg_minimize or bg_normal
-    -- FIXME v5, remove the fallback theme.bg_image_* variables, see GH#1403
-    local bg_image_normal = args.bg_image_normal or theme.tasklist_bg_image_normal or theme.bg_image_normal
-    local bg_image_focus = args.bg_image_focus or theme.tasklist_bg_image_focus or theme.bg_image_focus
-    local bg_image_urgent = args.bg_image_urgent or theme.tasklist_bg_image_urgent or theme.bg_image_urgent
-    local bg_image_minimize = args.bg_image_minimize or theme.tasklist_bg_image_minimize or theme.bg_image_minimize
     local tasklist_disable_icon = args.tasklist_disable_icon or theme.tasklist_disable_icon or false
     local disable_task_name = args.disable_task_name or theme.tasklist_disable_task_name or false
     local font = args.font or theme.tasklist_font or theme.font or ""
     local font_focus = args.font_focus or theme.tasklist_font_focus or theme.font_focus or font or ""
-    local font_minimized = args.font_minimized or theme.tasklist_font_minimized or theme.font_minimized or font or ""
     local font_urgent = args.font_urgent or theme.tasklist_font_urgent or theme.font_urgent or font or ""
     local text = ""
     local name = ""
     local bg
     local bg_image
-    local shape              = args.shape or theme.tasklist_shape
-    local shape_border_width = args.shape_border_width or theme.tasklist_shape_border_width
-    local shape_border_color = args.shape_border_color or theme.tasklist_shape_border_color
+
 
     -- symbol to use to indicate certain client properties
     local sticky = args.sticky or theme.tasklist_sticky or "▪"
@@ -74,10 +56,6 @@ local function tasklist_label(c, args, tb)
     local maximized = args.maximized or theme.tasklist_maximized or '<b>+</b>'
     local maximized_horizontal = args.maximized_horizontal or theme.tasklist_maximized_horizontal or '⬌'
     local maximized_vertical = args.maximized_vertical or theme.tasklist_maximized_vertical or '⬍'
-
-    if tb then
-        tb:set_align(align)
-    end
 
     if not theme.tasklist_plain_task_name then
         if c.sticky then name = name .. sticky end
@@ -114,47 +92,20 @@ local function tasklist_label(c, args, tb)
         text = text .. "<span color='"..fg_focus.."'>"..name.."</span>"
         bg_image = bg_image_focus
         font = font_focus
-
-        if args.shape_focus or theme.tasklist_shape_focus then
-            shape = args.shape_focus or theme.tasklist_shape_focus
-        end
-
-        if args.shape_border_width_focus or theme.tasklist_shape_border_width_focus then
-            shape_border_width = args.shape_border_width_focus or theme.tasklist_shape_border_width_focus
-        end
-
-        if args.shape_border_color_focus or theme.tasklist_shape_border_color_focus then
-            shape_border_color = args.shape_border_color_focus or theme.tasklist_shape_border_color_focus
-        end
     elseif c.urgent then
         bg = bg_urgent
         text = text .. "<span color='"..fg_urgent.."'>"..name.."</span>"
         bg_image = bg_image_urgent
         font = font_urgent
 
-        if args.shape_urgent or theme.tasklist_shape_urgent then
-            shape = args.shape_urgent or theme.tasklist_shape_urgent
-        end
 
-        if args.shape_border_width_urgent or theme.tasklist_shape_border_width_urgent then
-            shape_border_width = args.shape_border_width_urgent or theme.tasklist_shape_border_width_urgent
-        end
-
-        if args.shape_border_color_urgent or theme.tasklist_shape_border_color_urgent then
-            shape_border_color = args.shape_border_color_urgent or theme.tasklist_shape_border_color_urgent
-        end
     end 
     if tb then
         tb:set_font(font)
     end
 
-    local other_args = {
-        shape              = shape,
-        shape_border_width = shape_border_width,
-        shape_border_color = shape_border_color,
-    }
 
-    return text, bg, bg_image, not tasklist_disable_icon and c.icon or nil, other_args
+    return text, bg, bg_image, not tasklist_disable_icon and c.icon or nil
 end
 
 local function tasklist_update(s, w, buttons, filter, data, style, update_function, args)

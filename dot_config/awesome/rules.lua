@@ -53,7 +53,7 @@ awful.rules.rules = {
     }
   },
 
-  -- Add titlebars to normal clients and dialogs
+  -- Add titlebars to normal clients and dialogs (or don't!)
   { 
     rule_any = {
       type = { 
@@ -62,7 +62,7 @@ awful.rules.rules = {
       }
     }, 
     properties = { 
-      titlebars_enabled = true 
+      titlebars_enabled = false
     }
   },
 
