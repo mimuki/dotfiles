@@ -2,7 +2,7 @@
 #TODO: learn how arrays work
 sudo apt-get update
 # Makes installing programs less verbose
-sudo apt-get install -qq -o=Dpkg::Use-Pty=0 awesome keynav rofi tlp git gh kdeconnect vim mpv scrot xclip xterm tmux curl rc gawk
+sudo apt-get install -qq -o=Dpkg::Use-Pty=0 awesome keynav rofi gammastep tlp git gh kdeconnect vim mpv scrot xclip xterm tmux curl rc gawk 
 
 # All the weird non-apt stuff
 if ! [ -x "$(command -v msync)" ]
