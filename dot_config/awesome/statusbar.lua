@@ -5,9 +5,10 @@ function statusBar(s)
       layout = wibox.layout.fixed.horizontal,
       mylauncher,
       s.mytaglist,
+      s.currentProgram,
       s.mypromptbox,
     },
-      s.mytasklist, -- Middle widget
+      dummyMiddleWidget,
     { -- Right widgets
       layout = wibox.layout.fixed.horizontal,
       mykeyboardlayout,

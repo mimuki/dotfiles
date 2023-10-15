@@ -7,5 +7,6 @@ function taskList(s)
   -- For reasons I don't understand, the margins are slightly off
   -- even though just using spaces is fine for the other widgets
   -- so... idk
-  s.mytasklist = wibox.container.margin(mytasklist, 10, 10, 0, 0, beautiful.bg, false)
+ -- s.mytasklist = wibox.container.margin(mytasklist, 10, 10, 0, 0, beautiful.bg, false)
+  s.currentProgram = wibox.container.margin(mytasklist, 4, 0, 0, 0, beautiful.bg, false)
 end

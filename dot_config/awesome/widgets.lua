@@ -1,2 +1,2 @@
 require("widgets.basic")
-require("widgets.taglist")
+require("widgets.currentprogram")
