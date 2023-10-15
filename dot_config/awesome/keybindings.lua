@@ -87,6 +87,13 @@ awful.key(
   end,
   { description = "restore minimized", group = "client" }),
 
+
+  -- adjust brightness
+awful.key({}, "XF86MonBrightnessUp",
+              function() os.execute("brightnessctl set 1%+") end),
+awful.key({}, "XF86MonBrightnessDown",
+              function() os.execute("brightnessctl set 1%-") end),
+
 awful.key(
   { modkey            }, "p", function () 
     awful.util.spawn("rofi -show drun") end,
