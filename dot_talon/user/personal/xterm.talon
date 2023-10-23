@@ -1,5 +1,7 @@
 app.name: XTerm
 -
+tag(): terminal
+
 settings():
     insert_wait = 5
 
