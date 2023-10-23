@@ -26,3 +26,4 @@
 *.color15:    #f8f8f2
 
 XTerm.vt100.faceName:CozetteHiDpi:size=26:antialias=false
+XTerm.vt100.metaSendsEscape: true
