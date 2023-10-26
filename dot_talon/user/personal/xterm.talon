@@ -3,10 +3,10 @@ app.name: XTerm
 tag(): terminal
 
 settings():
-    insert_wait = 5
+    insert_wait = 10
 
+chemo: "chezmoi"
 # (I'm pronouncing chezmoi like "chamoy". I know it's wrong, I don't care.)
 # (it's funny.)
-chemo: "chezmoi "
 chezmoi apply: "chezmoi apply"
 
