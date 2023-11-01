@@ -94,6 +94,26 @@ awful.key({}, "XF86MonBrightnessUp",
 awful.key({}, "XF86MonBrightnessDown",
               function() os.execute("brightnessctl set 1%-") end),
 
+              -- Screenshot (the entire screen)
+awful.key({ }, "Print",
+            function () awful.util.spawn([[scrot 'Pictures/Screenshots/%Y%m%d_%H%M%S.png' -e 'xclip -selection clipboard -t image/png -i $f']]) end,
+          { description = "Screenshot", group = "awesome"}),
+
+awful.key({ modkey }, "Print",
+            function ()
+              awful.util.spawn([[scrot 'Pictures/Screenshots/%Y%m%d_%H%M%S.png' -s -l width=4,color="]] .. beautiful.accents.secondary.main .. [[",opacity=100,mode=edge -e 'xclip -selection clipboard -t image/png -i $f']])
+            end,
+            { description = "Screenshot selection", group = "awesome"}),
+
+
+awful.key({ modkey }, "h",
+            function ()
+              awful.util.spawn([[scrot 'Pictures/Screenshots/%Y%m%d_%H%M%S.png' -s -l width=4,color="]] .. beautiful.accents.secondary.main .. [[",opacity=100,mode=edge -e 'xclip -selection clipboard -t image/png -i $f']])
+            end,
+            { description = "Screenshot selection", group = "awesome"}),
+
+
+
 awful.key(
   { modkey            }, "p", function () 
     awful.util.spawn("rofi -show drun") end,
