@@ -16,6 +16,12 @@ awful.rules.rules = {
     }
   },
 
+  { -- Make terminal use the entire space available 
+    rule = { class = "XTerm" },
+    properties = { size_hints_honor = false }
+  },
+
+
   -- Floating clients.
   { 
     rule_any = {

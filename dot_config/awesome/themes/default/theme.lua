@@ -10,9 +10,20 @@ local path = "~/.config/awesome/themes/"
 local theme = {}
 -- [ Settings ] ----------------------------------------------------------------
 -- [ Basic Colours ] --
-theme.black  = { main = "#282a36", contrast = "#f8f8f2" }
-theme.white  = { main = "#f8f8f2", contrast = theme.black.main }
+theme.black  = { main = "#000000", contrast = "#FFFFFF" }
+theme.white  = { main = "#FFFFFF", contrast = theme.black.main }
 theme.grey   = { main = "#444751", contrast = theme.white.main }
+
+theme.grey100 = { main = "#FAFAFA", contrast = theme.black.main }
+theme.grey200 = { main = "#EEEEEE", contrast = theme.black.main }
+theme.grey300 = { main = "#E0E0E0", contrast = theme.black.main }
+theme.grey400 = { main = "#BDBDBD", contrast = theme.black.main }
+theme.grey500 = { main = "#9E9E9E", contrast = theme.white.main }
+theme.grey600 = { main = "#757575", contrast = theme.white.main }
+theme.grey700 = { main = "#616161", contrast = theme.white.main }
+theme.grey800 = { main = "#424242", contrast = theme.white.main }
+theme.grey900 = { main = "#212121", contrast = theme.white.main }
+
 theme.red    = { main = "#ff5555", contrast = theme.black.main }
 theme.orange = { main = "#ffb86c", contrast = theme.black.main }
 theme.yellow = { main = "#f1fa8c", contrast = theme.black.main }
@@ -39,60 +50,60 @@ theme.c13 = { main = "#ff92df", contrast = theme.black.main } -- bright magenta
 theme.c14 = { main = "#a4ffff", contrast = theme.black.main } -- bright cyan
 theme.c15 = { main = "#ffffff", contrast = theme.black.main } -- bright white
 -- [ UI Colours ] --
-theme.bg = theme.black.main
-theme.fg = theme.white.main
+theme.bg = theme.white.main
+theme.fg = theme.black.main
 
 theme.accents = { 
-  primary = theme.orange, 
-  secondary = theme.cyan, 
-  tertiary = theme.blue 
+  primary = theme.grey800, 
+  secondary = theme.grey400, 
+  tertiary = theme.grey200 
 }
 
-theme.error = theme.red
-theme.warn  = theme.orange
+theme.error = theme.grey500
+theme.warn  = theme.grey300
 -- [ Defaults ] ----------------------------------------------------------------
-theme.font          = "Andika Rats 16"
+theme.font          = "Cantarell 16"
 
 theme.bg_normal     = theme.bg
-theme.bg_focus      = theme.grey.main
-theme.bg_urgent     = theme.red.main
+theme.bg_focus      = theme.grey600.main
+theme.bg_urgent     = theme.error.main
 theme.bg_minimize   = theme.accents.tertiary.main
-theme.bg_systray    = theme.bg
+theme.bg_systray    = theme.grey200.main
 
-theme.fg_normal     = theme.contrast
-theme.fg_focus      = theme.grey.contrast
-theme.fg_urgent     = theme.red.contrast
-theme.fg_minimize   = theme.accents.tertiary.contrast
+theme.fg_normal     = theme.fg
+theme.fg_focus      = theme.grey600.contrast
+theme.fg_urgent     = theme.error.contrast
+theme.fg_minimize   = theme.grey200.contrast
 
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(4)
-theme.border_normal = theme.black.main
+theme.border_normal = theme.grey200.main
 theme.border_focus  = theme.accents.primary.main
 theme.border_marked = theme.accents.secondary.main
 
 -- [ Taglist ] --
 theme.taglist_bg_focus    = theme.accents.primary.main
-theme.taglist_bg_urgent   = theme.red.main
-theme.taglist_bg_occupied = theme.grey.main
+theme.taglist_bg_urgent   = theme.error.main
+theme.taglist_bg_occupied = theme.grey300.main
 theme.taglist_bg_empty    = theme.bg
 theme.taglist_bg_volatile = theme.accents.secondary.main
 
 theme.taglist_fg_focus    = theme.accents.primary.contrast
-theme.taglist_fg_urgent   = theme.red.contrast
-theme.taglist_fg_occupied = theme.grey.contrast
+theme.taglist_fg_urgent   = theme.error.contrast
+theme.taglist_fg_occupied = theme.grey300.contrast
 theme.taglist_fg_empty    = theme.fg
 theme.taglist_fg_volatile = theme.accents.secondary.contrast
 
 -- [ Tasklist ] --
-theme.tasklist_bg_focus  = theme.grey.main
-theme.tasklist_bg_urgent = theme.red.main
-theme.tasklist_fg_focus  = theme.grey.contrast
-theme.tasklist_fg_urgent = theme.red.contrast
+theme.tasklist_bg_focus  = theme.accents.tertiary.main
+theme.tasklist_bg_urgent = theme.error.main
+theme.tasklist_fg_focus  = theme.accents.tertiary.contrast
+theme.tasklist_fg_urgent = theme.error.contrast
 
 -- [ Titlebar ] --
-theme.titlebar_bg_normal = theme.grey.main
+theme.titlebar_bg_normal = theme.grey100.main
 theme.titlebar_bg_focus  = theme.accents.primary.main
-theme.titlebar_fg_normal = theme.grey.contrast
+theme.titlebar_fg_normal = theme.grey100.contrast
 theme.titlebar_fg_focus  = theme.accents.primary.contrast
 
 -- [ Tooltip ] --
@@ -208,7 +219,7 @@ theme.layout_cornerse = path.."default/layouts/cornersew.png"
 
 -- Generate Awesome icon:
 theme.awesome_icon = themeAssets.awesome_icon(
-  theme.menu_height, theme.bg_focus, theme.fg_focus
+  theme.menu_height, theme.grey200.main, theme.grey600.main
 )
 
 -- Define the icon theme for application icons. If not set then the icons

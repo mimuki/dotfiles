@@ -11,7 +11,6 @@ function statusBar(s)
       dummyMiddleWidget,
     { -- Right widgets
       layout = wibox.layout.fixed.horizontal,
-      mykeyboardlayout,
       wibox.widget.systray(),
       mytextclock,
       s.mylayoutbox,
