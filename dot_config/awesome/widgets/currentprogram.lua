@@ -13,7 +13,7 @@ function taskList(s)
                 id     = "icon_role",
                 widget = wibox.widget.imagebox,
               },
-              margins = 8,
+              margins = 4,
               widget  = wibox.container.margin,
             },
             { -- text

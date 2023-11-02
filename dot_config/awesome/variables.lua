@@ -24,6 +24,8 @@ awful.layout.layouts = {
 
 -- Change the names (and amount of) tags you have.
 tagNames = { "", "", "" }
+homeRow = {"a", "r", "s", "t", "g", "m", "n", "e", "i", "o", "semicolon" }
+totalTags = 3 -- todo: find out how many tags there are automatically
 
 terminal = "xterm"
 editor = os.getenv("EDITOR") or "vim"

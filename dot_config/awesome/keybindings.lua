@@ -1,51 +1,70 @@
 -- Mouse bindings 
 -- Only apply to the status bar, wallpaper, etc.
 root.buttons(gears.table.join(
-awful.button({ }, 3, function () mymainmenu:toggle() end)
--- Scroll through tags with mouse wheel
--- This is worse than you think
--- awful.button({ }, 4, awful.tag.viewnext),
--- awful.button({ }, 5, awful.tag.viewprev)
-))
+  awful.button({ }, 3, function () mymainmenu:toggle() end)))
 
+-- Functions
+-- Switch between windows in both tmux and awesome with the same keybind
+-- direction is either -1 or 1, as in awful.client.focus.byidx(direction)
+function windowFocus(direction)
+  if awful.screen.focused().selected_tag.index == 1 then 
+    if direction == 1 then os.execute("tmux next-window") 
+    else os.execute("tmux previous-window") end
+    os.execute("sh ~/.tmux/plugins/rat_scripts/statusbar.sh")
+  else awful.client.focus.byidx(direction) end
+end
+
+function viewTag(i)
+  if awful.screen.focused().tags[i] then
+    awful.screen.focused().tags[i]:view_only()
+  end
+end
+
+function moveToTag(i)
+  if client.focus then
+    if client.focus.screen.tags[i] then 
+      client.focus:move_to_tag(client.focus.screen.tags[i]) 
+    end
+  end
+end
 -- Key bindings
--- These work everywhere, but window specific things (like toggling floating)
--- go under clientkeys.
+-- These work everywhere; window specific things (like toggling floating) go 
+-- under clientkeys.
 globalkeys = gears.table.join(
 ---- [ Awesome ] ----
 -- Meta client controls
 awful.key(
-  { modkey,           }, "/", hotkeys_popup.show_help,
+  { modkey }, "/", hotkeys_popup.show_help,
   { description = "show help", group = "awesome" }),
 awful.key(
-  { modkey,           }, "m", function () mymainmenu:show() end,
+  { modkey }, "m", function () mymainmenu:show() end,
   { description = "show main menu", group = "awesome" }),
 awful.key( 
   { modkey, "Control" }, "r", awesome.restart,
   { description = "reload awesome", group = "awesome" }),
 awful.key(
-  { modkey, "Shift"   }, "q", awesome.quit,
+  { modkey, "Shift" }, "q", awesome.quit,
   { description = "quit awesome", group = "awesome" }),
 
+awful.key({ modkey }, "Up",   awful.tag.viewprev),
 awful.key(
-  { modkey,           }, "Up",   awful.tag.viewprev,
-  { description = "view previous tag", group = "tag management" }),
-awful.key(
-  { modkey,           }, "Down",  awful.tag.viewnext,
-  { description = "view next tag", group = "tag management" }),
+  { modkey }, "i",   awful.tag.viewprev,
+  { description = "view previous tag", group = "navigation" }),
 
-awful.key({ modkey,           }, "i",   awful.tag.viewprev),
-awful.key({ modkey,           }, "e",  awful.tag.viewnext),
-
+awful.key({ modkey }, "Down",  awful.tag.viewnext),
 awful.key(
-  { modkey,           }, "Right", function () awful.client.focus.byidx( 1) end,
-  { description = "focus next by index", group = "client" }),
-awful.key(
-  { modkey,           }, "Left", function () awful.client.focus.byidx(-1) end,
-  { description = "focus previous by index", group = "client" }),
+  { modkey }, "e",  awful.tag.viewnext,
+  { description = "view next tag", group = "navigation" }),
 
-awful.key({ modkey, }, "o", function () awful.client.focus.byidx( 1) end),
-awful.key({ modkey, }, "n",  function () awful.client.focus.byidx(-1) end),
+awful.key({ modkey }, "Left", function () windowFocus(-1) end),
+awful.key(
+  { modkey }, "n", function () windowFocus(-1) end,
+  { description = "focus previous window", group = "navigation" }),
+
+awful.key({ modkey }, "Right", function () windowFocus(1) end),
+awful.key(
+  { modkey }, "o", function () windowFocus(1) end,
+  { description = "focus next window", group = "navigation" }),
 
 -- Layout manipulation
 awful.key(
@@ -317,50 +336,20 @@ awful.key(
 --  { description = "(un)maximize horizontally", group = "client" })
 )
 
--- Bind all key numbers to tags.
--- Be careful: we use keycodes to make it work on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
-  globalkeys = gears.table.join(globalkeys,
+-- Create tag bindings automatically, and map them to my home row
+for i = 1, totalTags do
+globalkeys = gears.table.join(globalkeys,
   -- View tag only.
-  awful.key({ modkey }, "#" .. i + 9, function ()
-    local screen = awful.screen.focused()
-    local tag = screen.tags[i]
-    if tag then
-      tag:view_only()
-    end
-  end,
-  { description = "view tag #"..i, group = "tag management" }),
-  -- Toggle tag display.
-  awful.key({ modkey, "Control" }, "#" .. i + 9, function ()
-    local screen = awful.screen.focused()
-    local tag = screen.tags[i]
-    if tag then
-      awful.tag.viewtoggle(tag)
-    end
-  end,
-  { description = "toggle tag #" .. i, group = "tag management" }),
-  -- Move client to tag.
-  awful.key({ modkey, "Shift" }, "#" .. i + 9, function ()
-    if client.focus then
-      local tag = client.focus.screen.tags[i]
-      if tag then
-        client.focus:move_to_tag(tag)
-      end
-    end
-  end,
-  { description = "move focused client to tag #"..i, group = "tag management" }),
-  -- Toggle tag on focused client.
-  awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9, function ()
-    if client.focus then
-      local tag = client.focus.screen.tags[i]
-      if tag then
-        client.focus:toggle_tag(tag)
-      end
-    end
-  end,
-  { description = "toggle focused client on tag #" .. i, group = "tag management" })
-  )
+  awful.key({ modkey }, homeRow[i], function () viewTag(i) end),
+  awful.key({ modkey }, i, function () viewTag(i) end,
+  { description = "or ".. homeRow[i] .. " View tag "..i, group = "navigation" }),
+
+    -- Move client to tag.
+  awful.key({ modkey, "Shift" }, homeRow[i], function () moveToTag(i) end),
+  awful.key({ modkey, "Shift" }, i, function () moveToTag(i) end,
+  { description = "or " .. homeRow[i] .." Move focused window to tag "..i,
+    group = "navigation" })
+)
 end
 
 clientbuttons = gears.table.join(
