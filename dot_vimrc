@@ -24,6 +24,7 @@ set backspace=indent,eol,start	" Backspace behaviour
 " Cursorline doesn't wrap on long lines
 " (and also have a cursorline)
 set cursorline cursorlineopt=screenline 
+hi CursorLine cterm=NONE " No redundant underline
 set cul
 
 " Keep cursor centered on screen
@@ -56,12 +57,6 @@ call plug#end()
 if (has("termguicolors"))
   set termguicolors
 endif
-
-colorscheme sunshine
-set t_Co=256
-
-" no background
-hi Normal guibg=NONE ctermbg=NONE
 " }}}
 " Goyo {{{ 
 " On window resize, if goyo is active, do <c-w>= to resize the window
