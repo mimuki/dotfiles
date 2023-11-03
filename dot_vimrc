@@ -4,13 +4,13 @@ set linebreak       " Break lines at word (requires Wrap lines)
 set showbreak=…\    " Wrap-broken line prefix
 set showmatch       " Highlight matching brace
 
-set hlsearch	      " Highlight all search results
-set smartcase	      " Enable smart-case search
+set hlsearch	    " Highlight all search results
+set smartcase	    " Enable smart-case search
 set ignorecase	    " Always case-insensitive
-set incsearch	      " Searches for strings incrementally
+set incsearch	    " Searches for strings incrementally
 
 set autoindent	    " Auto-indent new lines
-set expandtab	      " Use spaces instead of tabs
+set expandtab	    " Use spaces instead of tabs
 set shiftwidth=2    " Number of auto-indent spaces
 set smartindent	    " Enable smart-indent
 set smarttab        " Enable smart-tabs
@@ -21,11 +21,7 @@ set ruler           " Show row and column ruler information
 set undolevels=1000 " Number of undo levels
 set backspace=indent,eol,start	" Backspace behaviour
 
-" Cursorline doesn't wrap on long lines
-" (and also have a cursorline)
-set cursorline cursorlineopt=screenline 
-hi CursorLine cterm=NONE " No redundant underline
-set cul
+set cursorline cursorlineopt=screenline
 
 " Keep cursor centered on screen
 augroup VCenterCursor
@@ -34,10 +30,6 @@ augroup VCenterCursor
         \ let &scrolloff=winheight(win_getid())/2
 augroup END
 
-" Vimwiki wants these
-set nocompatible
-filetype plugin on
-syntax on
 " }}}
 " Plugins {{{
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -47,9 +39,6 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 call plug#begin() " Plugins
 Plug 'mimuki/goyo.vim' " I forked it to suck less
-Plug 'morhetz/gruvbox'
-Plug 'ap/vim-css-color' " show colours highlighted as that colour
-Plug 'vimwiki/vimwiki' " personal wiki
 call plug#end()
 " }}}
 " Theme {{{
@@ -57,6 +46,7 @@ call plug#end()
 if (has("termguicolors"))
   set termguicolors
 endif
+colorscheme nofrils-acme
 " }}}
 " Goyo {{{ 
 " On window resize, if goyo is active, do <c-w>= to resize the window
