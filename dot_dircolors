@@ -41,84 +41,12 @@ TERM xterm*
 # 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
 # Background color codes:
 # 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
-#NORMAL 00 # no color code at all
-#FILE 00 # regular file: use no color at all
+NORMAL 00 # no color code at all
+FILE 00 # regular file: use no color at all
 RESET 0 # reset to "normal" color
 DIR 01 # 48;5;215 # directory
-EXEC 32;48;5;215;01 # files with execute permissions
+EXEC 32;01 # files with execute permissions
 # files that should be executable, but don't have perms
-.sh 31;48;5;11;01
-.csh 31;48;5;11;01 
-LINK 36;04;01 # symbolic link. (If you set this to 'target' instead of a
- # numerical value, the color is as for the file pointed to.)
-MULTIHARDLINK 00;04 # regular file with more than one link
-FIFO 33;48;5;11 # pipe
-SOCK 01;35 # socket
-DOOR 01;35 # door
-BLK 37;45;01 # block device driver
-CHR 37;43;01 # character device driver
-ORPHAN 37;47;01 # symlink to nonexistent file, or non-stat'able file ...
-MISSING 00      # ... and the files they point to
-SETUID 37 # file that is setuid (u+s)
-SETGID 30;01 # file that is setgid (g+s)
-CAPABILITY 30;41 # file with capability
-STICKY_OTHER_WRITABLE 30;42 # dir that is sticky and other-writable (+t,o+w)
-OTHER_WRITABLE 37;42;01 # dir that is other-writable (o+w) and not sticky
-STICKY 37;44;01 # dir with the sticky bit set (+t) and not other-writable
+.sh 37;40;01
+.csh 37;40;01 
 
-# List any file extensions like '.gz' or '.tar' that you would like ls
-# to colorize below. Put the extension, a space, and the color init string.
-# (and any comments you want to add after a '#')
-# archives or compressed
-.tar 01;37;46
-.tgz 01;37;46
-.zip 01;37;46
-.gz 01;37;46
-.tz 01;37;46
-.deb 01;37;41
-.rpm 01;37;41
-.jar 01;37;41
-.rar 01;37;41
-.7z 01;37;41
-# Temp files
-.TODO 01;37;41
-.swp 35;38;5;173;01;05
-.bak 35;38;5;173;01;05
-.backup 32
-# image formats
-.jpg 01;35
-.jpeg 01;35
-.mjpg 01;35
-.mjpeg 01;35
-.gif 01;35
-.bmp 01;35
-.ppm 01;35
-.tga 01;35
-.tiff 01;35
-.png 01;35
-.svg 01;35
-.mov 01;35
-.mpg 01;35
-.mpeg 01;35
-.mkv 01;35
-.webm 01;35
-.webp 01;35
-.mp4 01;35
-.m4v 01;35
-.vob 01;35
-.wmv 01;35
-.flc 01;35
-.avi 01;35
-.xcf 01;35
-# audio formats
-.aac 01;34
-.flac 01;34
-.m4a 01;34
-.mid 01;34
-.midi 01;34
-.mka 01;34
-.mp3 01;34
-.mpc 01;34
-.ogg 01;34
-.wav 01;34
-.opus 01;34

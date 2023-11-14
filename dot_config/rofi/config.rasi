@@ -8,6 +8,11 @@ configuration {
 // ---[Globals]-------------------------------------------------------------- //
 // NOTE : these properties are inherited for all "named" elements below
 * {
+  newblack: #000000;
+  newwhite: #FFFFFF;
+  lightgrey: #666666;
+  darkgrey: #BDBDBD;
+
   black:      #282A36;
   lolight:    #21222C;
   hilight:    #44475A;
@@ -32,18 +37,18 @@ configuration {
 
 // Rofi
 
-  background-color:               @bg;
-  text-color:                     @fg;
+  background-color:               @newwhite;
+  text-color:                     @newblack;
 
 // Normal state
 
-  normal-foreground:              @fg;
-  normal-background:              @bg;
+  normal-foreground:              @newblack;
+  normal-background:              @newwhite;
 
-  alternate-normal-background:    @bg;
-  alternate-normal-foreground:    @fg;
+  alternate-normal-background:    @newwhite;
+  alternate-normal-foreground:    @newblack;
 
-  selected-normal-foreground:     @fg;
+  selected-normal-foreground:     @newblack;
   selected-normal-background:     @hilight;
 
 // Active state
@@ -54,7 +59,7 @@ configuration {
   alternate-active-foreground:    @active-foreground;
   alternate-active-background:    @active-background;
 
-  selected-active-foreground:     @bg;
+  selected-active-foreground:     @newwhite;
   selected-active-background:     @accent;
 
 // Urgent state
@@ -65,7 +70,7 @@ configuration {
   alternate-urgent-foreground:    @urgent-foreground;
   alternate-urgent-background:    @urgent-background;
 
-  selected-urgent-foreground:     @fg;
+  selected-urgent-foreground:     @newblack;
   selected-urgent-background:     @red;
 
 // Misc
@@ -104,12 +109,12 @@ configuration {
 #message {
     border:             0px solid 0px 0px;
     padding:            0px 8px 8px 8px;
-    border-color: @bg;
+    border-color: @newwhite;
 
 }
 
 #textbox {
-    text-color: @fg;
+    text-color: @newblack;
     background-color: @hilight;
     padding: 5px 17px;
     border: 8px;
@@ -151,7 +156,7 @@ configuration {
 
 #element.selected.normal {
     background-color:   @accent-alt;
-    text-color:         @bg;
+    text-color:         @newwhite;
 }
 
 #element.selected.urgent {
@@ -194,7 +199,7 @@ configuration {
 }
 
 #entry {
-    text-color:   @fg;
+    text-color:   @newblack;
 }
 
 #prompt {
