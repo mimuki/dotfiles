@@ -2,4 +2,6 @@
 #!/bin/sh
 # Enable bitmap fonts
 sudo dpkg-reconfigure fontconfig-config
+# Sensible firefox defaults (opt out of telemetry, disable sponsored junk, etc)
+sudo cp ~/.local/share/chezmoi/firefox_policies.json /usr/lib/firefox-esr/distribution/policies.json
 {{ end -}}

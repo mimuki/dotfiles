@@ -1,0 +1,57 @@
+{
+  "policies": {
+    "Extensions": {
+      "Locked":  ["leechblockng@proginosko.com"]
+    },
+    "SearchEngines": {
+      "Default": "DuckDuckGo",
+      "Remove": ["Google", "Amazon.com.au", "Bing"]
+    },
+    "Containers": {
+      "Default": [
+        {
+          "name": "A",
+          "icon": "fingerprint",
+          "color": "toolbar"
+        },
+        {
+          "name": "B",
+          "icon": "fingerprint",
+          "color": "toolbar"
+        }
+      ]
+    },
+    "FirefoxHome": {
+      "Search": true,
+      "TopSites": true,
+      "SponsoredTopSites": false,
+      "Highlights": true,
+      "Pocket": false,
+      "SponsoredPocket": false,
+      "Snippets": true,
+      "Locked": false
+    },
+    "EnableTrackingProtection": {
+      "Value": true
+    },
+    "UserMessaging": {
+      "WhatsNew": false,
+      "ExtensionRecommendations": false,
+      "FeatureRecommendations": false,
+      "UrlbarInterventions": false,
+      "SkipOnboarding": true,
+      "MoreFromMozilla": false,
+      "Locked": false
+    },
+    "DisableFeedbackCommands": true,
+    "DisableFirefoxScreenshots": true,
+    "DisableFirefoxScreenshots": true,
+    "DisableFormHistory": true,
+    "DisablePocket": true,
+    "DisableTelemetry": true,
+    "NoDefaultBookmarks": true,
+    "OverrideFirstRunPage": "",
+    "OverridePostUpdatePage": "",
+    "OfferToSaveLogins": false
+  }
+}
