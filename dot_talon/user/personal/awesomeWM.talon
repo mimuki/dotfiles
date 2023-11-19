@@ -28,7 +28,7 @@ win bar:
   key(super-b)
 
 # switch to a specific tag, instead of just "next" or "previous"
-win (one|air):
+win (one|amy):
   key(super-a)
 win (two|red):
   key(super-r)
@@ -72,7 +72,5 @@ keynav less:
 keynav (update|restart):
   key(ctrl-alt-r)
   
-open phone:
-  user.system_command_nb('scrcpy --shortcut-mod=ralt,lalt --hid-keyboard --power-off-on-close --turn-screen-off')
 open firefox:
   user.system_command_nb('firefox')

@@ -1,2 +1,2 @@
 #!/bin/bash
-exec ~/talon/run.sh
+exec ~/.talon/talon/run.sh
