@@ -4,3 +4,4 @@ not mode: sleep
 # you can start a command with "now"
 ^now: skip()
 ^<user.ordinals>: skip()
+^( bu | co | po | ba | a ): skip()
