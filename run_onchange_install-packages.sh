@@ -2,10 +2,11 @@
 #TODO: learn how arrays work
 sudo apt-get update
 # Makes installing programs less verbose
-sudo apt-get install -qq -o=Dpkg::Use-Pty=0 awesome keynav rofi gammastep tlp git gh kdeconnect vim mpv scrot xclip xterm tmux curl rc gawk brightnessctl dex
+sudo apt-get install -qq -o=Dpkg::Use-Pty=0 awesome keynav rofi gammastep tlp git gh kdeconnect vim mpv scrot xclip xterm tmux curl rc gawk brightnessctl dex btop
 # literally need all of this for talon (because snixembed)
 # todo: in a fresh install see what you really need just in case
 sudo apt-get install -qq -o=Dpkg::Use-Pty=0 make valac libdbusmenu-gtk-dev libdbusmenu-glib-dev libdbusmenu-gtk3-dev
+
 # All the weird non-apt stuff
 if ! [ -x "$(command -v msync)" ]
 then
@@ -19,11 +20,13 @@ then
   #ALERTS+=['  msync config auth_code <the authorization code from the site> --account username@example.com']
   #ALERTS+=['  msync new -a username@example.com']
 fi
+
 if ! [ -x "$(command -v fzf)" ]
 then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install --all
 fi
+
 # Talon
 if ! [ -x "$(command -v snixembed)" ]
 then
