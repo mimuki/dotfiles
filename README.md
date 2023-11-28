@@ -28,3 +28,9 @@ vim plugins will be installed on first launch (so uh, launch vim first if you pl
 
 - [Autostarting programs on login](https://github.com/mimuki/dotfiles/blob/main/dot_xprofile.tmpl)
 - [Custom fonts](https://github.com/mimuki/dotfiles/tree/main/dot_local/share/fonts)
+
+## System naming convention
+Currently not finalized, and subject to change. End goal is usefulness in automation (i.e. server software is irrelevant on a desktop, so don't install it there) without sacrificing aesthetics or excessive length. It should be as precise as it needs to be to avoid name collisions, and no further.
+
+username: 5 letter, food related. For flavour and machine specific differences. e.g. `grape`
+hostname: single letter OS indicator, major OS version, year device aquired, single letter form factor indicator. e.g. `W1020L` (a Windows 10 laptop aquired in 2020)
