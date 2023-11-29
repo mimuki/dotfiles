@@ -1,0 +1,37 @@
+#!/bin/bash
+{{ if eq (len .chezmoi.hostname) 8 }}
+# This machine is using the current naming convention! yay!
+case ${HOSTNAME:0:1} in
+  C) formFactor="console";;
+  D) formFactor="desktop";;
+  L) formFactor="laptop";;
+  P) formFactor="phone";;
+  S) formFactor="server";;
+  V) formFactor="VM";;
+  *) formFactor="unknown";;
+esac
+{{ else }}
+# This machine definitely isn't using our naming convention.
+formFactor="unknown"
+{{ end }}
+
+# Personal projects
+if [ ! -d ~/Projects/halley ]
+then
+  git clone https://github.com/mimuki/halley ~/Projects/halley
+fi
+
+if [ "$formFactor" != "server" ]; then
+  # Talon
+  if [ ! -d ~/.talon/user/community ]
+  then
+    git clone https://github.com/talonhub/community ~/.talon/user/community
+  fi
+
+  if [ ! -d ~/.talon/user/rango-talon ]; then
+    git clone https://github.com/david-tejada/rango-talon ~/.talon/user/rango-talon
+  fi
+  if [ ! -d ~/.talon/user/cursorless-talon ]; then
+    git clone https://github.com/cursorless-dev/cursorless-talon ~/.talon/user/cursorless-talon
+  fi
+fi
