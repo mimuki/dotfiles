@@ -27,6 +27,8 @@ formFactor="unknown"
 # it just sources each variant you ask for with the current scope/mode
 # (todo: decide on better names for these things)
 function sourceFile {
+  source "$path/universal/$flavour/$mode.sh" 
+
   for variant in "$@"
   do
     source "$path/$variant/$flavour/$mode.sh" 
@@ -39,13 +41,13 @@ function install {
   mode=$2    # "apt", "not-apt"
 
   case $formFactor in
-    console) sourceFile "universal" "not_server" "console";;
-    desktop) sourceFile "universal" "not_server" "desktop";;
-    laptop)  sourceFile "universal" "not_server" "laptop";;
-    phone)   sourceFile "universal" "not_server" "phone";;
-    server)  sourceFile "universal" "server";;
-    VM)      sourceFile "universal" "not_server" "VM";;
-    unknown) sourceFile "universal";;
+    console) sourceFile "not_server" "console";;
+    desktop) sourceFile "not_server" "desktop";;
+    laptop)  sourceFile "not_server" "laptop";;
+    phone)   sourceFile "not_server" "phone";;
+    server)  sourceFile "server";;
+    VM)      sourceFile "not_server" "VM";;
+    unknown) sourceFile;;
   esac
 }
 
