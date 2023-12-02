@@ -7,6 +7,7 @@ function statusBar(s)
       s.mytaglist,
       s.currentProgram,
       s.mypromptbox,
+      subtitles,
     },
       dummyMiddleWidget,
     { -- Right widgets

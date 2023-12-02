@@ -1,3 +1,10 @@
+subtitles = wibox.widget{
+  markup = '',
+  align  = 'center',
+  valign = 'center',
+  widget = wibox.widget.textbox
+}
+
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
