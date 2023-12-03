@@ -1,13 +1,23 @@
 from talon import speech_system, actions, cron, noise
 import subprocess, os
 
+# TODO: this but good, maybe somehow getting it from the tmux config file
+# the left part of the status bar
+tmuxLeft = "tmux set -g status-format[0] '#[align=left]#{?client_prefix,#[fg=white]#[bg=black],#[fg=black]#[bg=brightcyan]} #W #(echo \"$USER\" | head -c 5) #(bash ~/.tmux/plugins/rat_scripts/cwd.sh) #[align=absolute-centre]#[fg=black]#[bg=default]"
+# the right part of the status bar
+tmuxRight = "#[align=right]#{?client_prefix,#[fg=white]#[bg=black],#[fg=black]#[bg=brightcyan]} #(bash ~/.tmux/plugins/rat_scripts/battery.sh) #(bash ~/.tmux/plugins/rat_scripts/watts.sh) %I:%M %P '"
+
+
 def clear_subtitles():
     """Clear the subtitle bar"""
     global clear_subtitle
     global popCount
+    global tmuxLeft
+    global tmuxRight
 
     cron.cancel(clear_subtitle)
     os.system("awesome-client 'subtitles.markup = \"\"'")
+    os.system(tmuxLeft + tmuxRight)
     clear_subtitle = None
     popCount = 1
 
@@ -16,6 +26,8 @@ def show_as_subtitle(phrase: dict):
     global lastPhrase 
     global clear_subtitle
     global popCount
+    global tmuxLeft
+    global tmuxRight
     words = phrase.get("phrase")
 
     if words and actions.speech.enabled():
@@ -26,6 +38,8 @@ def show_as_subtitle(phrase: dict):
         escapedPhrase = " ".join(words).replace('\'',escapedQuote)
         lastPhrase = escapedPhrase
         cmd = "awesome-client 'subtitles.markup = \" " + escapedPhrase + "\"'"
+        cmd2 = tmuxLeft + escapedPhrase + tmuxRight
+
         try:
             clear_subtitle
         except NameError:
@@ -43,6 +57,7 @@ def show_as_subtitle(phrase: dict):
         )
         #this might be the wrong way to run things? idk look into this future me
         os.system(cmd)
+        os.system(cmd2)
         # we've said something new, and haven't popped for it
         popCount = 1
         # print("You said: "+ phrase)
@@ -55,6 +70,8 @@ def on_pop(active):
     global popCount
     global clear_subtitle
     global lastPhrase
+    global tmuxLeft
+    global tmuxRight
     if actions.speech.enabled():
         try:
             popCount
@@ -68,6 +85,7 @@ def on_pop(active):
             os.system("awesome-client 'subtitles.markup = \" pop!\"'")
         else:
             os.system("awesome-client 'subtitles.markup = \" [" + str(popCount) + "] " + lastPhrase + "\"'")
+            os.system(tmuxLeft + "#[fg=black]#[bg=brightcyan][" + str(popCount) + "]#[fg=black]#[bg=default] " + lastPhrase + tmuxRight)
             popCount = popCount + 1
 
         try:
