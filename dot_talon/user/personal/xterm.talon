@@ -1,6 +1,7 @@
 app.name: XTerm
 -
 tag(): terminal
+tag(): user.git
 
 settings():
     insert_wait = 20
