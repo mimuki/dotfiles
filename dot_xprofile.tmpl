@@ -25,8 +25,7 @@ bluetooth off
 xinput --set-prop "12" "libinput Accel Speed" -0.3
 {{- end }}
 
-{{- if eq .chezmoi.hostname "DESKRATS-2020MNT21" }}
-# This device should be: DESKRATS-2020MNT21
+{{- if eq .chezmoi.hostname "D20LMI21" }}
 # Reduce screen tearing
 xrandr --output HDMI-0 --mode 1920x1080 --rate 74.99
 {{- end }}
