@@ -4,3 +4,4 @@ examples/
 firefox-policies.json
 docs/
 install_scripts/
+manual_overrides/

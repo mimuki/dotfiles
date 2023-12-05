@@ -1,7 +1,9 @@
 {{ if eq .chezmoi.osRelease.id "debian" -}}
 #!/bin/sh
-# Enable bitmap fonts
-sudo dpkg-reconfigure fontconfig-config
+# Enable individual bitmap fonts: to add more fonts, you need to edit this file
+sudo cp ~/.local/share/chezmoi/manual_overrides/50-enable-CozetteHiDpi.conf /etc/fonts/conf.avail/
+sudo ln -s /etc/fonts/conf.avail/50-enable-CozetteHiDpi.conf /etc/fonts/conf.d/
+
 # Sensible firefox defaults (opt out of telemetry, disable sponsored junk, etc)
-sudo cp ~/.local/share/chezmoi/firefox_policies.json /usr/lib/firefox-esr/distribution/policies.json
+sudo cp ~/.local/share/chezmoi/manual_overrides/firefox_policies.json /usr/lib/firefox-esr/distribution/policies.json
 {{ end -}}
