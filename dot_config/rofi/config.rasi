@@ -8,74 +8,58 @@ configuration {
 // ---[Globals]-------------------------------------------------------------- //
 // NOTE : these properties are inherited for all "named" elements below
 * {
-  newblack: #000000;
-  newwhite: #FFFFFF;
-  lightgrey: #666666;
+  black: #000000;
+  white: #FFFFFF;
   darkgrey: #BDBDBD;
+  lightgrey: #EDEDED;
 
-  black:      #282A36;
-  lolight:    #21222C;
-  hilight:    #44475A;
-  white:      #F8F8F2;
-  red:        #FF5555;
-  orange:     #FFB86C;
-  yellow:     #F1FA8C;
-  green:      #50FA7B;
-  blue:       #8BE9FD;
-  purple:     #BD93F9;
-  pink:       #FF79C6;
-  special:    #6272a4;
+  error:      @black;
+  warn:       @darkgrey;
 
-  accent:     #bd93f9;
-  accent-alt: #ff79c6;
-
-  error:      @red;
-  warn:       @orange;
-
-  bg:         @black;
-  fg:         @white;
+  bg:         @white;
+  fg:         @black;
 
 // Rofi
 
-  background-color:               @newwhite;
-  text-color:                     @newblack;
+  background-color:               @white;
+  text-color:                     @black;
 
 // Normal state
 
-  normal-foreground:              @newblack;
-  normal-background:              @newwhite;
+  normal-foreground:              @black;
+  normal-background:              @white;
 
-  alternate-normal-background:    @newwhite;
-  alternate-normal-foreground:    @newblack;
+  alternate-normal-background:    @white;
+  alternate-normal-foreground:    @black;
 
-  selected-normal-foreground:     @newblack;
-  selected-normal-background:     @hilight;
+  selected-normal-foreground:     @black;
+  selected-normal-background:     @lightgrey;
 
 // Active state
 
-  active-foreground:              @accent;
-  active-background:              @lolight;
+  active-foreground:              @white;
+  active-background:              @darkgrey;
 
-  alternate-active-foreground:    @active-foreground;
-  alternate-active-background:    @active-background;
+  alternate-active-foreground:    @black;
+  alternate-active-background:    @white;
 
-  selected-active-foreground:     @newwhite;
-  selected-active-background:     @accent;
+  selected-active-foreground:     @white;
+  selected-active-background:     @black;
 
 // Urgent state
 
-  urgent-foreground:              @red;
-  urgent-background:              @lolight;
+  urgent-foreground:              @warn;
+  urgent-background:              @white;
 
-  alternate-urgent-foreground:    @urgent-foreground;
-  alternate-urgent-background:    @urgent-background;
+  alternate-urgent-foreground:    @warn;
+  alternate-urgent-background:    @warn;
 
-  selected-urgent-foreground:     @newblack;
-  selected-urgent-background:     @red;
+  selected-urgent-foreground:     @black;
+  selected-urgent-background:     @white;
 
 // Misc
 
-  border-color:                   @accent-alt;
+  border-color:                   @black;
   border:                         0;
   padding:                        0;
   spacing:                        0;
@@ -91,13 +75,13 @@ configuration {
     width:              50%;
     x-offset:           0;
     y-offset:           0;
-    font: 		"Andika Rats 18";
+    font: 		"CozetteHiDpi 18";
 
 }
 
 #scrollbar {
     handle-width:       6px;
-    handle-color:       @hilight;
+    handle-color:       @black;
     padding:            1px;
 }
 
@@ -109,16 +93,16 @@ configuration {
 #message {
     border:             0px solid 0px 0px;
     padding:            0px 8px 8px 8px;
-    border-color: @newwhite;
+    border-color: @white;
 
 }
 
 #textbox {
-    text-color: @newblack;
-    background-color: @hilight;
+    text-color: @black;
+    background-color: @white;
     padding: 5px 17px;
     border: 8px;
-    border-color: @special;
+    border-color: @white;
 
 }
 
@@ -126,7 +110,7 @@ configuration {
     columns:            1;
     fixed-height:       true;
     border:             0px solid 0px 0px;
-    border-color:       @accent-alt;
+    border-color:       @black;
     dynamic:            true;
     scrollbar:          false;
     cycle:              true;
@@ -138,50 +122,50 @@ configuration {
 
 
 #element {
-    padding:            2px 15px;
+    padding:            8px 15px 2px 15px;
 }
 
 #element.normal.normal {
 }
 
 #element.normal.urgent {
-    background-color:   @urgent-background;
-    text-color:         @urgent-foreground;
+    background-color:   @warn;
+    text-color:         @white;
 }
 
 #element.normal.active {
-    background-color:   @active-background;
-    text-color:         @active-foreground;
+    background-color:   @darkgrey;
+    text-color:         @white;
 }
 
 #element.selected.normal {
-    background-color:   @accent-alt;
-    text-color:         @newwhite;
+    background-color:   @lightgrey;
+    text-color:         @black;
 }
 
 #element.selected.urgent {
-    background-color:   @selected-urgent-background;
-    text-color:         @selected-urgent-foreground;
+    background-color:   @darkgrey;
+    text-color:         @white;
 }
 
 #element.selected.active {
-    background-color:   @selected-active-background;
-    text-color:         @selected-active-foreground;
+    background-color:   @black;
+    text-color:         @white;
 }
 
 #element.alternate.normal {
-    background-color:   @alternate-normal-background;
-    text-color:         @alternate-normal-foreground;
+    background-color:   @white;
+    text-color:         @black;
 }
 
 #element.alternate.urgent {
-    background-color:   @alternate-urgent-background;
-    text-color:         @alternate-urgent-foreground;
+    background-color:   @black;
+    text-color:         @white;
 }
 
 #element.alternate.active {
-    background-color:   @alternate-active-background;
-    text-color:         @alternate-active-foreground;
+    background-color:   @black;
+    text-color:         @white;
 }
 
 #sidebar {
@@ -189,21 +173,20 @@ configuration {
 }
 
 #button.selected {
-    background-color:   @selected-normal-background;
-    text-color:         @selected-normal-foreground;
-
+    background-color:   @black;
+    text-color:         @white;
 }
 
 #case-indicator {
-    background-color:   @lolight;
+    background-color:   @darkgrey;
 }
 
 #entry {
-    text-color:   @newblack;
+    text-color:   @black;
 }
 
 #prompt {
-    text-color:         @accent;
+    text-color:         @black;
 }
 
 #inputbar {
@@ -214,5 +197,5 @@ configuration {
 #textbox-prompt-colon {
     expand:             false;
     str:                " ";
-    text-color:         @accent;
+    text-color:         @black;
 }
