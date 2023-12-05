@@ -1,6 +1,6 @@
-*.foreground: #000000
-*.background: #FFFFFF
-! Black
+*VT100*foreground: #000000
+*VT100*background: #FFFFFF
+! Black 
 *.color0:     #000000
 *.color8:     #000000
 ! Red

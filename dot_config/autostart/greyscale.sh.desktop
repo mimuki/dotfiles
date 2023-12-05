@@ -1,0 +1,4 @@
+[Desktop Entry]
+Exec=/home/mango/.config/picom/greyscale.sh
+Name=greyscale.sh
+Type=Application

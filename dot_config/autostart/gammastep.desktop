@@ -1,0 +1,5 @@
+[Desktop Entry]
+Exec=/usr/bin/gammastep -r
+Name=gammastep
+Comment=set color temperature of display according to time of day
+Type=Application
