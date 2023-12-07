@@ -7,13 +7,13 @@ install_scripts/
 manual_overrides/
 {{- if eq .chezmoi.username "melon" }}
 # skip non-server bits on the server
-dot_config/autostart/
-dot_config/awesome/
-dot_config/feh/
-dot_config/gammastep/
-dot_config/keynav/
-dot_config/picom/
-dot_config/rofi/
-dot_talon/
+.config/autostart/
+.config/awesome/
+.config/feh/
+.config/gammastep/
+.config/keynav/
+.config/picom/
+.config/rofi/
+.talon/
 {{- end }}
 
