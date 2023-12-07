@@ -111,10 +111,3 @@ ctrl+alt+shift+e move-down  0.25, warp
 ctrl+alt+shift+i move-up    0.25, warp
 ctrl+alt+shift+o move-right 0.25, warp
 
-# ---[ Special ]-------------------------------------------------------------- #
-# Discord things
-# Hover server list 
-mod4+f start, warp, windowzoom, cut-left 0, warp, end
-mod4+shift+f start, sh "qutebrowser ':hint all'", windowzoom, cut-left 0, warp, end
-# Hover member list
-mod4+ctrl+f start, windowzoom, cut-right 0, warp, end
