@@ -12,11 +12,14 @@ esac
 function find_largest() { 
   du -h -x -s -- * | sort -r -h | head -5 | tac 
 }
+
 alias scrc='scrcpy --shortcut-mod=ralt,lalt --hid-keyboard --turn-screen-off'
 alias la='ls -A --color=auto --group-directories-first'
 alias cim='chezmoi edit'
 alias capply='chezmoi apply'
 alias cappy='chezmoi apply'
+
+FORMFACTOR=${HOSTNAME:0:1}
 
 # History related stuff
 # don't put duplicate lines  in the history.

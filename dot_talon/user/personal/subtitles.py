@@ -3,9 +3,9 @@ import subprocess, os
 
 # TODO: this but good, maybe somehow getting it from the tmux config file
 # the left part of the status bar
-tmuxLeft = "tmux set -g status-format[0] '#[align=left]#{?client_prefix,#[fg=white]#[bg=black],#[fg=black]#[bg=brightcyan]} #W #(echo \"$USER\" | head -c 5) #(bash ~/.tmux/plugins/rat_scripts/cwd.sh) #[align=absolute-centre]#[fg=black]#[bg=default]"
+tmuxLeft = "tmux set -g status-format[0] '#[align=left]#{?client_prefix,#[fg=brightwhite]#[bg=black],#[fg=black]#[bg=white]} #W #(echo \"$USER\" | head -c 5) #(bash ~/.tmux/plugins/rat_scripts/cwd.sh) #[align=absolute-centre]#[fg=black]#[bg=default]"
 # the right part of the status bar
-tmuxRight = "#[align=right]#{?client_prefix,#[fg=white]#[bg=black],#[fg=black]#[bg=brightcyan]} #(bash ~/.tmux/plugins/rat_scripts/battery.sh) #(bash ~/.tmux/plugins/rat_scripts/watts.sh) %I:%M %P '"
+tmuxRight = "#[align=right]#{?client_prefix,#[fg=brightwhite]#[bg=black],#[fg=black]#[bg=white]} #(bash ~/.tmux/plugins/rat_scripts/battery.sh) #(bash ~/.tmux/plugins/rat_scripts/watts.sh) %I:%M %P '"
 
 
 def clear_subtitles():
@@ -39,7 +39,10 @@ def show_as_subtitle(phrase: dict):
         lastPhrase = escapedPhrase
         cmd = "awesome-client 'subtitles.markup = \" " + escapedPhrase + "\"'"
         cmd2 = tmuxLeft + escapedPhrase + tmuxRight
-
+        # Only sends a notification of the first word if I don't escape spaces
+        # Also, the latency on the phone sucks, that's seemingly just an adb thing
+        cmd3 = "adb shell cmd notification post -S inbox 'Talon' '" + escapedPhrase.replace(' ','\\ ') + "'"
+        
         try:
             clear_subtitle
         except NameError:
@@ -58,6 +61,8 @@ def show_as_subtitle(phrase: dict):
         #this might be the wrong way to run things? idk look into this future me
         os.system(cmd)
         os.system(cmd2)
+        os.system(cmd3)
+
         # we've said something new, and haven't popped for it
         popCount = 1
         # print("You said: "+ phrase)
@@ -86,6 +91,7 @@ def on_pop(active):
         else:
             os.system("awesome-client 'subtitles.markup = \" [" + str(popCount) + "] " + lastPhrase + "\"'")
             os.system(tmuxLeft + "#[fg=black]#[bg=brightcyan][" + str(popCount) + "]#[fg=black]#[bg=default] " + lastPhrase + tmuxRight)
+            os.system("adb shell cmd notification post -S inbox 'Talon' '\[" + str(popCount) + "\]\ " + lastPhrase.replace(' ','\\ ') + "'")
             popCount = popCount + 1
 
         try:
