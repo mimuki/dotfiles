@@ -5,7 +5,7 @@ firefox-policies.json
 docs/
 install_scripts/
 manual_overrides/
-{{- if eq .chezmoi.hostname "melon" }}
+{{- if eq .chezmoi.username "melon" }}
 # skip non-server bits on the server
 dot_config/autostart/
 dot_config/awesome/
