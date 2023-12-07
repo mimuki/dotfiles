@@ -1,0 +1,4 @@
+[Desktop Entry]
+Exec=/usr/bin/keynav "loadconfig ~/.config/keynav/.keynavrc"
+Name=keynav
+Type=Application
