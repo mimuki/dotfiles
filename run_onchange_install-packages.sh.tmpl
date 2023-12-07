@@ -208,3 +208,48 @@ fi
 echo "           ╔═══════════╗"
 echo "           ║ All done! ║"
 echo "           ╚═══════════╝"
+
+
+
+# Chezmoi: rerun this when any of the subfiles change
+# these are the file hashes of each script this file uses, so when one of
+# them changes, it triggers the run_onchange of this script
+# {{ include "install_scripts/console/core/apt.sh"         | sha256sum }}
+# {{ include "install_scripts/console/core/not-apt.sh"     | sha256sum }}
+# {{ include "install_scripts/console/extra/apt.sh"        | sha256sum }}
+# {{ include "install_scripts/console/extra/not-apt.sh"    | sha256sum }}
+
+# {{ include "install_scripts/desktop/core/apt.sh"         | sha256sum }}
+# {{ include "install_scripts/desktop/core/not-apt.sh"     | sha256sum }}
+# {{ include "install_scripts/desktop/extra/apt.sh"        | sha256sum }}
+# {{ include "install_scripts/desktop/extra/not-apt.sh"    | sha256sum }}
+
+# {{ include "install_scripts/laptop/core/apt.sh"          | sha256sum }}
+# {{ include "install_scripts/laptop/core/not-apt.sh"      | sha256sum }}
+# {{ include "install_scripts/laptop/extra/apt.sh"         | sha256sum }}
+# {{ include "install_scripts/laptop/extra/not-apt.sh"     | sha256sum }}
+
+# {{ include "install_scripts/not_server/core/apt.sh"      | sha256sum }}
+# {{ include "install_scripts/not_server/core/not-apt.sh"  | sha256sum }}
+# {{ include "install_scripts/not_server/extra/apt.sh"     | sha256sum }}
+# {{ include "install_scripts/not_server/extra/not-apt.sh" | sha256sum }}
+
+# {{ include "install_scripts/phone/core/apt.sh"           | sha256sum }}
+# {{ include "install_scripts/phone/core/not-apt.sh"       | sha256sum }}
+# {{ include "install_scripts/phone/extra/apt.sh"          | sha256sum }}
+# {{ include "install_scripts/phone/extra/not-apt.sh"      | sha256sum }}
+
+# {{ include "install_scripts/server/core/apt.sh"          | sha256sum }}
+# {{ include "install_scripts/server/core/not-apt.sh"      | sha256sum }}
+# {{ include "install_scripts/server/extra/apt.sh"         | sha256sum }}
+# {{ include "install_scripts/server/extra/not-apt.sh"     | sha256sum }}
+
+# {{ include "install_scripts/universal/core/apt.sh"       | sha256sum }}
+# {{ include "install_scripts/universal/core/not-apt.sh"   | sha256sum }}
+# {{ include "install_scripts/universal/extra/apt.sh"      | sha256sum }}
+# {{ include "install_scripts/universal/extra/not-apt.sh"  | sha256sum }}
+
+# {{ include "install_scripts/VM/core/apt.sh"              | sha256sum }}
+# {{ include "install_scripts/VM/core/not-apt.sh"          | sha256sum }}
+# {{ include "install_scripts/VM/extra/apt.sh"             | sha256sum }}
+# {{ include "install_scripts/VM/extra/not-apt.sh"         | sha256sum }}
