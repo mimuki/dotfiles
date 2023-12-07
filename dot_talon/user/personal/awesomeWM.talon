@@ -74,3 +74,6 @@ keynav (update|restart):
   
 open firefox:
   user.system_command_nb('firefox')
+
+open phone:
+  user.system_command_nb('scrcpy -SwK --shortcut-mod lctrl+lalt -d')
