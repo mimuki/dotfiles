@@ -118,7 +118,8 @@ set -g window-status-format ''
 
 # Left side of status bar
 set -g  status-left-length '49'
-
+{{ if ne ( trunc 1 .chezmoi.hostname) "S" }}
+# You're not a server: get the normal statusbar
 # current program | username | cwd
 set -g status-format[0] '#[align=left]\
 #{?client_prefix,#[fg=brightwhite]#[bg=black],#[fg=black]#[bg=white]} \
@@ -137,6 +138,21 @@ set -ag status-format[0] '#[align=right] \
 #(bash ~/.tmux/plugins/rat_scripts/battery.sh)\
 #(bash ~/.tmux/plugins/rat_scripts/watts.sh)\
 %I:%M %P '
+{{ else }}
+# You're a server!
+# current program | username | cwd
+set -g status-format[0] '#[align=left]\
+#{?client_prefix,#[fg=brightwhite]#[bg=black],#[fg=black]#[bg=white]} \
+#W \
+#(echo "$USER" | head -c 5) \
+#{?client_prefix,#[fg=white]#[bg=black],#[fg=brightblack]#[bg=white]}\
+#(bash ~/.tmux/plugins/rat_scripts/cwd.sh) '
+
+# uptime
+set -ag status-format[0] '#[align=right]\
+#{?client_prefix,#[fg=brightwhite]#[bg=black],#[fg=black]#[bg=white]} \
+#(uptime -p) '
+{{ end }}
 
 # Fix vim not updating straight away when switching modes
 set -sg escape-time 10
