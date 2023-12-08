@@ -122,9 +122,10 @@ set -g  status-left-length '49'
 # You're not a server: get the normal statusbar
 # current program | username | cwd
 set -g status-format[0] '#[align=left]\
+#{?client_prefix,#[fg=brightwhite]#[bg=black],#[fg=black]#[bg=brightyellow]} \
+#(echo "$USER" | head -c 5) \
 #{?client_prefix,#[fg=brightwhite]#[bg=black],#[fg=black]#[bg=white]} \
 #W \
-#(echo "$USER" | head -c 5) \
 #{?client_prefix,#[fg=white]#[bg=black],#[fg=brightblack]#[bg=white]}\
 #(bash ~/.tmux/plugins/rat_scripts/cwd.sh) '
 set -ag status-format[0] '#[align=absolute-centre]\
@@ -142,9 +143,10 @@ set -ag status-format[0] '#[align=right] \
 # You're a server!
 # current program | username | cwd
 set -g status-format[0] '#[align=left]\
+#{?client_prefix,#[fg=brightwhite]#[bg=black],#[fg=black]#[bg=brightyellow]} \
+#(echo "$USER" | head -c 5) \
 #{?client_prefix,#[fg=brightwhite]#[bg=black],#[fg=black]#[bg=white]} \
 #W \
-#(echo "$USER" | head -c 5) \
 #{?client_prefix,#[fg=white]#[bg=black],#[fg=brightblack]#[bg=white]}\
 #(bash ~/.tmux/plugins/rat_scripts/cwd.sh) '
 
