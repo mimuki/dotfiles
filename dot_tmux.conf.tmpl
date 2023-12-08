@@ -151,9 +151,9 @@ set -g status-format[0] '#[align=left]\
 #(bash ~/.tmux/plugins/rat_scripts/cwd.sh) '
 
 # uptime
-set -ag status-format[0] '#[align=right]\
+set -ag status-format[0] "#[align=right]\
 #{?client_prefix,#[fg=brightwhite]#[bg=black],#[fg=black]#[bg=white]} \
-#(uptime -p) '
+#(uptime | awk \'/days?/ {print $3\"d\"; next}; {print 0}\') "
 {{ end }}
 
 # Fix vim not updating straight away when switching modes
