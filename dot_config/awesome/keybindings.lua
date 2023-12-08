@@ -3,8 +3,7 @@
 -- direction is either -1 or 1, as in awful.client.focus.byidx(direction)
 function focusWindow(direction)
   if awful.screen.focused().selected_tag.index == 1 then 
-    if direction == 1 then os.execute("tmux next-window") 
-    else os.execute("tmux previous-window") end
+    os.execute("bash ~/.config/awesome/scripts/tmuxFocus.sh " .. direction)
     os.execute("sh ~/.tmux/plugins/rat_scripts/statusbar.sh")
   else awful.client.focus.byidx(direction) end
 end
