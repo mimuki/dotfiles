@@ -9,3 +9,10 @@ sudo ln -s /etc/fonts/conf.avail/50-enable-CozetteHiDpi.conf /etc/fonts/conf.d/
 sudo cp ~/.local/share/chezmoi/manual_overrides/firefox_policies.json /usr/lib/firefox-esr/distribution/policies.json
 {{ end -}}
 {{ end -}}
+
+# Chezmoi: rerun this when any of the subfiles change
+# these are the file hashes of each script this file uses, so when one of
+# them changes, it triggers the run_onchange of this script
+# {{ include "manual_overrides/firefox_policies.json" | sha256sum }}
+# {{ include "manual_overrides/50-enable-CozetteHiDpi.conf" | sha256sum }}
+

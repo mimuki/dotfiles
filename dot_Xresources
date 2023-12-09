@@ -1,4 +1,3 @@
 *VT100*foreground: #000000
 *VT100*background: #FFFFFF
-
-XTerm.vt100.faceName:CozetteHiDpi:size=26:antialias=false
+XTerm.vt100.faceName:CozetteHiDpi:size=16:antialias=false
