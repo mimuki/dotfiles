@@ -1,29 +1,4 @@
 *VT100*foreground: #000000
 *VT100*background: #FFFFFF
-! Black 
-*.color0:     #000000
-*.color8:     #000000
-! Red
-*.color1:     #424242
-*.color9:     #424242 
-! Green
-*.color2:     #616161 
-*.color10:    #616161
-! Yellow
-*.color3:     #9E9E9E
-*.color11:    #9E9E9E
-! Purple
-*.color4:     #BDBDBD
-*.color12:    #BDBDBD
-! Pink 
-*.color5:     #E0E0E0
-*.color13:    #E0E0E0
-! Cyan
-*.color6:     #EEEEEE
-*.color14:    #FAFAFA
-! White
-*.color7:     #FFFFFF
-*.color15:    #FFFFFF
 
 XTerm.vt100.faceName:CozetteHiDpi:size=26:antialias=false
-XTerm.vt100.metaSendsEscape: true

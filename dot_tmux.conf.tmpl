@@ -15,7 +15,7 @@ previous-window \; run-shell "~/.tmux/plugins/rat_scripts/statusbar.sh"
 bind-key -n C-S-Left \
 previous-window \; run-shell "~/.tmux/plugins/rat_scripts/statusbar.sh"
 # doesn't get reset, for scripts
-bind-key -n M-F9 \
+bind-key -n F9 \
 previous-window \; run-shell "~/.tmux/plugins/rat_scripts/statusbar.sh"
 
 bind-key -n M-C-o \
@@ -23,13 +23,13 @@ next-window \; run-shell "~/.tmux/plugins/rat_scripts/statusbar.sh"
 bind-key -n C-S-Right \
 next-window \; run-shell "~/.tmux/plugins/rat_scripts/statusbar.sh"
 # doesn't get reset, for scripts
-bind-key -n M-F10 \
+bind-key -n F10 \
 next-window \; run-shell "~/.tmux/plugins/rat_scripts/statusbar.sh"
 
 # Switch between nested sessions
 # welcome back to the outer session, enable the things
 bind-key -n S-up \
-send-keys M-F12 \; \
+send-keys F4 \; \
 set -qg status-bg brightwhite \; \
 bind-key -n M-C-n \
 previous-window \; run-shell "~/.tmux/plugins/rat_scripts/statusbar.sh" \; \
@@ -42,7 +42,7 @@ next-window \; run-shell "~/.tmux/plugins/rat_scripts/statusbar.sh" \; \
 set -qg prefix C-a
 
 bind-key -n M-C-i \
-send-keys M-F12 \; \
+send-keys F4 \; \
 set -qg status-bg brightwhite \; \
 bind-key -n M-C-n \
 previous-window \; run-shell "~/.tmux/plugins/rat_scripts/statusbar.sh" \; \
@@ -56,7 +56,7 @@ set -qg prefix C-a
 
 # you're beaming into the inner session, so this one should be good
 bind-key -n S-down \
-send-keys M-F11 \; \
+send-keys F3 \; \
 set -qg status-bg white \; \
 unbind -n M-C-n \; \
 unbind -n C-S-Left \; \
@@ -65,7 +65,7 @@ unbind -n C-S-Right \; \
 set -qg prefix C-b
 
 bind-key -n M-C-e \
-send-keys M-F11 \; \
+send-keys F3 \; \
 set -qg status-bg white \; \
 unbind -n M-C-n \; \
 unbind -n C-S-Left \; \
@@ -74,7 +74,7 @@ unbind -n C-S-Right \; \
 set -qg prefix C-b
 
 # you got sent this by the outer session, enable the things
-bind-key -n M-F11 \
+bind-key -n F3 \
 set -qg status-bg brightwhite \; \
 bind-key -n M-C-n \
 previous-window \; run-shell "~/.tmux/plugins/rat_scripts/statusbar.sh" \; \
@@ -87,7 +87,7 @@ next-window \; run-shell "~/.tmux/plugins/rat_scripts/statusbar.sh" \; \
 set -qg prefix C-a
 
 # you got sent this by the outer session, disable the things
-bind-key -n M-F12 \
+bind-key -n F4 \
 set -qg status-bg white \; \
 unbind -n M-C-n \; \
 unbind -n C-S-Left \; \

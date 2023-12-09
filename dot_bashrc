@@ -87,16 +87,17 @@ if ! shopt -oq posix; then
 fi
 
 # Default custom prompt
-PS1='\u@\h[\[\e[32m\]\w\[\e[0m\]] '
+# PS1='\u@\h[\[\e[32m\]\w\[\e[0m\]] '
+PS1='\[\e[103m\] \[\e[30m\]\u\[\e[39m\] \[\e[47m\] \[\e[30m\]\h\[\e[39m\] \[\e[0m\] \[\e[90m\]\w\[\e[30m\]: \[\e[0m\]' 
 
-if { [ "$TERM" = "xterm-256color" ] && [ -n "$TMUX" ]; } then
-  PS1='$(bash ~/.tmux/plugins/rat_scripts/colours.sh)'
+if { [ "$TERM" = "tmux-256color" ] && [ -n "$TMUX" ]; } then
+  PS1='\[\e[103m\] \[\e[30m\]\u\[\e[39m\] \[\e[47m\] \[\e[30m\]\h\[\e[39m\] \[\e[0;30m\] \[\e[0m\]'
 fi
 
 # Invert colours when ssh'd
-if [ -n "$SSH_CLIENT" ]; then 
-  export PS1='\[\e[0;7;35m\]\u\[\e[0;7m\]@\[\e[0;7;34m\]\h\[\e[0;7m\][\[\e[0;7;96m\]\w\[\e[0;7m\]]\[\e[0m\] \[\e[0m\]'
-fi
+#if [ -n "$SSH_CLIENT" ]; then 
+#  export PS1='\[\e[0;7;35m\]\u\[\e[0;7m\]@\[\e[0;7;34m\]\h\[\e[0;7m\][\[\e[0;7;96m\]\w\[\e[0;7m\]]\[\e[0m\] \[\e[0m\]'
+#fi
 
 # pretty colours when using the TTY
 if [ "$TERM" = "linux" ]; then
