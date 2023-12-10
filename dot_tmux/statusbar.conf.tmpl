@@ -1,0 +1,7 @@
+{{ if ne ( trunc 1 .chezmoi.hostname) "S" }}
+# You're not a server: get the normal statusbar
+source-file ~/.tmux/statusbar-regular.conf
+{{ else }}
+# You're a server!
+source-file ~/.tmux/statusbar-server.conf
+{{ end }}
