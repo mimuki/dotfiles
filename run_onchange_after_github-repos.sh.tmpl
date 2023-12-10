@@ -20,6 +20,12 @@ if [ "$formFactor" = "server" ]; then
   if [ ! -d ~/Projects/halley ]; then
     git clone https://github.com/mimuki/halley ~/Projects/halley
   fi
+  if [ ! -d ~/Projects/sw ]; then
+    git clone https://github.com/mimuki/sw ~/Projects/sw
+    python3 -m venv ~/Projects/sw/.venv
+    source ~/Projects/sw/.venv/bin/activate
+    pip install -U pluralkit
+  fi
 else
   # Talon
   if [ ! -d ~/.talon/user/rango-talon ]; then
