@@ -22,6 +22,7 @@ vim plugins will be installed on first launch (so uh, launch vim first if you pl
 - [git, a version control system](https://github.com/git/git)
 - [keynav, a keyboard-driven mouse replacement](https://github.com/jordansissel/keynav)
 - [picom, a compositor](https://github.com/yshui/picom)
+- [profanity, an XMPP client](https://github.com/profanity-im/profanity)
 - [rofi, an application launcher, window switcher, and more](https://github.com/davatorium/rofi)
 - [talon voice, a hands-free input replacement](https://talonvoice.com)
 - [tmux, a terminal multiplexer](https://github.com/tmux/tmux)

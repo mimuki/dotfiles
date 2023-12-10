@@ -1,0 +1,46 @@
+[omemo]
+policy=always
+trustmode=firstusage
+
+log=on
+
+[ui]
+time.chat=%I:%M %p
+time.console=%I:%M %p
+time.statusbar=off
+time.private=%I:%M %p
+time.lastactivity=%d/%m/%y %I:%M %p
+color.nick=false
+history=true
+statusbar.show.name=false
+statusbar.tabs=0
+titlebar.position=3
+mainwin.position=1
+statusbar.position=2
+inputwin.position=4
+roster.contact.indent=1
+roster.empty=false
+roster.offline=false
+roster.rooms=false
+occupants.indent=1
+color.occupants.nick=false
+theme=greyscale
+
+statusbar.self=off
+resource.title=true
+statusbar.show.read=false
+statusbar.room=room
+occupants=false
+time.muc=%I:%M %p
+time.config=%I:%M %p
+time.xmlconsole=%I:%M %p
+
+[logging]
+chlog=true
+
+[connection]
+account=rats
+receipts.request=true
+
+[notifications]
+tray=false
