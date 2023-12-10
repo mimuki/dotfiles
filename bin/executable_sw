@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
 cd ~/Projects/sw
-.venv/bin/python3.11 sw
+.venv/bin/python3.11 sw $@
