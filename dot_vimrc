@@ -2,7 +2,8 @@
 set number          " Show line numbers
 set linebreak       " Break lines at word (requires Wrap lines)
 set showbreak=…\    " Wrap-broken line prefix
-set showmatch       " Highlight matching brace
+" temporarily disabled for testing
+"set showmatch       " Highlight matching brace
 
 set hlsearch	    " Highlight all search results
 set smartcase	    " Enable smart-case search
@@ -38,7 +39,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 call plug#begin() " Plugins
-Plug 'mimuki/goyo.vim' " I forked it to suck less
+Plug 'vimwiki/vimwiki'
 call plug#end()
 " }}}
 " Theme {{{
@@ -48,31 +49,24 @@ if (has("termguicolors"))
 endif
 colorscheme nofrils-acme
 " }}}
-" Goyo {{{ 
-" On window resize, if goyo is active, do <c-w>= to resize the window
-autocmd VimResized * if exists('#goyo') | exe "normal \<c-w>=" | endif
 
-" :q while in goyo quits vim
-function! s:goyo_enter()
-  let b:quitting = 0
-  let b:quitting_bang = 0
-  autocmd QuitPre <buffer> let b:quitting = 1
-  cabbrev <buffer> q! let b:quitting_bang = 1 <bar> q!
-endfunction
+let wiki = {}
+let wiki.path = '~/vimwiki'
+let wiki.name = 'Journal'
+let wiki.auto_toc = 1
+let wiki.diary_rel_path = 'journal/'
+let wiki.diary_index = 'index'
+let wiki.auto_diary_index = 1
+let wiki.auto_generate_links = 1
+let wiki.bullet_types = ['-', '*', '·']
 
-" Quit Vim if this is the only remaining buffer
-function! s:goyo_leave()
-  if b:quitting && len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1
-    if b:quitting_bang
-      qa!
-    else
-      qa
-    endif
-  endif
-endfunction
+let g:vimwiki_auto_header = 1
+let g:vimwiki_toc_header_level = 2
+let g:vimwiki_dir_link = 'index'
+let g:vimwiki_conceal_pre = 1
 
-autocmd! User GoyoEnter call <SID>goyo_enter()
-autocmd! User GoyoLeave call <SID>goyo_leave()
+let g:vimwiki_list = [ wiki ]
+
 " }}}
 " yoinked this from the gruvbox config, it makes the collapsy thingy go
 " vim: set sw=2 ts=2 sts=2 et tw=80 ft=vim fdm=marker:
