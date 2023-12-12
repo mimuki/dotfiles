@@ -75,8 +75,8 @@ theme.fg_focus      = theme.grey600.contrast
 theme.fg_urgent     = theme.error.contrast
 theme.fg_minimize   = theme.grey200.contrast
 
-theme.useless_gap   = dpi(0)
-theme.border_width  = dpi(4)
+theme.useless_gap   = dpi(2) -- changed in screens.lua, varies per tag
+theme.border_width  = dpi(1)
 theme.border_normal = theme.grey200.main
 theme.border_focus  = theme.accents.primary.main
 theme.border_marked = theme.accents.secondary.main
@@ -102,9 +102,9 @@ theme.tasklist_fg_urgent = theme.error.contrast
 
 -- [ Titlebar ] --
 theme.titlebar_bg_normal = theme.grey100.main
-theme.titlebar_bg_focus  = theme.accents.primary.main
+theme.titlebar_bg_focus  = theme.grey300.main
 theme.titlebar_fg_normal = theme.grey100.contrast
-theme.titlebar_fg_focus  = theme.accents.primary.contrast
+theme.titlebar_fg_focus  = theme.grey300.contrast
 
 -- [ Tooltip ] --
 theme.tooltip_font    = theme.font

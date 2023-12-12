@@ -6,7 +6,7 @@ modkey = "Mod4"
 awful.layout.layouts = {
   awful.layout.suit.tile,
   awful.layout.suit.tile.top,
-  awful.layout.suit.max.fullscreen,
+  -- awful.layout.suit.max.fullscreen,
   -- awful.layout.suit.floating,
   -- awful.layout.suit.tile.left,
   -- awful.layout.suit.tile.bottom,

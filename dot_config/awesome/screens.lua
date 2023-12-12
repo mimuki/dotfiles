@@ -10,8 +10,30 @@ awful.screen.connect_for_each_screen(function(s)
     gears.wallpaper.maximized(wallpaper, s, true)
   end
 -- Each screen has its own tag table.
-  awful.tag(tagNames, s, awful.layout.layouts[1])
 
+  awful.tag.add("", {
+    layout              = awful.layout.suit.tile,
+    master_fill_policy  = "master_width_factor",
+    master_width_factor = 0.871,
+    gap                 = 2,
+    gap_single_client   = true,
+    screen              = s,
+    selected            = true,
+})
+
+awful.tag.add("", {
+    layout             = awful.layout.suit.tile,
+    screen             = s,
+    gap                = 1.9,
+    gap_single_client  = false,
+})
+
+awful.tag.add("", {
+    layout             = awful.layout.suit.tile,
+    screen             = s,
+    gap                = 1.9,
+    gap_single_client  = false,
+})
   -- Create a promptbox for each screen
   s.mypromptbox = awful.widget.prompt()
   -- Create an imagebox widget which will contain an icon indicating which layout we're using.

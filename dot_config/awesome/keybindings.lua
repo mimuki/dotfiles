@@ -83,9 +83,15 @@ awful.key(
   { description = "or n Swap with previous window by index", group = "window management" }),
 awful.key({ modkey, "Shift" }, "n", function () moveWindow(-1) end),
 
--- Standard program
-awful.key(
-  { modkey }, "Return", function () awful.spawn(terminal) end,
+-- Standard programs
+awful.key( -- Open terminal, or a new tmux pane
+  { modkey }, "Return", function () 
+    if awful.screen.focused().selected_tag.index == 1 then 
+      os.execute("tmux split-pane")
+    else
+      awful.spawn(terminal)
+    end
+  end,
   { description = "Open a terminal", group = "programs" }),
 
 awful.key(
@@ -99,18 +105,10 @@ awful.key(
   { modkey }, "b", function ()
     for s in screen do
       -- Toggle statusbar
-      -- Sometimes this does the 
       s.mywibox.visible = not s.mywibox.visible
-      -- Add margins on the sides if there's no statusbar
-      if s.mywibox.visible then
-        awful.screen.focused().padding = { left = "0", right = "0" }
-      else
-        awful.screen.focused().padding = { left = "90", right = "90" }
-      end
     end
   end,
-  { description = "Toggle focus mode", group = "awesome" }),
-
+  { description = "Toggle status bar", group = "awesome" }),
 -- adjust brightness
 awful.key(
   { }, "XF86MonBrightnessUp", function() os.execute("brightnessctl set 1%+") end),
