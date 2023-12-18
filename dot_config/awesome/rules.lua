@@ -73,12 +73,26 @@ awful.rules.rules = {
   },
 
   { 
-    rule = { 
-      class = "Firefox" 
+    rule_any = { 
+      class = {
+        "Firefox",
+        "Firefox-esr"
+      }
     },
     properties = { 
       maximized = false,
     } 
+  },
+
+  { 
+    rule = { instance = "xterm" },
+    properties = { }, 
+    callback = function (c)
+      if not startupXterm then
+        awful.client.movetotag(tags[1][1], c)
+        startupXterm = true
+      end
+    end 
   },
 }
 -- }}}

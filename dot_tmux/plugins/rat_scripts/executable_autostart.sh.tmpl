@@ -1,0 +1,4 @@
+#!/bin/sh
+tmux new-session -d -s '{{ .chezmoi.username }}' -n 'ssh' ssh melon@S23LDE12 -t '. /etc/profile; . ~/.profile; tmux attach'
+tmux new-window
+tmux -2 attach-session -d
