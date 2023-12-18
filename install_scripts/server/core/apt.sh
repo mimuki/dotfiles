@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo apt-get install -qq -o=Dpkg::Use-Pty=0 rc profanity 
+sudo apt-get install -qq -o=Dpkg::Use-Pty=0 rc profanity yt-dlp pipx

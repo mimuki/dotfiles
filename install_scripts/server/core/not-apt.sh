@@ -1,4 +1,11 @@
 #!/bin/bash
+
+if ! [ -x "$(command -v epy)" ]; then
+  echo "╔═════════════════════════════════╗"
+  echo "║        Installing epy...        ║"
+  echo "╚═════════════════════════════════╝"
+  pipx install epy-reader
+fi
 if ! [ -x "$(command -v msync)" ]; then
   echo "╔═════════════════════════════════╗"
   echo "║       Installing msync...       ║"

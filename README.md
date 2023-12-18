@@ -17,6 +17,7 @@ vim plugins will be installed on first launch (so uh, launch vim first if you pl
 (note: this is software with custom configuration in this repository. additional software will also be installed)
 - [awesomeWM, a window manager](https://github.com/awesomeWM/awesome)
 - [btop, a resource monitor](https://github.com/aristocratos/btop)
+- [epy, an epub reader](https://github.com/wustho/epy)
 - [feh, an image viewer](https://github.com/derf/feh)
 - [gammastep, a colour temperature adjuster](https://gitlab.com/chinstrap/gammastep) 
 - [git, a version control system](https://github.com/git/git)
