@@ -267,7 +267,13 @@ awful.key(
     c:relative_move( 5, 0, 0, 0) end),
 
 awful.key(
-  { modkey }, "d", function (c) c:kill() end,
+  { modkey }, "d", function (c) 
+    if awful.screen.focused().selected_tag.index == 1 then 
+      os.execute("tmux kill-pane")
+    else
+      c:kill() 
+    end
+  end,
   { description = "close", group = "window management" }),
 awful.key(
   { modkey, "Control" }, "space",  awful.client.floating.toggle,
