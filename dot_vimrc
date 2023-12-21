@@ -50,22 +50,43 @@ endif
 colorscheme nofrils-acme
 " }}}
 
-let wiki = {}
-let wiki.path = '~/vimwiki'
-let wiki.name = 'Journal'
-let wiki.auto_toc = 1
-let wiki.diary_rel_path = 'journal/'
-let wiki.diary_index = 'index'
-let wiki.auto_diary_index = 1
-let wiki.auto_generate_links = 1
-let wiki.bullet_types = ['-', '*', '·']
+" Vimwiki
+set nocompatible
+filetype plugin on
+syntax on
+
+let wiki1 = {}
+let wiki1.path = '~/vimwiki'
+let wiki1.name = 'Journal'
+let wiki1.auto_toc = 1
+let wiki1.diary_rel_path = 'journal/'
+let wiki1.diary_index = 'index'
+let wiki1.auto_diary_index = 1
+let wiki1.auto_generate_links = 1
+let wiki1.bullet_types = ['-', '*', '·']
+
+
+let wiki2 = {}
+let wiki2.path = '~/Projects/www'
+let wiki2.name = 'mimuki.net'
+let wiki2.auto_toc = 1
+let wiki2.diary_rel_path = 'journal/'
+let wiki2.diary_index = 'index'
+let wiki2.auto_diary_index = 1
+let wiki2.auto_generate_links = 1
+let wiki2.bullet_types = ['-', '*', '·']
+let wiki2.auto_export = 1
+let wiki2.space_char = '_'
+let wiki2.template_path = '~/Projects/www/templates/'
+let wiki2.template_default = 'template'
+let wiki2.template_ext = '.html'
 
 let g:vimwiki_auto_header = 1
 let g:vimwiki_toc_header_level = 2
 let g:vimwiki_dir_link = 'index'
 let g:vimwiki_conceal_pre = 1
 
-let g:vimwiki_list = [ wiki ]
+let g:vimwiki_list = [ wiki1, wiki2]
 
 " }}}
 " yoinked this from the gruvbox config, it makes the collapsy thingy go
