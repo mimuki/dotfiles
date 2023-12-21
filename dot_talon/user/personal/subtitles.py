@@ -5,7 +5,7 @@ import subprocess, os
 # the left part of the status bar
 tmuxLeft = "tmux set -g status-format[0] '#[align=left]#{?client_prefix,#[fg=brightwhite]#[bg=black],#[fg=black]#[bg=brightyellow]} #(echo \"$USER\" | head -c 5) #{?client_prefix,#[fg=brightwhite]#[bg=black],#[fg=black]#[bg=white]} #W #(bash ~/.tmux/plugins/rat_scripts/cwd.sh) #[align=absolute-centre]#[fg=black]#[bg=default]"
 # the right part of the status bar
-tmuxRight = "#[align=right]#{?client_prefix,#[fg=brightwhite]#[bg=black],#[fg=black]#[bg=white]} #(bash ~/.tmux/plugins/rat_scripts/battery.sh) #(bash ~/.tmux/plugins/rat_scripts/watts.sh) %I:%M %P '"
+tmuxRight = "#[align=right]#{?client_prefix,#[fg=brightwhite]#[bg=black],#[fg=black]#[bg=white]} #(bash ~/.tmux/plugins/rat_scripts/battery.sh)#(bash ~/.tmux/plugins/rat_scripts/watts.sh)%I:%M %P '"
 
 
 def clear_subtitles():
