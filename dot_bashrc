@@ -125,6 +125,7 @@ fi
 
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.cargo/bin
+export PATH=$PATH:/opt/navidrome
 
 # needed for 11ty
 export NVM_DIR="$HOME/.nvm"
