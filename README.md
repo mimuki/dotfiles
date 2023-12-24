@@ -22,7 +22,7 @@ vim plugins will be installed on first launch (so uh, launch vim first if you pl
 - [gammastep, a colour temperature adjuster](https://gitlab.com/chinstrap/gammastep) 
 - [git, a version control system](https://github.com/git/git)
 - [keynav, a keyboard-driven mouse replacement](https://github.com/jordansissel/keynav)
-- [navidrome, a music server](https://github.com/navidrome/navidrome/)
+- [gonic, a music server](https://github.com/sentriz/gonic/)
 - [picom, a compositor](https://github.com/yshui/picom)
 - [profanity, an XMPP client](https://github.com/profanity-im/profanity)
 - [rofi, an application launcher, window switcher, and more](https://github.com/davatorium/rofi)
