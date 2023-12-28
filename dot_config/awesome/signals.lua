@@ -71,6 +71,22 @@ end)
 
 client.connect_signal("focus", function(c) 
   c.border_color = beautiful.border_focus 
+  
+  -- If I'm watching videos, I need a brighter screen
+  -- caveat: doesn't update when switching tabs, only when switching focus
+  -- so it's good for switching between a fullscreen video and something else
+  if string.find(c.name, "Invidious") then
+    -- sometimes, especially when in fullscreen,  i get a brief flash of my
+    -- background when switching- this waits until that's over before upping
+    -- the brightness, because my background is bright :D 
+    awful.spawn.with_shell("sleep 0.075;brightnessctl set +4%")
+    increased = true
+  else
+    if increased == true then
+      os.execute("brightnessctl set 4%-")
+      increased = false
+    end
+  end
 end)
 
 client.connect_signal("unfocus", function(c) 

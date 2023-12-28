@@ -198,6 +198,7 @@ theme.titlebar_maximized_button_normal_active = path.."default/titlebar/maximize
 theme.titlebar_maximized_button_focus_active  = path.."default/titlebar/maximized_active.svg"
 
 theme.wallpaper = path.."default/background.png"
+theme.wallpaper_alt = path.."default/black/jpg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = path.."default/layouts/fairhw.png"

@@ -1,20 +1,35 @@
 -- Functions
+-- Check if we're on the tmux tag
+function isTmux()
+  if awful.screen.focused().selected_tag.index == 1 then 
+    return true
+  else
+    return false
+  end
+end
+
 -- Switch between windows in both tmux and awesome with the same keybind
 -- direction is either -1 or 1, as in awful.client.focus.byidx(direction)
 function focusWindow(direction)
-  if awful.screen.focused().selected_tag.index == 1 then 
+  if isTmux() then 
+    -- move the focus (tmux)
     os.execute("bash ~/.config/awesome/scripts/tmuxFocus.sh " .. direction)
+    -- update the statusbar (tmux)
     os.execute("sh ~/.tmux/plugins/rat_scripts/statusbar.sh")
+  -- move the focus (awesome)
   else awful.client.focus.byidx(direction) end
 end
+
 -- Move windows around in awesome, or panes in tmux
 -- You'd think to try moving windows this way in tmux, but it doesn't feel 
 -- right- you don't shuffle maximized windows like that, and moving windows 
 -- between tags is a different keybind & conceptualized direction
 function moveWindow(direction)
-  if awful.screen.focused().selected_tag.index == 1 then 
+  -- move panes (tmux)
+  if isTmux() then 
     if direction == 1 then os.execute("tmux swap-pane -d -t +1") 
     else os.execute("tmux swap-pane -d -t -1") end
+  -- move windows (awesome)
   else awful.client.swap.byidx(direction) end
 end
 
@@ -51,42 +66,53 @@ awful.key(
   { modkey, "Shift" }, "q", awesome.quit,
   { description = "Quit awesome", group = "awesome" }),
 
-awful.key(
+awful.key( -- ↑
   { modkey }, "Up",   awful.tag.viewprev,
-  { description = "or i View previous tag", group = "focus" }),
-awful.key({ modkey }, "i",   awful.tag.viewprev),
-
+  { description = "Focus previous tag", group = "focus" }),
 awful.key(
+  { modkey }, "i",   awful.tag.viewprev,
+  { description = "Focus previous tag", group = "focus" }),
+
+awful.key( -- ↓
   { modkey }, "Down",  awful.tag.viewnext,
-  { description = "or e View next tag", group = "focus" }),
-awful.key({ modkey }, "e",  awful.tag.viewnext),
-
+  { description = "Focus next tag", group = "focus" }),
 awful.key(
+  { modkey }, "e",  awful.tag.viewnext,
+  { description = "Focus next tag", group = "focus" }),
+
+
+awful.key( -- ←
   { modkey }, "Left", function () focusWindow(-1) end,
-  { description = "or n Focus previous window", group = "focus" }),
-awful.key({ modkey }, "n", function () focusWindow(-1) end),
-
+  { description = "Focus previous window", group = "focus" }),
 awful.key(
-  { modkey }, "Right", function () focusWindow(1) end,
-  { description = "or o Focus next window", group = "focus" }),
-awful.key({ modkey }, "o", function () focusWindow(1) end),
+  { modkey }, "n", function () focusWindow(-1) end,
+  { description = "Focus previous window", group = "focus" }),
 
+awful.key( -- →
+  { modkey }, "Right", function () focusWindow(1) end,
+  { description = "Focus next window", group = "focus" }),
+awful.key(
+  { modkey }, "o", function () focusWindow(1) end,
+  { description = "Focus next window", group = "focus" }),
 -- Layout manipulation
+awful.key( -- ←
+  { modkey, "Shift" }, "Left", function () moveWindow(-1) end,
+  { description = "Swap with previous window", group = "window management" }),
+awful.key( -- →
+  { modkey, "Shift" }, "n", function () moveWindow(-1) end,
+  { description = "Swap with previous window", group = "window management" }),
 
 awful.key(
   { modkey, "Shift" }, "Right", function () moveWindow(1) end,
-  { description = "or o Swap with next window by index", group = "window management" }),
-awful.key({ modkey, "Shift" }, "o", function () awful.client.swap.byidx(  1) end),
-
+  { description = "Swap with next window", group = "window management" }),
 awful.key(
-  { modkey, "Shift" }, "Left", function () moveWindow(-1) end,
-  { description = "or n Swap with previous window by index", group = "window management" }),
-awful.key({ modkey, "Shift" }, "n", function () moveWindow(-1) end),
+  { modkey, "Shift" }, "o", function () moveWindow(1) end,
+  { description = "Swap with next window", group = "window management" }),
 
 -- Standard programs
 awful.key( -- Open terminal, or a new tmux pane
   { modkey }, "Return", function () 
-    if awful.screen.focused().selected_tag.index == 1 then 
+    if isTmux() then 
       os.execute("tmux split-pane")
     else
       awful.spawn(terminal)
@@ -110,18 +136,19 @@ awful.key(
   end,
   { description = "Toggle status bar", group = "awesome" }),
 -- adjust brightness
-awful.key(
+awful.key( -- increase
   { }, "XF86MonBrightnessUp", function() os.execute("brightnessctl set 1%+") end),
-awful.key(
+awful.key( -- decrease
   { }, "XF86MonBrightnessDown", function() os.execute("brightnessctl set 1%-") end),
+awful.key( -- set to minimum 
+  { "Shift" }, "XF86MonBrightnessDown", function() os.execute("brightnessctl set 1") end),
 
--- Screenshot (the entire screen)
-awful.key(
+awful.key( -- Screenshot the entire screen
   { }, "Print", function () 
     awful.util.spawn([[scrot 'Pictures/Screenshots/%Y%m%d_%H%M%S.png' -e 'xclip -selection clipboard -t image/png -i $f']]) end,
   { description = "Screenshot", group = "awesome"}),
 
-awful.key(
+awful.key( -- Screenshot selection
   { modkey }, "Print", function ()
     awful.util.spawn([[scrot 'Pictures/Screenshots/%Y%m%d_%H%M%S.png' -s -l width=4,color="]] .. beautiful.accents.secondary.main .. [[",opacity=100,mode=edge -e 'xclip -selection clipboard -t image/png -i $f']])
     end,
@@ -268,7 +295,7 @@ awful.key(
 
 awful.key(
   { modkey }, "d", function (c) 
-    if awful.screen.focused().selected_tag.index == 1 then 
+    if isTmux() then 
       os.execute("tmux kill-pane")
     else
       c:kill() 

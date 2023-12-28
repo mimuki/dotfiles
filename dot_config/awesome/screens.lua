@@ -9,6 +9,8 @@ awful.screen.connect_for_each_screen(function(s)
     end
     gears.wallpaper.maximized(wallpaper, s, true)
   end
+  wallpaperWhite = gears.surface.load("~/.config/awesome/themes/default/background.png")
+  wallpaperBlack = gears.surface.load("~/.config/awesome/themes/default/black.jpg")
 -- Each screen has its own tag table.
 
   awful.tag.add("", {
@@ -41,9 +43,7 @@ awful.tag.add("", {
   s.mylayoutbox = awful.widget.layoutbox(s)
   s.mylayoutbox:buttons(gears.table.join(
     awful.button({ }, 1, function () awful.layout.inc( 1) end),
-    awful.button({ }, 3, function () awful.layout.inc(-1) end),
-    awful.button({ }, 4, function () awful.layout.inc( 1) end),
-    awful.button({ }, 5, function () awful.layout.inc(-1) end)
+    awful.button({ }, 3, function () awful.layout.inc(-1) end)
   ))
   -- Create a taglist widget
   tagList(s)
@@ -55,6 +55,7 @@ awful.tag.add("", {
   { 
     position = "top", 
     screen = s,
+    visible = false,
     height = beautiful.get_font_height(beautiful.font)
   })
 
