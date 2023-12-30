@@ -85,7 +85,7 @@ awful.rules.rules = {
   },
 
   { 
-    rule = { class = "special-xterm" },
+    rule = { class = "tmux" },
     properties = { 
       placement = awful.placement.centered,
       floating = true
