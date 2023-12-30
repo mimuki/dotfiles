@@ -189,7 +189,7 @@ awful.key(
 --   Tiling window: shrinks the main window horizontally
 awful.key(
   { modkey, "Control" }, "Left", function (c)
-    if (c.floating and not c.class == "tmux") then
+    if (c.floating and c.class ~= "tmux") then
       c:relative_move(10, 0, -20, 0)
     else
       awful.tag.incmwfact (-0.025) end
@@ -202,7 +202,7 @@ awful.key(
 --                    - Has other secondary windows
 awful.key(
   { modkey, "Control" }, "Down", function (c)
-    if (c.floating and not c.class == "tmux") then
+    if (c.floating and c.class ~= "tmux") then
       c:relative_move(0, -10, 0, 20)
     else
       awful.client.incwfact ( 0.025) end
@@ -215,7 +215,7 @@ awful.key(
 --                    - Not the only secondary window
 awful.key(
   { modkey, "Control" }, "Up", function (c)
-    if (c.floating and not c.class == "tmux") then
+    if (c.floating and c.class ~= "tmux") then
       c:relative_move(0, 10, 0, -20)
     else
       awful.client.incwfact (-0.025) end
@@ -226,7 +226,7 @@ awful.key(
 -- Tiling window: grows the main window
 awful.key(
   { modkey, "Control" }, "Right", function (c)
-    if (c.floating and not c.class == "tmux") then
+    if (c.floating and c.class ~= "tmux") then
       c:relative_move(-10, 0, 20, 0)
     else
       awful.tag.incmwfact ( 0.025) end
@@ -236,28 +236,28 @@ awful.key(
 -- Shifted, slower variant
 awful.key(
   { modkey, "Control", "Shift" }, "Left", function (c) -- move left
-    if (c.floating and not c.class == "tmux") then
+    if (c.floating and c.class ~= "tmux") then
       c:relative_move(2, 0, -5, 0)
     else
       awful.tag.incmwfact (-0.002) end
     end),
 awful.key(
   { modkey, "Control", "Shift" }, "Down", function (c) -- move down
-    if (c.floating and not c.class == "tmux") then
+    if (c.floating and c.class ~= "tmux") then
       c:relative_move(0, -2, 0, 5)
     else
       awful.client.incwfact ( 0.002) end
     end),
 awful.key(
   { modkey, "Control", "Shift" }, "Up", function (c) -- move up
-    if (c.floating and not c.class == "tmux") then
+    if (c.floating and c.class ~= "tmux") then
       c:relative_move(0, 2, 0, -5)
     else
       awful.client.incwfact (-0.002) end
     end),
 awful.key(
   { modkey, "Control", "Shift" }, "Right", function (c) -- move right
-    if (c.floating and not c.class == "tmux") then
+    if (c.floating and c.class ~= "tmux") then
       c:relative_move(-2, 0, 5, 0)
     else
       awful.tag.incmwfact ( 0.002) end
@@ -266,28 +266,28 @@ awful.key(
 -- Move floating window
 awful.key(
   { modkey, "Mod1"   }, "Left",  function (c) 
-      if (c.floating and not c.class == "tmux") then
+      if (c.floating and c.class ~= "tmux") then
         c:relative_move(-25,  0,  0,  0) end
     end,
   { description = "Move floating window left",  group = "floating windows" }),
 
 awful.key(
   { modkey, "Mod1"   }, "Down",  function (c) 
-    if (c.floating and not c.class == "tmux") then
+    if (c.floating and c.class ~= "tmux") then
       c:relative_move(  0, 25,  0,  0) end
     end,
   { description = "Move floating window down",  group = "floating windows" }),
 
 awful.key(
   { modkey, "Mod1"   }, "Up",    function (c) 
-    if (c.floating and not c.class == "tmux") then
+    if (c.floating and c.class ~= "tmux") then
       c:relative_move(  0,-25,  0,  0) end
     end,
   { description = "Move floating window up",    group = "floating windows" }),
 
 awful.key(
   { modkey, "Mod1"   }, "Right", function (c) 
-    if (c.floating and not c.class == "tmux") then
+    if (c.floating and c.class ~= "tmux") then
       c:relative_move( 25,  0,  0,  0) end
     end,
   { description = "Move floating window right", group = "floating windows" }),
@@ -295,22 +295,22 @@ awful.key(
 -- Shifted, slower variants
 awful.key(
   { modkey, "Mod1", "Shift" }, "Left",  function (c)
-    if (c.floating and not c.class == "tmux") then
+    if (c.floating and c.class ~= "tmux") then
       c:relative_move(-5, 0, 0, 0) end
     end),
 awful.key(
   { modkey, "Mod1", "Shift" }, "Down",  function (c)
-    if (c.floating and not c.class == "tmux") then
+    if (c.floating and c.class ~= "tmux") then
       c:relative_move( 0, 5, 0, 0) end
     end),
 awful.key(
   { modkey, "Mod1", "Shift" }, "Up",    function (c)
-    if (c.floating and not c.class == "tmux") then
+    if (c.floating and c.class ~= "tmux") then
       c:relative_move( 0,-5, 0, 0) end
     end),
 awful.key(
   { modkey, "Mod1", "Shift" }, "Right", function (c)
-    if (c.floating and not c.class == "tmux") then
+    if (c.floating and c.class ~= "tmux") then
       c:relative_move( 5, 0, 0, 0) end
     end),
 

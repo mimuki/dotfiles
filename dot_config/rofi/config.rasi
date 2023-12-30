@@ -67,7 +67,7 @@ configuration {
 }
 
 #window {
-    border:             7px;
+    border:             1px;
     padding:            0px;
     location:           center;
     anchor:             center;
@@ -134,7 +134,7 @@ configuration {
 }
 
 #element.normal.active {
-    background-color:   @darkgrey;
+    background-color:   @black;
     text-color:         @white;
 }
 
@@ -144,13 +144,13 @@ configuration {
 }
 
 #element.selected.urgent {
-    background-color:   @darkgrey;
+    background-color:   @lightgrey;
     text-color:         @white;
 }
 
 #element.selected.active {
-    background-color:   @black;
-    text-color:         @white;
+    background-color:   @lightgrey;
+    text-color:         @black;
 }
 
 #element.alternate.normal {
