@@ -15,11 +15,13 @@ awful.screen.connect_for_each_screen(function(s)
 
   awful.tag.add("", {
     layout              = awful.layout.suit.tile,
-    master_fill_policy  = "master_width_factor",
-    master_width_factor = 0.8705,
-    gap                 = 2,
-    gap_single_client   = true,
+--    master_fill_policy  = "master_width_factor",
+--    master_width_factor = 0.8705,
+--    gap                 = 2,
+--    gap_single_client   = true,
     screen              = s,
+    gap                = 1.9,
+    gap_single_client  = false,
     selected            = true,
 })
 

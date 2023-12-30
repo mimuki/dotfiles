@@ -1,5 +1,0 @@
-[Desktop Entry]
-Exec=/usr/bin/xterm -e "~/.tmux/plugins/rat_scripts/autostart.sh"
-Name=tmux
-Comment=A preconfigured tmux session for clients
-Type=Application

@@ -8,6 +8,12 @@ manual_overrides/
 {{- if ne ( trunc 1 .chezmoi.hostname) "S" }}
 # skip server bits
 .config/profanity
+{{- if eq ( trunc 1 .chezmoi.hostname) "L" }}
+# screen is (usually) less than 1080p
+.config/autostart/1080_tmux_client.desktop
+{{ else }}
+.config/autostart/768_tmux_client.desktop
+{{ end }}
 {{ else }}
 # skip non-server bits on the server
 .config/autostart/

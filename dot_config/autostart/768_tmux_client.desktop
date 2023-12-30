@@ -1,0 +1,5 @@
+[Desktop Entry]
+Exec=/usr/bin/xterm -geometry 84x28 -class special-xterm -e "~/.tmux/plugins/rat_scripts/autostart.sh"
+Name=tmux
+Comment=A preconfigured tmux session for clients
+Type=Application

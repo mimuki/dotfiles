@@ -85,14 +85,11 @@ awful.rules.rules = {
   },
 
   { 
-    rule = { instance = "xterm" },
-    properties = { }, 
-    callback = function (c)
-      if not startupXterm then
-        awful.client.movetotag(tags[1][1], c)
-        startupXterm = true
-      end
-    end 
-  },
+    rule = { class = "special-xterm" },
+    properties = { 
+      placement = awful.placement.centered,
+      floating = true
+    } 
+  }
 }
 -- }}}
