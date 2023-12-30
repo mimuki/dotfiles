@@ -8,6 +8,7 @@ local gfs = require("gears.filesystem")
 local path = "~/.config/awesome/themes/"
 
 local theme = {}
+
 -- [ Settings ] ----------------------------------------------------------------
 -- [ Basic Colours ] --
 theme.black  = { main = "#000000", contrast = "#FFFFFF" }
@@ -149,6 +150,13 @@ theme.hotkeys_description_font = theme.font
 --theme.notification_shape =
 --theme.notification_opacity =
 
+-- todo: put this somewhere better
+-- make notifs be centered and have more padding
+-- you'd think the margin thing above would do that 
+for _, preset in pairs(naughty.config.presets) do
+    preset.position = "top_middle"
+end
+naughty.config.padding = dpi(10)
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
