@@ -100,3 +100,9 @@ end)
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", setWallpaper)
+-- if maximized, don't
+client.connect_signal("property::maximized", function(c)
+	if c.maximized then
+		c.maximized = false
+	end
+end)

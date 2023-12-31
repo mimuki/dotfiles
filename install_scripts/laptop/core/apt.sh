@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo apt-get install -qq -o=Dpkg::Use-Pty=0 tlp brightnessctl
+sudo apt-get install -qq -o=Dpkg::Use-Pty=0 tlp brightnessctl autorandr
