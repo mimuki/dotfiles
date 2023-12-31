@@ -143,6 +143,7 @@ theme.hotkeys_description_font = theme.font
 --theme.notification_bg = 
 --theme.notification_fg = 
 --theme.notification_width =
+theme.notification_max_width = 500
 --theme.notification_height =
 --theme.notification_margin =
 --theme.notification_border_color =

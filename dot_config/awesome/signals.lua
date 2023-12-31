@@ -75,16 +75,19 @@ client.connect_signal("focus", function(c)
   -- If I'm watching videos, I need a brighter screen
   -- caveat: doesn't update when switching tabs, only when switching focus
   -- so it's good for switching between a fullscreen video and something else
-  if string.find(c.name, "Invidious") then
+  -- check if it has a name before finding in it
+  if c.name then
+    if string.find(c.name, "Invidious") then
     -- sometimes, especially when in fullscreen,  i get a brief flash of my
     -- background when switching- this waits until that's over before upping
     -- the brightness, because my background is bright :D 
-    awful.spawn.with_shell("sleep 0.075;brightnessctl set +4%")
-    increased = true
-  else
-    if increased == true then
-      os.execute("brightnessctl set 4%-")
-      increased = false
+      awful.spawn.with_shell("sleep 0.075;brightnessctl set +4%")
+      increased = true
+    else
+      if increased == true then
+        awful.spawn.with_shell("brightnessctl set 4%-")
+        increased = false
+      end
     end
   end
 end)

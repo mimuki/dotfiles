@@ -14,9 +14,9 @@ end
 function focusWindow(direction)
   if isTmux() then 
     -- move the focus (tmux)
-    os.execute("bash ~/.config/awesome/scripts/tmuxFocus.sh " .. direction)
+    awful.spawn.with_shell("bash ~/.config/awesome/scripts/tmuxFocus.sh " .. direction)
     -- update the statusbar (tmux)
-    os.execute("sh ~/.tmux/plugins/rat_scripts/statusbar.sh")
+    awful.spawn.with_shell("sh ~/.tmux/plugins/rat_scripts/statusbar.sh")
   -- move the focus (awesome)
   else awful.client.focus.byidx(direction) end
 end
@@ -28,8 +28,8 @@ end
 function moveWindow(direction)
   -- move panes (tmux)
   if isTmux() then 
-    if direction == 1 then os.execute("tmux swap-pane -d -t +1") 
-    else os.execute("tmux swap-pane -d -t -1") end
+    if direction == 1 then awful.spawn.with_shell("tmux swap-pane -d -t +1") 
+    else awful.spawn.with_shell("tmux swap-pane -d -t -1") end
   -- move windows (awesome)
   else awful.client.swap.byidx(direction) end
 end
@@ -114,7 +114,7 @@ awful.key(
 awful.key( -- Open terminal, or a new tmux pane
   { modkey }, "Return", function () 
     if isTmux() then 
-      os.execute("tmux split-pane")
+      awful.spawn.with_shell("tmux split-pane")
     else
       awful.spawn(terminal)
     end
@@ -138,11 +138,11 @@ awful.key(
   { description = "Toggle status bar", group = "awesome" }),
 -- adjust brightness
 awful.key( -- increase
-  { }, "XF86MonBrightnessUp", function() os.execute("brightnessctl set 1%+") end),
+  { }, "XF86MonBrightnessUp", function() awful.spawn.with_shell("brightnessctl set 1%+") end),
 awful.key( -- decrease
-  { }, "XF86MonBrightnessDown", function() os.execute("brightnessctl set 1%-") end),
+  { }, "XF86MonBrightnessDown", function() awful.spawn.with_shell("brightnessctl set 1%-") end),
 awful.key( -- set to minimum 
-  { "Shift" }, "XF86MonBrightnessDown", function() os.execute("brightnessctl set 1") end),
+  { "Shift" }, "XF86MonBrightnessDown", function() awful.spawn.with_shell("brightnessctl set 1") end),
 
 awful.key( -- Screenshot the entire screen
   { }, "Print", function () 
@@ -317,7 +317,7 @@ awful.key(
 awful.key(
   { modkey }, "d", function (c) 
     if isTmux() then 
-      os.execute("tmux kill-pane")
+      awful.spawn.with_shell("tmux kill-pane")
     else
       c:kill() 
     end
