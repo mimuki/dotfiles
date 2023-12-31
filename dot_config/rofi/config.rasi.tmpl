@@ -72,7 +72,11 @@ configuration {
     location:           center;
     anchor:             center;
     fullscreen:         false;
+{{ if eq ( trunc 1 .chezmoi.hostname ) "L" }}
     width:              50%;
+{{ else }}
+    width:              40%;
+{{ end }}
     x-offset:           0;
     y-offset:           0;
     font: 		"CozetteHiDpi 18";
