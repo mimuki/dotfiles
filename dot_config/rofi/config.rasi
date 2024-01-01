@@ -1,0 +1,116 @@
+configuration {
+	modi: "window,drun,ssh,filebrowser";
+        drun-display-format: "{name}";
+        drun-match-fields: "name";
+        // window (seems to always be blank?)
+        // class
+        // title
+        window-format: "{w}{c} {t}";
+}
+// ---[Globals]-------------------------------------------------------------- //
+// NOTE : these properties are inherited for all "named" elements below
+* {
+  black: #000000;
+  white: #FFFFFF;
+  darkgrey: #808080;
+  lightgrey: #EDEDED;
+
+  error:      @black;
+  warn:       @darkgrey;
+
+  bg:         @white;
+  fg:         @black;
+
+// Rofi
+  background-color:               @white;
+  text-color:                     @black;
+
+// Normal state
+  normal-foreground:              @black;
+  normal-background:              @white;
+
+  alternate-normal-background:    @white;
+  alternate-normal-foreground:    @black;
+
+  selected-normal-foreground:     @black;
+  selected-normal-background:     @lightgrey;
+
+// Active state
+  active-foreground:              @white;
+  active-background:              @darkgrey;
+
+  alternate-active-foreground:    @black;
+  alternate-active-background:    @white;
+
+  selected-active-foreground:     @white;
+  selected-active-background:     @black;
+
+// Urgent state
+  urgent-foreground:              @warn;
+  urgent-background:              @white;
+
+  alternate-urgent-foreground:    @warn;
+  alternate-urgent-background:    @warn;
+
+  selected-urgent-foreground:     @black;
+  selected-urgent-background:     @white;
+
+}
+
+// The entire window
+#window {
+    location: center;
+    anchor: center;
+    fullscreen: false;
+    border: 1px;
+    height: 11.42em;
+    padding: 5px;
+    width: 20em;
+    background-color: @white;
+    font: "CozetteHiDpi 18";
+}
+// the part you type in
+#inputbar {
+    children:           [prompt, textbox-space, entry, num-filtered-rows, textbox-slash, num-rows];
+    padding:            10px 12px;
+}
+// how many rows (total or currently visible
+#num-rows { text-color: @darkgrey; }
+#num-filtered-rows { text-color: @darkgrey; }
+
+#message {
+    padding: 8px 5px 0px 5px;
+}
+
+// the list of items
+#listview {
+    columns:            1;
+    fixed-height:       true;
+    dynamic:            true;
+    scrollbar:          false;
+    cycle:              true;
+    spacing:            0px;
+    padding:            5px 0px 0px 0px;
+    lines:              8;
+    orientation:        vertical;
+}
+
+
+// a thing in a list
+#element {
+    padding: 3px 6px 0px 6px;
+    highlight: bold;
+}
+
+#textbox-space {
+    str:                " ";
+    expand:             false;
+    text-color:         @black;
+}
+
+#textbox-slash { 
+  str: "/";
+  expand: false; 
+  text-color: @darkgrey;
+}
+
