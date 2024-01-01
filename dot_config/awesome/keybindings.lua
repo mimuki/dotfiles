@@ -121,6 +121,10 @@ awful.key( -- Open terminal, or a new tmux pane
   end,
   { description = "Open a terminal", group = "programs" }),
 
+awful.key( -- Open terminal, or a new tmux pane
+  { modkey, "Shift" }, "Return", function () 
+    awful.spawn.with_shell("xterm -name forced-floating -geometry 50x11") end,
+  { description = "Open a floating terminal", group = "programs" }),
 awful.key(
   { modkey }, "space", function () awful.layout.inc( 1) end,
   { description = "Next layout", group = "layout" }),
@@ -169,7 +173,7 @@ awful.key(
 
 awful.key(
   { modkey }, "l", function () 
-    awful.util.spawn("rofi -show filebrowser -theme-str '#listview {lines:6;}'") end,
+    awful.util.spawn("rofi -show filebrowser") end,
   { description = "Search files", group = "rofi" }),
 
 awful.key(

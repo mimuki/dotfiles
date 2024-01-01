@@ -87,6 +87,14 @@ awful.rules.rules = {
   },
 
   { 
+    rule = { name = "forced-floating" },
+    properties = {
+      placement = awful.placement.centered,
+      floating = true
+    }
+  },
+
+  { 
     rule = { class = "tmux" },
     properties = { 
       placement = awful.placement.centered,
