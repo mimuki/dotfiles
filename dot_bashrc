@@ -18,6 +18,7 @@ alias la='ls -A --color=auto --group-directories-first'
 alias cim='chezmoi edit'
 alias capply='chezmoi apply'
 alias cappy='chezmoi apply'
+alias magick='convert-im6.q16'
 
 FORMFACTOR=${HOSTNAME:0:1}
 
