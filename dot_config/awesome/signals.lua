@@ -1,3 +1,5 @@
+homeDir = os.getenv("HOME")
+
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c)
   if awesome.startup
@@ -70,25 +72,23 @@ client.connect_signal("property::floating", function (c)
 end)
 
 client.connect_signal("focus", function(c) 
+  -- Set border colour
   c.border_color = beautiful.border_focus 
   
-  -- If I'm watching videos, I need a brighter screen
-  -- caveat: doesn't update when switching tabs, only when switching focus
-  -- so it's good for switching between a fullscreen video and something else
-  -- check if it has a name before finding in it
-  if c.name then
-    if string.find(c.name, "Invidious") then
-    -- sometimes, especially when in fullscreen,  i get a brief flash of my
-    -- background when switching- this waits until that's over before upping
-    -- the brightness, because my background is bright :D 
-      awful.spawn.with_shell("sleep 0.075;brightnessctl set +4%")
-      increased = true
-    else
-      if increased == true then
-        awful.spawn.with_shell("brightnessctl set 4%-")
-        increased = false
-      end
-    end
+  -- Do silly numen things
+  numenPath = "~/.config/numen/"
+  phrasePath = numenPath .. "phrases/*"
+  contextPath = numenPath .. "contexts/" .. c.class .. "/*"
+
+  -- Numen politely writes the last thing it heard here
+  -- disclaimer: no good for checking longer phrases, but perfect for sleep/wake
+  local phrase = io.open(homeDir .. "/.local/state/numen/phrase", "r" )
+  lastPhrase = phrase:read( "*all" )
+
+  if lastPhrase ~= "newman sleep" then -- If numen isn't sleeping
+    -- if this context doesn't exist, it'll still load the base phrases
+    cmd = "echo load " .. phrasePath .. " " .. contextPath .. " | numenc"
+    awful.spawn.with_shell(cmd)
   end
 end)
 
@@ -105,7 +105,7 @@ end)
 screen.connect_signal("property::geometry", setWallpaper)
 -- if maximized, don't
 client.connect_signal("property::maximized", function(c)
-	if c.maximized then
-		c.maximized = false
-	end
+  if c.maximized then
+    c.maximized = false
+  end
 end)

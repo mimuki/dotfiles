@@ -1,5 +1,0 @@
-[Desktop Entry]
-Exec=/usr/bin/snixembed
-Name=snixembed
-Comment=proxy the StatusNotifierItem protocol to the XEmbed System Tray
-Type=Application

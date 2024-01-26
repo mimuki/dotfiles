@@ -1,0 +1,81 @@
+amy: press a
+bat: press b
+cap: press c
+drum: press d
+each: press e
+fine: press f
+gust: press g
+harp: press h
+sit: press i
+jury: press j
+crunch: press k
+look: press l
+made: press m
+near: press n
+odd: press o
+pit: press p
+quench: press q
+red: press r
+sun: press s
+trap: press t
+urge: press u
+vest: press v
+whale: press w
+plex: press x
+yank: press y
+zip: press z
+
+zero: press 0
+one: press 1
+two: press 2
+three: press 3
+four: press 4
+five: press 5
+six: press 6
+sept: press 7
+eight: press 8
+nine: press 9
+
+question: press question
+question mark: press question
+plus: press plus
+minus: press minus
+tide: press asciitilde
+bang: press exclam
+exclamation: press exclam
+exclamation mark: press exclam
+dollar: press dollar
+underscore: press underscore
+colon: press colon
+semicolon: press semicolon
+wax: press parenleft
+wane: press parenright
+left parent: press parenleft
+right parent: press parenright
+curl: press braceleft
+crimp: press braceright
+bric: press bracketleft
+brac: press bracketright
+left square: press bracketleft
+right square: press bracketright
+less than: press less
+more than: press greater
+star: press asterisk
+hash: press numbersign
+percent: press percent
+carrot: press asciicircum
+at sign: press at
+ampersand: press ampersand
+pipe: press bar
+dub quote: press quotedbl
+quote: press apostrophe
+tick: press grave
+back tick: press grave
+slash: press slash
+slope: press backslash
+comma: press comma space
+mini comma: press comma
+dot: press period
+maxi dot: press period space
+ellipse us: press period period period space
+equal: press equal

@@ -1,0 +1,38 @@
+tab new: press ctrl+t
+tab close: press ctrl+w
+tab move left: press ctrl+shift+Prior
+tab move right: press ctrl+shift+Next
+go back: press alt+Left
+go next: press alt+Right
+zoom in: press ctrl+plus
+zoom out: press ctrl+minus
+zoom reset: press ctrl+0
+
+# todo: "search web for <phrase>" & "search page for <phrase>"
+search: press ctrl+j
+search page: press ctrl+f
+search next: press ctrl+g
+search back: press shift+F3
+search links: press apostrophe
+
+# to avoid ambiguity of someone wanting the tab key followed by a letter
+slot amy:  press alt+1
+slot bat:  press alt+2
+slot cap:  press alt+3
+slot drum: press alt+4
+slot each: press alt+5
+slot fine: press alt+6
+slot gust: press alt+7
+slot harp: press alt+8
+slot sit:  press alt+9
+# alternatively,  refer to them with numbers
+slot one:   press alt+1
+slot two:   press alt+2
+slot three: press alt+3
+slot four:  press alt+4
+slot five:  press alt+5
+slot six:   press alt+6
+slot seven: press alt+7
+slot eight: press alt+8
+slot nine:  press alt+9
+

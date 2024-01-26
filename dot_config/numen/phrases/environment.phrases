@@ -1,0 +1,28 @@
+# Navigate to the window in the given direction
+win left: stick off \
+	press super+Left
+win right: stick off \
+	press super+Right
+win up: stick off \
+	press super+Up
+win down: stick off \
+	press super+Down
+
+# Close window
+win close: stick off \
+	press super+d
+
+# list open programs
+win search: stick off \
+        press super+w
+
+# list installed programs
+win open: stick off \
+        press super+p
+
+# These two are just for --gadget mode.
+
+# Switch to controlling the gadget
+@gadget shock gadget: handler uinput
+# Switch to controlling the host machine
+@gadget shock host: handler gadget

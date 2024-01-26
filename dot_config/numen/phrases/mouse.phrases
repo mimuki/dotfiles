@@ -1,0 +1,61 @@
+# I use keyboard-focused programs so I rarely need to click anything, but
+# in a pinch (maybe to click a bad element on a webpage) I use coord[1] which
+# lets you specify a point to click, and is bound to Super+p in Tiles[2].
+# [1] https://git.sr.ht/~geb/coord
+# [2] https://git.sr.ht/~geb/tiles
+
+# Click
+touch: click left
+righty: click righth
+
+# Center the cursor
+center: mouseto 0 0 \
+	mouseto 0.5 0.5
+
+mouse left:       mousemove -30  0
+mouse one left:   mousemove -30  0
+mouse two left:   mousemove -60  0
+mouse three left: mousemove -90  0
+mouse four left:  mousemove -120 0
+mouse five left:  mousemove -150 0
+mouse six left:   mousemove -170 0
+mouse seven left: mousemove -200 0
+mouse eight left: mousemove -230 0
+mouse nine left:  mousemove -260 0
+mouse ten left:   mousemove -290 0
+
+mouse right:       mousemove 30  0
+mouse one right:   mousemove 30  0
+mouse two right:   mousemove 60  0
+mouse three right: mousemove 90  0
+mouse four right:  mousemove 120 0
+mouse five right:  mousemove 150 0
+mouse six right:   mousemove 170 0
+mouse seven right: mousemove 200 0
+mouse eight right: mousemove 230 0
+mouse nine right:  mousemove 260 0
+mouse ten right:   mousemove 290 0
+
+mouse up:       mousemove 0 -30
+mouse one up:   mousemove 0 -30
+mouse two up:   mousemove 0 -60
+mouse three up: mousemove 0 -90
+mouse four up:  mousemove 0 -120
+mouse five up:  mousemove 0 -150
+mouse six up:   mousemove 0 -170
+mouse seven up: mousemove 0 -200
+mouse eight up: mousemove 0 -230
+mouse nine up:  mousemove 0 -260
+mouse ten up:   mousemove 0 -290
+
+mouse down:       mousemove 0 30
+mouse one down:   mousemove 0 30
+mouse two down:   mousemove 0 60
+mouse three down: mousemove 0 90
+mouse four down:  mousemove 0 120
+mouse five down:  mousemove 0 150
+mouse six down:   mousemove 0 170
+mouse seven down: mousemove 0 200
+mouse eight down: mousemove 0 230
+mouse nine down:  mousemove 0 260
+mouse ten down:   mousemove 0 290
