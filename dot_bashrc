@@ -15,6 +15,7 @@ function find_largest() {
 
 alias scrc='scrcpy --shortcut-mod=ralt,lalt --hid-keyboard --turn-screen-off'
 alias la='ls -A --color=auto --group-directories-first'
+alias lynx='lynx -cfg=~/.config/lynx/lynx.cfg'
 alias cim='chezmoi edit'
 alias capply='chezmoi apply'
 alias cappy='chezmoi apply'
@@ -126,7 +127,7 @@ fi
 
 export PATH=$PATH:~/.local/bin
 export PATH=$PATH:~/.cargo/bin
-export PATH=$PATH:/opt/navidrome
+export PATH=$PATH:~/go/bin
 
 # needed for 11ty
 export NVM_DIR="$HOME/.nvm"
