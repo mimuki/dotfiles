@@ -11,7 +11,7 @@ else
   tmux new-session -d -s 'local' -n $USER tmux -L $USER
   # make a new window in the nested session named melon,
   # SSH'ing to my server and attaching to it's tmux session
-  tmux new-window -n 'melon' ssh -Y melon@S23LDE12 -t '. /etc/profile; . ~/.profile; tmux attach'
+  tmux new-window -n 'melon' ssh -X melon@S23LDE12 -t '. /etc/profile; . ~/.profile; tmux attach'
   # the fact I need to do this is indicative of code demons
   tmux source ~/.tmux.conf
   # Attach to the session you just made
