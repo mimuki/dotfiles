@@ -95,11 +95,18 @@ awful.rules.rules = {
   },
 
   { 
-    rule = { class = "tmux" },
+    rule = { class = "feh" },
     properties = { 
       placement = awful.placement.centered,
       floating = true
     } 
+  },
+  { 
+    rule = { class = "tmux" },
+    properties = { 
+      placement = awful.placement.centered,
+      floating = true
+    }
   }
 }
 -- }}}

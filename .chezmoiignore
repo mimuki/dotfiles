@@ -18,7 +18,6 @@ manual_overrides/
 # skip non-server bits on the server
 .config/autostart/
 .config/awesome/
-.config/feh/
 .config/gammastep/
 .config/keynav/
 .config/picom/

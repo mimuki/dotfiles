@@ -1,1 +1,1 @@
-feh -F -Z --quiet --image-bg "#282a36" 
+feh --quiet --image-bg "#FFFFFF" --geometry 1000x500 --scale-down --zoom max
