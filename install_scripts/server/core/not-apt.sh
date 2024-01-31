@@ -1,6 +1,12 @@
 #!/bin/bash
 #
 
+if ! [ -x "$(command -v yt-dlp)" ]; then
+  echo "╔═════════════════════════════════╗"
+  echo "║       Installing yt-dlp...      ║"
+  echo "╚═════════════════════════════════╝"
+  pipx install yt-dlp
+fi
 if ! [ -x "$(command -v epy)" ]; then
   echo "╔═════════════════════════════════╗"
   echo "║        Installing epy...        ║"

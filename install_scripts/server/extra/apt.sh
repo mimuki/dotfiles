@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo apt-get install -qq -o=Dpkg::Use-Pty=0 cbonsai
+sudo apt-get install -qq -o=Dpkg::Use-Pty=0 cbonsai ruby-full
