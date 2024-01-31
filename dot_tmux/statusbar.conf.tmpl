@@ -1,5 +1,9 @@
+# You could totally do this without chezmoi, but for my weird naming convention
+# reasons, I do. (I plan on consolidating the two files, anyway. so this comment
+# is temporary, just like all things
+
 {{ if ne ( trunc 1 .chezmoi.hostname) "S" }}
-# You're not a server: get the normal statusbar
+# You're not my server: get the normal statusbar
 source-file ~/.tmux/statusbar-regular.conf
 {{ else }}
 # You're a server!
